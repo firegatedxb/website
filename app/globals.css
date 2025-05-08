@@ -3,18 +3,29 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #E6321E;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-host-grotesk);
+/*   --font-mono: var(--font-font-host-grotesk); */
+  --color-primary: var(--primary);
+
+  --breakpoint-3xl: 103.125rem;
+
+  --text-5xl: clamp(2.5rem, 5vw, 96px);     /* 65px */
+  --text-2xl: clamp(2.5rem, 5vw, 3.75rem);  /* 50px */
+  --text-xl: clamp(2rem, 4.5vw, 3.4375rem); /* 32px */
+  --text-lg: clamp(1.5rem, 3vw, 1.875rem);  /* 30px */
+  --text-sm: clamp(0.9rem, 2vw, 1rem);      /* 19px */
+  --text-xs: clamp(0.875rem, 1.8vw, 10px);  /* 15px */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #fff;
     --foreground: #ededed;
   }
 }
@@ -22,5 +33,16 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Host Grotesk", sans-serif;
+}
+
+.container {
+  @apply px-[15px] mx-auto;
+
+}
+.section-spacing {
+  @apply py-[60px] lg:py-[90px] xl:py-[100px] 2xl:py-[120px];
+}
+.left-spacing {
+  @apply pl-[15px] lg:pl-[calc((100%-930px)/2)] xl:pl-[calc((100%-79rem)/2)] 3xl:pl-[calc((100%-101.25rem)/2)];
 }
