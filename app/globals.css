@@ -4,6 +4,9 @@
   --background: #ffffff;
   --foreground: #171717;
   --primary: #E6321E;
+  --secondary: #263967;
+  --graytext: #595959;
+  --EFEFEF: #EFEFEF;
 }
 
 @theme inline {
@@ -12,15 +15,26 @@
   --font-sans: var(--font-host-grotesk);
 /*   --font-mono: var(--font-font-host-grotesk); */
   --color-primary: var(--primary);
-
+  --color-secondary: var(--secondary);
+  --color-graytext: var(--graytext);
+  --color-EFEFEF: var(--EFEFEF);
   --breakpoint-3xl: 103.125rem;
 
-  --text-5xl: clamp(2.5rem, 5vw, 96px);     /* 65px */
+  --text-5xl: clamp(2.5rem, 5vw, 96px);     /*96px */
   --text-2xl: clamp(2.5rem, 5vw, 3.75rem);  /* 50px */
   --text-xl: clamp(2rem, 4.5vw, 3.4375rem); /* 32px */
   --text-lg: clamp(1.5rem, 3vw, 1.875rem);  /* 30px */
-  --text-sm: clamp(0.9rem, 2vw, 1rem);      /* 19px */
-  --text-xs: clamp(0.875rem, 1.8vw, 10px);  /* 15px */
+  --text-sm: clamp(0.9rem, 2vw, 1rem);      /* 16px */
+  --text-xs: clamp(0.875rem, 1.8vw, 15px);  /* 15px */
+
+
+  --text-65: clamp(2.5rem, 5vw, 65px);  /* 65px */
+  --text-60: clamp(2.4rem, 5vw, 60px);  /* 60px */
+  --text-50: clamp(2.2rem, 5vw, 50px);  /* 50px */
+  --text-32: clamp(1.7rem, 4.5vw, 32px); /* 32px */
+  --text-30: clamp(1.6rem, 4.5vw, 30px); /* 30px */
+  --text-19: clamp(0.95rem, 1.8vw, 19px);  /* 19px */
+  --text-15: clamp(0.875rem, 1.8vw, 15px);  /* 15px */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,3 +60,18 @@ body {
 .left-spacing {
   @apply pl-[15px] lg:pl-[calc((100%-930px)/2)] xl:pl-[calc((100%-79rem)/2)] 3xl:pl-[calc((100%-101.25rem)/2)];
 }
+.slideroverlay::after{    content: '';
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 6.25%, #000000 90.1%);}
+    .sebder:nth-last-child(1) .spb{border-bottom: none !important;}
+    .ulsmn li{line-height: 2.2;position: relative;}
+    .ulsmn li::before{content:url('/assets/img/icons/grayarrow.svg');position: absolute; left: -20px; top: 0;}
+    .swiper-slide-active{position:relative}
+.trst{display: none;}
+    .curslider .swiper-slide-active .mnsuy{border-bottom-left-radius: 200px !important;}
+    .curslider .swiper-slide-active .mnsuy img{border-bottom-left-radius: 200px !important;}
+    .curslider .swiper-slide-active .trst{display: flex;}
