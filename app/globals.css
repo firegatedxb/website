@@ -4,6 +4,9 @@
   --background: #ffffff;
   --foreground: #171717;
   --primary: #E6321E;
+  --site-blue:#263967;
+  --gray:#595959;
+  --graybg:#EFEFEF
   --secondary: #263967;
   --graytext: #595959;
   --EFEFEF: #EFEFEF;
@@ -15,6 +18,10 @@
   --font-sans: var(--font-host-grotesk);
 /*   --font-mono: var(--font-font-host-grotesk); */
   --color-primary: var(--primary);
+  --color-site-blue: var(--site-blue);
+  --color-gray: var(--gray);
+  --color-graybg: var(--graybg);
+
   --color-secondary: var(--secondary);
   --color-graytext: var(--graytext);
   --color-EFEFEF: var(--EFEFEF);
@@ -24,6 +31,15 @@
   --text-2xl: clamp(2.5rem, 5vw, 3.75rem);  /* 50px */
   --text-xl: clamp(2rem, 4.5vw, 3.4375rem); /* 32px */
   --text-lg: clamp(1.5rem, 3vw, 1.875rem);  /* 30px */
+  --text-sm: clamp(0.9rem, 2vw, 1rem);      /* 19px */
+  --text-xs: clamp(0.875rem, 1.8vw, 10px);
+  
+  --text-65: clamp(2.5rem, 5vw, 65px);  /* 65px */
+  --text-50: clamp(2.2rem, 5vw, 50px);  /* 50px */
+  --text-30: clamp(1.7rem, 4.5vw, 32px); /* 32px */
+  --text-30: clamp(1.6rem, 4.5vw, 30px); /* 30px */
+  --text-19: clamp(0.95rem, 1.8vw, 19px);  /* 19px */
+  --text-15: clamp(0.875rem, 1.8vw, 15px);  /* 15px *//* 15px */
   --text-sm: clamp(0.9rem, 2vw, 1rem);      /* 16px */
   --text-xs: clamp(0.875rem, 1.8vw, 15px);  /* 15px */
 
@@ -59,6 +75,16 @@ body {
 }
 .left-spacing {
   @apply pl-[15px] lg:pl-[calc((100%-930px)/2)] xl:pl-[calc((100%-79rem)/2)] 3xl:pl-[calc((100%-101.25rem)/2)];
+}
+
+.header-container-padding{
+  padding-top: 113px;
+  padding-bottom: 22px;
+}
+
+.form-padding{
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 .slideroverlay::after{    content: '';
     position: absolute;

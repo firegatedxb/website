@@ -10,12 +10,14 @@ const Header = () => {
       
       </div>
 
-      <div className="flex h-full items-center ">
-        <div className="flex flex-col justify-end items-end">
+      <div className="flex h-full items-center gap-16">
+        <div className="flex flex-col justify-end items-end ">
+          
           <div className="flex items-center text-sm font-semibold text-gray-800">
         
             +971 (4) 432 7677
           </div>
+          <div className="border-b w-full"></div>
           <nav className="flex-1">
             <ul className="flex justify-center space-x-6 text-sm font-medium text-gray-800">
               <li>
@@ -60,7 +62,7 @@ const Header = () => {
         <div className="rghtsc flex h-full">
           <a
             href="#contact"
-            className="bg-red-600 text-white px-4 py-2 text-sm font-semibold flex items-center hover:bg-red-700 transition h-full"
+            className="rounded-l-[20px] p-13 bg-primary text-white  text-sm font-semibold flex items-center hover:bg-red-700 transition h-full"
           >
             CONTACT
             <span className="ml-1 text-lg"></span>
