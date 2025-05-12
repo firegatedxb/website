@@ -1,126 +1,140 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperClass } from "swiper";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Image from "next/image";
 import { assets } from "@/public/assets/assets";
-const slides = [
+const projects = [
   {
+    id: 1,
     image: assets.slideic1,
+    projectName: "WASL Experience Centre",
+    projectCategory: "Commercial",
   },
   {
+    id: 2,
     image: assets.slideic2,
+    projectName: "Firefighting System",
+    projectCategory: "Commercial",
   },
   {
+    id: 3,
     image: assets.slideic1,
+    projectName: "Firefighting System",
+    projectCategory: "Commercial",
   },
   {
+    id: 4,
     image: assets.slideic1,
+    projectName: "Firefighting System",
+    projectCategory: "Commercial",
   },
   {
+    id: 5,
     image: assets.slideic1,
+    projectName: "Firefighting System",
+    projectCategory: "Commercial",
   },
   {
+    id: 6,
     image: assets.slideic1,
+    projectName: "Firefighting System",
+    projectCategory: "Commercial",
   },
 ];
 const FeaturedProjects = () => {
   const swiperRef = useRef<SwiperClass | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const sourceRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState<number>(0);
+
+
+  useEffect(() => {
+    if (sourceRef.current) {
+      const updateHeight = () => {
+        const newHeight = sourceRef.current?.offsetHeight || 0;
+        setHeight(newHeight);
+      };
+
+      updateHeight(); // Set initially
+      window.addEventListener('resize', updateHeight); // Update on resize
+
+      return () => {
+        window.removeEventListener('resize', updateHeight);
+      };
+    }
+  }, []);
+
   return (
-    <section className="py[50px] md:py-[50px] lg:pt-[120px]  lg:pb-[150px] relative bg-secondary text-white">
-      <div className="container">
-        <div className="flex md:gap-[45px]  lg:gap-[108px]">
+    <section className="py[50px] md:py-[50px] lg:pt-[120px] lg:pb-[120px] relative bg-secondary text-white">
+      <div className={`container relative z-10 `} style={{ height: `${height}px` }}>
+        <div className="flex md:gap-[45px] lg:gap-[108px] h-full">
           <div className="w-1/4">
             <div className="flex flex-col justify-between h-full">
               <div>
-              <h2 className="text-50 font-medium mb-4 md:mb-[55px] max-w-[10ch] leading-[1.2]">Our Featured
-              Projects</h2>
-            <p className="text-19">Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting.</p>
-
-            </div>
-           <button className="flex mt-6 cursor-pointer items-center bg-red-600 hover:bg-red-700 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase">
-              <span>More projects</span>
-              <span className="bg-white rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center">
-                <svg
-                  className="w-4 h-4 text-secondary"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </span>
-            </button>
+                <h2 className="text-50 font-medium mb-4 md:mb-[55px] max-w-[10ch] leading-[1.2]">Our Featured Projects</h2>
+                <p className="text-19">Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting.</p>
+              </div>
+              <button className="flex mt-6 cursor-pointer items-center bg-primary hover:bg-primary/90 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase">
+                <span>More projects</span>
+                <span className="bg-white rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center">
+                  <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.5 1.5L8.5 8.5L1.5 15.5" stroke="#263967" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                </span>
+              </button>
             </div>
           </div>
 
-        <div className="w-2/3 absolute right-0 curslider">
-            <Swiper
-                modules={[Autoplay]}
-  autoplay={{ delay: 4000 }}
-  loop
-  slidesPerView={2}
-
-            breakpoints={{
-              640: {
-                slidesPerView: 1,
-                spaceBetween: 8,
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 8,
-              },
-              1024: {
-                slidesPerView: 2,
-                spaceBetween: 8,
-              },
-            }}
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper;
-            }}
-            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-            className="w-full h-full"
-          >
-            {slides.map((slide, index) => (
-              <SwiperSlide key={index}>
-                <div className="   flex items-center justify-center mnsuy group">
-                  <Image src={slide.image} alt={""} className="     " />
-                  <div className="w-[50px] h-[50px] rounded-full  border flex items-center justify-center absolute bottom-[0px] left-[0px]   trst  ">
+        </div>
+      </div>
+      <div className="w-2/3 curslider absolute right-0 top-10 lg:top-[120px]" ref={sourceRef}>
+        <Swiper
+          modules={[Autoplay]}
+          autoplay={{ delay: 4000 }}
+          loop
+          slidesPerView={2}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 8,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 8,
+            },
+            1024: {
+              slidesPerView: 1.5,
+              spaceBetween: 20,
+            },
+          }}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          // onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+          className="w-full h-full"
+        >
+          {projects.map((project) => (
+            <SwiperSlide key={project.id}>
+              <div className="flex flex-col justify-center mnsuy group">
+                <div className="relative mb-8">
+                  <Image src={project.image} alt={""} width={487} height={536} className="w-full lg:h-[536px] object-cover rounded-3xl" />
+                  <div className="w-[50px] h-[50px] rounded-full border flex items-center justify-center absolute bottom-[0px] left-[0px]   trst  ">
                     <Image src={assets.redarrow} alt="" />
                   </div>
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          {/* Custom Pagination */}
-          <div className="  w-full">
-            <div className="container">
-              <div className="flex gap-2 justify-center mt-4 md:mt-[42px]">
-                {slides.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`w-[50px] h-[3px] cursor-pointer rounded-full transition-all duration-300 ${
-                      activeIndex === index
-                        ? "bg-primary scale-125 max-w-[27px]"
-                        : "bg-white max-w-[9px]"
-                    }`}
-                    onClick={() => swiperRef.current?.slideToLoop(index)}
-                  />
-                ))}
+                <h3 className="text-white text-30 font-medium leading-[1.6666] mb-3">{project.projectName}</h3>
+                <p className="text-[#bebebe] text-19 font-normal leading-[1.526315789473684]">{project.projectCategory}</p>
               </div>
-            </div>
-          </div>
-          </div>
-           </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        {/* Custom right nav button*/}
+        <button onClick={() => swiperRef.current?.slideNext()} className="absolute top-2/5 right-40 transform -translate-y-1/2 bg-white text-black rounded-full py-3 px-8 lg:py-[13.5px] shadow-lg z-10 cursor-pointer">
+          <Image src={assets.bluearrowRight} alt="Next" width={7} height={14} className="w-full h-auto" />
+        </button>
       </div>
     </section>
   );
