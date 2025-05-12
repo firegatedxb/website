@@ -81,7 +81,7 @@ const FeaturedProjects = () => {
                 <span>More projects</span>
                 <span className="bg-white rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center">
                   <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.5 1.5L8.5 8.5L1.5 15.5" stroke="#263967" stroke-width="2" stroke-linecap="round" />
+                    <path d="M1.5 1.5L8.5 8.5L1.5 15.5" stroke="#263967" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </span>
               </button>
