@@ -1,5 +1,5 @@
 import React from 'react'
-import Index from '../components/commitments/Index'
+import Index from '../../components/partners/Index'
 
 const page = () => {
   return (
