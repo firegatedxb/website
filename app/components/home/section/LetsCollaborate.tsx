@@ -9,7 +9,7 @@ const LetsCollaborate = () => {
     <section className="py[50px] md:py-[50px] lg:pt-[99px]  lg:pb-[111px] relative bg-EFEFEF ">
       <div className="container">
         <div className="border-b mb-6 md:mb-[87px]">
-         <p className="text-32 font-medium mb-[17px] uppercase">Let’s Collaborate</p>
+         <p className="text-32 font-semibold mb-[17px] uppercase text-black leading-[2.1875]">Let’s Collaborate</p>
         </div>
         <div className="flex justify-between items-end">
           <div>
