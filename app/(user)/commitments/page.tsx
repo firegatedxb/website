@@ -1,5 +1,5 @@
 import React from 'react'
-import Index from '../components/contact/Index'
+import Index from '../../components/commitments/Index'
 
 const page = () => {
   return (
