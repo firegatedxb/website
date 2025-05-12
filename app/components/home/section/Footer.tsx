@@ -20,8 +20,7 @@ const Footer = () => {
               <p className="text-19">
               Bayan Building, Dubai Investment Park 1<br></br> PO Box 62335</p>
               <p className="text-19"><span className="text-primary">T</span>: +971 (4) 271 3794</p>
-                 <p className="text-19"><span className="text-primary">E</span>: info@firegate.ae</p>
-
+              <p className="text-19"><span className="text-primary">E</span>: info@firegate.ae</p>
             </div>
           </div>
           <div className="w-1/3">

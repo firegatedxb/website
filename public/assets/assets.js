@@ -16,7 +16,8 @@ import cer2 from './img/home/cer2.png';
 import cer3 from './img/home/cer3.png';
 import cer4 from './img/home/cer4.png';
 import cer5 from './img/home/cer5.png';
-import grayarrow from './img/icons/grayarrow.svg';
+// import grayarrow from './img/icons/grayarrow.svg';
+import bluearrowRight from './img/icons/bluearrow-right.svg';
 import slideic1 from './img/home/slideic1.jpg';
 import slideic2 from './img/home/slideic2.jpg';
 
@@ -24,7 +25,7 @@ import slideic2 from './img/home/slideic2.jpg';
 export const assets = {
     slideic1,
     slideic2,
-    grayarrow,
+    bluearrowRight,
     cer1,
     cer2,
     cer3,

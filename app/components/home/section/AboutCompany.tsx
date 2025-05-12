@@ -30,30 +30,18 @@ const AboutCompany = () => {
                 contractors across the UAE.
               </p>
             </div>
-            <button className="flex cursor-pointer items-center bg-red-600 hover:bg-red-700 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase">
+            <button className="flex cursor-pointer items-center bg-red-600 hover:bg-red-700 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase group">
               <span>READ MORE</span>
-              <span className="bg-white rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center">
-                <svg
-                  className="w-4 h-4 text-secondary"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
+              <span className="bg-white rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center ">
+                <Image src={assets.bluearrowRight} width={14} height={28} alt="read-more" className="w-full h-[14px] object-contain group-hover:animate-pulse"></Image>
               </span>
             </button>
             <div className="grid grid-cols-2 mt-8 lg:mt-[94px]">
-              <div className="border-b pb-4 md:pb-8 mb-4 md:mb-8">
+              <div className="border-b border-black/35 pb-4 md:pb-8 mb-4 md:mb-8">
                 <p className="text-50 text-secondary font-medium">20+</p>
                 <p className="font-medium text-30 text-graytext">Years of Expertise</p>
               </div>
-              <div className="border-b pb-4 md:pb-8 mb-4 md:mb-8">
+              <div className="border-b border-black/35 pb-4 md:pb-8 mb-4 md:mb-8">
                 <p className="text-50 text-secondary font-medium">1000+</p>
                 <p className="font-medium text-30 text-graytext">Assets Secured</p>
               </div>
@@ -74,7 +62,7 @@ const AboutCompany = () => {
 
        <div className="absolute right-0 bottom-0 z-[-1] w-1/2">
              <Image src={assets.aboutcompany} alt={''}   className="w-full h-full object-cover" />
-            </div>
+        </div>
     </section>
   );
 };
