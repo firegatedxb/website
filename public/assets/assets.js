@@ -20,6 +20,7 @@ import cer5 from './img/home/cer5.png';
 import bluearrowRight from './img/icons/bluearrow-right.svg';
 import slideic1 from './img/home/slideic1.jpg';
 import slideic2 from './img/home/slideic2.jpg';
+import aboutBnr from './img/banner/about-bnr.jpg';
 
 
 export const assets = {
@@ -43,5 +44,6 @@ export const assets = {
     partner4,
     aboutcompany,
     logo,
-    slider
+    slider,
+    aboutBnr
 }

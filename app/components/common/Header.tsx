@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className="flex items-stretch justify-between gap-15 bg-white shadow-sm left-spacing">
       <div className="logo flex flex-col justify-center">
-        <Image src={assets.logo} width={323} height={44} alt="" className="w-full h-auto" />
+        <Link href={"/"}><Image src={assets.logo} width={323} height={44} alt="" className="w-full h-auto" /></Link>
       </div>
       <div className="flex flex-col justify-end items-end ml-auto gap-5 min-w-[45%] pt-4">
         <Link href="tel:9744327677" className="flex items-center gap-2 text-17 font-bold text-gray-800  leading-tight  group">
@@ -34,7 +34,7 @@ const Header = () => {
         <nav className="">
           <ul className="flex justify-center space-x-6 text-17 font-medium text-gray-800 pb-5">
             <li>
-              <Link href="#about" className="leading-tight hover:text-primary">
+              <Link href="about" className="leading-tight hover:text-primary">
                 ABOUT
               </Link>
             </li>

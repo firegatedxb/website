@@ -6,7 +6,6 @@ import OurServices from './section/OurServices'
 import OurSystems from './section/OurSystems'
 import Certifications from './section/Certifications'
 import LetsCollaborate from './section/LetsCollaborate'
-import Footer from './section/Footer'
 import FeaturedProjects from './section/FeaturedProjects'
 
 const Index = () => {
@@ -20,7 +19,6 @@ const Index = () => {
       <Certifications />
       <FeaturedProjects />
       <LetsCollaborate />
-      <Footer />
    </>
   )
 }
