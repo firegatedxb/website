@@ -7,7 +7,7 @@ import { assets } from "@/public/assets/assets";
 
 const AboutCompany = () => {
   return (
-    <section className="py[50px] md:py-[50px] lg:pt-[97px]  lg:pb-[131px]  relative">
+    <section className="py[50px] md:py-[50px] lg:pt-[97px] lg:pb-[131px]  relative">
       <div className="container">
         <div className="flex">
           <div className="w-1/2 pr-15 xl:pr-[84px]">
