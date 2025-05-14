@@ -4,10 +4,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import React from "react";
 const Footer = () => {
   return (
-    <section className="py[50px] md:py-[50px] lg:pt-[99px]  lg:pb-[111px] relative bg-black text-white ">
+    <section className="py-[50px] md:py-[50px] lg:pt-[99px]  lg:pb-[111px] relative bg-black text-white ">
       <div className="container">
-        <div className="flex">
-          <div className="w-2/3">
+        <div className="flex flex-wrap gap-4 lg:gap-0">
+          <div className="lg:w-2/3">
             <Tabs defaultValue="dubai" className="w-[400px]">
               <TabsList className="relative flex flex-wrap  gap-y-5 lg:flex-row rounded-none mb-10 lg:mb-20 bg-transparent justify-start p-0 h-auto">
                 <TabsTrigger value="dubai" className="relative group cursor-pointer data-[state=active]:bg-transparent text-white hover:text-primary capitalize text-left w-fit lg:w-auto lg:text-center pl-0 pr-20 py-0 text-19 font-medium">
@@ -42,9 +42,9 @@ const Footer = () => {
 
          
           </div>
-          <div className="w-1/3">
+          <div className="lg:w-1/3">
             <div className="flex flex-col h-full">
-              <div className="flex gap-7 md:gap-10 h-full justify-between">
+              <div className="flex flex-wrap gap-7 md:gap-10 h-full justify-between">
               <ul className="ulsmn">
                 <li>Maintenance</li>
                 <li>Design & Engineering</li>
