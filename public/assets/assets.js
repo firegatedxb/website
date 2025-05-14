@@ -22,6 +22,7 @@ import slideic1 from './img/home/slideic1.jpg';
 import slideic2 from './img/home/slideic2.jpg';
 import aboutBnr from './img/banner/about-bnr.jpg';
 import servicesBnr from './img/banner/services-bnr.jpg';
+import systemsBnr from './img/banner/systems-bnr.jpg';
 
 
 export const assets = {
@@ -48,4 +49,5 @@ export const assets = {
     slider,
     aboutBnr,
     servicesBnr,
+    systemsBnr
 }
