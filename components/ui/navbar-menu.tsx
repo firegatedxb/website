@@ -85,7 +85,7 @@ export const Menu = ({
       <nav
         onMouseLeave={() => setActive(null)} // resets the state
         className=" relative bg-white z-50 dark:bg-black dark:border-white/[0.2] shadow-input flex justify-center items-stretch   gap-[42px]  h-full">
-        <div className="left-spacing pr-[20px] xxl:pr-[20px] xxxl:pr-[50px] w-full flex items-center justify-between  py-[25px]  ">
+        <div className="left-spacing pr-[20px] xxl:pr-[20px] xxxl:pr-[50px] w-full flex items-center justify-between  pt-[16.5px] pb-[21px]  ">
           <div className="flex items-center ">
             <Link href="/">
               <Image
@@ -121,7 +121,7 @@ export const Menu = ({
             </svg>
             +971 (4) 432 7677
               </Link>
-              <div className="border-b w-full my-5 border-black"></div>
+              <div className="border-b w-full mb-[20px] mt-[15px] border-black"></div>
             </div>
 
             <div className="flex space-x-[25px] xxl:space-x-[20px] xxxl:space-x-[50px] items-center">
