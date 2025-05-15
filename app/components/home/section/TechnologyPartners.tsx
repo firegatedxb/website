@@ -80,11 +80,7 @@ const TechnologyPartners = () => {
               {slides.map((slide, index) => (
                 <SwiperSlide key={index}>
                   <div className=" bg-white flex items-center justify-center rounded-[20px] h-[200px] md:h-[226px] lg:h-[286px] group">
-                    <Image
-                      src={slide.image}
-                      alt={''}
-                      className="     "
-                    />
+                    <Image src={slide.image} alt={''}/>
                     <div className="w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center absolute top-[10px] right-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out  ">
                       <Image src={assets.redarrow} alt="" />
                     </div>

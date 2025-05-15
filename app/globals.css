@@ -10,6 +10,7 @@
   --secondary: #263967;
   --site-blue: #263967;
   --gray: #595959;
+  --gray-lit: #cccccc;
   --graybg: #EFEFEF;
   --graytext: #595959;
   --EFEFEF: #EFEFEF;
@@ -21,7 +22,6 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
@@ -59,11 +59,11 @@
   --color-secondary: var(--secondary);
   --color-graytext: var(--graytext);
   --color-EFEFEF: var(--EFEFEF);
+  --color-graylit: var(--gray-lit);
   --breakpoint-3xl: 103.125rem;
 
-
-
   --leading-tight: 1;
+  --leading-base:1.526315789473684;
 
   /* font size */
 
@@ -108,17 +108,30 @@
   --container-2xl: 100.9375rem;
   /* 1615px */
 
+  /* spacing */
+
+  --spacing-42: clamp(2em, 2vw + 1em, 42px);
+  --spacing-66: clamp(2.5em, 2vw + 2em, 66px);
+  --spacing-70: clamp(3em, 2vw + 2.5em, 70px);
+  --spacing-75: clamp(3.5em, 2vw + 3em, 75px);  
+  --spacing-80: clamp(4em, 2vw + 3.5em, 80px);
+
+  /* spacing end */
+
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #fff;
-    --foreground: #000000;
+    --foreground: var(--color-graytext);
   }
 }
 
 body {
   font-family: "Host Grotesk", sans-serif;
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+  font-size: var(--text-19);
 }
 
 .container {
