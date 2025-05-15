@@ -23,9 +23,9 @@ const AdminNavbar = () => {
         { name: "Services", href: "/admin/services", icon: EnvelopeIcon },
         // { name: "Industries", href: "/admin/industries", icon: BriefcaseIcon },
         { name: "Projects", href: "/admin/projects", icon: CheckBadgeIcon },
-        { name: "Sustainability", href: "/admin/sustainability", icon: CheckBadgeIcon },
+        { name: "Systems", href: "/admin/systems", icon: CheckBadgeIcon },
         { name: "Partners", href: "/admin/partners", icon: UserGroupIcon },
-        { name: "Team", href: "/admin/team", icon:NewspaperIcon },
+        { name: "Commitment", href: "/admin/commitment", icon:NewspaperIcon },
         { name: "Contact", href: "#", icon: EnvelopeIcon,children:[{name:"Regions",href:"/admin/contact"},{name:"Enquiries",href:"/admin/contact/enquiry"}] },
         { name: "Tag Codes", href: "/admin/codes", icon: CodeIcon },
       ];
