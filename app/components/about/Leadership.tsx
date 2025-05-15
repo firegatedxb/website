@@ -12,7 +12,7 @@ const Leadership = () => {
           <h3 className="text-32 font-medium leading-[1.3125]">Visionary Leaders Behind Fire Gate&apos;s Success</h3>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-10 h-[80dvh] items-end">
-          {leaders.map((item, index) => (
+          {leaders.map((item,index) => (
             <div className="relative" key={index}>
               <div className="border border-graylit rounded-3xl z-[-1] h-full min-h-[400px] lg:min-h-[400px] ">
                 <div className="text-white relative">

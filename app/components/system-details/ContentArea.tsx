@@ -1,4 +1,3 @@
-
 import PrimaryCard from "../common/PrimaryCard";
 import Sbttl from "../common/Sbttl";
 import { systemsCrdData } from "./data";

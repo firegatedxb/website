@@ -7,7 +7,7 @@ const SystemsList = () => {
     <section className="py-10 lg:py-25">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-42">
-          {systemsData.map((sys ,index) => (
+          {systemsData.map((sys,index) => (
             <div key={index} className="relative overflow-hidden rounded-2xl lg:h-[651px] p-10 lg:p-20 flex flex-col group">
               <div className="absolute bottom-0 left-0 w-full bg-linear-to-tl from-secondary from-100 via-secondary/40  to-transparent group-hover:from-secondary group-hover:from-60 group-hover:bg-linear-to-tr group-hover:via-secondary transition duration-300 h-full z-1"></div>
               <Image src={sys.mainImg} alt={sys.title} width={789} height={651} className="w-full lg:h-[651px] absolute top-0 left-0 z-0"></Image>
