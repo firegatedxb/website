@@ -9,8 +9,8 @@ const Certifications = () => {
           <Sbttl title="Certifications" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-10">
-          {certifications.map((item) => (
-            <div className="border border-[#cccccc] rounded-2xl max-h-[350px] overflow-hidden relative p-5 lg:p-10">
+          {certifications.map((item,index) => (
+            <div className="border border-[#cccccc] rounded-2xl max-h-[350px] overflow-hidden relative p-5 lg:p-10" key={index}>
               <div className="">
                 <h3 className="text-32 text-black font-medium leading-[1.3] mb-4 lg:mb-5">{item.title}</h3>
               </div>
