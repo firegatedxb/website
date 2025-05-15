@@ -1,9 +1,9 @@
-import { it } from "node:test";
+
 import PrimaryCard from "../common/PrimaryCard";
 import Sbttl from "../common/Sbttl";
 import { systemsCrdData } from "./data";
 const ContentArea = () => {
-  return ( 
+  return (
     <section className="py-5 lg:py-25">
       <div className="container">
         <div className="mb-4">
@@ -23,5 +23,5 @@ const ContentArea = () => {
     </section>
    );
 }
- 
+
 export default ContentArea;
