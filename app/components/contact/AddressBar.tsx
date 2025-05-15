@@ -1,35 +1,89 @@
-import Image from 'next/image'
-import React from 'react'
+"use client";
+import Image, { StaticImageData } from 'next/image'
+import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 
-const AddressBar = () => {
+
+interface DetailedItem {
+  icon: StaticImageData;
+  location: string;
+  address: string;
+  phone: string;
+  email: string;
+}
+interface PlatformsItem {
+  id: number;
+  title: string;
+  tag: string;
+  workingtitle: string;
+  workingtime: string;
+  workingdetails: string;
+  details: DetailedItem[]
+}
+
+interface PlatformsSectionProps {
+  data: PlatformsItem[];
+}
+  const AddressBar: React.FC<PlatformsSectionProps> = ({data
+}) => {
+  const [activeTab, setActiveTab] = useState(data[0]?.tag);
   return (
-    <div className='h-[800px] bg-site-blue grid grid-cols-3 mr-[150px] rounded-tr-[20px] rounded-br-[20px]'>
+    <div className='container'>
+    <div className='  md:grid md:grid-cols-7  rounded-tr-[20px] rounded-br-[20px]'>
 
-      <div className='container col-span-2 py-[100px] flex flex-col gap-20'>
-        <div className='flex justify-between pr-[413px]'>
-          <div className='w-full flex flex-col gap-5'>
-            <p className='text-19'>Dubai-UAE</p>
-            <div className='w-full h-1 bg-red-500 rounded-lg'></div>
-          </div>
-          <div className='w-full flex flex-col gap-5'>
-            <p className='text-19'>Riyadh-KSA</p>
-            <div className='w-full h-1 bg-white rounded-r-lg'></div>
-          </div>
-        </div>
+      <div className='bg-siteaftr md:col-span-4 py-[100px] flex flex-col gap-20 relative text-white'>
 
-        <div className='flex flex-col gap-20'>
+        <motion.div
+        className="flex gap-10 lg:gap-[100px] items-center border-b border-[#ffffff35] mb-4 lg:mb-[30px] w-fit"
+      >
+        {data.map((item, index) => (
+          <motion.p
+            key={index}
+            onClick={() => setActiveTab(item.tag)}
+            className={`text-19 font-medium  leading-[2.18] cursor-pointer relative top-[1px] pb-1 pr-5 md:pr-10
+              ${
+                activeTab === item.tag
+                  ? "border-b-2 border-primary font-[600]"
+                  : "border-b-2 border-transparent font-[400]"
+              }`}
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            {item.title}
+          </motion.p>
+        ))}
+      </motion.div>
+
+{data.map((item, index) =>
+        activeTab === item.tag ? (
+          <motion.div
+            key={index}
+            className="flex flex-col gap-7"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+          >
+            {item.details.map((data, index) => (
+              <motion.div
+                key={index}
+                className="flex gap-5 items-start"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+              >
+               <div className='flex flex-col gap-20'>
           <div className='w-full flex flex-col gap-5'>
-            <h3 className='text-30'>Dubai-UAE</h3>
-            <p className='text-19'>Bayan Building, Dubai Investment Park 1<br/>PO Box 62335</p>
+                    <h3 className='text-30'>{data.location}</h3>
+            <p className='text-19'>{data.address}</p>
           </div>
           <div className='w-full flex flex-col gap-5'>
-            <div className='flex gap-2 border-b pb-5'>
+            <div className='flex gap-4 border-b pb-5'>
               <Image src="/assets/img/contact/phone.svg" alt="phone" width={41} height={34} />
-              <p className='text-30'>+971 (4) 271 3794</p>
+              <p className='text-30'>{data.phone}</p>
             </div>
-            <div className='flex gap-2'>
+            <div className='flex gap-4 '>
               <Image src="/assets/img/contact/message.svg" alt="message" width={41} height={34} />
-              <p className='text-30'>info@firegate.ae</p>
+              <p className='text-30'>{data.email}</p>
             </div>
           </div>
 
@@ -42,12 +96,21 @@ const AddressBar = () => {
               </button>
           </div>
         </div>
-    
+
+              </motion.div>
+            ))}
+
+
+          </motion.div>
+        ) : null
+      )}
+
       </div>
-      <div className='h-[800px] w-full'>
-        <Image src="/assets/img/contact/contact_address_photo.jpg" alt="contact-image" className="w-full h-full object-cover rounded-tr-[20px] rounded-br-[20px]" width={400} height={400} />
+      <div className=' md:col-span-3  w-full'>
+        <Image src="/assets/img/contact/contact_address_photo.jpg" alt="contact-image" className="w-full h-full object-cover md:rounded-tr-[20px] md:rounded-br-[20px]" width={400} height={400} />
       </div>
-    </div>
+      </div>
+      </div>
   )
 }
 

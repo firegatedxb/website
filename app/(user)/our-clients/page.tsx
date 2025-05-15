@@ -1,10 +1,8 @@
-import Index from "@/app/components/system-details/Index";
+import Index from "@/app/components/Clients/Index";
 
 const page = () => {
   return (
-    <>
     <Index/>
-    </>
    );
 }
 
