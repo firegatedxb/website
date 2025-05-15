@@ -27,7 +27,7 @@ const TechnologyPartners = () => {
   const swiperRef = useRef<SwiperClass | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <section className="py[50px] md:py-[50px] lg:pt-[108px]  lg:pb-[78px] relative bg-EFEFEF">
+    <section className="py-[50px]  md:py-[50px] lg:pt-[108px]  lg:pb-[78px] relative bg-EFEFEF">
       <div className="container">
         <div className=" ">
           <div className=" ">
@@ -43,7 +43,7 @@ const TechnologyPartners = () => {
               }}
               breakpoints={{
                 640: {
-                  slidesPerView: 1,
+                  slidesPerView: 2,
                   spaceBetween: 8,
                   grid: {
                     rows: 2,
@@ -57,7 +57,7 @@ const TechnologyPartners = () => {
                   },
                 },
                 1024: {
-                  slidesPerView: 2,
+                  slidesPerView: 3,
                   spaceBetween: 8,
                   grid: {
                     rows: 2,

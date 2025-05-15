@@ -46,12 +46,16 @@ import cl20 from './img/clients/cl20.jpg';
 import clientbnr from './img/banner/clientbanner.jpg';
 import partnerbnr from './img/banner/partnerbanner.jpg';
 import servicesbnr from './img/banner/services-banner.jpg';
+import leaders1 from './img/about/leader1.png';
+import leaders2 from './img/about/leader2.png';
 
 
 
 
 
 export const assets = {
+    leaders1,
+    leaders2,
     servicesbnr,
     clientbnr,
     partnerbnr,

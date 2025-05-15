@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Host_Grotesk } from "next/font/google";
 import "../../app/globals.css";
-import Header from "../components/common/Header";
+import Navbar from "../components/common/NavBars/Navbar";
 import Footer from "../components/common/Footer";
 
 const hostGrostek = Host_Grotesk({
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${hostGrostek.variable} antialiased`}>
-        <Header />
+     <Navbar />
         {children}
         <Footer />
       </body>

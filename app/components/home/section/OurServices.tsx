@@ -21,11 +21,11 @@ const services = [
 ];
  const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <section className="py[50px] md:py-[50px] lg:pt-[108px]  lg:pb-[78px] relative bg-secondary">
+    <section className="py-[50px]  md:py-[50px] lg:pt-[108px]  lg:pb-[78px] relative bg-secondary">
       <div className="container">
-        <div className="md:flex">
-          <div className="md:w-1/2 pr-0 md:pr-75 lg:pr-[140px] ">
-            <h2 className="text-50 text-white font-medium mb-3 lg:mb-[91px] uppercase">
+        <div className="md:flex items-center">
+          <div className="md:w-1/2 pr-0 md:pr-5 lg:pr-[140px] ">
+            <h2 className="text-50 text-white font-medium mb-0 lg:mb-[91px] uppercase">
               Our Services
             </h2>
               <div className="">
@@ -74,7 +74,7 @@ const services = [
 
           </div>
           <div className="md:w-1/2 ">
-            <div>
+            <div className="mt-6 md:mt-0">
               <figure >
             <Image src={assets.homemn} alt="" className='rounded-[20px]' />
           </figure>
