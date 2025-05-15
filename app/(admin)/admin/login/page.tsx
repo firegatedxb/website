@@ -22,7 +22,7 @@ export default function AdminLogin() {
       const data = await res.json();
 
       if (data.success) {
-        window.location.href = "/admin";
+        window.location.href = "/admin/home";
       }
     } catch (err) {
       console.log(err);
