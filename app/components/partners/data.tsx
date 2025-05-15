@@ -37,7 +37,7 @@ export const partnerData = [
     {
         title: "VoiEVAC",
         description: "Leveraging 30+ years of voice alarm expertise and led by Albert Van Der Hout, we offer innovative Voice-Alarm Control and Indication Equipment solutions. Our compact and modular systems break from traditional designs, providing cost-effective VACIE solutions. The IMPACT VOICE ALARM SYSTEM includes remote-controlled zone-expanders for simplified zone switching (IMPACT-SW) and complex Multi-Media applications (IMPACT-MM). Manufactured in Europe to rigorous standards, we ensure unparalleled quality and reliability, fully compliant with EN54-16 certification and approved to European standards (EN54-4, EN54-17, EN54-18, EN54-24, CB, EMC, and UKCA).",
-        logo: "/assets/img/partners/partner6.jpg",
+        logo: "/assets/img/partners/partner6.png",
         website: "https://www.desigo.com/",
         partnerImage: "/assets/img/partners/partner6image.png"
     },

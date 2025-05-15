@@ -48,11 +48,10 @@ const projects = [
 const FeaturedProjects = () => {
   const swiperRef = useRef<SwiperClass | null>(null);
   const sourceRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState<number>(0);
-
+  const [height, setHeight] = useState<number>(280);
 
   useEffect(() => {
-    if (sourceRef.current) {
+    if (sourceRef.current && window.innerWidth >= 768) {
       const updateHeight = () => {
         const newHeight = sourceRef.current?.offsetHeight || 0;
         setHeight(newHeight);
@@ -68,11 +67,11 @@ const FeaturedProjects = () => {
   }, []);
 
   return (
-    <section className="py[50px] md:py-[50px] lg:pt-[120px] lg:pb-[120px] relative bg-secondary text-white">
-      <div className={`container relative z-10 `} style={{ height: `${height}px` }}>
+    <section className="py-[50px]  md:py-[50px] lg:pt-[120px] lg:pb-[120px] relative bg-secondary text-white">
+      <div className={`container relative z-10   `} style={{ height: `${height}px` }}>
         <div className="flex md:gap-[45px] lg:gap-[108px] h-full">
-          <div className="w-1/4">
-            <div className="flex flex-col justify-between h-full">
+          <div className="lg:w-1/4">
+            <div className="flex flex-col md:justify-between md:h-full">
               <div>
                 <h2 className="text-50 font-medium mb-4 md:mb-[55px] max-w-[10ch] leading-[1.2]">Our Featured Projects</h2>
                 <p className="text-19">Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting.</p>
@@ -90,19 +89,19 @@ const FeaturedProjects = () => {
 
         </div>
       </div>
-      <div className="w-2/3 curslider absolute right-0 top-10 lg:top-[120px]" ref={sourceRef}>
+      <div className=" w-full lg:w-2/3 curslider mt-10 lg:mt-0 lg:absolute right-0 top-10 lg:top-[120px] px-8 lg:px-0" ref={sourceRef}>
         <Swiper
           modules={[Autoplay]}
           autoplay={{ delay: 4000 }}
           loop
           slidesPerView={2}
           breakpoints={{
-            640: {
+            320: {
               slidesPerView: 1,
               spaceBetween: 8,
             },
             768: {
-              slidesPerView: 2,
+              slidesPerView: 3,
               spaceBetween: 8,
             },
             1024: {
@@ -125,14 +124,14 @@ const FeaturedProjects = () => {
                     <Image src={assets.redarrow} alt="" />
                   </div>
                 </div>
-                <h3 className="text-white text-30 font-medium leading-[1.6666] mb-3">{project.projectName}</h3>
+                <h3 className="text-white text-30 font-medium leading-[1.3] mb-3">{project.projectName}</h3>
                 <p className="text-[#bebebe] text-19 font-normal leading-[1.526315789473684]">{project.projectCategory}</p>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
         {/* Custom right nav button*/}
-        <button onClick={() => swiperRef.current?.slideNext()} className="absolute top-2/5 right-40 transform -translate-y-1/2 bg-white text-black rounded-full py-3 px-8 lg:py-[13.5px] shadow-lg z-10 cursor-pointer">
+        <button onClick={() => swiperRef.current?.slideNext()} className="invisible lg:visible absolute top-2/5 right-40 transform -translate-y-1/2 bg-white text-black rounded-full py-3 px-8 lg:py-[13.5px] shadow-lg z-10 cursor-pointer">
           <Image src={assets.bluearrowRight} alt="Next" width={7} height={14} className="w-full h-auto" />
         </button>
       </div>

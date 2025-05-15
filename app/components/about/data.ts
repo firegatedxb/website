@@ -1,3 +1,5 @@
+
+import { assets } from "@/public/assets/assets";
 export const mainDesc = {
   title: "Comprehensive Fire & Security Solutions Backed by Decades of Expertise",
   desc1: "With over two decades of extensive experience in fire and security systems, customer relations, and satisfaction, our company is dedicated to delivering top-quality team services. Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alavrm systems (FAS), electrical evacuation lighting (EEL), and public address and voice evacuation (PAVA) systems. We have established strong relationships with renowned clients, consultants, and contractors across the UAE.",
@@ -39,14 +41,14 @@ export const leaders = [
     id: 1,
     name: "Atiq Alrahoomi",
     title: "Chairman",
-    image: "/assets/img/about/leader1.png",
+    image: assets.leaders1,
     desc: "As Chairman of Fire Gate, Atiq brings over a decade of leadership experience, focusing on strategic planning, financial management, and corporate governance. His expertise in business strategy and finance drives Fire Gate’s growth, ensuring superior service and long-term success in the fire protection industry. His core competencies include financial analysis and stakeholder management, with a commitment to sustained growth and excellence.",
   },
   {
     id: 2,
     name: "Khadem Alrahoomi",
     title: "CEO",
-    image: "/assets/img/about/leader2.png",
+    image: assets.leaders2,
     desc: "As CEO of Fire Gate Safety and Security, Khadem Al Rahoomi brings dynamic leadership and a visionary mindset. He has earned recognition for his innovation in operations, projects, and customer relations, steeringthe company through a competitive market by leveraging disruptive technologies and strategic partnerships to maintain a leading edge.",
   },
 ];

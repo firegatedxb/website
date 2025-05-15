@@ -3,11 +3,11 @@ import Image from 'next/image'
 
 const Form = () => {
   return (
-    <div className='form-padding'>
+    <div className='py-[50px] md:py-[70px] lg:pt-[107px] lg:pb-[121px]'>
         <div className='container flex flex-col gap-14'>
             <h2 className='text-50 text-site-blue uppercase'>We’d love to hear from you.</h2>
             <form className='flex flex-col gap-5'>
-                
+
                 <div className='flex flex-col gap-14'>
                 <div className='grid grid-cols-3 gap-5 space-y-4'>
                 <div className='flex flex-col'>
@@ -28,7 +28,7 @@ const Form = () => {
                     <label htmlFor="message" className='text-19 text-gray'>Message</label>
                 <textarea className='h-[150px] border-gray-300 outline-none border-b appearance-none text-black resize-none'></textarea>
                 </div>
-                
+
                 <div>
                             <button className='bg-primary text-white px-6 py-2 flex items-center gap-3 rounded-lg'>
                               SUBMIT
@@ -38,7 +38,7 @@ const Form = () => {
                               </button>
                           </div>
                           </div>
-                
+
             </form>
         </div>
     </div>

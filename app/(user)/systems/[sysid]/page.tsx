@@ -1,11 +1,11 @@
 import Index from "@/app/components/system-details/Index";
 
 const page = () => {
-  return ( 
+  return (
     <>
     <Index/>
     </>
    );
 }
- 
+
 export default page;
