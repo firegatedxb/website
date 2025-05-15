@@ -29,6 +29,13 @@ interface Client {
     name: string;
     logo: string;
     logoAlt: string;
+    website: string;
+}
+
+interface Accreditation {
+    _id: string;
+    accreditImage: string;
+    accreditImageAlt: string;
 }
 
 export default function Team() {
@@ -39,10 +46,14 @@ export default function Team() {
     const [description, setDescription] = useState<string>("");
     const [logo, setLogo] = useState<string>("");
     const [logoAlt, setLogoAlt] = useState<string>("");
+    const [website, setWebsite] = useState<string>("");
     const [partnerList, setPartnerList] = useState<Client[]>([]);
     const { register, handleSubmit, setValue, control } = useForm<Client>();
     const [metaTitle, setMetaTitle] = useState<string>("");
     const [metaDescription, setMetaDescription] = useState<string>("");
+    const [accreditList, setAccreditList] = useState<Accreditation[]>([]);
+    const [accreditImage, setAccreditImage] = useState<string>("");
+    const [accreditImageAlt, setAccreditImageAlt] = useState<string>("");
 
     // const handleFetchMdDetails = async () => {
     //     try {
@@ -65,7 +76,7 @@ export default function Team() {
     //     }
     // }
 
-    const handleFetchPartners = async () => {
+    const handleFetchData = async () => {
         try {
             const response = await fetch("/api/admin/partners");
             if (response.ok) {
@@ -74,6 +85,7 @@ export default function Team() {
                 setValue("title", data.data[0].title);
                 setValue("description", data.data[0].description);
                 setPartnerList(data.data[0].partners);
+                setAccreditList(data.data[0].accredit);
             } else {
                 const data = await response.json();
                 alert(data.message);
@@ -107,12 +119,12 @@ export default function Team() {
         try {
             const response = await fetch("/api/admin/partners", {
                 method: "POST",
-                body: JSON.stringify({ image, imageAlt }),
+                body: JSON.stringify({ name,description, logo, logoAlt, image, imageAlt,website }),
             });
             if (response.ok) {
                 const data = await response.json();
                 alert(data.message);
-                handleFetchPartners();
+                handleFetchData();
             } else {
                 const data = await response.json();
                 alert(data.message);
@@ -122,22 +134,60 @@ export default function Team() {
         }
     }
 
-    const handleEditPartner = async (id: string) => {
+    const handleAddAccredit = async () => {
         try {
-            const response = await fetch(`/api/admin/partners?id=${id}`, {
-                method: "PATCH",
-                body: JSON.stringify({ image, imageAlt }),
+            const response = await fetch("/api/admin/partners/accredit", {
+                method: "POST",
+                body: JSON.stringify({ accreditImage, accreditImageAlt }),
             });
             if (response.ok) {
                 const data = await response.json();
                 alert(data.message);
-                handleFetchPartners();
+                handleFetchData();
+            } else {
+                const data = await response.json();
+                alert(data.message);
+            }
+        } catch (error) {
+            console.log("Error adding accredit", error);
+        }
+    }
+
+    const handleEditPartner = async (id: string) => {
+        try {
+            const response = await fetch(`/api/admin/partners?id=${id}`, {
+                method: "PATCH",
+                body: JSON.stringify({ image, imageAlt, name,description, logo, logoAlt, website }),
+            });
+            if (response.ok) {
+                const data = await response.json();
+                alert(data.message);
+                handleFetchData();
             } else {
                 const data = await response.json();
                 alert(data.message);
             }
         } catch (error) {
             console.log("Error editing partner", error);
+        }
+    }
+
+    const handleEditAccredit = async (id: string) => {
+        try {
+            const response = await fetch(`/api/admin/partners/accredit?id=${id}`, {
+                method: "PATCH",
+                body: JSON.stringify({ accreditImage, accreditImageAlt }),
+            });
+            if (response.ok) {
+                const data = await response.json();
+                alert(data.message);
+                handleFetchData();
+            } else {
+                const data = await response.json();
+                alert(data.message);
+            }
+        } catch (error) {
+            console.log("Error editing accredit", error);
         }
     }
 
@@ -149,7 +199,7 @@ export default function Team() {
             if (response.ok) {
                 const data = await response.json();
                 alert(data.message);
-                handleFetchPartners();
+                handleFetchData();
             } else {
                 const data = await response.json();
                 alert(data.message);
@@ -159,15 +209,32 @@ export default function Team() {
         }
     }
 
+    const handleDeleteAccredit = async (id: string) => {
+        try {
+            const response = await fetch(`/api/admin/partners/accredit?id=${id}`, {
+                method: "DELETE",
+            });
+            if (response.ok) {
+                const data = await response.json();
+                alert(data.message);
+                handleFetchData();
+            } else {
+                const data = await response.json();
+                alert(data.message);
+            }
+        } catch (error) {
+            console.log("Error deleting accredit", error);
+        }
+    }
 
     useEffect(() => {
-        handleFetchPartners();
+        handleFetchData();
         handleFetchMetaDetails();
     }, [])
 
     const onSubmit = async (data: Client) => {
         try {
-            const response = await fetch("/api/admin/clients/intro", {
+            const response = await fetch("/api/admin/partners/intro", {
                 method: "POST",
                 body: JSON.stringify(data),
             });
@@ -247,7 +314,7 @@ export default function Team() {
                 <div className="flex justify-between border-b-2 pb-2">
                     <Label className="text-sm font-bold">Partners</Label>
                     <Dialog>
-                        <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => {setName(""); setLogo(""); setLogoAlt(""); setImage(""); setImageAlt(""); }}>Add Partner</DialogTrigger>
+                        <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => {setName(""); setLogo(""); setLogoAlt(""); setImage(""); setImageAlt(""); setWebsite(""); }}>Add Partner</DialogTrigger>
                         <DialogContent className="h-[500px] overflow-y-auto">
                             <DialogHeader>
                                 <DialogTitle>Add Partner</DialogTitle>
@@ -276,6 +343,10 @@ export default function Team() {
                                         <Label>Alt Tag</Label>
                                         <Input type="text" placeholder="Alt Tag" value={imageAlt} onChange={(e) => setImageAlt(e.target.value)} />
                                     </div>
+                                    <div>
+                                        <Label>Website</Label>
+                                        <Input type="text" placeholder="Website" value={website} onChange={(e) => setWebsite(e.target.value)} />
+                                    </div>
                                 </div>
                             </DialogHeader>
                             <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={handleAddPartner}>Save</DialogClose>
@@ -288,12 +359,12 @@ export default function Team() {
                         <div key={index} className="relative flex  justify-between border p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300">
                             <div className="flex gap-4 items-center">
                                 <div>
-                                    <Image src={partner.image} alt={partner.imageAlt} width={100} height={100} />
+                                    <p>{partner.name}</p>
                                 </div>
                             </div>
                             <div className="absolute top-1 right-1 flex gap-2">
                                 <Dialog>
-                                    <DialogTrigger className=" text-white px-2 py-1 rounded-md" onClick={() => {setName(partner.name); setLogo(partner.logo); setLogoAlt(partner.logoAlt); setImage(partner.image); setImageAlt(partner.imageAlt);setDescription(partner.description); }}>
+                                    <DialogTrigger className=" text-white px-2 py-1 rounded-md" onClick={() => {setName(partner.name); setLogo(partner.logo); setLogoAlt(partner.logoAlt); setImage(partner.image); setImageAlt(partner.imageAlt);setDescription(partner.description);setWebsite(partner.website); }}>
 
                                             <MdEdit className="text-black cursor-pointer"/>
 
@@ -326,6 +397,10 @@ export default function Team() {
                                                     <Label>Alt Tag</Label>
                                                     <Input type="text" placeholder="Alt Tag" value={imageAlt} onChange={(e) => setImageAlt(e.target.value)} />
                                                 </div>
+                                                <div>
+                                                    <Label>Website</Label>
+                                                    <Input type="text" placeholder="Website" value={website} onChange={(e) => setWebsite(e.target.value)} />
+                                                </div>
                                             </div>
                                         </DialogHeader>
                                         <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={()=>handleEditPartner(partner._id)}>Save</DialogClose>
@@ -340,6 +415,76 @@ export default function Team() {
                     ))}
                 </div>
             </div>
+
+
+
+            <div className="h-full w-full p-2 border-2 border-gray-300 rounded-md">
+                <div className="flex justify-between border-b-2 pb-2">
+                    <Label className="text-sm font-bold">Accreditation</Label>
+                    <Dialog>
+                        <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => {setAccreditImage(""); setAccreditImageAlt(""); }}>Add Partner</DialogTrigger>
+                        <DialogContent className="">
+                            <DialogHeader>
+                                <DialogTitle>Add Partner</DialogTitle>
+                                <div className="flex flex-col gap-4">
+                                    <div>
+                                        <Label>Image</Label>
+                                        <ImageUploader onChange={(url) => setAccreditImage(url)} value={accreditImage} />
+                                    </div>
+                                    <div>
+                                        <Label>Alt Tag</Label>
+                                        <Input type="text" placeholder="Alt Tag" value={accreditImageAlt} onChange={(e) => setAccreditImageAlt(e.target.value)} />
+                                    </div>
+                                </div>
+                            </DialogHeader>
+                            <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={handleAddAccredit}>Save</DialogClose>
+                        </DialogContent>
+
+                    </Dialog>
+                </div>
+                <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
+                    {accreditList.map((accredit, index) => (
+                        <div key={index} className="relative flex  justify-between border p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300">
+                            <div className="flex gap-4 items-center">
+                                <div>
+                                    <Image src={accredit.accreditImage} alt={accredit.accreditImageAlt} width={100} height={100} />
+                                </div>
+                            </div>
+                            <div className="absolute top-1 right-1 flex gap-2">
+                                <Dialog>
+                                    <DialogTrigger className=" text-white px-2 py-1 rounded-md" onClick={() => {setAccreditImage(accredit.accreditImage); setAccreditImageAlt(accredit.accreditImageAlt); }}>
+
+                                            <MdEdit className="text-black cursor-pointer"/>
+
+                                    </DialogTrigger>
+                                    <DialogContent className="">
+                                        <DialogHeader>
+                                            <DialogTitle>Edit Accreditation</DialogTitle>
+                                            <div className="flex flex-col gap-4">
+                                                <div>
+                                                    <Label>Image</Label>
+                                                    <ImageUploader onChange={(url) => setAccreditImage(url)} value={accreditImage} />
+                                                </div>
+                                                <div>
+                                                    <Label>Alt Tag</Label>
+                                                    <Input type="text" placeholder="Alt Tag" value={accreditImageAlt} onChange={(e) => setAccreditImageAlt(e.target.value)} />
+                                                </div>
+                                            </div>
+                                        </DialogHeader>
+                                        <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={()=>handleEditAccredit(accredit._id)}>Save</DialogClose>
+                                    </DialogContent>
+
+                                </Dialog>
+                                
+                                    <MdDelete className="mt-1 cursor-pointer text-black" onClick={()=>handleDeleteAccredit(accredit._id)}/>
+                                
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+
         </div>
     );
 }
