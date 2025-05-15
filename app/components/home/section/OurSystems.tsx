@@ -24,10 +24,10 @@ const OurSystems = () => {
 ];
   return (
 
-    <section className="py[50px] md:py-[50px] lg:pt-[108px]  lg:pb-[121px]">
+    <section className="py-[50px]  md:py-[50px] lg:pt-[108px]  lg:pb-[121px]">
       <div className="container ">
         <h2 className="text-50 text-secondary font-medium mb-3 md:mb-8 uppercase">Our Systems</h2>
-        <div className=" relative border-b border-[#00000020] pb-8 lg:pb-[121px]">
+        <div className=" relative border-b border-[#00000020] pb-[50px] md:pb-[70px] lg:pb-[121px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-[8px]">
           {services.map((item, index) => (
             <div key={index}>
@@ -39,7 +39,7 @@ const OurSystems = () => {
                 <div className="mt-auto">
                   <div className="px-5 py-5 lg:py-8 lg:px[28px]">
                     <div className="mt-auto cursor-pointer transition-all duration-400">
-                      <button className="flex py-[7px] px-[20px] cursor-pointer items-center justify-between text-15 text-black bg-white group-hover:bg-primary group-hover:text-white font-medium 
+                      <button className="flex py-[7px] px-[20px] cursor-pointer items-center justify-between text-15 text-black bg-white group-hover:bg-primary group-hover:text-white font-medium
                       rounded-[20px] space-x-5 text-xs leading-[1.87] uppercase w-full">
                       <span>READ MORE</span>
                       <span className="rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center">

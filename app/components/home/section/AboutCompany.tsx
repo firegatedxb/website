@@ -7,10 +7,10 @@ import { assets } from "@/public/assets/assets";
 
 const AboutCompany = () => {
   return (
-    <section className="py[50px] md:py-[50px] lg:pt-[97px] lg:pb-[131px]  relative">
+    <section className="py-[50px]  md:py-[50px] lg:pt-[97px] lg:pb-[131px]  relative">
       <div className="container">
         <div className="flex">
-          <div className="w-1/2 pr-15 xl:pr-[84px]">
+          <div className="lg:w-1/2 lg:pr-15 xl:pr-[84px]">
             <h2 className="text-50 text-secondary font-medium mb-3 md:mb-[18px] uppercase">
               About Company
             </h2>
@@ -60,7 +60,7 @@ const AboutCompany = () => {
 
       </div>
 
-       <div className="absolute right-0 bottom-0 z-[-1] w-1/2">
+       <div className="absolute right-0 bottom-0 z-[-1] w-1/2 invisible lg:visible">
              <Image src={assets.aboutcompany} alt={''}   className="w-full h-full object-cover" />
         </div>
     </section>

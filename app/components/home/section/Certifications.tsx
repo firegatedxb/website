@@ -29,7 +29,7 @@ const Certifications = () => {
 
     const swiperRef = useRef<SwiperClass | null>(null);
   return (
-    <section className="pt[30px] md:pt-[30px] lg:pt-[60px] pb[50px] md:pb-[60px] lg:pb-[120px] relative  ">
+    <section className="pt-0 md:pt-[30px] lg:pt-[60px] pb-[50px] md:pb-[60px] lg:pb-[120px] relative  ">
       <div className="container">
         <div className=" ">
           <div className=" ">
@@ -46,8 +46,8 @@ const Certifications = () => {
     fill: 'row', // ensures slides fill by row
   }}
   breakpoints={{
-    640: {
-      slidesPerView: 1,
+    320: {
+      slidesPerView: 2,
       grid: {
         rows: 2,
       },
