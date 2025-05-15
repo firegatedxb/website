@@ -5,13 +5,13 @@ const Built = () => {
   return (
       <div className='relative'>
            <div className='container'>
-          <div className='grid grid-cols-5 gap-5'>
+          <div className='lg:grid grid-cols-5 gap-5'>
         <div className='col-span-2'>
-        <div className="w-[40%] h-full absolute left-0 object-cover rounded-tr-xl rounded-br-xl bg-no-repeat bg-cover" style={{ backgroundImage: "url('/assets/img/commitment/builtimage.jpg')" }}>
+        <div className="lg:w-[40%] mt-10 lg:mt-0 h-[350px] lg:h-full lg:absolute left-0 object-cover rounded-xl lg:rounded-tl-[0px]  lg:rounded-bl-[0px] bg-no-repeat bg-cover" style={{ backgroundImage: "url('/assets/img/commitment/builtimage.jpg')" }}>
 
        </div>
                   </div>
-        <div className='col-span-3 pl-10 pr-32 flex flex-col gap-5 pt-[50px] md:pt-[70px] lg:pt-[100px] pb-[20px] md:pb-[30px] lg:pb-[70px]'>
+        <div className='col-span-3 lg:pl-10 lg:pr-32 flex flex-col gap-5 pt-[50px] md:pt-[70px] lg:pt-[100px] pb-[20px] md:pb-[30px] lg:pb-[70px]'>
             <div className='flex flex-col  '>
             <div>
                 <h2 className='text-50 text-site-blue uppercase max-w-[20ch] mb-5 md:mb-[30px] leading-[1.3]'>Built on Commitment<span className='text-primary'>.</span> Backed by Integrity<span className='text-primary'>.</span></h2>
