@@ -25,7 +25,22 @@ export default function ClientSideLink({
   setOpenLink,
 }: ClientSideLinkProps) {
   const pathname = usePathname();
-  const isActive = pathname === href || pathname?.startsWith(`${href}/`);
+  const isActive = pathname === `${href}` || pathname?.startsWith(`${href}/`);
+
+  const handleLogout = async () => {
+    try {
+      const res = await fetch("/api/admin/logout", {
+        method: "POST",
+      });
+      const data = await res.json();
+      if (data.success) {
+        window.location.href = "/admin/login";
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   return (
     <>
@@ -33,6 +48,9 @@ export default function ClientSideLink({
         href={href}
         onClick={() => {  // Prevent navigation on click
           setOpenLink?.(isOpen ? null : href);
+          if (href === "/admin/logout") {
+            handleLogout();
+          }
         }}
         className={cn(
           "flex items-center px-4 py-2 text-sm font-medium rounded-md transition-colors",

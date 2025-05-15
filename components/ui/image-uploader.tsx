@@ -100,14 +100,14 @@ export function ImageUploader({ value, onChange, className, deleteAfterUpload = 
         type="button"
         variant="destructive"
         size="icon"
-        className="absolute right-2 top-2"
+        className="absolute right-2 top-2 bg-red-500"
         onClick={removeImage}
       >
         <X className="h-4 w-4" />
       </Button>
     </div>
   ) : (
-    <div className="relative w-full">
+    <div className="relative w-full ">
       {/* Remove Icon ABOVE the dropzone */}
       {removeIcon && (
         <IoIosCloseCircle
