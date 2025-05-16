@@ -10,8 +10,8 @@ const ClientLogo = () => {
         <div className="overflow-hidden">
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 scale-[1.01] ">
           {items.map((item, i) => (
-              <div key={i} className="border-b border-r border-[#59595920]">
-              <Image src={item} alt="" />
+              <div key={i} className="border-b group border-r border-[#59595920]">
+              <Image src={item} alt=""  className="grayscale-[1] group-hover:grayscale-0 transition-all duration-300  "/>
             </div>
           ))}
         </div>

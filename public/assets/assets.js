@@ -49,12 +49,25 @@ import servicesbnr from './img/banner/services-banner.jpg';
 import leaders1 from './img/about/leader1.png';
 import leaders2 from './img/about/leader2.png';
 import abtmn from './img/about/about-main.jpg';
-
-
-
+import accr1 from './img/partners/accr1.png';
+import accr2 from './img/partners/accr2.png';
+import accr3 from './img/partners/accr3.png';
+import accr4 from './img/partners/accr4.png';
+import built1icon from './img/commitment/built1icon.svg';
+import built2icon from './img/commitment/built2icon.svg';
+import built3icon from './img/commitment/built3icon.svg';
+import built4icon from './img/commitment/built4icon.svg';
 
 
 export const assets = {
+    built1icon,
+    built2icon,
+    built3icon,
+    built4icon,
+    accr1,
+    accr2,
+    accr3,
+    accr4,
     abtmn,
     leaders1,
     leaders2,
