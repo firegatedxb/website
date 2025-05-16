@@ -3,6 +3,7 @@
 import React , { useState } from 'react';
 import Image from "next/image";
 import { assets } from "@/public/assets/assets";
+import Link from 'next/link';
 const OurServices = () => {
 
 const services = [
@@ -11,18 +12,21 @@ const services = [
     subtitle: '',
     description:
       'Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting (EEL), and public address and voice evacuation (PAVA) systems.',
+      url: "/services#section2"
   },
   {
     title: 'Installation',
     subtitle: '',
     description:
       'Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting (EEL), and public address and voice evacuation (PAVA) systems.',
+    url: "/services#section3"
   },
   {
     title: 'Maintenance',
     subtitle: '',
     description:
       'Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting (EEL), and public address and voice evacuation (PAVA) systems.',
+    url: "/services#section1"
   },
 ];
  const [activeIndex, setActiveIndex] = useState(1);
@@ -59,7 +63,8 @@ const services = [
                 </p>
                 <p className="mb-4 md:mb-[42px] text-white text-19">{service.description}</p>
               </div>
-              <button className="flex cursor-pointer items-center text-white w-fit font-medium rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase">
+                <Link href={service.url}>
+                  <button className="flex cursor-pointer items-center text-white w-fit font-medium rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase">
                 <span>READ MORE</span>
                 <span className="bg-primary rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center">
                   <svg
@@ -72,7 +77,8 @@ const services = [
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
                 </span>
-              </button>
+                </button>
+                </Link>
             </div>
           </div>
           </div>

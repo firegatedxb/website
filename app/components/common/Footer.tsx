@@ -47,9 +47,9 @@ const Footer = () => {
             <div className="flex flex-col h-full">
               <div className="flex flex-wrap gap-7 md:gap-10 h-full justify-between">
               <ul className="ulsmn">
-                <li>Maintenance</li>
-                <li>Design & Engineering</li>
-                <li>Installation</li>
+                <li><Link href="/services#section1">Maintenance</Link></li>
+                <li><Link href="/services#section2">Design & Engineering</Link></li>
+                <li><Link href="/services#section3">Installation</Link></li>
               </ul>
               <ul className="ulsmn">
                 <li><Link href="/about">About Us</Link></li>

@@ -57,9 +57,19 @@ import built1icon from './img/commitment/built1icon.svg';
 import built2icon from './img/commitment/built2icon.svg';
 import built3icon from './img/commitment/built3icon.svg';
 import built4icon from './img/commitment/built4icon.svg';
+import embanner from './img/systems/embanner.jpg';
+import ffbanner from './img/systems/ffbanner.jpg';
+import sel1 from './img/systems/sel1.jpg';
+import sel2 from './img/systems/sel2.jpg';
+import sel3 from './img/systems/sel3.jpg';
 
 
 export const assets = {
+    embanner,
+    ffbanner,
+    sel1,
+    sel2,
+    sel3,
     built1icon,
     built2icon,
     built3icon,
