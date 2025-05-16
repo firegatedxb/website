@@ -1,6 +1,15 @@
 import mongoose from "mongoose";
 
 const systemSchema = new mongoose.Schema({
+    metaTitle: {
+        type: String,
+    },
+    metaDescription: {
+        type: String,
+    },
+    pageTitle: {
+        type: String,
+    },
     title: {
         type: String,
         required: true,

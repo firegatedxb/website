@@ -1,6 +1,21 @@
 import mongoose from "mongoose";
 
 const PartnersSchema = new mongoose.Schema({
+    metaTitle:{
+        type:String,
+    },
+    metaDescription:{
+        type:String,
+    },
+    banner:{
+        type:String,
+    },
+    bannerAlt:{
+        type:String,
+    },
+    pageTitle:{
+        type:String,
+    },
     title: {
         type: String,
         required: true,

@@ -16,6 +16,7 @@ interface SystemFormProps {
     metaDescription: string;
     banner: string;
     bannerAlt: string;
+    pageTitle: string;
 
     firstSectionItems: {
         title: string;
@@ -92,6 +93,7 @@ const CommitmentPage = () => {
                 console.log(data)
                 setValue("banner", data.data.banner);
                 setValue("bannerAlt", data.data.bannerAlt);
+                setValue("pageTitle", data.data.pageTitle);
                 setValue("metaTitle", data.data.metaTitle);
                 setValue("metaDescription", data.data.metaDescription);
                 setValue("firstSection", data.data.firstSection);
@@ -142,6 +144,10 @@ const CommitmentPage = () => {
                     <div>
                         <Label className='pl-3 font-bold'>Alt Tag</Label>
                         <Input type='text' placeholder='Alt Tag' {...register("bannerAlt")} />
+                    </div>
+                    <div>
+                        <Label className='pl-3 font-bold'>Page Title</Label>
+                        <Input type='text' placeholder='Page Title' {...register("pageTitle")} />
                     </div>
                 </div>
 

@@ -1,6 +1,21 @@
 import mongoose from "mongoose";
 
 const ClientSchema = new mongoose.Schema({
+    metaTitle: {
+        type: String,
+    },
+    metaDescription: {
+        type: String,
+    },
+    pageTitle: {
+        type: String,
+    },
+    banner: {
+        type: String,
+    },
+    bannerAlt: {
+        type: String,
+    },
     title: {
         type: String,
         required: true,

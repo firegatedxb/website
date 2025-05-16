@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
 
         await connectDB();
         const body = await req.json();
-        const { title, description, bannerImage, bannerAlt } = body;
+        const { title, description, bannerImage, bannerAlt,pageTitle } = body;
         const systems = await Systems.findOne({});
         if (!systems) {
             return NextResponse.json({ success: false, message: "Error updating systems" }, { status: 500 });
@@ -21,6 +21,8 @@ export async function POST(req: NextRequest) {
         systems.description = description;
         systems.bannerImage = bannerImage;
         systems.bannerAlt = bannerAlt;
+        systems.pageTitle = pageTitle;
+
         await systems.save();
         return NextResponse.json({ success: true, message: "Systems updated successfully" }, { status: 201 });
     } catch (error) {
