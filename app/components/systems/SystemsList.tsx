@@ -15,9 +15,11 @@ const SystemsList = () => {
                 <Image src={sys.icon} alt={sys.title} width={50} height={50} className="w-10 h-10"></Image>
               </div>
               <div className="relative z-20 mt-auto translate-y-[95%] group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
-                <h3 className="text-white text-32 leading-1.3 font-medium mb-10 group-hover:mb-5 transition-all duration-300">{sys.title}</h3>
+                <Link href={sys.url} >
+                  <h3 className="text-white text-32 leading-1.3 font-medium mb-10 group-hover:mb-5 transition-all duration-300">{sys.title}</h3>
+                  </Link>
                 <p className="text-white mb-10">{sys.desc}</p>
-                <Link href={`systems/${sys.id}`} className="w-[50px] h-[50px] rounded-full border bg-white border-black flex items-center justify-center transition-opacity duration-500 ease-in-out  ">
+                <Link href={sys.url} className="w-[50px] h-[50px] rounded-full border bg-white border-black flex items-center justify-center transition-opacity duration-500 ease-in-out  ">
                   <Image src={assets.redarrow} alt="" />
                 </Link>
               </div>
