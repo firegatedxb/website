@@ -223,3 +223,23 @@ body {
     z-index: -1;
     left: -189px;
     top: 0;}
+    .stylein0 .ptst{padding-top: 0px !important;}
+
+
+@media only screen and (max-width: 1138px) {
+.stylein0 .ptst{padding-top: 50px   !important;}
+
+}
+@media only screen and (max-width: 767px) {
+.bg-siteaftr::before{
+display:none; }
+
+}
+@media (min-width: 1139px) and (max-width: 1279px) {
+.mediatext{ font-size: 14px; }
+.logocsi{height: 30px;}
+}
+@media (min-width: 1280px) and (max-width: 1649px) {
+.mediatext{ font-size: 13px; }
+.logocsi{height: 30px;}
+}

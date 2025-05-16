@@ -22,7 +22,7 @@ const ContentArea: React.FC<FrameworkSectionProps> = ({
 
 }) => {
   return (
-    <section className="pb-5 lg:pb-25">
+    <section className="pb-[50px] lg:pb-25">
       <div className="container">
           <div>
             <div className="mb-4">
