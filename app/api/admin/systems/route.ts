@@ -7,14 +7,21 @@ export async function GET(req: NextRequest) {
     try {
         const searchParams = req.nextUrl.searchParams;
         const id = searchParams.get("id");
+        const slug = searchParams.get("slug")
         await connectDB();
         if(id){
             const systems = await Systems.findOne({});
             const systemsData = systems.systems.find((system: { _id: string }) => system._id == id);
             return NextResponse.json({ success: true, data: systemsData }, { status: 200 });
+        }else if(slug){
+            const systems = await Systems.findOne({});
+            const systemsData = systems.systems.find((system: { slug: string }) => system.slug == slug);
+            return NextResponse.json({ success: true, data: systemsData }, { status: 200 });
+        }else{
+            const systems = await Systems.find({});
+            return NextResponse.json({ success: true, data: systems }, { status: 200 });
         }
-        const systems = await Systems.find({});
-        return NextResponse.json({ success: true, data: systems }, { status: 200 });
+        
     } catch (error) {
         console.log(error)
         return NextResponse.json({ success: false, message: "Error fetching systems" }, { status: 500 });
