@@ -3,7 +3,7 @@ import Sbttl from "../common/Sbttl";
 const Main = () => {
   return (
     <section className="">
-      <div className="container py-15 lg:py-25 border-b border-graylit">
+      <div className="container py-[50px] lg:py-25 border-b border-graylit">
         <div className="mb-4">
           <Sbttl title="Certified Systems for Every Environment" />
         </div>

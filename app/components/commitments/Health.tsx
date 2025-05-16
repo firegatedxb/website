@@ -12,10 +12,10 @@ const Health = () => {
                 <p className='text-19 text-white'>Health and safety are integral to how we operate not just on paper, but on-site, every day. We follow a zero-compromise policy when it comes to safeguarding our workforce, the public, and the environments we work in. </p>
             </div>
 
-            <div className='grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-8 lg:gap-20'>
+            <div className='grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-12 xl:gap-20'>
                 {healthData.map((item, index) => (
-                    <div className='flex flex-col gap-10 ' key={index}>
-                    <div className='flex items-center gap-5 border-b border-[#ffffff30] pb-10'>
+                    <div className='flex flex-col  gap-5 md:gap-7 lg:gap-10' key={index}>
+                    <div className='flex items-center gap-5 border-b border-[#ffffff30] pb-6 md:pb-8 lg:pb-10'>
                     <div className=''>
                         <Image src={item.image} className="w-full h-full object-cover" alt="image-alt" width={68} height={68} />
                     </div>

@@ -5,12 +5,11 @@ import Link from 'next/link'
 
 const Contents = () => {
     return (
-
             partnerData.map((item, index) => (
-                <div key={index} className='odd:bg-[#F8F8F8]'>
+                <div key={index} className={`odd:bg-[#F8F8F8] stylein${index}`}>
                 <div className='container pb-[50px] lg:pb-[100px]'>
-                <div className='flex flex-col gap-12' key={index}>
-                <div className='flex justify-between items-center border-b py-10 lg:pt-[150px] lg:pb-[50px]'>
+                <div className={`flex flex-col gap-12 first:lg:pt-0 `} key={index} >
+                <div className='flex justify-between items-center border-b pb-10 ptst lg:pt-[150px] lg:pb-[50px]'>
                     {index % 2 !== 0 ? (
                         <>
                         <div className=''>

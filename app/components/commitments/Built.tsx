@@ -33,18 +33,18 @@ const Built = () => {
   return (
     <div className="relative">
       <div className="container">
-        <div className="lg:grid grid-cols-5 gap-5">
-          <div className="col-span-2">
+        <div className="lg:grid grid-cols-13 gap-5">
+          <div className="col-span-6">
             <div
-              className="lg:w-[40%] mt-10 lg:mt-0 h-[350px] lg:h-full lg:absolute left-0 object-cover rounded-xl lg:rounded-tl-[0px]  lg:rounded-bl-[0px] bg-no-repeat bg-cover"
+              className="lg:w-[45%] mt-10 lg:mt-0 h-[350px] lg:h-full lg:absolute left-0 object-cover rounded-xl lg:rounded-tl-[0px]  lg:rounded-bl-[0px] bg-no-repeat bg-cover"
               style={{
                 backgroundImage: "url('/assets/img/commitment/builtimage.jpg')",
               }}
             ></div>
           </div>
-          <div className="col-span-3 lg:pl-10 lg:pr-32 flex flex-col gap-5 pt-[50px] md:pt-[70px] lg:pt-[100px] pb-[20px] md:pb-[30px] lg:pb-[70px]">
+          <div className="col-span-7 lg:pl-10  flex flex-col gap-5 pt-[50px] md:pt-[70px] lg:pt-[100px] pb-[20px] md:pb-[30px] lg:pb-[70px]">
             <div className="flex flex-col">
-              <h2 className="text-50 text-site-blue uppercase mb-5">
+              <h2 className="text-50 text-site-blue font-medium uppercase mb-5 max-w-[20ch]">
                 {commitmentSection.title.split(".").map((part, i) => (
                   <span key={i}>
                     {part}

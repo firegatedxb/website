@@ -1,9 +1,9 @@
 import Sbttl from "../common/Sbttl";
 
 const Main = () => {
-  return ( 
+  return (
     <section className="">
-      <div className="container py-15 lg:py-25 border-b border-graylit">
+      <div className="container py-[50px] lg:py-25 border-b border-graylit">
         <div className="mb-4">
           <Sbttl title="End-to-End Fire Safety Solutions" />
         </div>
@@ -12,5 +12,5 @@ const Main = () => {
     </section>
    );
 }
- 
+
 export default Main;

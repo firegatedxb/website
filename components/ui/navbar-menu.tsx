@@ -33,13 +33,13 @@ export const MenuItem = ({
   return (
     <div
       onMouseEnter={() => (noMenu ? setActive(null) : setActive(item))}
-      className="relative mr-5 lg:mr-[35px]">
+      className="relative mr-3 xl:mr-[35px]">
       <div className="flex gap-2 mb-0">
         <Link href={url}>
           <motion.p
             transition={{ duration: 0.3 }}
             className="cursor-pointer text-[#1F1F1F] font-medium hover:text-secondary dark:text-white text-xs uppercase transition-all duration-500 ease-in-out">
-            <span className="flex gap-3 text-[17px] hover:text-primary transition-all duration-300 ">{item}</span>
+            <span className="flex gap-3 mediatext text-[17px] hover:text-primary transition-all duration-300 ">{item}</span>
           </motion.p>
         </Link>
         {!noMenu && <Image src={arrow} alt="arrow" className="arrowst" />}
@@ -84,8 +84,8 @@ export const Menu = ({
 
       <nav
         onMouseLeave={() => setActive(null)} // resets the state
-        className=" relative bg-white z-50 dark:bg-black dark:border-white/[0.2] shadow-input flex justify-center items-stretch   gap-[42px]  h-full">
-        <div className="left-spacing pr-[20px] xxl:pr-[20px] xxxl:pr-[50px] w-full flex items-center justify-between  pt-[16.5px] pb-[21px]  ">
+        className=" relative bg-[#F9F9F9] z-50 dark:bg-black dark:border-white/[0.2] shadow-input flex justify-center items-stretch  gap-2 xl:gap-[42px]  h-full">
+        <div className="left-spacing pr-[20px] xxl:pr-[20px] xxxl:pr-[50px] w-full flex items-center justify-between gap-3 pt-[16.5px] pb-[21px]  ">
           <div className="flex items-center ">
             <Link href="/">
               <Image
@@ -93,7 +93,7 @@ export const Menu = ({
                 alt="Crest Logo"
                 width={80}
                 height={50}
-                className="h-[41px] w-auto"
+                className="h-[41px] logocsi w-auto"
               />
             </Link>
           </div>
@@ -133,7 +133,7 @@ export const Menu = ({
           </div>
         </div>
 
-          <div className="rghtsc flex flex-col justify-center ml-[2px] bg-primary px-6 lg:px-13 rounded-l-[20px] group">
+          <div className="rghtsc flex flex-col justify-center ml-[2px] bg-primary px-6 xl:px-13 rounded-l-[20px] group">
         <Link href="/contact" className="flex flex-1 justify-center items-center transition h-full w-full gap-2">
           <span className="text-white text-19 font-semibold">CONTACT</span>
           <span className="text-lg bg-white rounded-full flex justify-center items-center w-7 h-7 group-hover:animate-pulse">

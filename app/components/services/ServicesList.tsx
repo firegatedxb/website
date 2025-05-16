@@ -7,7 +7,7 @@ const ServicesList = () => {
         <div>
           {
             services.map((item) => (
-              <div className="border-b border-graylit pb-15 lg:py-75" key={item.id} id={`section${item.id}`}>
+              <div className="border-b border-graylit py-[50px] lg:py-75" key={item.id} id={`section${item.id}`}>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                   <div className="flex flex-col">
                     <div className="relative flex justify-between items-center mb-6 lg:mb-10">

@@ -32,7 +32,7 @@ interface PlatformsSectionProps {
     <div className='container'>
     <div className='  md:grid md:grid-cols-7  rounded-tr-[20px] rounded-br-[20px]'>
 
-      <div className='bg-siteaftr md:col-span-4 py-[100px] flex flex-col gap-20 relative text-white'>
+      <div className='bg-siteaftr bg-secondary md:bg-none pl-[20px] md:col-span-4 py-[50px] lg:py-[100px] flex flex-col gap-10 lg:gap-20 relative text-white'>
 
         <motion.div
         className="flex gap-10 lg:gap-[100px] items-center border-b border-[#ffffff35] mb-4 lg:mb-[30px] w-fit"
@@ -72,7 +72,7 @@ interface PlatformsSectionProps {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
               >
-               <div className='flex flex-col gap-20'>
+               <div className='flex flex-col gap-12 lg:gap-20'>
           <div className='w-full flex flex-col gap-5'>
                     <h3 className='text-30'>{data.location}</h3>
             <p className='text-19'>{data.address}</p>
