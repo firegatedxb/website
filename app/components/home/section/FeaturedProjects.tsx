@@ -77,14 +77,14 @@ const FeaturedProjects = () => {
                 <h2 className="text-50 font-medium mb-4 md:mb-[55px] max-w-[10ch] leading-[1.2]">Our Featured Projects</h2>
                 <p className="text-19">Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting.</p>
               </div>
-              <button className="flex mt-6 cursor-pointer items-center bg-primary hover:bg-primary/90 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase">
+             {/*  <button className="flex mt-6 cursor-pointer items-center bg-primary hover:bg-primary/90 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase">
                 <span>More projects</span>
                 <span className="bg-white rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center">
                   <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1.5 1.5L8.5 8.5L1.5 15.5" stroke="#263967" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </span>
-              </button>
+              </button> */}
             </div>
           </div>
 
