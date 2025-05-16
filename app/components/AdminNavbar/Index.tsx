@@ -17,7 +17,7 @@ const AdminNavbar = () => {
     const [openLink, setOpenLink] = useState<string | null>(null);
 
     const navItems = [
-        { name: "Home", href: "/admin", icon: HomeIcon },
+        { name: "Home", href: "/admin/home", icon: HomeIcon },
         { name: "About", href: "/admin/about", icon: UserGroupIcon },
         { name: "Clients", href: "/admin/clients", icon: PresentationChartBarIcon },
         { name: "Services", href: "/admin/services", icon: EnvelopeIcon },
@@ -26,8 +26,8 @@ const AdminNavbar = () => {
         { name: "Systems", href: "/admin/systems", icon: CheckBadgeIcon },
         { name: "Partners", href: "/admin/partners", icon: UserGroupIcon },
         { name: "Commitment", href: "/admin/commitment", icon:NewspaperIcon },
-        { name: "Contact", href: "#", icon: EnvelopeIcon,children:[{name:"Regions",href:"/admin/contact"},{name:"Enquiries",href:"/admin/contact/enquiry"}] },
-        { name: "Tag Codes", href: "/admin/codes", icon: CodeIcon },
+        { name: "Contact", href: "/admin/contact", icon: EnvelopeIcon },
+        { name: "Tag Codes", href: "/admin/codes", icon: CodeIcon},
       ];
 
   return (
@@ -41,9 +41,7 @@ const AdminNavbar = () => {
             icon={<Icon className="h-5 w-5" />}
             isOpen={openLink === item.href}
             setOpenLink={setOpenLink}
-          >
-            {item.children}
-          </ClientSideLink>
+          />
         );
       })
   )
