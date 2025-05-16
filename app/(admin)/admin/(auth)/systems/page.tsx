@@ -25,6 +25,7 @@ import Link from "next/link";
 interface System {
     bannerImage: string;
     bannerAlt: string;
+    pageTitle: string;
     _id: string;
     image: string;
     imageAlt: string;
@@ -78,7 +79,10 @@ export default function Team() {
                 setValue("description", data.data[0].description);
                 setValue("bannerImage", data.data[0].bannerImage);
                 setValue("bannerAlt", data.data[0].bannerAlt);
+                setValue("pageTitle", data.data[0].pageTitle);
                 setSystemList(data.data[0].systems);
+                setMetaTitle(data.data[0].metaTitle);
+                setMetaDescription(data.data[0].metaDescription);
             } else {
                 const data = await response.json();
                 alert(data.message);
@@ -88,23 +92,23 @@ export default function Team() {
         }
     }
 
-    const handleFetchMetaDetails = async () => {
-        try {
-            const response = await fetch("/api/admin/systems/meta");
-            if (response.ok) {
-                const data = await response.json();
-                if (data) {
-                    setMetaTitle(data.systemsMeta.metaTitle);
-                    setMetaDescription(data.systemsMeta.metaDescription);
-                }
-            } else {
-                const data = await response.json();
-                alert(data.message);
-            }
-        } catch (error) {
-            console.log("Error fetching meta details", error);
-        }
-    }
+    // const handleFetchMetaDetails = async () => {
+    //     try {
+    //         const response = await fetch("/api/admin/systems/meta");
+    //         if (response.ok) {
+    //             const data = await response.json();
+    //             if (data) {
+    //                 setMetaTitle(data.systemsMeta.metaTitle);
+    //                 setMetaDescription(data.systemsMeta.metaDescription);
+    //             }
+    //         } else {
+    //             const data = await response.json();
+    //             alert(data.message);
+    //         }
+    //     } catch (error) {
+    //         console.log("Error fetching meta details", error);
+    //     }
+    // }
 
 
 
@@ -167,7 +171,6 @@ export default function Team() {
 
     useEffect(() => {
         handleFetchSystems();
-        handleFetchMetaDetails();
     }, [])
 
     const onSubmit = async (data: System) => {
@@ -239,6 +242,10 @@ export default function Team() {
                     <div>
                         <Label className="text-sm font-bold">Banner Alt</Label>
                         <Input type="text" placeholder="Banner Alt" {...register("bannerAlt")} />
+                    </div>
+                    <div>
+                        <Label className="text-sm font-bold">Page Title</Label>
+                        <Input type="text" placeholder="Page Title" {...register("pageTitle")} />
                     </div>
                     <div>
                         <Label className="text-sm font-bold">Title</Label>

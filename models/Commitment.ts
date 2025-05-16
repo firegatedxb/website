@@ -9,6 +9,9 @@ const commitmentSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    pageTitle:{
+        type:String,
+    },
     firstSection:{
         title:{
             type:String,

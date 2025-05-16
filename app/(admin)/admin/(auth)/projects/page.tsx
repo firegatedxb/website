@@ -233,8 +233,9 @@ export default function Projects() {
       const response = await fetch("/api/admin/project/meta");
       if(response.ok) {
         const data = await response.json();
-        setMetaTitle(data.projectMeta.metaTitle);
-        setMetaDescription(data.projectMeta.metaDescription);
+        console.log(data)
+        setMetaTitle(data.data.metaTitle);
+        setMetaDescription(data.data.metaDescription);
       }else{
         const data = await response.json();
         alert(data.message);

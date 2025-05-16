@@ -1,7 +1,7 @@
-import Client from "@/models/Clients";
-import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import { verifyAdmin } from "@/lib/verifyAdmin";
+import Clients from "@/models/Clients";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
     try {
@@ -12,21 +12,18 @@ export async function POST(req: NextRequest) {
 
         await connectDB();
         const body = await req.json();
-        const { title, description, banner, bannerAlt,pageTitle } = body;
-        const client = await Client.findOne({});
-        if (!client) {
+        const { metaTitle, metaDescription } = body;
+        const clients = await Clients.findOne({});
+        if (!clients) {
             return NextResponse.json({ success: false, message: "Error updating client" }, { status: 500 });
         }
-        client.title = title;
-        client.description = description;
-        client.banner = banner;
-        client.bannerAlt = bannerAlt;
-        client.pageTitle = pageTitle;
-        await client.save();
+        clients.metaTitle = metaTitle;
+        clients.metaDescription = metaDescription;
+
+        await clients.save();
         return NextResponse.json({ success: true, message: "Client updated successfully" }, { status: 201 });
     } catch (error) {
         console.log(error)
         return NextResponse.json({ success: false, message: "Error updating client" }, { status: 500 });
     }
 }
-    

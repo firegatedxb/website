@@ -30,6 +30,9 @@ interface Client {
     logo: string;
     logoAlt: string;
     website: string;
+    banner: string;
+    bannerAlt: string;
+    pageTitle: string;
 }
 
 interface Accreditation {
@@ -48,7 +51,7 @@ export default function Team() {
     const [logoAlt, setLogoAlt] = useState<string>("");
     const [website, setWebsite] = useState<string>("");
     const [partnerList, setPartnerList] = useState<Client[]>([]);
-    const { register, handleSubmit, setValue, control } = useForm<Client>();
+    const { register, handleSubmit, setValue, control, watch } = useForm<Client>();
     const [metaTitle, setMetaTitle] = useState<string>("");
     const [metaDescription, setMetaDescription] = useState<string>("");
     const [accreditList, setAccreditList] = useState<Accreditation[]>([]);
@@ -84,8 +87,13 @@ export default function Team() {
                 console.log(data)
                 setValue("title", data.data[0].title);
                 setValue("description", data.data[0].description);
+                setValue("banner", data.data[0].banner);
+                setValue("bannerAlt", data.data[0].bannerAlt);
+                setValue("pageTitle", data.data[0].pageTitle);
                 setPartnerList(data.data[0].partners);
                 setAccreditList(data.data[0].accredit);
+                setMetaTitle(data.data[0].metaTitle);
+                setMetaDescription(data.data[0].metaDescription);
             } else {
                 const data = await response.json();
                 alert(data.message);
@@ -95,23 +103,23 @@ export default function Team() {
         }
     }
 
-    const handleFetchMetaDetails = async () => {
-        try {
-            const response = await fetch("/api/admin/partners/meta");
-            if (response.ok) {
-                const data = await response.json();
-                if (data) {
-                    setMetaTitle(data.teamMeta.metaTitle);
-                    setMetaDescription(data.teamMeta.metaDescription);
-                }
-            } else {
-                const data = await response.json();
-                alert(data.message);
-            }
-        } catch (error) {
-            console.log("Error fetching meta details", error);
-        }
-    }
+    // const handleFetchMetaDetails = async () => {
+    //     try {
+    //         const response = await fetch("/api/admin/partners/meta");
+    //         if (response.ok) {
+    //             const data = await response.json();
+    //             if (data) {
+    //                 setMetaTitle(data.teamMeta.metaTitle);
+    //                 setMetaDescription(data.teamMeta.metaDescription);
+    //             }
+    //         } else {
+    //             const data = await response.json();
+    //             alert(data.message);
+    //         }
+    //     } catch (error) {
+    //         console.log("Error fetching meta details", error);
+    //     }
+    // }
 
 
 
@@ -229,7 +237,6 @@ export default function Team() {
 
     useEffect(() => {
         handleFetchData();
-        handleFetchMetaDetails();
     }, [])
 
     const onSubmit = async (data: Client) => {
@@ -294,6 +301,18 @@ export default function Team() {
                     <Button type="submit">Save</Button>
                 </div>
                 <div className="mt-2 flex flex-col gap-2 h-fit">
+                <div>
+                        <Label className="text-sm font-bold">Banner</Label>
+                        <ImageUploader  value={watch("banner")} onChange={(url) => setValue("banner", url)} />
+                    </div>
+                    <div>
+                        <Label className="text-sm font-bold">Banner Alt</Label>
+                        <Input type="text" placeholder="Banner Alt" {...register("bannerAlt")} />
+                    </div>
+                    <div>
+                        <Label className="text-sm font-bold">Page Title</Label>
+                        <Input type="text" placeholder="Page Title" {...register("pageTitle")} />
+                    </div>
                     <div>
                         <Label className="text-sm font-bold">Title</Label>
                         <Input type="text" placeholder="Title" {...register("title")} />

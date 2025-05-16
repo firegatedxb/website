@@ -20,7 +20,7 @@ export async function PATCH(request: NextRequest) {
     try {
         await connectDB();
         const body = await request.json();
-        const { banner, bannerAlt, firstSection, secondSection, thirdSection, firstSectionItems, secondSectionItems, thirdSectionItems,metaTitle,metaDescription } = body;
+        const { banner, bannerAlt,pageTitle, firstSection, secondSection, thirdSection, firstSectionItems, secondSectionItems, thirdSectionItems,metaTitle,metaDescription } = body;
         console.log(body)
         const commitment = await Commitment.findOne({});
         if (!commitment) {
@@ -29,6 +29,7 @@ export async function PATCH(request: NextRequest) {
 
         commitment.banner = banner;
         commitment.bannerAlt = bannerAlt;
+        commitment.pageTitle = pageTitle;
         commitment.firstSection.items = firstSectionItems;
         commitment.secondSection.items = secondSectionItems;
         commitment.thirdSection.items = thirdSectionItems;
