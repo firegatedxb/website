@@ -8,9 +8,10 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Image from "next/image";
 import { assets } from "@/public/assets/assets";
+import Link from "next/link";
 
 const slides = [
-  { 
+  {
     id: 1,
     image: assets.slider,
     title: `<span class="text-primary">Over 20 Years</span> of Expertise in Fire & Security Solutions`,
@@ -54,14 +55,15 @@ const HeroSlider = () => {
                   <h1 className="text-65 font-bold uppercase max-w-[29ch] leading-[1.230769230769231]" dangerouslySetInnerHTML={{ __html: slide.title }}>
                     {/* {slide.title} */}
                   </h1>
-
-                  <button className="flex cursor-pointer items-center bg-primary hover:bg-primary/90 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] 
+                  <Link href="/about">
+                  <button className="flex cursor-pointer items-center bg-primary hover:bg-primary/90 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87]
                   uppercase group">
                     <span>READ MORE</span>
                     <span className="bg-white rounded-full p-1 w-7 h-7 flex items-center justify-center">
                       <Image src={assets.bluearrowRight} width={14} height={28} alt="read-more" className="w-full h-[14px] object-contain group-hover:animate-pulse"></Image>
                     </span>
-                  </button>
+                    </button>
+                    </Link>
                 </div>
               </div>
             </SwiperSlide>

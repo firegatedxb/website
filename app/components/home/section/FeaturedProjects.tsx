@@ -48,7 +48,8 @@ const projects = [
 const FeaturedProjects = () => {
   const swiperRef = useRef<SwiperClass | null>(null);
   const sourceRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState<number>(280);
+  const [height, setHeight] = useState<number | "auto">("auto");
+
 
   useEffect(() => {
     if (sourceRef.current && window.innerWidth >= 768) {
@@ -89,7 +90,7 @@ const FeaturedProjects = () => {
 
         </div>
       </div>
-      <div className=" w-full lg:w-2/3 curslider mt-10 lg:mt-0 lg:absolute right-0 top-10 lg:top-[120px] px-8 lg:px-0" ref={sourceRef}>
+      <div className=" w-full lg:w-2/3 curslider mt-10 lg:mt-0 lg:absolute right-0 top-10 lg:top-[120px] pl-8 lg:px-0" ref={sourceRef}>
         <Swiper
           modules={[Autoplay]}
           autoplay={{ delay: 4000 }}
@@ -97,8 +98,8 @@ const FeaturedProjects = () => {
           slidesPerView={2}
           breakpoints={{
             320: {
-              slidesPerView: 1,
-              spaceBetween: 8,
+              slidesPerView: 1.3,
+              spaceBetween: 20,
             },
             768: {
               slidesPerView: 3,
