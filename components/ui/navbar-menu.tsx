@@ -93,7 +93,7 @@ export const Menu = ({
                 alt="Crest Logo"
                 width={80}
                 height={50}
-                className="h-[34px] w-auto"
+                className="h-[41px] w-auto"
               />
             </Link>
           </div>
