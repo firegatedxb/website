@@ -29,7 +29,7 @@ const OurSystems = () => {
 ];
   return (
 
-    <section className="py-[50px]  md:py-[50px] lg:pt-[108px]  lg:pb-[121px]">
+    <section className="pt-[50px]  md:pt-[50px] lg:pt-[108px] pb-[0px] lg:pb-[121px]">
       <div className="container ">
         <h2 className="text-50 text-secondary font-medium mb-3 md:mb-8 uppercase">Our Systems</h2>
         <div className=" relative border-b border-[#00000020] pb-[50px] md:pb-[70px] lg:pb-[121px]">
