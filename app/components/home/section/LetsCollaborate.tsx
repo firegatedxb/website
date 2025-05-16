@@ -14,8 +14,8 @@ const LetsCollaborate = () => {
         <div className="lg:flex justify-between items-end">
           <div>
 
-        <h3><p className="text-60 text-black font-semibold">+971 4 432 7677</p>
-            <p className="text-60 text-black font-semibold">info<span className="text-primary">@</span>firegate.ae</p></h3>
+        <h3><p className="text-40 xl:text-60 text-black font-semibold">+971 4 432 7677</p>
+            <p className="text-40 xl:text-60 text-black font-semibold">info<span className="text-primary">@</span>firegate.ae</p></h3>
           </div>
           <div className="flex flex-wrap gap-6 sm:gap-8 md:gap-10 mt-8 lg:mt-0">
   {["Facebook", "Instagram", "Linkedin", "X", "Youtube"].map((platform) => (

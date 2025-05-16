@@ -23,6 +23,21 @@ const slides = [
   {
     image: assets.cer5,
   },
+  {
+    image: assets.cer1,
+  },
+  {
+    image: assets.cer2,
+  },
+  {
+    image: assets.cer3,
+  },
+  {
+    image: assets.cer4,
+  },
+  {
+    image: assets.cer5,
+  },
 
 ];
 const Certifications = () => {
@@ -33,7 +48,7 @@ const Certifications = () => {
       <div className="container">
         <div className=" ">
           <div className=" ">
-            <h2 className="text-50 text-secondary font-medium mb-3 md:mb-[50px] md:mb-[84px] uppercase">
+            <h2 className="text-30 md:text-50 text-secondary font-medium mb-3 md:mb-[50px] lg:mb-[84px] uppercase">
              Certifications & Accreditation
             </h2>
       <Swiper
@@ -79,7 +94,7 @@ const Certifications = () => {
 >
   {slides.map((slide, index) => (
     <SwiperSlide key={index} className="border-x  border-[#00000015] ">
-      <div className=" bg-white flex items-center justify-center   h-[90px] group">
+      <div className=" bg-white flex items-center justify-center   h-[90px] group px-3">
         <Image
           src={slide.image}
           alt={''}

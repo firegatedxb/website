@@ -8,18 +8,24 @@ const OurServices = () => {
 const services = [
   {
     title: 'Design & Engineering',
-    subtitle: 'Installation',
+    subtitle: '',
+    description:
+      'Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting (EEL), and public address and voice evacuation (PAVA) systems.',
+  },
+  {
+    title: 'Installation',
+    subtitle: '',
     description:
       'Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting (EEL), and public address and voice evacuation (PAVA) systems.',
   },
   {
     title: 'Maintenance',
-    subtitle: 'Maintenance',
+    subtitle: '',
     description:
       'Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting (EEL), and public address and voice evacuation (PAVA) systems.',
   },
 ];
- const [activeIndex, setActiveIndex] = useState(0);
+ const [activeIndex, setActiveIndex] = useState(1);
   return (
     <section className="py-[50px]  md:py-[50px] lg:pt-[108px]  lg:pb-[78px] relative bg-secondary">
       <div className="container">
@@ -35,10 +41,11 @@ const services = [
             className="border-b border-white cursor-pointer spb"
             onMouseEnter={() => setActiveIndex(index)}
           >
-            <p className="text-30 font-medium text-white leading-[3.3] hvtitle">
+            <p className=  {`text-30 font-medium text-white leading-[3.3] hvtitle  ${
+              activeIndex === index ? 'opacity-0 max-h-[0px]' : 'opacity-100 max-h-[1000px]'
+            }`}>
               {service.title}
             </p>
-          </div>
 
           <div
             className={`border-b border-white overflow-hidden transition-opacity duration-500  ${
@@ -48,7 +55,7 @@ const services = [
             <div className="border-l-3 border-primary pl-4 md:pl-[40px] my-4 md:my-[38px]">
               <div>
                 <p className="text-30 font-medium text-white pb-4 md:pb-[20px] leading-[1]">
-                  {service.subtitle}
+                  {service.title}
                 </p>
                 <p className="mb-4 md:mb-[42px] text-white text-19">{service.description}</p>
               </div>
@@ -67,6 +74,7 @@ const services = [
                 </span>
               </button>
             </div>
+          </div>
           </div>
         </div>
       ))}

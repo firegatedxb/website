@@ -7,9 +7,9 @@ import Certifications from "./Certifications";
 
 
 const Index = () => {
-  return ( 
+  return (
     <>
-      <InnerBanner pageTitle={"About Us"} bannerBg={assets.aboutBnr} />
+      <InnerBanner pageTitle={"About FIre Gate"} bannerBg={assets.aboutBnr} />
       <MainDesc />
       <Mvv />
       <Leadership />
@@ -18,5 +18,5 @@ const Index = () => {
     </>
    );
 }
- 
+
 export default Index;
