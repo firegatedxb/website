@@ -1,3 +1,4 @@
+
 import { StaticImageData } from "next/image";
 import PrimaryCard from "../common/PrimaryCard";
 import Sbttl from "../common/Sbttl";

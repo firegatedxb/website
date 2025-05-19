@@ -1,11 +1,12 @@
-import Index from "../../components/Projects/Index";
+
+import Index from "@/app/components/projects";
 
 const page = () => {
-  return (
+  return ( 
     <>
-      <Index />
+    <Index/>
     </>
-  );
+   );
 }
-
+ 
 export default page;
