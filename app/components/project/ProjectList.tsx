@@ -14,7 +14,7 @@ const ProjectList = () => {
     <section className="py-10 lg:py-25">
       <div className="container">
         <div className="mb-12">
-          <Sbttl title="Projects" />
+          <Sbttl title="Projects" /> 
         </div>
         <div>
           <div className="bg-secondary rounded-2xl p-8 lg:p-10 gap-2 grid grid-cols-2 lg:grid-cols-4 gap-x-4">
