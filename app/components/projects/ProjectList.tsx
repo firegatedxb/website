@@ -1,6 +1,6 @@
 "use client"
 import Sbttl from "../common/Sbttl";
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import { assets } from "@/public/assets/assets";
 import Image from "next/image";
 import Link from "next/link";
