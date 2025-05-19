@@ -44,27 +44,27 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link href="#systems" className="leading-tight hover:text-primary">
+              <Link href="systems" className="leading-tight hover:text-primary">
                 OUR SYSTEMS
               </Link>
             </li>
             <li>
-              <Link href="#projects" className="leading-tight hover:text-primary">
+              <Link href="projects" className="leading-tight hover:text-primary">
                 PROJECTS
               </Link>
             </li>
             <li>
-              <Link href="#clients" className="leading-tight hover:text-primary">
+              <Link href="clients" className="leading-tight hover:text-primary">
                 CLIENTS
               </Link>
             </li>
             <li>
-              <Link href="#partners" className="leading-tight hover:text-primary">
+              <Link href="partners" className="leading-tight hover:text-primary">
                 PARTNERS
               </Link>
             </li>
             <li>
-              <Link href="#commitments" className="leading-tight hover:text-primary">
+              <Link href="commitments" className="leading-tight hover:text-primary">
                 COMMITMENTS
               </Link>
             </li>
