@@ -1,5 +1,6 @@
 "use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import Link from "next/link";
 
 import React from "react";
 const Footer = () => {
@@ -8,15 +9,15 @@ const Footer = () => {
       <div className="container">
         <div className="flex flex-wrap gap-4 lg:gap-0">
           <div className="lg:w-2/3">
-            <Tabs defaultValue="dubai" className="w-[400px]">
-              <TabsList className="relative flex flex-wrap  gap-y-5 lg:flex-row rounded-none mb-10 lg:mb-20 bg-transparent justify-start p-0 h-auto">
-                <TabsTrigger value="dubai" className="relative group cursor-pointer data-[state=active]:bg-transparent text-white hover:text-primary capitalize text-left w-fit lg:w-auto lg:text-center pl-0 pr-20 py-0 text-19 font-medium">
+            <Tabs defaultValue="dubai" className="">
+              <TabsList className="relative flex    gap-y-5 lg:flex-row rounded-none mb-10 lg:mb-20 bg-transparent justify-start p-0 h-auto">
+                <TabsTrigger value="dubai" className="relative group cursor-pointer data-[state=active]:bg-transparent text-white hover:text-primary capitalize text-left w-fit lg:w-auto lg:text-center pl-0 pr-10 md:pr-20 py-0 text-19 font-medium">
                   Dubai – UAE
-                  <div className="hidden lg:flex absolute w-full h-[2px] group-data-[state=active]:bg-primary bottom-[-18px] left-0 z-20"></div>
+                  <div className="flex absolute w-full h-[2px] group-data-[state=active]:bg-primary bottom-[-18px] left-0 z-20"></div>
                   </TabsTrigger>
-                <TabsTrigger value="riyadh" className="relative group cursor-pointer data-[state=active]:bg-transparent text-white hover:text-primary capitalize text-left w-fit lg:w-auto lg:text-center pl-0 pr-20 py-0 text-19 font-medium">
+                <TabsTrigger value="riyadh" className="relative group cursor-pointer data-[state=active]:bg-transparent text-white hover:text-primary capitalize text-left w-fit lg:w-auto lg:text-center pl-0 md:pr-20 py-0 text-19 font-medium">
                   Riyadh - KSA
-                  <div className="hidden lg:flex absolute w-full h-[2px] group-data-[state=active]:bg-primary bottom-[-18px] left-0 z-20"></div>
+                  <div className="flex absolute w-full h-[2px] group-data-[state=active]:bg-primary bottom-[-18px] left-0 z-20"></div>
                   </TabsTrigger>
                 <div className="absolute w-full h-[1px] bg-white/75 bottom-[-17px] left-0 z-0"></div>
               </TabsList>
@@ -40,20 +41,19 @@ const Footer = () => {
               </TabsContent>
             </Tabs>
 
-         
+
           </div>
           <div className="lg:w-1/3">
             <div className="flex flex-col h-full">
               <div className="flex flex-wrap gap-7 md:gap-10 h-full justify-between">
               <ul className="ulsmn">
-                <li>Maintenance</li>
-                <li>Design & Engineering</li>
-                <li>Installation</li>
+                <li><Link href="/services#section1">Maintenance</Link></li>
+                <li><Link href="/services#section2">Design & Engineering</Link></li>
+                <li><Link href="/services#section3">Installation</Link></li>
               </ul>
               <ul className="ulsmn">
-                <li>About Us</li>
+                <li><Link href="/about">About Us</Link></li>
                 <li>Health Safety Environment</li>
-                <li>Policies</li>
               </ul>
             </div>
             <div className="border-t border-[#ffffff35]">

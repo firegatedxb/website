@@ -26,6 +26,9 @@ interface Client {
     imageAlt: string;
     title: string;
     description: string;
+    banner: string;
+    bannerAlt: string;
+    pageTitle: string;
 }
 
 export default function Team() {
@@ -33,7 +36,7 @@ export default function Team() {
     const [image, setImage] = useState<string>("");
     const [imageAlt, setImageAlt] = useState<string>("");
     const [clientList, setClientList] = useState<Client[]>([]);
-    const { register, handleSubmit, setValue, control } = useForm<Client>();
+    const { register, handleSubmit, setValue, control, watch } = useForm<Client>();
     const [metaTitle, setMetaTitle] = useState<string>("");
     const [metaDescription, setMetaDescription] = useState<string>("");
 
@@ -66,7 +69,12 @@ export default function Team() {
                 console.log(data)
                 setValue("title", data.data[0].title);
                 setValue("description", data.data[0].description);
+                setValue("banner", data.data[0].banner);
+                setValue("bannerAlt", data.data[0].bannerAlt);
+                setValue("pageTitle", data.data[0].pageTitle);
                 setClientList(data.data[0].clients);
+                setMetaTitle(data.data[0].metaTitle);
+                setMetaDescription(data.data[0].metaDescription);
             } else {
                 const data = await response.json();
                 alert(data.message);
@@ -76,23 +84,23 @@ export default function Team() {
         }
     }
 
-    const handleFetchMetaDetails = async () => {
-        try {
-            const response = await fetch("/api/admin/team/meta");
-            if (response.ok) {
-                const data = await response.json();
-                if (data) {
-                    setMetaTitle(data.teamMeta.metaTitle);
-                    setMetaDescription(data.teamMeta.metaDescription);
-                }
-            } else {
-                const data = await response.json();
-                alert(data.message);
-            }
-        } catch (error) {
-            console.log("Error fetching meta details", error);
-        }
-    }
+    // const handleFetchMetaDetails = async () => {
+    //     try {
+    //         const response = await fetch("/api/admin/team/meta");
+    //         if (response.ok) {
+    //             const data = await response.json();
+    //             if (data) {
+    //                 setMetaTitle(data.teamMeta.metaTitle);
+    //                 setMetaDescription(data.teamMeta.metaDescription);
+    //             }
+    //         } else {
+    //             const data = await response.json();
+    //             alert(data.message);
+    //         }
+    //     } catch (error) {
+    //         console.log("Error fetching meta details", error);
+    //     }
+    // }
 
 
 
@@ -155,7 +163,6 @@ export default function Team() {
 
     useEffect(() => {
         handleFetchClients();
-        handleFetchMetaDetails();
     }, [])
 
     const onSubmit = async (data: Client) => {
@@ -220,6 +227,18 @@ export default function Team() {
                     <Button type="submit">Save</Button>
                 </div>
                 <div className="mt-2 flex flex-col gap-2 h-fit">
+                <div>
+                        <Label className="text-sm font-bold">Banner Image</Label>
+                        <ImageUploader onChange={(url) => setValue("banner", url)} value={watch("banner")} />
+                    </div>
+                    <div>
+                        <Label className="text-sm font-bold">Banner Alt Tag</Label>
+                        <Input type="text" placeholder="Alt Tag" {...register("bannerAlt")} />
+                    </div>
+                <div>
+                        <Label className="text-sm font-bold">Page Title</Label>
+                        <Input type="text" placeholder="Title" {...register("pageTitle")} />
+                    </div>
                     <div>
                         <Label className="text-sm font-bold">Title</Label>
                         <Input type="text" placeholder="Title" {...register("title")} />

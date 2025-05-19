@@ -12,13 +12,16 @@ export async function POST(req: NextRequest) {
 
         await connectDB();
         const body = await req.json();
-        const { title, description } = body;
+        const { title, description, banner, bannerAlt,pageTitle } = body;
         const client = await Client.findOne({});
         if (!client) {
             return NextResponse.json({ success: false, message: "Error updating client" }, { status: 500 });
         }
         client.title = title;
         client.description = description;
+        client.banner = banner;
+        client.bannerAlt = bannerAlt;
+        client.pageTitle = pageTitle;
         await client.save();
         return NextResponse.json({ success: true, message: "Client updated successfully" }, { status: 201 });
     } catch (error) {

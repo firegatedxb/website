@@ -8,9 +8,13 @@ export async function GET() {
     try {
         await connectDB();
         const location = await Location.find();
-        if(location){
-            return NextResponse.json({ success: true, data: location }, { status: 200 });
-        }else{
+        if (location) {
+            const res = NextResponse.json({ success: true, data: location }, { status: 200 });
+            res.headers.set("Access-Control-Allow-Origin", "*");
+            res.headers.set("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS");
+            res.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+            return res;
+        } else {
             return NextResponse.json({ success: false, message: "Error fetching location" }, { status: 500 });
         }
     } catch (error) {
@@ -19,14 +23,14 @@ export async function GET() {
     }
 }
 
-export async function POST(req:NextRequest) {
+export async function POST(req: NextRequest) {
     try {
         await connectDB();
         const { name } = await req.json();
         const location = await Location.create({ name });
-        if(location){
+        if (location) {
             return NextResponse.json({ message: "location added successfully" }, { status: 200 });
-        }else{
+        } else {
             return NextResponse.json({ message: "Error adding location" }, { status: 500 });
         }
     } catch (error) {
@@ -35,25 +39,25 @@ export async function POST(req:NextRequest) {
     }
 }
 
-export async function PATCH(req:NextRequest) {
+export async function PATCH(req: NextRequest) {
     const session = await mongoose.startSession();
     try {
         await connectDB();
         session.startTransaction();
         const searchParams = req.nextUrl.searchParams;
         const id = searchParams.get("id");
-        const { name,oldName } = await req.json();
+        const { name, oldName } = await req.json();
         const projects = await Project.find();
         projects.map(async (project) => {
-            if(project.location === oldName){
+            if (project.location === oldName) {
                 await Project.findByIdAndUpdate(project._id, { location: name }, { new: true });
             }
         });
         const location = await Location.findByIdAndUpdate(id, { name }, { new: true });
-        if(location){
+        if (location) {
             await session.commitTransaction();
             return NextResponse.json({ message: "location updated successfully" }, { status: 200 });
-        }else{
+        } else {
             await session.abortTransaction();
             return NextResponse.json({ message: "Error updating location" }, { status: 500 });
         }
@@ -61,12 +65,12 @@ export async function PATCH(req:NextRequest) {
         console.log(error)
         await session.abortTransaction();
         return NextResponse.json({ message: "Error updating location" }, { status: 500 });
-    }finally{
+    } finally {
         await session.endSession();
     }
 }
 
-export async function DELETE(req:NextRequest) {
+export async function DELETE(req: NextRequest) {
     const session = await mongoose.startSession();
     try {
         await connectDB();
@@ -74,19 +78,19 @@ export async function DELETE(req:NextRequest) {
         const searchParams = req.nextUrl.searchParams;
         const id = searchParams.get("id");
         const deletedLocation = await Location.findById(id);
-        if(deletedLocation){
+        if (deletedLocation) {
             const projects = await Project.find();
             projects.map(async (project) => {
-                if(project.location === deletedLocation.name){
+                if (project.location === deletedLocation.name) {
                     await Project.findByIdAndUpdate(project._id, { location: "" }, { new: true });
                 }
             });
         }
         const location = await Location.findByIdAndDelete(id);
-        if(location){
+        if (location) {
             await session.commitTransaction();
             return NextResponse.json({ message: "location deleted successfully" }, { status: 200 });
-        }else{
+        } else {
             await session.abortTransaction();
             return NextResponse.json({ message: "Error deleted location" }, { status: 500 });
         }
@@ -94,7 +98,7 @@ export async function DELETE(req:NextRequest) {
         console.log(error)
         await session.abortTransaction();
         return NextResponse.json({ message: "Error deleted location" }, { status: 500 });
-    }finally{
+    } finally {
         await session.endSession();
     }
 }

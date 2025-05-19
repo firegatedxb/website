@@ -1,18 +1,43 @@
+
+import { StaticImageData } from "next/image";
 import PrimaryCard from "../common/PrimaryCard";
 import Sbttl from "../common/Sbttl";
-import { systemsCrdData } from "./data";
-const ContentArea = () => {
-  return ( 
-    <section className="py-5 lg:py-25">
+interface FrameworkItem {
+  id: number;
+  img: StaticImageData | string;
+    title: string;
+    desc: string;
+}
+interface FrameworkI {
+  heading:string;
+  description:string;
+  items: FrameworkItem[];
+}
+interface FrameworkSectionProps {
+
+  data: FrameworkI;
+}
+
+const ContentArea: React.FC<FrameworkSectionProps> = ({
+  data,
+
+}) => {
+  return (
+    <section className="pb-[50px] lg:pb-25">
       <div className="container">
-        <div className="mb-4">
-          <Sbttl title="Core Components" />
-        </div>
-        <p>Engineered for precise response, compliance, and performance in high-risk environments. We supply and install a full range of solutions, including :</p>
-        <div className="mt-10">
+          <div>
+            <div className="mb-4">
+              <Sbttl title={data.heading} />
+          </div>
+          {data.description &&
+            <p>{data.description}</p>
+          }
+
+          </div>
+        <div className="mt-10 lg:mt-[70px]">
           <div className="grid gric-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {
-              systemsCrdData.map(item =>(
+              data.items.map(item =>(
                 <PrimaryCard key={item.id} crdImg={item.img} crdTitle={item.title} crdDesc={item.desc} />
               ))
             }
@@ -22,5 +47,5 @@ const ContentArea = () => {
     </section>
    );
 }
- 
+
 export default ContentArea;

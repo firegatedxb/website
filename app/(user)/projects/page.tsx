@@ -1,3 +1,4 @@
+
 import Index from "@/app/components/projects";
 
 const page = () => {
