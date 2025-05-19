@@ -1,10 +1,10 @@
 import React from 'react'
-import ProjectsList from './sections/ProjectsList'
+import ProjectList from './ProjectList'
 
 const Index = () => {
   return (
     <>
-      <ProjectsList />
+      <ProjectList />
     </>
   )
 }
