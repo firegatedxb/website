@@ -35,6 +35,7 @@ interface ProjectFormProps {
     coverPhotoAlt: string;
     metaTitle: string;
     metaDescription: string;
+    featuredProject:string;
 }
 
 const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
@@ -82,6 +83,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                 setValue("description", data.data.description);
                 setValue("metaTitle", data.data.metaTitle);
                 setValue("metaDescription", data.data.metaDescription);
+                setValue("featuredProject", data.data.featuredProject);
             } else {
                 const data = await response.json();
                 alert(data.message);
@@ -242,7 +244,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                                 <SelectTrigger className="w-full">
                                     <SelectValue placeholder="Select Location" />
                                 </SelectTrigger>
-                                <SelectContent>
+                                <SelectContent className='bg-white'>
                                     {locationList.map((item, index) => (
                                         <SelectItem key={index} value={item.name}>
                                             {item.name}
@@ -270,8 +272,33 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                     {errors.description && <p className='text-red-500'>{errors.description.message}</p>}
                 </div>
 
-
                 <div className='flex flex-col gap-2'>
+                    <Label className='pl-3 font-bold'>Featured Project</Label>
+                    <Controller name="featuredProject" control={control} rules={{ required: "Featured Project is required" }} render={({ field }) => {
+                        return <Select
+                            onValueChange={field.onChange}
+                            value={field.value}
+                            defaultValue=""
+                        >
+                            <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Select Featured Project" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                
+                                    <SelectItem value={"true"}>
+                                        Yes
+                                    </SelectItem>
+                                    <SelectItem value={"false"}>
+                                        No
+                                    </SelectItem>
+                            </SelectContent>
+                        </Select>
+                    }} />
+                    {errors.featuredProject && <p className="text-red-500">{errors.featuredProject.message}</p>}
+                </div>
+
+
+                <div className='flex flex-col gap-2 mt-16'>
                     <Label className='pl-3 font-bold'>Meta Title</Label>
                     <Input type='text' placeholder='Meta Title' {...register("metaTitle")} />
                 </div>
