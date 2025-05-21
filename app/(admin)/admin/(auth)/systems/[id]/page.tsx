@@ -67,7 +67,7 @@ const SystemForm = () => {
                 const data = await response.json();
                 console.log(data)
                 setValue("slug", data.data.slug);
-                setValue("banner", data.data.bannerImage);
+                setValue("banner", data.data.banner);
                 setValue("bannerAlt", data.data.bannerAlt);
                 setValue("pageTitle", data.data.title);
                 setValue("componentTitle", data.data.componentTitle);

@@ -6,7 +6,7 @@ import { verifyAdmin } from "@/lib/verifyAdmin";
 export async function GET() {
     try {
         await connectDB();
-        const clients = await Partners.find({});
+        const clients = await Partners.findOne({});
         return NextResponse.json({ success: true, data: clients }, { status: 200 });
     } catch (error) {
         console.log(error)

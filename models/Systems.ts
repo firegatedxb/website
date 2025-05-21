@@ -18,7 +18,7 @@ const systemSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    bannerImage: {
+    banner: {
         type: String,
         required: true,
     },
@@ -51,7 +51,7 @@ const systemSchema = new mongoose.Schema({
                 type: String,
                 required: true,
             },
-            bannerImage: {
+            banner: {
                 type: String,
                 required: true,
             },

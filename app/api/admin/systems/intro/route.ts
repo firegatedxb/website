@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
         }
         systems.title = title;
         systems.description = description;
-        systems.bannerImage = bannerImage;
+        systems.banner = bannerImage;
         systems.bannerAlt = bannerAlt;
         systems.pageTitle = pageTitle;
 

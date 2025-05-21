@@ -77,7 +77,7 @@ export default function Team() {
                 console.log(data)
                 setValue("title", data.data[0].title);
                 setValue("description", data.data[0].description);
-                setValue("bannerImage", data.data[0].bannerImage);
+                setValue("bannerImage", data.data[0].banner);
                 setValue("bannerAlt", data.data[0].bannerAlt);
                 setValue("pageTitle", data.data[0].pageTitle);
                 setSystemList(data.data[0].systems);
