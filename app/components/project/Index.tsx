@@ -27,6 +27,7 @@ const Index: React.FC<FrameworkSectionProps> = ({ data }) => {
   const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json())
   const {data: locationData} = useSWR(`/api/admin/location`, fetcher)
   const {data: sectorData} = useSWR(`/api/admin/sector`, fetcher)
+
   return (
     <>
       <ProjectList data={data.data}  locationData={locationData} sectorData={sectorData}/>
