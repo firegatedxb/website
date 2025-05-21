@@ -53,7 +53,7 @@ const systemSchema = new mongoose.Schema({
             },
             banner: {
                 type: String,
-                required: true,
+                
             },
             bannerAlt: {
                 type: String,

@@ -23,7 +23,7 @@ import { RiPagesFill } from "react-icons/ri";
 import Link from "next/link";
 
 interface System {
-    bannerImage: string;
+    banner: string;
     bannerAlt: string;
     pageTitle: string;
     _id: string;
@@ -77,7 +77,7 @@ export default function Team() {
                 console.log(data)
                 setValue("title", data.data[0].title);
                 setValue("description", data.data[0].description);
-                setValue("bannerImage", data.data[0].banner);
+                setValue("banner", data.data[0].banner);
                 setValue("bannerAlt", data.data[0].bannerAlt);
                 setValue("pageTitle", data.data[0].pageTitle);
                 setSystemList(data.data[0].systems);
@@ -237,7 +237,7 @@ export default function Team() {
                 <div className="mt-2 flex flex-col gap-2 h-fit">
                 <div>
                         <Label className="text-sm font-bold">Banner Image</Label>
-                        <ImageUploader onChange={(url) => setValue("bannerImage", url)} value={watch("bannerImage")}/>
+                        <ImageUploader onChange={(url) => setValue("banner", url)} value={watch("banner")}/>
                     </div>
                     <div>
                         <Label className="text-sm font-bold">Banner Alt</Label>
