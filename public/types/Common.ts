@@ -147,7 +147,7 @@ export type systems=
     pageTitle: string,
     title: string,
     description: string,
-    bannerImage: string,
+    banner: string,
     bannerAlt: string,
     systems: [
       {
@@ -157,7 +157,7 @@ export type systems=
         description: string,
         logo: string,
         logoAlt: string,
-        bannerImage: string,
+        banner: string,
         bannerAlt: string,
         componentTitle: string,
         componentDescription: string,
