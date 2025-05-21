@@ -2,10 +2,10 @@
 import { motion } from "framer-motion";
 import { moveUp } from "../motionVarients";
 import Image from "next/image";
-import {Commitments, About,Clients } from '@/public/types/Common';
+import {Commitments, About,Clients,Partners, Services, systems } from '@/public/types/Common';
 
 
-const InnerBanner = ({ data }: { data: About | Clients | Commitments }) => {
+const InnerBanner = ({ data }: { data: About | Clients | Commitments | Partners | Services | systems}) => {
   console.log(data)
   return (
 

@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Sbttl from "../common/Sbttl";
 import Image, { StaticImageData } from "next/image";
-import { certifications } from "./data";
 import { About } from "@/public/types/Common";
 
 

@@ -3,12 +3,12 @@ import Header from './Header'
 import Contents from './Contents'
 import Accreditation from './Accreditation'
 import InnerBanner from '../common/InnerBanner'
-import { assets } from '@/public/assets/assets'
+import { Partners } from '@/public/types/Common';
 
-const Index = () => {
+const Index = async ({ data }: { data: Partners }) => {
   return (
     <>
-    <InnerBanner pageTitle={"our partners"} bannerBg={assets.partnerbnr} />
+      <InnerBanner data={data} />
     <Header/>
     <Contents/>
     <Accreditation/>

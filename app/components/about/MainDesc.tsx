@@ -1,7 +1,6 @@
 "use client"
 import { motion } from "framer-motion";
 import { moveUp } from "@/app/components/motionVarients";
-import { mainDesc } from "./data";
 import Image from "next/image";
 import { About } from '@/public/types/Common';
 

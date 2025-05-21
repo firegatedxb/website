@@ -1,15 +1,17 @@
 import Main from "./Main";
 import InnerBanner from "../common/InnerBanner";
-import { assets } from "@/public/assets/assets";
 import ServicesList from "./ServicesList";
-const Index = () => {
-  return ( 
+import { Services } from '@/public/types/Common';
+
+
+const Index = async ({ data }: { data: Services }) => {
+  return (
     <>
-    <InnerBanner pageTitle={"Services"} bannerBg={assets.servicesBnr} />
+      <InnerBanner data={data} />
     <Main/>
     <ServicesList/>
     </>
    );
 }
- 
+
 export default Index;

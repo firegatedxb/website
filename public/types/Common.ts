@@ -89,3 +89,89 @@ export type Clients =
       }
     ]
   }
+export type Partners =
+    {
+    metaTitle: string,
+    metaDescription: string,
+    banner: string,
+    bannerAlt: string,
+    pageTitle: string,
+    title: string,
+    description: string,
+    partners: [
+      {
+        name: string,
+        description: string,
+        logo: string,
+        logoAlt: string,
+        image: string,
+        imageAlt: string,
+        website: string
+      }
+    ],
+    accredit: [
+      {
+        accreditImage: string,
+        accreditImageAlt: string
+      }
+    ]
+  }
+export type Services =
+    {
+    metaTitle: string,
+    metaDescription: string,
+    banner: string,
+    bannerAlt: string,
+    pageTitle: string,
+    services: [
+      {
+        title: string,
+        description: string,
+        items: [
+          {
+            title: string,
+            logo: string,
+            logoAlt: string,
+            description: string,
+            image: string,
+            imageAlt: string
+          }
+        ]
+      }
+    ]
+  }
+export type systems=
+     {
+    metaTitle: string,
+    metaDescription: string,
+    pageTitle: string,
+    title: string,
+    description: string,
+    bannerImage: string,
+    bannerAlt: string,
+    systems: [
+      {
+        image: string,
+        imageAlt: string,
+        title: string,
+        description: string,
+        logo: string,
+        logoAlt: string,
+        bannerImage: string,
+        bannerAlt: string,
+        componentTitle: string,
+        componentDescription: string,
+        components: [
+          {
+            title: string,
+            description: string,
+            image: string,
+            imageAlt: string
+          }
+        ],
+        slug: string,
+        metaTitle: string,
+        metaDescription: string
+      }
+    ]
+  }
