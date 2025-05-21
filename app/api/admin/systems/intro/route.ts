@@ -12,14 +12,15 @@ export async function POST(req: NextRequest) {
 
         await connectDB();
         const body = await req.json();
-        const { title, description, bannerImage, bannerAlt,pageTitle } = body;
+        console.log(body)
+        const { title, description, banner, bannerAlt,pageTitle } = body;
         const systems = await Systems.findOne({});
         if (!systems) {
             return NextResponse.json({ success: false, message: "Error updating systems" }, { status: 500 });
         }
         systems.title = title;
         systems.description = description;
-        systems.banner = bannerImage;
+        systems.banner = banner;
         systems.bannerAlt = bannerAlt;
         systems.pageTitle = pageTitle;
 
