@@ -9,6 +9,7 @@ interface FrameworkSectionProps {
     slug: string,
     client: string,
     sector: string,
+    status: boolean;
     consultant: string,
     location: string,
     thumbnail: string,

@@ -1,11 +1,13 @@
 import Main from "./Main";
 import InnerBanner from "../common/InnerBanner";
-import { assets } from "@/public/assets/assets";
 import ClientLogo from "./ClientLogo";
-const Index = () => {
+import { Clients } from '@/public/types/Common';
+
+
+const Index = async ({ data }: { data: Clients }) => {
   return (
     <>
-    <InnerBanner pageTitle={"our clients"} bannerBg={assets.clientbnr} />
+    <InnerBanner data={data} />
       <Main />
       <ClientLogo />
     </>

@@ -4,11 +4,14 @@ import Health from './Health'
 import Investing from './Investing'
 import InnerBanner from '../common/InnerBanner'
 import { assets } from '@/public/assets/assets'
+import { Commitments } from '@/public/types/Common';
 
-const Index = () => {
+
+const Index = async ({ data }: { data: Commitments }) => {
+
   return (
     <>
-    <InnerBanner pageTitle={"Our Commitments"} bannerBg={assets.servicesbnr} />
+    <InnerBanner data={data}  />
     <Built/>
     <Health/>
     <Investing/>
