@@ -25,7 +25,7 @@ try {
         return NextResponse.json({ success: false, message: "Error updating systems" }, { status: 500 });
     }
     systemsData.slug = slug;
-    systemsData.bannerImage = banner;
+    systemsData.banner = banner;
     systemsData.bannerAlt = bannerAlt;
     systemsData.pageTitle = pageTitle;
     systemsData.componentTitle = componentTitle;
