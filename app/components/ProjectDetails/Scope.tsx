@@ -9,22 +9,24 @@ const scopeOfWorkData = {
     "As an A Grade Civil Defence certified contractor, our engineers and technicians undergo comprehensive training in CFPS, NFPA, and manufacturer standards. This expertise allows us to offer a comprehensive range of fire and security solutions, including fire detection, public address and voice evacuation systems, background music systems, emergency exit light systems, CCTV, access control, and building management system (BMS) solutions.",
   ],
 };
+import { Project } from "@/public/types/Project";
+interface FrameworkSectionProps {
+  data: Project;
+}
 
-const PjtBanner = () => {
+const PjtBanner: React.FC<FrameworkSectionProps> = ({
+  data,
+
+}) => {
   return (
     <div className="">
       <div className="container">
         <div className="pt-[40px] md:pt-[50px] lg:pt-[86px] pb-[40px] md:pb-[50px] lg:pb-[70px] border-b border-[#cccccc]">
   <h1 className="mb-4 md:mb-[28px] text-secondary text-50 font-bold uppercase">
-    {scopeOfWorkData.title}
+    {data.data.title}
   </h1>
 
-  <div>
-    {scopeOfWorkData.paragraphs.map((text, index) => (
-      <p key={index} className="mb-6">
-        {text}
-      </p>
-    ))}
+  <div  dangerouslySetInnerHTML={{ __html: data.data.description }}>
   </div>
 </div>
 

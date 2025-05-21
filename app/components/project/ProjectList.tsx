@@ -27,6 +27,8 @@ interface Project {
 
 interface DynamicGridProps {
   data: Project[];
+  locationData: { data: { name: string }[] };
+  sectorData: { data: { name: string }[] };
 }
 
 function ProjectList(items: Project[]): Project[][] {
@@ -44,10 +46,29 @@ function ProjectList(items: Project[]): Project[][] {
   return chunks;
 }
 
-export default function DynamicGrid({ data }: DynamicGridProps) {
+export default function DynamicGrid({ data,locationData,sectorData }: DynamicGridProps) {
   const [selected, setSelected] = useState("");
   const [selectedsector, setSelectedsector] = useState("");
   const [selectestatus, setSelectestatus] = useState("");
+  const [filteredData, setFilteredData] = useState<
+      {
+      name: string;
+  slug: string;
+  client: string;
+  sector: string;
+  consultant: string;
+  location: string;
+  thumbnail: string | StaticImageData;
+  thumbnailAlt: string;
+  coverPhoto: string;
+  coverPhotoAlt: string;
+  title: string;
+  description: string;
+  metaTitle: string;
+  metaDescription: string;
+  featuredProject: boolean;
+      }[]
+    >([]);
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelected(e.target.value);
   };
@@ -57,12 +78,57 @@ export default function DynamicGrid({ data }: DynamicGridProps) {
   const handleStatus = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectestatus(e.target.value);
   };
+console.log(selected)
+
+  const groupedItems = ProjectList(filteredData);
+
+ useEffect(() => {
+  if (data) {
+    let filtered = data;
+    // 🔹 Filter by both sector and location
+    if (selected && selectedsector) {
+      filtered = data
+        .filter(
+          (item) =>
+            item.location?.trim().toLowerCase() === selected.trim().toLowerCase() &&
+            item.sector?.trim().toLowerCase() === selectedsector.trim().toLowerCase()
+        );
+    }
+    // 🔹 Filter by location only
+    else if (selected) {
+      filtered = data
+        .filter(
+          (item) =>
+            item.location?.trim().toLowerCase() === selected.trim().toLowerCase()
+        );
+    }
+    else if (selectedsector &&  selected ) {
+      filtered = data
+        .filter(
+          (item) =>
+            item.sector?.trim().toLowerCase() === selectedsector.trim().toLowerCase()&&
+            item.location?.trim().toLowerCase() === selected.trim().toLowerCase()
+        );
+    }
+     else if (selectedsector) {
+      filtered = data
+        .filter(
+          (item) =>
+            item.sector?.trim().toLowerCase() === selectedsector.trim().toLowerCase()
+        );
+    }
+    // 🔀 Shuffle & assign
+    const shuffled = filtered.sort(() => Math.random() - 0.5);
+    setFilteredData(shuffled);
+  }
+}, [data, selected, selectedsector]);
 
 
 
 
-  const groupedItems = ProjectList(data);
-
+  console.log(data)
+  console.log(selectedsector)
+  console.log(filteredData)
   return (
     <>
       <section className="pt-20 pbc-120">
@@ -79,16 +145,18 @@ export default function DynamicGrid({ data }: DynamicGridProps) {
                   value={selected}
                   onChange={handleChange}
                   className="block w-full py-2 mt-1 focus:outline-none text-white border-b border-graylit"
-                > {groupedItems.map((group, index) => (
-                  <span key={index} className="text-black ">{
-                    group.map((ss, index) => (
-                      <option value={ss.location} key={index} >
-                        {ss.location}
-                      </option>
-                    ))
-                  }</span>
-                ))}
+                >
+                   <span   className="text-black ">
+                    <option value=""disabled > Country
+                    </option>  </span>
+                  {locationData?.data?.map((group, index) => (
+                    <span key={index} className="text-black ">{
+                    <option value={group.name}  >
+                      {group.name}
+                    </option> }</span>
+                  ))}
                 </select>
+
               </div>
               <div>
                 <select
@@ -96,19 +164,16 @@ export default function DynamicGrid({ data }: DynamicGridProps) {
                   value={selectedsector}
                   onChange={handleSector}
                   className="block w-full py-2 mt-1 focus:outline-none text-white border-b border-graylit"
-                >
-                  <option value=""  >
-                    Sector
-                  </option>
-                  <option value="China" className="text-black">
-                    Sector
-                  </option>
-                  <option value="UAE" className="text-black">
-                    Sector
-                  </option>
-                  <option value="USA" className="text-black">
-                    Sector
-                  </option>
+                > <span   className="text-black ">
+                    <option value="" disabled > Sector
+                    </option>  </span>
+                  {sectorData?.data?.map((group, index) => (
+                  <span key={index} className="text-black ">{
+                      <option value={group.name}  >
+                        {group.name}
+                      </option>
+                  }</span>
+                ))}
                 </select>
               </div>
               <div>
@@ -118,18 +183,13 @@ export default function DynamicGrid({ data }: DynamicGridProps) {
                   onChange={handleStatus}
                   className="block w-full py-2 mt-1 focus:outline-none text-white border-b border-graylit"
                 >
-                  <option value="" >
-                    Status
+                  <option value="true" className="text-black" >
+                   Completed
                   </option>
-                  <option value="China" className="text-black">
-                    Status
+                  <option value="false" className="text-black">
+                    On Going
                   </option>
-                  <option value="UAE" className="text-black">
-                    Status
-                  </option>
-                  <option value="cherry" className="text-black">
-                    Status
-                  </option>
+
                 </select>
               </div>
 
