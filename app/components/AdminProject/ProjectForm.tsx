@@ -33,6 +33,7 @@ interface ProjectFormProps {
     thumbnailAlt: string;
     coverPhoto: string;
     coverPhotoAlt: string;
+    status:string;
     metaTitle: string;
     metaDescription: string;
     featuredProject:string;
@@ -84,6 +85,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                 setValue("metaTitle", data.data.metaTitle);
                 setValue("metaDescription", data.data.metaDescription);
                 setValue("featuredProject", data.data.featuredProject);
+                setValue("status", data.data.status);
             } else {
                 const data = await response.json();
                 alert(data.message);
@@ -272,6 +274,32 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                     {errors.description && <p className='text-red-500'>{errors.description.message}</p>}
                 </div>
 
+
+                <div className='flex flex-col gap-2'>
+                    <Label className='pl-3 font-bold'>Status</Label>
+                    <Controller name="status" control={control} rules={{ required: "Status is required" }} render={({ field }) => {
+                        return <Select
+                            onValueChange={field.onChange}
+                            value={field.value}
+                            defaultValue=""
+                        >
+                            <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Select Status" />
+                            </SelectTrigger>
+                            <SelectContent className=''>
+                                
+                                    <SelectItem value={"true"}>
+                                    Completed
+                                    </SelectItem>
+                                    <SelectItem value={"false"}>
+                                    Ongoing
+                                    </SelectItem>
+                            </SelectContent>
+                        </Select>
+                    }} />
+                    {errors.status && <p className="text-red-500">{errors.status.message}</p>}
+                </div>
+
                 <div className='flex flex-col gap-2'>
                     <Label className='pl-3 font-bold'>Featured Project</Label>
                     <Controller name="featuredProject" control={control} rules={{ required: "Featured Project is required" }} render={({ field }) => {
@@ -298,7 +326,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                 </div>
 
 
-                <div className='flex flex-col gap-2 mt-16'>
+                <div className='flex flex-col gap-2'>
                     <Label className='pl-3 font-bold'>Meta Title</Label>
                     <Input type='text' placeholder='Meta Title' {...register("metaTitle")} />
                 </div>
