@@ -62,9 +62,38 @@ import ffbanner from './img/systems/ffbanner.jpg';
 import sel1 from './img/systems/sel1.jpg';
 import sel2 from './img/systems/sel2.jpg';
 import sel3 from './img/systems/sel3.jpg';
-
+import prj1 from './img/projects/prj-1.jpg';
+import prj2 from './img/projects/prj-2.jpg';
+import prj3 from './img/projects/prj-3.jpg';
+import prj4 from './img/projects/prj-4.jpg';
+import prj5 from './img/projects/prj-5.jpg';
+import prj6 from './img/projects/prj-6.jpg';
+import prj7 from './img/projects/prj-7.jpg';
+import prj8 from './img/projects/prj-8.jpg';
+import prj9 from './img/projects/pjt9.png';
+import prj10 from './img/projects/pjt10.png';
+import iccon from './img/projects/iccon.svg';
+import iclocation from './img/projects/iclocation.svg';
+import icststus from './img/projects/icststus.svg';
+import icuser from './img/projects/icuser.svg';
+import dmall from './img/projects/dmall.jpg';
 
 export const assets = {
+    dmall,
+    iccon,
+    iclocation,
+    icststus,
+    icuser,
+    prj1,
+    prj2,
+    prj3,
+    prj4,
+    prj5,
+    prj6,
+    prj7,
+    prj8,
+    prj9,
+    prj10,
     embanner,
     ffbanner,
     sel1,
