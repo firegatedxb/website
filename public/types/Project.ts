@@ -6,7 +6,8 @@ export type Project =  {
     data:{
     name: string,
     slug: string,
-    client: string,
+        client: string,
+    status: boolean;
     sector: string,
     consultant: string,
     location: string,

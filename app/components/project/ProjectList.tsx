@@ -11,6 +11,7 @@ interface Project {
   slug: string;
   client: string;
   sector: string;
+  status:boolean;
   consultant: string;
   location: string;
   thumbnail: string | StaticImageData;
@@ -45,7 +46,13 @@ function ProjectList(items: Project[]): Project[][] {
   return chunks;
 }
 
-export default function DynamicGrid({ data,locationData,sectorData }: DynamicGridProps) {
+export default function DynamicGrid({ data, locationData, sectorData }: DynamicGridProps) {
+  const handleClearFilters = () => {
+  setSelected('');         // reset location
+  setSelectedsector('');   // reset sector
+  setSelectestatus('');    // reset status
+  setFilteredData(data);   // show all data
+};
   const [selected, setSelected] = useState("");
   const [selectedsector, setSelectedsector] = useState("");
   const [selectestatus, setSelectestatus] = useState("");
@@ -55,6 +62,7 @@ export default function DynamicGrid({ data,locationData,sectorData }: DynamicGri
   slug: string;
   client: string;
   sector: string;
+  status:boolean;
   consultant: string;
   location: string;
   thumbnail: string | StaticImageData;
@@ -77,57 +85,80 @@ export default function DynamicGrid({ data,locationData,sectorData }: DynamicGri
   const handleStatus = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectestatus(e.target.value);
   };
-console.log(selected)
 
   const groupedItems = ProjectList(filteredData);
+useEffect(() => {
+  if (!data) return;
 
- useEffect(() => {
-  if (data) {
-    let filtered = data;
-    // 🔹 Filter by both sector and location
-    if (selected && selectedsector) {
-      filtered = data
-        .filter(
-          (item) =>
-            item.location?.trim().toLowerCase() === selected.trim().toLowerCase() &&
-            item.sector?.trim().toLowerCase() === selectedsector.trim().toLowerCase()
-        );
-    }
-    // 🔹 Filter by location only
-    else if (selected) {
-      filtered = data
-        .filter(
-          (item) =>
-            item.location?.trim().toLowerCase() === selected.trim().toLowerCase()
-        );
-    }
-    else if (selectedsector &&  selected ) {
-      filtered = data
-        .filter(
-          (item) =>
-            item.sector?.trim().toLowerCase() === selectedsector.trim().toLowerCase()&&
-            item.location?.trim().toLowerCase() === selected.trim().toLowerCase()
-        );
-    }
-     else if (selectedsector) {
-      filtered = data
-        .filter(
-          (item) =>
-            item.sector?.trim().toLowerCase() === selectedsector.trim().toLowerCase()
-        );
-    }
-    // 🔀 Shuffle & assign
-    const shuffled = filtered.sort(() => Math.random() - 0.5);
-    setFilteredData(shuffled);
+  let filtered = data;
+
+  // 🔹 1. location + sector + status
+  if (selected && selectedsector && selectestatus) {
+    filtered = data.filter(
+      (item) =>
+        item.location?.trim().toLowerCase() === selected.trim().toLowerCase() &&
+        item.sector?.trim().toLowerCase() === selectedsector.trim().toLowerCase() &&
+        String(item.status).toLowerCase() === selectestatus.trim().toLowerCase()
+    );
   }
-}, [data, selected, selectedsector]);
+
+  // 🔹 2. location + sector
+  else if (selected && selectedsector) {
+    filtered = data.filter(
+      (item) =>
+        item.location?.trim().toLowerCase() === selected.trim().toLowerCase() &&
+        item.sector?.trim().toLowerCase() === selectedsector.trim().toLowerCase()
+    );
+  }
+
+  // 🔹 3. location + status
+  else if (selected && selectestatus) {
+    filtered = data.filter(
+      (item) =>
+        item.location?.trim().toLowerCase() === selected.trim().toLowerCase() &&
+        String(item.status).toLowerCase() === selectestatus.trim().toLowerCase()
+    );
+  }
+
+  // 🔹 4. sector + status
+  else if (selectedsector && selectestatus) {
+    filtered = data.filter(
+      (item) =>
+        item.sector?.trim().toLowerCase() === selectedsector.trim().toLowerCase() &&
+        String(item.status).toLowerCase() === selectestatus.trim().toLowerCase()
+    );
+  }
+
+  // 🔹 5. location only
+  else if (selected) {
+    filtered = data.filter(
+      (item) =>
+        item.location?.trim().toLowerCase() === selected.trim().toLowerCase()
+    );
+  }
+
+  // 🔹 6. sector only
+  else if (selectedsector) {
+    filtered = data.filter(
+      (item) =>
+        item.sector?.trim().toLowerCase() === selectedsector.trim().toLowerCase()
+    );
+  }
+
+  // 🔹 7. status only
+  else if (selectestatus) {
+    filtered = data.filter(
+      (item) =>
+        String(item.status).toLowerCase() === selectestatus.trim().toLowerCase()
+    );
+  }
+
+  // 🔀 Shuffle and set
+  const shuffled = filtered.sort(() => Math.random() - 0.5);
+  setFilteredData(shuffled);
+}, [data, selected, selectedsector, selectestatus]);
 
 
-
-
-  console.log(data)
-  console.log(selectedsector)
-  console.log(filteredData)
   return (
     <>
       <section className="pt-20 pbc-120">
@@ -145,14 +176,13 @@ console.log(selected)
                   onChange={handleChange}
                   className="block w-full py-2 mt-1 focus:outline-none text-white border-b border-graylit"
                 >
-                   <span   className="text-black ">
+
                     <option value=""disabled > Country
-                    </option>  </span>
+                    </option>
                   {locationData?.data?.map((group, index) => (
-                    <span key={index} className="text-black ">{
-                    <option value={group.name}  >
+                    <option value={group.name}  key={index} className="text-black" >
                       {group.name}
-                    </option> }</span>
+                    </option>
                   ))}
                 </select>
 
@@ -163,15 +193,15 @@ console.log(selected)
                   value={selectedsector}
                   onChange={handleSector}
                   className="block w-full py-2 mt-1 focus:outline-none text-white border-b border-graylit"
-                > <span   className="text-black ">
+                >
                     <option value="" disabled > Sector
-                    </option>  </span>
+                    </option>
                   {sectorData?.data?.map((group, index) => (
-                  <span key={index} className="text-black ">{
-                      <option value={group.name}  >
+
+                      <option value={group.name} key={index} className="text-black " >
                         {group.name}
                       </option>
-                  }</span>
+
                 ))}
                 </select>
               </div>
@@ -182,6 +212,9 @@ console.log(selected)
                   onChange={handleStatus}
                   className="block w-full py-2 mt-1 focus:outline-none text-white border-b border-graylit"
                 >
+                  <option value="" disabled className="text-black" >
+                   Status
+                  </option>
                   <option value="true" className="text-black" >
                    Completed
                   </option>
@@ -193,8 +226,8 @@ console.log(selected)
               </div>
 
               <div className="ml-auto mt-6 md:mt-0">
-                <Link
-                  href="#"
+                <div
+                 onClick={handleClearFilters}
                   className="flex cursor-pointer items-center bg-primary hover:bg-red-700 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase group"
                 >
                   <span>Clear filter</span>
@@ -207,7 +240,7 @@ console.log(selected)
                       className="w-full h-[14px] object-contain group-hover:animate-pulse  rotate-180"
                     ></Image>
                   </span>
-                </Link>
+                </div>
               </div>
             </div>
           </div>
