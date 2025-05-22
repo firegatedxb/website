@@ -1,7 +1,6 @@
 "use client"
 import React from 'react'
 import Image from 'next/image'
-import { partnerData } from './data'
 import Link from 'next/link'
 
 import { Partners } from '@/public/types/Common';

@@ -12,8 +12,8 @@ const Index = async ({ data }: { data: Commitments }) => {
     <>
     <InnerBanner data={data}  />
     <Built data={data} />
-    <Health/>
-    <Investing/>
+    <Health data={data}/>
+    <Investing data={data}/>
     </>
   )
 }

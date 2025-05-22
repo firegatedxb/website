@@ -1,4 +1,4 @@
-import { services } from "./data";
+
 import Image from "next/image";
 
 import { Services } from '@/public/types/Common';

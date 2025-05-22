@@ -1,8 +1,5 @@
 "use client"
-import { assets } from "@/public/assets/assets";
 import Image from "next/image";
-const items = [assets.cl1, assets.cl2, assets.cl3, assets.cl4, assets.cl5, assets.cl6, assets.cl7, assets.cl8, assets.cl9, assets.cl10,
-assets.cl11, assets.cl12, assets.cl13, assets.cl14, assets.cl15, assets.cl16, assets.cl17, assets.cl18, assets.cl19, assets.cl20];
 
 import { Clients } from '@/public/types/Common';
 
