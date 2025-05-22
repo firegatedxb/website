@@ -8,8 +8,8 @@ const Index = async ({ data }: { data: Services }) => {
   return (
     <>
       <InnerBanner data={data} />
-    <Main/>
-    <ServicesList/>
+    <Main data={data}/>
+    <ServicesList data={data}/>
     </>
    );
 }
