@@ -5,7 +5,6 @@ import { Partners } from '@/public/types/Common';
 
 
 const Header = ({ data }: { data: Partners }) => {
-  console.log(data)
   return (
     <div className='container pt-[50px] pb-[50px] md:py-[70px] lg:py-[100px]'>
       <div className='flex flex-col gap-7'>
