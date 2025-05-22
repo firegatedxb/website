@@ -34,7 +34,7 @@ import { Commitments } from '@/public/types/Common';
 
 
 const Built = ({ data }: { data: Commitments }) => {
-  console.log(data)
+  console.log(data.firstSection)
   return (
     <div className="relative">
       <div className="container">
@@ -43,14 +43,14 @@ const Built = ({ data }: { data: Commitments }) => {
             <div
               className="lg:w-[45%] mt-10 lg:mt-0 h-[350px] lg:h-full lg:absolute left-0 object-cover rounded-xl lg:rounded-tl-[0px]  lg:rounded-bl-[0px] bg-no-repeat bg-cover"
               style={{
-                backgroundImage: "url('/assets/img/commitment/builtimage.jpg')",
+                backgroundImage: `url(${data.firstSection.image})`,
               }}
             ></div>
           </div>
           <div className="col-span-7 lg:pl-10  flex flex-col gap-5 pt-[50px] md:pt-[70px] lg:pt-[100px] pb-[20px] md:pb-[30px] lg:pb-[70px]">
             <div className="flex flex-col">
               <h2 className="text-50 text-site-blue font-medium uppercase mb-5 max-w-[20ch]">
-                {commitmentSection.title.split(".").map((part, i) => (
+                {data.firstSection.title.split(".").map((part, i) => (
                   <span key={i}>
                     {part}
                     {i < commitmentSection.title.split(".").length - 1 && (
@@ -61,7 +61,7 @@ const Built = ({ data }: { data: Commitments }) => {
               </h2>
 
               <p className="text-gray text-19 mb-5">
-                {commitmentSection.description}
+                {data.firstSection.description}
               </p>
 
               {commitmentSection.items.map((item) => (
