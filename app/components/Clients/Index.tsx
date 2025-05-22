@@ -9,7 +9,7 @@ const Index = async ({ data }: { data: Clients }) => {
     <>
     <InnerBanner data={data} />
       <Main data={data}/>
-      <ClientLogo />
+      <ClientLogo data={data} />
     </>
    );
 }

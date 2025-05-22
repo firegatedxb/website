@@ -4,7 +4,6 @@ import { Clients } from '@/public/types/Common';
 
 
 const Main = ({ data }: { data: Clients }) => {
-  console.log(data)
   return (
     <section className="">
       <div className="container py-15 lg:py-25 pb-12 lg:pb-[70px] border-b border-graylit">
