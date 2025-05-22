@@ -16,6 +16,8 @@ interface SystemFormProps {
     name: string;
     slug: string;
     title: string;
+    introTitle: string;
+    introDescription: string;
     description: string;
     metaTitle: string;
     metaDescription: string;
@@ -74,6 +76,8 @@ const SystemForm = () => {
                 setValue("componentDescription", data.data.componentDescription);
                 setValue("components", data.data.components);
                 setValue("title", data.data.title);
+                setValue("introTitle", data.data.introTitle);
+                setValue("introDescription", data.data.introDescription);
                 setValue("description", data.data.description);
                 setValue("metaTitle", data.data.metaTitle);
                 setValue("metaDescription", data.data.metaDescription);
@@ -166,6 +170,20 @@ const SystemForm = () => {
 
                 <div className='flex flex-col gap-2'>
                     <div className='flex flex-col gap-1'>
+                        <Label className='pl-3 font-bold'>Intro Title</Label>
+                        <Input type='text' placeholder='Title' {...register("introTitle", {
+                            required: "Title is required"
+                        })} />
+                        {errors.introTitle && <p className='text-red-500'>{errors.introTitle.message}</p>}
+                    </div>
+                    <div className='flex flex-col gap-1'>
+                        <Label className='pl-3 font-bold'>Intro Description</Label>
+                        <Textarea placeholder='Description' {...register("introDescription")} />
+                    </div>
+                </div>
+
+                <div className='flex flex-col gap-2'>
+                    <div className='flex flex-col gap-1'>
                         <Label className='pl-3 font-bold'>Component Title</Label>
                         <Input type='text' placeholder='Component Title' {...register("componentTitle", {
                             required: "Component Title is required"
@@ -174,7 +192,7 @@ const SystemForm = () => {
                     </div>
                     <div className='flex flex-col gap-1'>
                         <Label className='pl-3 font-bold'>Component Description</Label>
-                        <Input type='text' placeholder='Component Description' {...register("componentDescription")} />
+                        <Textarea placeholder='Component Description' {...register("componentDescription")} />
                     </div>
                 </div>
 

@@ -52,6 +52,12 @@ const systemSchema = new mongoose.Schema({
             bannerAlt: {
                 type: String,
             },
+            introTitle: {
+                type: String,
+            },
+            introDescription: {
+                type: String,
+            },
             componentTitle: {
                 type: String,
             },
