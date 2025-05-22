@@ -29,27 +29,21 @@ const systemSchema = new mongoose.Schema({
         {
             image: {
                 type: String,
-                required: true,
             },
             imageAlt: {
                 type: String,
-                required: true,
             },
             title: {
                 type: String,
-                required: true,
             },
             description: {
                 type: String,
-                required: true,
             },
             logo: {
                 type: String,
-                required: true,
             },
             logoAlt: {
                 type: String,
-                required: true,
             },
             banner: {
                 type: String,
@@ -60,7 +54,6 @@ const systemSchema = new mongoose.Schema({
             },
             componentTitle: {
                 type: String,
-                required: true,
             },
             componentDescription: {
                 type: String,
@@ -70,7 +63,6 @@ const systemSchema = new mongoose.Schema({
             },
             slug: {
                 type: String,
-                required: true,
             },
             metaTitle: {
                 type: String,

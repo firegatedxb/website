@@ -85,15 +85,15 @@ export default function Team() {
             if (response.ok) {
                 const data = await response.json();
                 console.log(data)
-                setValue("title", data.data[0].title);
-                setValue("description", data.data[0].description);
-                setValue("banner", data.data[0].banner);
-                setValue("bannerAlt", data.data[0].bannerAlt);
-                setValue("pageTitle", data.data[0].pageTitle);
-                setPartnerList(data.data[0].partners);
-                setAccreditList(data.data[0].accredit);
-                setMetaTitle(data.data[0].metaTitle);
-                setMetaDescription(data.data[0].metaDescription);
+                setValue("title", data.data.title);
+                setValue("description", data.data.description);
+                setValue("banner", data.data.banner);
+                setValue("bannerAlt", data.data.bannerAlt);
+                setValue("pageTitle", data.data.pageTitle);
+                setPartnerList(data.data.partners);
+                setAccreditList(data.data.accredit);
+                setMetaTitle(data.data.metaTitle);
+                setMetaDescription(data.data.metaDescription);
             } else {
                 const data = await response.json();
                 alert(data.message);
