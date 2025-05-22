@@ -9,6 +9,9 @@ import { Button } from '@/components/ui/button'
 import { ImageUploader } from '@/components/ui/image-uploader'
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Textarea } from '@/components/ui/textarea'
+const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false })
+import 'react-quill-new/dist/quill.snow.css';
+import dynamic from 'next/dynamic'
 
 interface SystemFormProps {
 
@@ -184,9 +187,11 @@ const AboutPage = () => {
                             })} />
                             {errors.firstSection?.title && <p className='text-red-500'>{errors.firstSection?.title.message}</p>}
                         </div>
-                        <div className='flex flex-col gap-1'>
-                            <Label className='pl-3 font-bold'>Description</Label>
-                            <Textarea placeholder='Description' {...register("firstSection.description")} />
+                        <div>
+                            <Label className="text-sm font-bold">Description</Label>
+                            <Controller name="firstSection.description" control={control} rules={{ required: "Description is required" }} render={({ field }) => {
+                                return <ReactQuill theme="snow" value={field.value} onChange={field.onChange} />
+                            }} />
                         </div>
                         <div>
                         <Label className='pl-3 font-bold'>Image</Label>
