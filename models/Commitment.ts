@@ -21,6 +21,12 @@ const commitmentSchema = new mongoose.Schema({
             type:String,
             required:true
         },
+        image:{
+            type:String,
+        },
+        imageAlt:{
+            type:String,
+        },
         items:[{
             title:{
                 type:String,
