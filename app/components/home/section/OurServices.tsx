@@ -4,8 +4,8 @@ import React , { useState } from 'react';
 import Image from "next/image";
 import { assets } from "@/public/assets/assets";
 import Link from 'next/link';
-const OurServices = () => {
 
+import { Home } from '@/public/types/Common';
 const services = [
   {
     title: 'Design & Engineering',
@@ -29,6 +29,9 @@ const services = [
     url: "/services#section1"
   },
 ];
+const OurServices = ({ data }: { data: Home }) => {
+
+
  const [activeIndex, setActiveIndex] = useState(1);
   return (
     <section className="py-[50px]  md:py-[50px] lg:pt-[108px]  lg:pb-[78px] relative bg-secondary">
@@ -36,7 +39,7 @@ const services = [
         <div className="md:flex items-center">
           <div className="md:w-1/2 pr-0 md:pr-5 lg:pr-[140px] ">
             <h2 className="text-50 text-white font-medium mb-0 lg:mb-[91px] uppercase">
-              Our Services
+              {data.services.title}
             </h2>
               <div className="">
       {services.map((service, index) => (

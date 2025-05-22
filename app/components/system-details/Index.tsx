@@ -1,12 +1,16 @@
 import Main from "./Main";
 import ContentArea from "./ContentArea";
-import { MainData, systemsCrdData } from "./data";
-const Index = () => {
+import {systems } from '@/public/types/Common';
+import InnerBanner from "../common/InnerBanner";
+
+
+
+const Index = async ({ data }: { data: systems }) => {
   return (
     <>
-      {/* <InnerBanner pageTitle={"Services"} bannerBg={assets.servicesBnr} /> */}
-      <Main data={MainData}/>
-      <ContentArea data={systemsCrdData}/>
+      <InnerBanner data={data} />
+      <Main data={data}/>
+      <ContentArea data={data}/>
     </>
   );
 }

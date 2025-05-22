@@ -16,20 +16,13 @@ const slides = [
     image: assets.slider,
     title: `<span class="text-primary">Over 20 Years</span> of Expertise in Fire & Security Solutions`,
   },
-  // {
-  //   id: 2,
-  //   image: assets.slider,
-  //   title: `<span class="text-primary">Over 20 Years</span> of Expertise in Fire & Security Solutions`,
-  // },
-  // {
-  //   id: 3,
-  //   image: assets.slider,
-  //   title: `<span class="text-primary">Over 20 Years</span> of Expertise in Fire & Security Solutions`,
-  // },
+
 
 ];
 
-const HeroSlider = () => {
+import { Home } from '@/public/types/Common';
+
+const HeroSlider = ({ data }: { data: Home }) => {
   const swiperRef = useRef<SwiperClass | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -46,7 +39,7 @@ const HeroSlider = () => {
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           className="w-full h-full"
         >
-          {slides.map((slide, index) => (
+          {data.banners.map((slide, index) => (
             <SwiperSlide key={index}>
               <div className="relative w-full h-full slideroverlay">
                 <Image src={slide.image} alt={slide.title} width={1500} height={1000} className="absolute inset-0 w-full h-full object-cover" />

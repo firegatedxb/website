@@ -1,44 +1,28 @@
-
-import { StaticImageData } from "next/image";
+"use client";
 import PrimaryCard from "../common/PrimaryCard";
 import Sbttl from "../common/Sbttl";
-interface FrameworkItem {
-  id: number;
-  img: StaticImageData | string;
-    title: string;
-    desc: string;
-}
-interface FrameworkI {
-  heading:string;
-  description:string;
-  items: FrameworkItem[];
-}
-interface FrameworkSectionProps {
 
-  data: FrameworkI;
-}
+import {systems } from '@/public/types/Common';
 
-const ContentArea: React.FC<FrameworkSectionProps> = ({
-  data,
 
-}) => {
+const ContentArea = ({ data }: { data: systems }) => {
   return (
     <section className="pb-[50px] lg:pb-25">
       <div className="container">
           <div>
             <div className="mb-4">
-              <Sbttl title={data.heading} />
+              <Sbttl title={data.componentTitle} />
           </div>
-          {data.description &&
-            <p>{data.description}</p>
+          {data.componentDescription &&
+            <p>{data.componentDescription}</p>
           }
 
           </div>
         <div className="mt-10 lg:mt-[70px]">
           <div className="grid gric-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {
-              data.items.map(item =>(
-                <PrimaryCard key={item.id} crdImg={item.img} crdTitle={item.title} crdDesc={item.desc} />
+              data.components.map((item,index) =>(
+                <PrimaryCard key={index} crdImg={item.image} crdTitle={item.title} crdDesc={item.description} />
               ))
             }
           </div>

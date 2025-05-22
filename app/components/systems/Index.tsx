@@ -8,7 +8,7 @@ const Index = async ({ data }: { data: systems }) => {
     <>
       <InnerBanner data={data} />
       <Main data={data}/>
-      <SystemsList/>
+      <SystemsList data={data}/>
     </>
   );
 }

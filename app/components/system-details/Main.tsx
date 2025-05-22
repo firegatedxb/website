@@ -1,31 +1,22 @@
+"use client";
 import Sbttl from "../common/Sbttl";
 
-interface FrameworkItem {
+import {systems } from '@/public/types/Common';
 
-    title: string;
-    desc: string;
 
-}
-
-interface FrameworkSectionProps {
-  data: FrameworkItem[];
-}
-
-const Main: React.FC<FrameworkSectionProps> = ({
-  data,
-
-}) => {
+const Main = ({ data }: { data: systems }) => {
+console.log(data);
   return (
     <section className="">
       <div className="container py-15 lg:py-25    ">
-        {data.map((Item, index)=>(
-          <div key={index}>
+
+          <div>
             <div className="mb-4">
-              <Sbttl title={Item.title} />
+              <Sbttl title={data.introTitle} />
             </div>
-            <p>{Item.desc}</p>
+            <p>{data.introDescription}</p>
           </div>
-        ))}
+
           </div>
     </section>
   );

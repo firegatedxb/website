@@ -6,41 +6,9 @@ import { Swiper as SwiperClass } from "swiper";
 import { Autoplay, Grid } from 'swiper/modules';
 import "swiper/css";
 import Image from "next/image";
-import { assets } from "@/public/assets/assets";
-const slides = [
-  {
-    image: assets.cer1,
-  },
-  {
-    image: assets.cer2,
-  },
-  {
-    image: assets.cer3,
-  },
-  {
-    image: assets.cer4,
-  },
-  {
-    image: assets.cer5,
-  },
-  {
-    image: assets.cer1,
-  },
-  {
-    image: assets.cer2,
-  },
-  {
-    image: assets.cer3,
-  },
-  {
-    image: assets.cer4,
-  },
-  {
-    image: assets.cer5,
-  },
 
-];
-const Certifications = () => {
+import { Home } from '@/public/types/Common';
+const Certifications = ({ data }: { data: Home }) => {
 
     const swiperRef = useRef<SwiperClass | null>(null);
   return (
@@ -49,7 +17,7 @@ const Certifications = () => {
         <div className=" ">
           <div className=" ">
             <h2 className="text-30 md:text-50 text-secondary font-medium mb-3 md:mb-[50px] lg:mb-[84px] uppercase">
-             Certifications & Accreditation
+             {data.certifications.title}
             </h2>
       <Swiper
   modules={[Autoplay, Grid]}
@@ -92,13 +60,14 @@ const Certifications = () => {
 
   className="w-full h-full"
 >
-  {slides.map((slide, index) => (
+  {data.certifications.items.map((slide, index) => (
     <SwiperSlide key={index} className="border-x  border-[#00000015] ">
       <div className=" bg-white flex items-center justify-center   h-[90px] group px-3">
         <Image
           src={slide.image}
-          alt={''}
-          className="     "
+          alt={slide.imageAlt}
+          width={70}
+          height={80}
         />
 
       </div>

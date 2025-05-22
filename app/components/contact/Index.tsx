@@ -3,15 +3,16 @@ import Header from './Header'
 import AddressBar from './AddressBar'
 import Form from './Form'
 import Socials from './Socials'
-import {address} from './data'
 
-const Index = () => {
+import { Contact } from '@/public/types/Common';
+
+const Index = async ({ data }: { data: Contact }) => {
   return (
     <>
-    <Header/>
-    <AddressBar data={address.data}/>
+      <Header data={data} />
+    <AddressBar data={data}/>
     <Form/>
-    <Socials/>
+    <Socials data={data}/>
     </>
   )
 }
