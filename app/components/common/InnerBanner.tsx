@@ -6,7 +6,6 @@ import {Commitments, About,Clients,Partners, Services, systems } from '@/public/
 
 
 const InnerBanner = ({ data }: { data: About | Clients | Commitments | Partners | Services | systems}) => {
-  console.log(data)
   return (
 
     <section className="relative w-full h-[50dvh] lg:h-[580px] bg-secondary">

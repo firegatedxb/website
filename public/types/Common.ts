@@ -74,20 +74,49 @@ export type Clients =
   }
 
  export type Commitments =
-    {
-    metaTitle: string,
-    metaDescription: string,
-    pageTitle: string,
+
+  {
     banner: string,
     bannerAlt: string,
-    title: string,
-    description: string,
-    clients: [
-      {
-        image: string,
-        imageAlt: string
-      }
-    ]
+    pageTitle: string,
+    firstSection: {
+      title: string,
+      description: string,
+      image: string,
+      items: [
+        {
+          title: string,
+          logo: string,
+          logoAlt: string
+        }
+      ]
+    },
+    secondSection: {
+      title: string,
+      description: string,
+      items: [
+        {
+          title: string,
+          description: string,
+          logo: string,
+          logoAlt: string
+        }
+      ]
+    },
+    thirdSection: {
+      title: string,
+      description: string,
+      items: [
+        {
+          title: string,
+          description: string,
+          image: string,
+          imageAlt: string
+        }
+      ]
+    },
+    metaTitle: string,
+    metaDescription: string
   }
 export type Partners =
     {

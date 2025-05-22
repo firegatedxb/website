@@ -9,9 +9,9 @@ const Index = async ({ data }: { data: Partners }) => {
   return (
     <>
       <InnerBanner data={data} />
-    <Header/>
-    <Contents/>
-    <Accreditation/>
+    <Header data={data} />
+    <Contents data={data} />
+    <Accreditation data={data} />
     </>
   )
 }
