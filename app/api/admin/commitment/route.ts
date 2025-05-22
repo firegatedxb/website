@@ -35,6 +35,8 @@ export async function PATCH(request: NextRequest) {
         commitment.thirdSection.items = thirdSectionItems;
         commitment.firstSection.title = firstSection.title;
         commitment.firstSection.description = firstSection.description;
+        commitment.firstSection.image = firstSection.image;
+        commitment.firstSection.imageAlt = firstSection.imageAlt;
         commitment.secondSection.title = secondSection.title;
         commitment.secondSection.description = secondSection.description;
         commitment.thirdSection.title = thirdSection.title;

@@ -38,6 +38,8 @@ interface SystemFormProps {
     firstSection: {
         title: string;
         description: string;
+        image:string;
+        imageAlt:string;
     };
     secondSection: {
         title: string;
@@ -164,6 +166,25 @@ const CommitmentPage = () => {
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Description</Label>
                             <Textarea placeholder='Description' {...register("firstSection.description")} />
+                        </div>
+                        <div className='flex flex-col gap-1'>
+                            <Label className='pl-3 font-bold'>Image</Label>
+                            <Controller
+                                name="firstSection.image"
+                                control={control}
+                                rules={{ required: "Image is required" }}
+                                render={({ field }) => (
+                                    <ImageUploader
+                                        value={field.value}
+                                        onChange={field.onChange}
+                                    />
+                                )}
+                            />
+                            {errors.firstSection?.image && <p className='text-red-500'>{errors.firstSection?.image.message}</p>}
+                        </div>
+                        <div className='flex flex-col gap-1'>
+                            <Label className='pl-3 font-bold'>Image Alt</Label>
+                            <Input type='text' placeholder='Image Alt' {...register("firstSection.imageAlt")} />
                         </div>
                     </div>
 
