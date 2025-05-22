@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
   images: {
     dangerouslyAllowSVG:true,
     domains: ["dl.dropboxusercontent.com"], // Add Dropbox domain here
-  }
+  },
+  
 };
 
 export default nextConfig;
