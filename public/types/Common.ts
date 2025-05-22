@@ -1,5 +1,82 @@
 
 
+export type Home =
+   {
+    metaTitle: string,
+    metaDescription: string,
+    banners: [
+      {
+        image: string,
+        imageAlt: string,
+        title: string
+      }
+    ],
+    aboutSection: {
+      title: string,
+      description: string,
+      image: string,
+      items: [
+        {
+          number: string,
+          value: string
+        }
+      ]
+    },
+    partners: {
+      title: string,
+      items: [
+        {
+          image: string,
+          imageAlt: string
+        }
+      ]
+    },
+    services: {
+      title: string,
+      items: [
+        {
+          image: string,
+          imageAlt: string
+          title: string
+          description: string
+        }
+      ]
+    },
+    systems: {
+      title: string,
+      items: [
+        {
+          image: string,
+          imageAlt: string,
+          title: string
+        }
+      ]
+    },
+    certifications: {
+      title: string,
+      items: [
+        {
+          image: string,
+          imageAlt: string
+        }
+      ]
+    },
+    projects: {
+      title: string,
+      description: string
+    },
+    socials: {
+      title: string,
+      email: string,
+      phone: string,
+      items: [
+        {
+          title: string,
+          link: string
+        }
+      ]
+    }
+  }
 export type About =
     {
     banner: string,
@@ -7,6 +84,7 @@ export type About =
     metaTitle: string,
     metaDescription: string,
     pageTitle: string,
+    title?: string,
     firstSection: {
       title: string,
       description: string,
@@ -56,6 +134,7 @@ export type About =
       }
     ]
   }
+
 export type Clients =
     {
     metaTitle: string,
@@ -79,6 +158,7 @@ export type Clients =
     banner: string,
     bannerAlt: string,
     pageTitle: string,
+    title?: string,
     firstSection: {
       title: string,
       description: string,
@@ -152,6 +232,7 @@ export type Services =
     banner: string,
     bannerAlt: string,
     pageTitle: string,
+    title?: string,
     services: [
       {
         title: string,
@@ -178,6 +259,18 @@ export type systems=
     description: string,
     banner: string,
     bannerAlt: string,
+    componentTitle: string,
+    introTitle: string,
+        introDescription: string,
+    componentDescription: string,
+         components: [
+          {
+            title: string,
+            description: string,
+            image: string,
+            imageAlt: string
+          }
+        ],
     systems: [
       {
         image: string,
@@ -188,19 +281,34 @@ export type systems=
         logoAlt: string,
         banner: string,
         bannerAlt: string,
-        componentTitle: string,
-        componentDescription: string,
-        components: [
-          {
-            title: string,
-            description: string,
-            image: string,
-            imageAlt: string
-          }
-        ],
+
         slug: string,
         metaTitle: string,
         metaDescription: string
       }
     ]
   }
+
+export type Contact=
+     {
+    metaTitle: string,
+    metaDescription: string,
+    image: string,
+    imageAlt: string,
+    pageTitle: string,
+    contacts: [
+      {
+        title: string,
+        address: string,
+        phone: string,
+        email: string
+      }
+    ],
+    socials: [
+      {
+        title: string,
+        link: string
+      }
+    ]
+  }
+

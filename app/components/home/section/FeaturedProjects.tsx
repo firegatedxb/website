@@ -45,7 +45,8 @@ const projects = [
     projectCategory: "Commercial",
   },
 ];
-const FeaturedProjects = () => {
+import { Home } from '@/public/types/Common';
+const FeaturedProjects = ({ data }: { data: Home }) => {
   const swiperRef = useRef<SwiperClass | null>(null);
   const sourceRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<number | "auto">("auto");
@@ -74,8 +75,8 @@ const FeaturedProjects = () => {
           <div className="lg:w-1/4">
             <div className="flex flex-col md:justify-between md:h-full">
               <div>
-                <h2 className="text-50 font-medium mb-4 md:mb-[55px] max-w-[10ch] leading-[1.2]">Our Featured Projects</h2>
-                <p className="text-19">Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting.</p>
+                <h2 className="text-50 font-medium mb-4 md:mb-[55px] max-w-[10ch] leading-[1.2]">{data.projects.title}</h2>
+                <p className="text-19">{data.projects.description}</p>
               </div>
              {/*  <button className="flex mt-6 cursor-pointer items-center bg-primary hover:bg-primary/90 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase">
                 <span>More projects</span>

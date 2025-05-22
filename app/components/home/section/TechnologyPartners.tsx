@@ -7,25 +7,10 @@ import { Autoplay, Grid } from 'swiper/modules';
 import "swiper/css";
 import Image from "next/image";
 import { assets } from "@/public/assets/assets";
-const slides = [
-  {
-    image: assets.partner1,
-  },
-  {
-    image: assets.partner2,
-  },
-  {
-    image: assets.partner3,
-  },
-  {
-    image: assets.partner4,
-  },
-  {
-    image: assets.partner3,
-  },
 
-];
-const TechnologyPartners = () => {
+import { Home } from '@/public/types/Common';
+
+const TechnologyPartners = ({ data }: { data: Home }) => {
 
 const [showPagination, setShowPagination] = useState(false);
 
@@ -56,7 +41,7 @@ useEffect(() => {
       <div className="container">
         <div className=" ">
           <div className=" ">
-            <h2 className="text-50 text-secondary font-medium mb-3 md:mb-8 uppercase">Our Technology Partners</h2>
+            <h2 className="text-50 text-secondary font-medium mb-3 md:mb-8 uppercase">{data.partners.title}</h2>
           <Swiper
   modules={[Autoplay, Grid]}
     autoplay={{ delay: 4000 }}
@@ -102,13 +87,15 @@ useEffect(() => {
  onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)} // <-- Important!
   className="w-full h-full"
 >
-  {slides.map((slide, index) => (
+  {data.partners.items.map((slide, index) => (
     <SwiperSlide key={index}>
       <div className="relative bg-white flex items-center justify-center rounded-[20px] h-[200px] md:h-[226px] lg:h-[286px] group">
-        <Image src={slide.image} alt="" />
-        <div className="w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center absolute top-[10px] right-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
-          <Image src={assets.redarrow} alt="" />
+        <div  >
+          <Image src={slide.image} alt={slide.imageAlt} width={240} height={70} />
         </div>
+          <div className="w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center absolute top-[10px] right-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
+            <Image src={assets.redarrow} alt="" />
+          </div>
       </div>
     </SwiperSlide>
   ))}
@@ -118,7 +105,7 @@ useEffect(() => {
   <div className="w-full">
     <div className="container">
       <div className="flex gap-2 justify-center mt-4 md:mt-[42px]">
-        {slides.map((_, index) => (
+        {data.partners.items.map((_, index) => (
           <button
             key={index}
             className={`w-[50px] h-[3px] cursor-pointer rounded-full transition-all duration-300 ${
