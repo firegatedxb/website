@@ -23,7 +23,6 @@ export async function PATCH(request: NextRequest) {
         const body = await request.json();
         const isAdmin = await verifyAdmin(request);
 
-        console.log("bpdy",body.services.items)
         if (!isAdmin) {
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
         }

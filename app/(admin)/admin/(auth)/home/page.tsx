@@ -36,6 +36,7 @@ interface SystemFormProps {
         items: {
             image: string;
             imageAlt: string;
+            url: string;
         }[];
     };
     services: {
@@ -340,13 +341,17 @@ const HomePage = () => {
                                     <Label className='pl-3 font-bold'>Alt Tag</Label>
                                     <Input type='text' placeholder='Alt Tag' {...register(`partners.items.${index}.imageAlt`)} />
                                 </div>
+                                <div className='flex flex-col gap-2'>
+                                    <Label className='pl-3 font-bold'>URL</Label>
+                                    <Input type='text' placeholder='URL' {...register(`partners.items.${index}.url`)} />
+                                </div>
                             </div>
 
                         </div>
                     ))}
 
                     <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => partnersAppend({ image: "", imageAlt: "" })}>Add Item</Button>
+                        <Button type='button' className="w-full cursor-pointer" onClick={() => partnersAppend({ image: "", imageAlt: "", url: "" })}>Add Item</Button>
                     </div>
 
                 </div>
