@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { Home } from '@/public/types/Common';
 const OurSystems = ({ data }: { data: Home }) => {
-
+console.log(data)
   return (
 
     <section className="pt-[50px]  md:pt-[50px] lg:pt-[108px] ">
@@ -25,7 +25,7 @@ const OurSystems = ({ data }: { data: Home }) => {
                   <div className="px-5 py-5 lg:py-8 lg:px[28px]">
                     <div className="mt-auto cursor-pointer transition-all duration-400">
 
-                       <Link href={'item.url'}> <button className="flex py-[7px] px-[20px] cursor-pointer items-center justify-between text-15 text-black bg-white group-hover:bg-primary group-hover:text-white font-medium
+                       <Link href={item.slug}> <button className="flex py-[7px] px-[20px] cursor-pointer items-center justify-between text-15 text-black bg-white group-hover:bg-primary group-hover:text-white font-medium
                       rounded-[20px] space-x-5 text-xs leading-[1.87] uppercase w-full">
                       <span>READ MORE</span>
                       <span className="rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center">

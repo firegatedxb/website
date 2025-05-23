@@ -62,12 +62,11 @@ const Certifications = ({ data }: { data: Home }) => {
 >
   {data.certifications.items.map((slide, index) => (
     <SwiperSlide key={index} className="border-x  border-[#00000015] ">
-      <div className=" bg-white flex items-center justify-center   h-[90px] group px-3">
+      <div className=" bg-white flex items-center justify-center    group px-3">
         <Image
           src={slide.image}
           alt={slide.imageAlt}
-          width={70}
-          height={80}
+          width={240} height={70}
         />
 
       </div>

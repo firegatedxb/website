@@ -1,6 +1,4 @@
-
 "use client";
-
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperClass } from "swiper";
@@ -9,16 +7,6 @@ import "swiper/css";
 import Image from "next/image";
 import { assets } from "@/public/assets/assets";
 import Link from "next/link";
-
-const slides = [
-  {
-    id: 1,
-    image: assets.slider,
-    title: `<span class="text-primary">Over 20 Years</span> of Expertise in Fire & Security Solutions`,
-  },
-
-
-];
 
 import { Home } from '@/public/types/Common';
 
@@ -66,7 +54,7 @@ const HeroSlider = ({ data }: { data: Home }) => {
         <div className="absolute bottom-[128px] z-20 w-full">
           <div className="container">
             <div className="flex gap-2 justify-end">
-              {slides.map((_, index) => (
+              {data.banners.map((_, index) => (
                 <button key={index} className={`w-[50px] h-[3px] cursor-pointer rounded-full transition-all duration-300 ${activeIndex === index ? "bg-primary scale-125 max-w-[27px]" : "bg-white max-w-[9px]"}`}
                   onClick={() => swiperRef.current?.slideToLoop(index)} />
               ))}
