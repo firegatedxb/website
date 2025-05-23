@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 
 export default function AdminLogin() {
   const [username, setUsername] = useState("");
@@ -33,8 +34,9 @@ export default function AdminLogin() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Admin Login</h2>
+        <div className="flex items-center justify-center flex-col">
+          <Image src="/assets/img/logo.svg" alt="Logo" width={150} height={150} />
+          <h2 className="mt-6 text-center text-lg font-extrabold text-gray-900">Admin Login</h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {error && <div className="text-red-500 text-center text-sm">{error}</div>}
