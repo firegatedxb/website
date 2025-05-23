@@ -61,6 +61,15 @@ const HomeSchema = new mongoose.Schema({
             },
             imageAlt:{
                 type:String,
+            },
+            title:{
+                type:String,
+            },
+            description:{
+                type:String,
+            },
+            url:{
+                type:String,
             }
         }]
     },

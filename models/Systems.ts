@@ -58,6 +58,12 @@ const systemSchema = new mongoose.Schema({
             introDescription: {
                 type: String,
             },
+            homeImage: {
+                type: String,
+            },
+            homeImageAlt: {
+                type: String,
+            },
             componentTitle: {
                 type: String,
             },
