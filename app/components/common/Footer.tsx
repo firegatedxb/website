@@ -47,13 +47,23 @@ const Footer = () => {
             <div className="flex flex-col h-full">
               <div className="flex flex-wrap gap-7 md:gap-10 h-full justify-between">
               <ul className="ulsmn">
-                <li><Link href="/services#section1">Maintenance</Link></li>
-                <li><Link href="/services#section2">Design & Engineering</Link></li>
-                <li><Link href="/services#section3">Installation</Link></li>
+                <li className="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+<path d="M1 1L6 6L1 11" stroke="#979797" stroke-width="2" stroke-linecap="round"/>
+</svg><Link href="/services#section0">Maintenance</Link></li>
+                <li className="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+<path d="M1 1L6 6L1 11" stroke="#979797" stroke-width="2" stroke-linecap="round"/>
+</svg><Link href="/services#section1">Design & Engineering</Link></li>
+                <li className="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+<path d="M1 1L6 6L1 11" stroke="#979797" stroke-width="2" stroke-linecap="round"/>
+</svg><Link href="/services#section2">Installation</Link></li>
               </ul>
               <ul className="ulsmn">
-                <li><Link href="/about">About Us</Link></li>
-                <li>Health Safety Environment</li>
+                <li className="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+<path d="M1 1L6 6L1 11" stroke="#979797" stroke-width="2" stroke-linecap="round"/>
+</svg><Link href="/about">About Us</Link></li>
+                <li className="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+<path d="M1 1L6 6L1 11" stroke="#979797" stroke-width="2" stroke-linecap="round"/>
+</svg>Health Safety Environment</li>
               </ul>
             </div>
             <div className="border-t border-[#ffffff35]">

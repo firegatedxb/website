@@ -16,14 +16,11 @@ const AboutCompany = ({ data }: { data: Home }) => {
         <div className="flex">
 
             <div className="lg:w-1/2 lg:pr-15 xl:pr-[84px]">
-              <h2 className="text-50 text-secondary font-medium mb-3 md:mb-[18px] uppercase">
+              <h2 className="text-50 text-secondary font-medium mb-3 md:mb-[18px] uppercase" >
 {data.aboutSection.title}
             </h2>
               <div className="pb-2 lg:pb-8"  >
-              <div className=" "  >
-                <p className="text-graytext text-19 mb-5">
-                 {data.aboutSection.description}
-                </p>
+              <div className=" text-graytext text-19 mb-5"  dangerouslySetInnerHTML={{__html: data.aboutSection.description}}>
 
               </div>
               </div>

@@ -30,7 +30,7 @@ const services = [
   },
 ];
 const OurServices = ({ data }: { data: Home }) => {
-
+console.log(data)
 
  const [activeIndex, setActiveIndex] = useState(1);
   return (
@@ -42,7 +42,7 @@ const OurServices = ({ data }: { data: Home }) => {
               {data.services.title}
             </h2>
               <div className="">
-      {services.map((service, index) => (
+      {data.services.items.map((service, index) => (
         <div key={index} className='sebder last:border-b-0'>
           <div
             className="border-b border-white cursor-pointer spb"
