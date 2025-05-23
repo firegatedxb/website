@@ -86,7 +86,7 @@ export const Menu = ({
     <motion.div
       key="header-menu"
       {...slideDown()}
-      className="absolute top-0 left-0 w-full bg-white shadow-md z-50"
+      className=""
     >
         <div className="relative">
 

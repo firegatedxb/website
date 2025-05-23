@@ -9,6 +9,7 @@ import Image from "next/image";
 import { assets } from "@/public/assets/assets";
 
 import { Home } from '@/public/types/Common';
+import Link from "next/link";
 
 
 const FeaturedProjects = ({ data }: { data: Home,  }) => {
@@ -66,10 +67,9 @@ const FeaturedProjects = ({ data }: { data: Home,  }) => {
     return () => window.removeEventListener('resize', updateHeight);
   }
 }, [projectList]); // re-run when projectList changes
-
   return (
     <section className="py-[50px]  md:py-[50px] lg:pt-[120px] lg:pb-[120px] relative bg-secondary text-white">
-      <div className={`container relative z-10   `} style={{ height: `${height}px` }}>
+      <div className={`container  `} style={{ height: `${height}px` }}>
         <div className="flex md:gap-[45px] lg:gap-[108px] h-full">
           <div className="lg:w-1/4">
             <div className="flex flex-col md:justify-between md:h-full">
@@ -123,9 +123,11 @@ const FeaturedProjects = ({ data }: { data: Home,  }) => {
               <div className="flex flex-col justify-center mnsuy group">
                 <div className="relative mb-8">
                   <Image src={project.coverPhoto} alt={""} width={487} height={536} className="w-full lg:h-[536px] object-cover rounded-3xl" />
-                  <div className="w-[50px] h-[50px] rounded-full border flex items-center justify-center absolute bottom-[0px] left-[0px]   trst  ">
+
+            <Link href={`/projects-details/${project.slug}`}> <div className="  z-10 pointer w-[50px] h-[50px] rounded-full border flex items-center justify-center absolute bottom-[0px] left-[0px]   trst  ">
                     <Image src={assets.redarrow} alt="" />
                   </div>
+                    </Link>
                 </div>
                 <h3 className="text-white text-30 font-medium leading-[1.3] mb-3">{project.name}</h3>
                 <p className="text-[#bebebe] text-19 font-normal leading-[1.526315789473684]">{project.sector}</p>
