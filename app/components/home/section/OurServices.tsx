@@ -6,6 +6,8 @@ import { assets } from "@/public/assets/assets";
 import Link from 'next/link';
 
 import { Home } from '@/public/types/Common';
+import { motion } from 'framer-motion';
+import { slideInLeft } from '@/public/frameranimation/animation';
 
 const OurServices = ({ data }: { data: Home }) => {
 console.log(data)
@@ -16,9 +18,17 @@ console.log(data)
       <div className="container">
         <div className="md:flex items-center">
           <div className="md:w-1/2 pr-0 md:pr-5 lg:pr-[140px] ">
-            <h2 className="text-50 text-white font-medium mb-0 lg:mb-[91px] uppercase">
-              {data.services.title}
+            <h2 className="">
             </h2>
+            <motion.h2
+              className="text-50 text-white font-medium mb-0 lg:mb-[91px] uppercase"
+              variants={slideInLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.4 }}
+              custom={2}
+            >{data.services.title}
+            </motion.h2>
               <div className="">
       {data.services.items.map((service, index) => (
         <div key={index} className='sebder last:border-b-0'>
@@ -49,7 +59,7 @@ console.log(data)
                 <span>READ MORE</span>
                 <span className="bg-primary rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center">
                   <svg
-                    className="w-4 h-4 text-white"
+                    className="w-7 h-14 text-white"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -70,9 +80,17 @@ console.log(data)
           </div>
           <div className="md:w-1/2 ">
             <div className="mt-6 md:mt-0">
-              <figure >
+               <motion.div
+
+              variants={slideInLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.4 }}
+              custom={2}
+            >   <figure >
             <Image src={assets.homemn} alt="" className='rounded-[20px]' />
-          </figure>
+              </figure>
+            </motion.div>
             </div>
           </div>
         </div>
