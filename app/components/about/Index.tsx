@@ -1,19 +1,19 @@
 import InnerBanner from "../common/InnerBanner";
 import MainDesc from "./MainDesc";
-import { assets } from "@/public/assets/assets";
 import Mvv from "./Mvv";
 import Leadership from "./Leadership";
 import Certifications from "./Certifications";
+import { About } from '@/public/types/Common';
 
 
-const Index = () => {
+const Index = async ({ data }: { data: About }) => {
   return (
     <>
-      <InnerBanner pageTitle={"About FIre Gate"} bannerBg={assets.aboutBnr} />
-      <MainDesc />
-      <Mvv />
-      <Leadership />
-      <Certifications />
+      <InnerBanner data={data} />
+      <MainDesc data={data}/>
+      <Mvv data={data}/>
+      <Leadership data={data}/>
+      <Certifications data={data}/>
       {/* <Clients /> */}
     </>
    );

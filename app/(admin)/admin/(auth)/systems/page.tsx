@@ -23,7 +23,7 @@ import { RiPagesFill } from "react-icons/ri";
 import Link from "next/link";
 
 interface System {
-    bannerImage: string;
+    banner: string;
     bannerAlt: string;
     pageTitle: string;
     _id: string;
@@ -75,14 +75,14 @@ export default function Team() {
             if (response.ok) {
                 const data = await response.json();
                 console.log(data)
-                setValue("title", data.data[0].title);
-                setValue("description", data.data[0].description);
-                setValue("bannerImage", data.data[0].bannerImage);
-                setValue("bannerAlt", data.data[0].bannerAlt);
-                setValue("pageTitle", data.data[0].pageTitle);
-                setSystemList(data.data[0].systems);
-                setMetaTitle(data.data[0].metaTitle);
-                setMetaDescription(data.data[0].metaDescription);
+                setValue("title", data.data.title);
+                setValue("description", data.data.description);
+                setValue("banner", data.data.banner);
+                setValue("bannerAlt", data.data.bannerAlt);
+                setValue("pageTitle", data.data.pageTitle);
+                setSystemList(data.data.systems);
+                setMetaTitle(data.data.metaTitle);
+                setMetaDescription(data.data.metaDescription);
             } else {
                 const data = await response.json();
                 alert(data.message);
@@ -237,7 +237,7 @@ export default function Team() {
                 <div className="mt-2 flex flex-col gap-2 h-fit">
                 <div>
                         <Label className="text-sm font-bold">Banner Image</Label>
-                        <ImageUploader onChange={(url) => setValue("bannerImage", url)} value={watch("bannerImage")}/>
+                        <ImageUploader onChange={(url) => setValue("banner", url)} value={watch("banner")}/>
                     </div>
                     <div>
                         <Label className="text-sm font-bold">Banner Alt</Label>
@@ -296,6 +296,7 @@ export default function Team() {
                                         <Label>Alt Tag</Label>
                                         <Input type="text" placeholder="Alt Tag" value={imageAlt} onChange={(e) => setImageAlt(e.target.value)} />
                                     </div>
+                                    
                                 </div>
                             </DialogHeader>
                             <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={handleAddSystem}>Save</DialogClose>

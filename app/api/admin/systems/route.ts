@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
             const systemsData = systems.systems.find((system: { slug: string }) => system.slug == slug);
             return NextResponse.json({ success: true, data: systemsData }, { status: 200 });
         }else{
-            const systems = await Systems.find({});
+            const systems = await Systems.findOne({});
             return NextResponse.json({ success: true, data: systems }, { status: 200 });
         }
         

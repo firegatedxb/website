@@ -33,8 +33,10 @@ interface ProjectFormProps {
     thumbnailAlt: string;
     coverPhoto: string;
     coverPhotoAlt: string;
+    status:string;
     metaTitle: string;
     metaDescription: string;
+    featuredProject:string;
 }
 
 const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
@@ -82,6 +84,8 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                 setValue("description", data.data.description);
                 setValue("metaTitle", data.data.metaTitle);
                 setValue("metaDescription", data.data.metaDescription);
+                setValue("featuredProject", data.data.featuredProject);
+                setValue("status", data.data.status);
             } else {
                 const data = await response.json();
                 alert(data.message);
@@ -242,7 +246,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                                 <SelectTrigger className="w-full">
                                     <SelectValue placeholder="Select Location" />
                                 </SelectTrigger>
-                                <SelectContent>
+                                <SelectContent className='bg-white'>
                                     {locationList.map((item, index) => (
                                         <SelectItem key={index} value={item.name}>
                                             {item.name}
@@ -268,6 +272,57 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                         return <ReactQuill theme="snow" value={field.value} onChange={field.onChange} />
                     }} />
                     {errors.description && <p className='text-red-500'>{errors.description.message}</p>}
+                </div>
+
+
+                <div className='flex flex-col gap-2'>
+                    <Label className='pl-3 font-bold'>Status</Label>
+                    <Controller name="status" control={control} rules={{ required: "Status is required" }} render={({ field }) => {
+                        return <Select
+                            onValueChange={field.onChange}
+                            value={field.value}
+                            defaultValue=""
+                        >
+                            <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Select Status" />
+                            </SelectTrigger>
+                            <SelectContent className=''>
+                                
+                                    <SelectItem value={"true"}>
+                                    Completed
+                                    </SelectItem>
+                                    <SelectItem value={"false"}>
+                                    Ongoing
+                                    </SelectItem>
+                            </SelectContent>
+                        </Select>
+                    }} />
+                    {errors.status && <p className="text-red-500">{errors.status.message}</p>}
+                </div>
+
+                <div className='flex flex-col gap-2'>
+                    <Label className='pl-3 font-bold'>Featured Project</Label>
+                    <Controller name="featuredProject" control={control} rules={{ required: "Featured Project is required" }} render={({ field }) => {
+                        return <Select
+                            onValueChange={field.onChange}
+                            value={field.value}
+                            defaultValue=""
+                        >
+                            <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Select Featured Project" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                
+                                    <SelectItem value={"true"}>
+                                        Yes
+                                    </SelectItem>
+                                    <SelectItem value={"false"}>
+                                        No
+                                    </SelectItem>
+                            </SelectContent>
+                        </Select>
+                    }} />
+                    {errors.featuredProject && <p className="text-red-500">{errors.featuredProject.message}</p>}
                 </div>
 
 

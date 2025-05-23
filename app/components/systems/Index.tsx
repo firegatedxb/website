@@ -1,13 +1,14 @@
 import InnerBanner from "../common/InnerBanner";
-import { assets } from "@/public/assets/assets";
 import Main from "./Main";
 import SystemsList from "./SystemsList";
-const Index = () => {
+import { systems } from '@/public/types/Common';
+
+const Index = async ({ data }: { data: systems }) => {
   return (
     <>
-      <InnerBanner pageTitle={"Our Systems"} bannerBg={assets.systemsBnr} />
-      <Main/>
-      <SystemsList/>
+      <InnerBanner data={data} />
+      <Main data={data}/>
+      <SystemsList data={data}/>
     </>
   );
 }

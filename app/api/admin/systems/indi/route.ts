@@ -12,7 +12,7 @@ try {
 
     await connectDB();
     const body = await req.json();
-    const {slug,banner,bannerAlt,pageTitle,componentTitle,componentDescription,components,metaTitle,metaDescription} = body;
+    const {introTitle,introDescription,slug,banner,bannerAlt,homeImage,homeImageAlt,pageTitle,componentTitle,componentDescription,components,metaTitle,metaDescription} = body;
     const searchParams = req.nextUrl.searchParams;
     const id = searchParams.get("id");
 
@@ -24,9 +24,13 @@ try {
     if (!systemsData) {
         return NextResponse.json({ success: false, message: "Error updating systems" }, { status: 500 });
     }
+    systemsData.introTitle = introTitle;
+    systemsData.introDescription = introDescription;
     systemsData.slug = slug;
-    systemsData.bannerImage = banner;
+    systemsData.banner = banner;
     systemsData.bannerAlt = bannerAlt;
+    systemsData.homeImage = homeImage;
+    systemsData.homeImageAlt = homeImageAlt;
     systemsData.pageTitle = pageTitle;
     systemsData.componentTitle = componentTitle;
     systemsData.componentDescription = componentDescription;

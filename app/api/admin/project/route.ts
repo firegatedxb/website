@@ -5,8 +5,8 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req:NextRequest) {
     try {
         await connectDB();
-        const {name,slug,client,sector,consultant,location,title,description,images,thumbnail,thumbnailAlt,coverPhoto,coverPhotoAlt,metaTitle,metaDescription} = await req.json();
-        const project = await Project.create({name,slug,client,sector,consultant,location,title,description,images,thumbnail,thumbnailAlt,coverPhoto,coverPhotoAlt,metaTitle,metaDescription});
+        const {name,slug,client,sector,consultant,location,title,description,images,thumbnail,thumbnailAlt,coverPhoto,coverPhotoAlt,metaTitle,metaDescription,featuredProject,status} = await req.json();
+        const project = await Project.create({name,slug,client,sector,consultant,location,title,description,images,thumbnail,thumbnailAlt,coverPhoto,coverPhotoAlt,metaTitle,metaDescription,featuredProject,status});
         if(project){
             return NextResponse.json({message: "Project added successfully"},{status: 200});
         }
@@ -24,8 +24,8 @@ export async function PATCH(req:NextRequest) {
         await connectDB();
         const {searchParams} = new URL(req.url);
         const id = searchParams.get("id");
-        const {name,slug,client,sector,consultant,location,title,description,images,thumbnail,thumbnailAlt,coverPhoto,coverPhotoAlt,metaTitle,metaDescription} = await req.json();
-        const project = await Project.findByIdAndUpdate(id,{name,slug,client,sector,consultant,location,title,description,images,thumbnail,thumbnailAlt,coverPhoto,coverPhotoAlt,metaTitle,metaDescription});
+        const {name,slug,client,sector,consultant,location,title,description,images,thumbnail,thumbnailAlt,coverPhoto,coverPhotoAlt,metaTitle,metaDescription,featuredProject,status} = await req.json();
+        const project = await Project.findByIdAndUpdate(id,{name,slug,client,sector,consultant,location,title,description,images,thumbnail,thumbnailAlt,coverPhoto,coverPhotoAlt,metaTitle,metaDescription,featuredProject,status});
         if(project){
             return NextResponse.json({message: "Project updated successfully"},{status: 200});
         }

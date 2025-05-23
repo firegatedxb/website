@@ -1,16 +1,23 @@
+"use client";
 import Sbttl from "../common/Sbttl";
+import { systems } from "@/public/types/Common";
 
-const Main = () => {
+const Main = ({ data }: { data: systems }) => {
+  const serviceArray = Array.isArray(data.systems)
+    ? data.systems
+    : [data.systems];
+  console.log(data);
+  console.log(serviceArray);
   return (
     <section className="">
-      <div className="container py-[50px] lg:py-25 border-b border-graylit">
+      <div className="container pt-[50px] lg:pt-25 ">
         <div className="mb-4">
-          <Sbttl title="Certified Systems for Every Environment" />
+          <Sbttl title={data.title} />
         </div>
-        <p>At Fire Gate, our systems are engineered to protect people, property, and operations. From early detection to coordinated evacuation and active suppression, every system we design, install, and maintain is built on technical accuracy and strict adherence to international fire and life safety standards. Whether the requirement is for a commercial high-rise, industrial plant, or critical infrastructure, our solutions are tailored to each environment and backed by certified expertise.</p>
+        <div dangerouslySetInnerHTML={{__html: data.description}}></div>
       </div>
     </section>
   );
-}
+};
 
 export default Main;

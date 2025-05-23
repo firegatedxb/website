@@ -8,17 +8,19 @@ import Certifications from './section/Certifications'
 import LetsCollaborate from './section/LetsCollaborate'
 import FeaturedProjects from './section/FeaturedProjects'
 
-const Index = () => {
+import { Home } from '@/public/types/Common';
+
+const Index = async ({ data }: { data: Home }) => {
   return (
    <>
-      <HeroSlider />
-      <AboutCompany />
-      <TechnologyPartners />
-      <OurServices />
-      <OurSystems />
-      <Certifications />
-      <FeaturedProjects />
-      <LetsCollaborate />
+      <HeroSlider data={data} />
+      <AboutCompany data={data} />
+      <TechnologyPartners data={data} />
+      <OurServices data={data} />
+      <OurSystems data={data} />
+      <Certifications data={data} />
+      <FeaturedProjects data={data}   />
+      <LetsCollaborate data={data}/>
    </>
   )
 }

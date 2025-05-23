@@ -4,42 +4,33 @@ import React , { useState } from 'react';
 import Image from "next/image";
 import { assets } from "@/public/assets/assets";
 import Link from 'next/link';
-const OurServices = () => {
 
-const services = [
-  {
-    title: 'Design & Engineering',
-    subtitle: '',
-    description:
-      'Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting (EEL), and public address and voice evacuation (PAVA) systems.',
-      url: "/services#section2"
-  },
-  {
-    title: 'Installation',
-    subtitle: '',
-    description:
-      'Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting (EEL), and public address and voice evacuation (PAVA) systems.',
-    url: "/services#section3"
-  },
-  {
-    title: 'Maintenance',
-    subtitle: '',
-    description:
-      'Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting (EEL), and public address and voice evacuation (PAVA) systems.',
-    url: "/services#section1"
-  },
-];
+import { Home } from '@/public/types/Common';
+import { motion } from 'framer-motion';
+import { slideInLeft } from '@/public/frameranimation/animation';
+
+const OurServices = ({ data }: { data: Home }) => {
+console.log(data)
+
  const [activeIndex, setActiveIndex] = useState(1);
   return (
     <section className="py-[50px]  md:py-[50px] lg:pt-[108px]  lg:pb-[78px] relative bg-secondary">
       <div className="container">
         <div className="md:flex items-center">
           <div className="md:w-1/2 pr-0 md:pr-5 lg:pr-[140px] ">
-            <h2 className="text-50 text-white font-medium mb-0 lg:mb-[91px] uppercase">
-              Our Services
+            <h2 className="">
             </h2>
+            <motion.h2
+              className="text-50 text-white font-medium mb-0 lg:mb-[91px] uppercase"
+              variants={slideInLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.4 }}
+              custom={2}
+            >{data.services.title}
+            </motion.h2>
               <div className="">
-      {services.map((service, index) => (
+      {data.services.items.map((service, index) => (
         <div key={index} className='sebder last:border-b-0'>
           <div
             className="border-b border-white cursor-pointer spb"
@@ -68,7 +59,7 @@ const services = [
                 <span>READ MORE</span>
                 <span className="bg-primary rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center">
                   <svg
-                    className="w-4 h-4 text-white"
+                    className="w-7 h-14 text-white"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -89,9 +80,17 @@ const services = [
           </div>
           <div className="md:w-1/2 ">
             <div className="mt-6 md:mt-0">
-              <figure >
+               <motion.div
+
+              variants={slideInLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.4 }}
+              custom={2}
+            >   <figure >
             <Image src={assets.homemn} alt="" className='rounded-[20px]' />
-          </figure>
+              </figure>
+            </motion.div>
             </div>
           </div>
         </div>

@@ -3,9 +3,11 @@
 import React, { useState } from "react";
 import Sbttl from "../common/Sbttl";
 import Image, { StaticImageData } from "next/image";
-import { certifications } from "./data";
+import { About } from "@/public/types/Common";
 
-const Certifications = () => {
+
+const Certifications = ({ data }: { data: About }) => {
+ console.log(data)
   const [selectedImage, setSelectedImage] = useState<string | StaticImageData | null>(null);
 
   return (
@@ -15,7 +17,7 @@ const Certifications = () => {
           <Sbttl title="Certifications" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-10">
-          {certifications.map((item, index) => (
+          {data.certifications.map((item, index) => (
             <div
               key={index}
               className="border group border-[#cccccc] transition duration-300 hover:shadow-lg rounded-2xl max-h-[350px] overflow-hidden relative p-5 lg:p-10 transform hover:-translate-y-1"

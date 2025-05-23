@@ -54,6 +54,14 @@ const projectSchema = new mongoose.Schema({
     },
     metaDescription:{
         type:String
+    },
+    featuredProject:{
+        type:Boolean,
+        default:false
+    },
+    status:{
+        type:Boolean,
+        default:true
     }
 });
 

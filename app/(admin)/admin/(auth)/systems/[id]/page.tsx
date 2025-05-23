@@ -16,11 +16,15 @@ interface SystemFormProps {
     name: string;
     slug: string;
     title: string;
+    introTitle: string;
+    introDescription: string;
     description: string;
     metaTitle: string;
     metaDescription: string;
     banner: string;
     bannerAlt: string;
+    homeImage: string;
+    homeImageAlt: string;
     pageTitle: string;
     componentTitle: string;
     componentDescription: string;
@@ -65,15 +69,18 @@ const SystemForm = () => {
             const response = await fetch(`/api/admin/systems?id=${id}`);
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
                 setValue("slug", data.data.slug);
-                setValue("banner", data.data.bannerImage);
+                setValue("banner", data.data.banner);
                 setValue("bannerAlt", data.data.bannerAlt);
+                setValue("homeImage", data.data.homeImage);
+                setValue("homeImageAlt", data.data.homeImageAlt);
                 setValue("pageTitle", data.data.title);
                 setValue("componentTitle", data.data.componentTitle);
                 setValue("componentDescription", data.data.componentDescription);
                 setValue("components", data.data.components);
                 setValue("title", data.data.title);
+                setValue("introTitle", data.data.introTitle);
+                setValue("introDescription", data.data.introDescription);
                 setValue("description", data.data.description);
                 setValue("metaTitle", data.data.metaTitle);
                 setValue("metaDescription", data.data.metaDescription);
@@ -129,7 +136,7 @@ const SystemForm = () => {
                         </Label>
                         <Input type='text' placeholder='Slug' {...register("slug", {
                             required: "Slug is required", pattern: {
-                                value: /^[a-z0-9]+(-[a-z0-9]+)*$/,
+                                value: /^[a-z0-9#]+(-[a-z0-9#]+)*$/,
                                 message: "Slug must contain only lowercase letters, numbers, and hyphens (no spaces)"
                             }
                         })} />
@@ -146,7 +153,7 @@ const SystemForm = () => {
                         <Controller
                             name="banner"
                             control={control}
-                            rules={{ required: "Banner is required" }}
+                            
                             render={({ field }) => (
                                 <ImageUploader
                                     value={field.value}
@@ -154,13 +161,49 @@ const SystemForm = () => {
                                 />
                             )}
                         />
-                        {errors.banner && (
-                            <p className="text-red-500">{errors.banner.message}</p>
-                        )}
+                        
                     </div>
                     <div>
                         <Label className='pl-3 font-bold'>Alt Tag</Label>
                         <Input type='text' placeholder='Alt Tag' {...register("bannerAlt")} />
+                    </div>
+                </div>
+
+                <div className='flex flex-col gap-2'>
+                    <div>
+                        <Label className="pl-3 font-bold">In Home Image</Label>
+                        <Controller
+                            name="homeImage"
+                            control={control}
+                            rules={{ required: "In Home Image is required" }}
+                            render={({ field }) => (
+                                <ImageUploader
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                />
+                            )}
+                        />
+                        {errors.homeImage && (
+                            <p className="text-red-500">{errors.homeImage.message}</p>
+                        )}
+                    </div>
+                    <div>
+                        <Label className='pl-3 font-bold'>Alt Tag</Label>
+                        <Input type='text' placeholder='Alt Tag' {...register("homeImageAlt")} />
+                    </div>
+                </div>
+
+                <div className='flex flex-col gap-2'>
+                    <div className='flex flex-col gap-1'>
+                        <Label className='pl-3 font-bold'>Intro Title</Label>
+                        <Input type='text' placeholder='Title' {...register("introTitle", {
+                            required: "Title is required"
+                        })} />
+                        {errors.introTitle && <p className='text-red-500'>{errors.introTitle.message}</p>}
+                    </div>
+                    <div className='flex flex-col gap-1'>
+                        <Label className='pl-3 font-bold'>Intro Description</Label>
+                        <Textarea placeholder='Description' {...register("introDescription")} />
                     </div>
                 </div>
 
@@ -174,7 +217,7 @@ const SystemForm = () => {
                     </div>
                     <div className='flex flex-col gap-1'>
                         <Label className='pl-3 font-bold'>Component Description</Label>
-                        <Input type='text' placeholder='Component Description' {...register("componentDescription")} />
+                        <Textarea placeholder='Component Description' {...register("componentDescription")} />
                     </div>
                 </div>
 

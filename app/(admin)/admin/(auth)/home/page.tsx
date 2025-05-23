@@ -9,6 +9,9 @@ import { Button } from '@/components/ui/button'
 import { ImageUploader } from '@/components/ui/image-uploader'
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Textarea } from '@/components/ui/textarea'
+const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false })
+import 'react-quill-new/dist/quill.snow.css';
+import dynamic from 'next/dynamic'
 
 interface SystemFormProps {
 
@@ -33,6 +36,7 @@ interface SystemFormProps {
         items: {
             image: string;
             imageAlt: string;
+            url: string;
         }[];
     };
     services: {
@@ -42,6 +46,7 @@ interface SystemFormProps {
             imageAlt: string;
             title: string;
             description: string;
+            url: string;
         }[];
     };
     systems: {
@@ -235,10 +240,12 @@ const HomePage = () => {
                             })} />
                             {errors.aboutSection?.title && <p className='text-red-500'>{errors.aboutSection?.title.message}</p>}
                         </div>
-                        <div className='flex flex-col gap-1'>
-                            <Label className='pl-3 font-bold'>Description</Label>
-                            <Textarea placeholder='Description' {...register("aboutSection.description")} />
-                        </div>
+                        <div>
+                                                <Label className="text-sm font-bold">Description</Label>
+                                                <Controller name="aboutSection.description" control={control} rules={{ required: "Description is required" }} render={({ field }) => {
+                                                    return <ReactQuill theme="snow" value={field.value} onChange={field.onChange} />
+                                                }} />
+                                            </div>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Image</Label>
                             <Controller
@@ -334,13 +341,17 @@ const HomePage = () => {
                                     <Label className='pl-3 font-bold'>Alt Tag</Label>
                                     <Input type='text' placeholder='Alt Tag' {...register(`partners.items.${index}.imageAlt`)} />
                                 </div>
+                                <div className='flex flex-col gap-2'>
+                                    <Label className='pl-3 font-bold'>URL</Label>
+                                    <Input type='text' placeholder='URL' {...register(`partners.items.${index}.url`)} />
+                                </div>
                             </div>
 
                         </div>
                     ))}
 
                     <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => partnersAppend({ image: "", imageAlt: "" })}>Add Item</Button>
+                        <Button type='button' className="w-full cursor-pointer" onClick={() => partnersAppend({ image: "", imageAlt: "", url: "" })}>Add Item</Button>
                     </div>
 
                 </div>
@@ -388,7 +399,7 @@ const HomePage = () => {
                                     <Input type='text' placeholder='Alt Tag' {...register(`services.items.${index}.imageAlt`)} />
                                 </div>
                                 </div>
-                                <div className=''>
+                                <div className='flex flex-col gap-2'>
                                 <div className='flex flex-col gap-2'>
                                     <Label className='pl-3 font-bold'>Title</Label>
                                     <Input type='text' placeholder='Title' {...register(`services.items.${index}.title`)} />
@@ -397,6 +408,10 @@ const HomePage = () => {
                                     <Label className='pl-3 font-bold'>Description</Label>
                                     <Textarea placeholder='Description' {...register(`services.items.${index}.description`)} />
                                 </div>
+                                <div className='flex flex-col gap-2'>
+                                    <Label className='pl-3 font-bold'>URL</Label>
+                                    <Input type='text' placeholder='URL' {...register(`services.items.${index}.url`)} />
+                                </div>
                                 </div>
                             </div>
 
@@ -404,7 +419,7 @@ const HomePage = () => {
                     ))}
 
                     <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => servicesAppend({ image: "", imageAlt: "", title: "", description: "" })}>Add Item</Button>
+                        <Button type='button' className="w-full cursor-pointer" onClick={() => servicesAppend({ image: "", imageAlt: "", title: "", description: "", url: "" })}>Add Item</Button>
                     </div>
 
                 </div>

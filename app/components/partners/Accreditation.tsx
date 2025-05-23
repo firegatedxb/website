@@ -5,9 +5,11 @@ import { Swiper as SwiperClass } from "swiper";
 import { Autoplay, Grid } from 'swiper/modules';
 import "swiper/css";
 import Image from "next/image";
-import { accrData } from './data'
 
-const Accreditation = () => {
+import { Partners } from '@/public/types/Common';
+
+
+const Accreditation = ({ data }: { data: Partners }) => {
     const swiperRef = useRef<SwiperClass | null>(null);
   return (
     <div className='container'>
@@ -53,13 +55,14 @@ const Accreditation = () => {
 
   className="w-full h-full"
 >
-  {accrData.map((slide, index) => (
+  {data.accredit.map((item, index) => (
     <SwiperSlide key={index} className="border-x  border-[#00000015] ">
       <div className=" bg-white flex items-center justify-center   h-[230px] group px-3">
         <Image
-          src={slide.image}
-          alt={''}
-          className="     "
+          src={item.accreditImage}
+          alt={item.accreditImageAlt}
+          width={150}
+          height={150}
         />
 
       </div>
