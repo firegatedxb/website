@@ -47,12 +47,12 @@ const HeroSlider = ({ data }: { data: Home }) => {
                       className="text-65 font-bold uppercase max-w-[29ch] leading-[1.23]"
                       dangerouslySetInnerHTML={{ __html: slide.title }}
                     />
-                    <motion.div className=" whatsapp  "
+                    {/* <motion.div className=" whatsapp  "
                       {...fadeIn(0.8, 0.2)}  >
                       <Link href="#"  >
                         <Image src={assets.whatsapp} alt="slider" className="absolute bottom-5 lg:bottom-[180px] right-[10px] lg:right-[0px]  " />
                         </Link>
-        </motion.div>
+        </motion.div> */}
                   </AnimatePresence>
 
                   <Link href="/about">
