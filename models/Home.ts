@@ -48,6 +48,9 @@ const HomeSchema = new mongoose.Schema({
             },
             imageAlt:{
                 type:String,
+            },
+            url:{
+                type:String,
             }
         }]
     },
