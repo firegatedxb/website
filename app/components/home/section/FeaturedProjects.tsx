@@ -7,45 +7,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Image from "next/image";
 import { assets } from "@/public/assets/assets";
-import useSWR from "swr";
-const projects = [
-  {
-    id: 1,
-    image: assets.slideic1,
-    projectName: "WASL Experience Centre",
-    projectCategory: "Commercial",
-  },
-  {
-    id: 2,
-    image: assets.slideic2,
-    projectName: "Firefighting System",
-    projectCategory: "Commercial",
-  },
-  {
-    id: 3,
-    image: assets.slideic1,
-    projectName: "Firefighting System",
-    projectCategory: "Commercial",
-  },
-  {
-    id: 4,
-    image: assets.slideic1,
-    projectName: "Firefighting System",
-    projectCategory: "Commercial",
-  },
-  {
-    id: 5,
-    image: assets.slideic1,
-    projectName: "Firefighting System",
-    projectCategory: "Commercial",
-  },
-  {
-    id: 6,
-    image: assets.slideic1,
-    projectName: "Firefighting System",
-    projectCategory: "Commercial",
-  },
-];
+
 import { Home } from '@/public/types/Common';
 
 

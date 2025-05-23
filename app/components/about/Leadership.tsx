@@ -18,7 +18,7 @@ const Leadership = ({ data }: { data: About }) => {
             <div className="relative group"  >
                   <Image src={data.thirdSection.chairman.image}   alt={data.thirdSection.chairman.imageAlt} width={350} height={300} className="w-[350px] h-auto     object-cover xl:relative xl:bottom-[0px] z-[1] transition duration-300 transform group-hover:translate-x-2 " />
 
-                 <div className="border border-graylit rounded-3xl z-[-1]  transition duration-300 group-hover:shadow-lg  xl:relative xl:bottom-[120px]  ">
+                 <div className="border border-graylit xl:min-h-[380px]  md:min-h-[550px] rounded-3xl z-[-1]  transition duration-300 group-hover:shadow-lg  xl:relative xl:bottom-[120px]  ">
                 <div className="text-white relative">
                   <div className="rounded-3xl ml-auto pr-10 bg-secondary transition duration-300 group-hover:shadow-lg group-hover:bg-primary p-5 flex xl:items-end flex-col">
                     <div>
@@ -37,7 +37,7 @@ const Leadership = ({ data }: { data: About }) => {
             <div className="relative group"  >
                   <Image src={data.thirdSection.ceo.image}   alt={data.thirdSection.ceo.imageAlt} width={350} height={300} className="w-[350px] h-auto     object-cover xl:relative xl:bottom-[0px] z-[1] transition duration-300 transform group-hover:translate-x-2 " />
 
-                 <div className="border border-graylit rounded-3xl z-[-1]  transition duration-300 group-hover:shadow-lg  xl:relative xl:bottom-[120px] ]">
+                 <div className="border border-graylit xl:min-h-[380px]  md:min-h-[550px] rounded-3xl z-[-1]  transition duration-300 group-hover:shadow-lg  xl:relative xl:bottom-[120px] ]">
                 <div className="text-white relative">
                   <div className="rounded-3xl ml-auto pr-10 bg-secondary transition duration-300 group-hover:shadow-lg group-hover:bg-primary p-5 flex xl:items-end flex-col">
                     <div>

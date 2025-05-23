@@ -12,7 +12,7 @@ const Certifications = ({ data }: { data: Home }) => {
 
     const swiperRef = useRef<SwiperClass | null>(null);
   return (
-    <section className="pt-0 md:pt-[30px] lg:pt-[60px] pb-[50px] md:pb-[60px] lg:pb-[120px] relative  ">
+    <section className="pt-[30px] md:pt-[30px] lg:pt-[60px] pb-[50px] md:pb-[60px] lg:pb-[120px] relative  ">
       <div className="container">
         <div className=" ">
           <div className=" ">

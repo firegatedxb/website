@@ -7,8 +7,9 @@ import "swiper/css";
 import Image from "next/image";
 import { assets } from "@/public/assets/assets";
 import Link from "next/link";
-
 import { Home } from '@/public/types/Common';
+import { AnimatePresence, motion } from "framer-motion";
+import { fadeIn, fadeSlide  } from "@/public/frameranimation/animation";
 
 const HeroSlider = ({ data }: { data: Home }) => {
   const swiperRef = useRef<SwiperClass | null>(null);
@@ -33,17 +34,27 @@ const HeroSlider = ({ data }: { data: Home }) => {
                 <Image src={slide.image} alt={slide.title} width={1500} height={1000} className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute inset-0 " />
                 <div className="relative z-10 h-full container mx-auto px-6 flex flex-col justify-end pb-[22dvh] gap-[52px] text-white">
-                  <h1 className="text-65 font-bold uppercase max-w-[29ch] leading-[1.230769230769231]" dangerouslySetInnerHTML={{ __html: slide.title }}>
-                    {/* {slide.title} */}
-                  </h1>
+
+
+<AnimatePresence mode="wait">
+
+    <motion.h1
+      key={slide.title}
+
+      {...fadeSlide(-20, 0, 30)} // or use default: {...fadeSlide()}
+      className="text-65 font-bold uppercase max-w-[29ch] leading-[1.23]"
+      dangerouslySetInnerHTML={{ __html: slide.title }}
+    />
+</AnimatePresence>
                   <Link href="/about">
-                  <button className="flex cursor-pointer items-center bg-primary hover:bg-primary/90 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87]
+                    <motion.div {...fadeIn(0.8, 0.2)}>
+                      <button className="flex cursor-pointer items-center bg-primary hover:bg-primary/90 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87]
                   uppercase group">
                     <span>READ MORE</span>
                     <span className="bg-white rounded-full p-1 w-7 h-7 flex items-center justify-center">
                       <Image src={assets.bluearrowRight} width={14} height={28} alt="read-more" className="w-full h-[14px] object-contain group-hover:animate-pulse"></Image>
                     </span>
-                    </button>
+                    </button></motion.div>
                     </Link>
                 </div>
               </div>

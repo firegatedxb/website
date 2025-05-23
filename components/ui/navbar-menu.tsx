@@ -1,9 +1,10 @@
 "use client";
 import React, { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Link, { LinkProps } from "next/link";
 import Image from "next/image";
 import arrow from "@/public/assets/img/home/arrow.svg";
+import { slideDown } from "@/public/frameranimation/animation";
 
 const transition = {
   type: "spring",
@@ -80,6 +81,13 @@ export const Menu = ({
 
 
   return (
+    <div>
+       <AnimatePresence>
+    <motion.div
+      key="header-menu"
+      {...slideDown()}
+      className="absolute top-0 left-0 w-full bg-white shadow-md z-50"
+    >
         <div className="relative">
 
       <nav
@@ -148,10 +156,13 @@ export const Menu = ({
       </nav>
         </div>
 
-
+ </motion.div>
+</AnimatePresence>
+   </div>
 
   );
 };
+
 
 export const ProductItem = ({
   title,

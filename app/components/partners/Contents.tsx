@@ -50,7 +50,7 @@ const Contents = ({ data }: { data: Partners }) => {
                         </div>
                     </div>
                     <div>
-                        <Image src={item.image} alt={item.imageAlt} className="rounded-[20px] w-full h-full object-cover"   width={150} height={50} />
+                        <Image src={item.image} alt={item.imageAlt} className="rounded-[20px]   object-cover"   width={800} height={434} />
                     </div>
                 </div>
             </div>

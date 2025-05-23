@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Home , systems } from '@/public/types/Common';
+import { Home  } from '@/public/types/Common';
 
 const OurSystems = ({ data }: { data: Home }) => {
 
@@ -46,14 +46,13 @@ homeImage: string,
         metaDescription: string
       }
     ]
-  }[]>([]);
+  } | null>(null);
 
    const handleFetchSystem = async () => {
       try {
         const response = await fetch("/api/admin/systems");
         if (response.ok) {
           const data = await response.json();
-          console.log(data.data);
           setSystemss(data.data);
         } else {
           const data = await response.json();
@@ -64,18 +63,18 @@ homeImage: string,
       }
     }
 
-    useEffect(() => {
-      handleFetchSystem();
-    }, [])
-console.log(systemss)
-  return (
 
+  useEffect(() => {
+    handleFetchSystem();
+  }, []);
+
+  return (
     <section className="pt-[50px]  md:pt-[50px] lg:pt-[108px] ">
       <div className="container ">
-        <h2 className="text-50 text-secondary font-medium mb-3 md:mb-8 uppercase">{data.systems.title}</h2>
+        <h2 className="text-50 text-secondary font-medium mb-3 md:mb-8 uppercase">{data?.systems.title}</h2>
         <div className=" relative border-b border-[#00000020] pb-[50px] md:pb-[70px] lg:pb-[121px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-[8px]">
-          {systemss[0]?.systems?.map((item, index) => (
+          {systemss?.systems?.map((item, index) => (
             <div key={index}>
               <div className="relative group rounded-[20px] overflow-hidden h-full group bg-EFEFEF hover:bg-secondary hover:text-white flex flex-col  transition-all duration-500">
                 <div className=" relative transition-all duration-500 overflow-hidden">
@@ -86,7 +85,7 @@ console.log(systemss)
                   <div className="px-5 py-5 lg:py-8 lg:px[28px]">
                     <div className="mt-auto cursor-pointer transition-all duration-400">
 
-                       <Link href={item.slug}> <button className="flex py-[7px] px-[20px] cursor-pointer items-center justify-between text-15 text-black bg-white group-hover:bg-primary group-hover:text-white font-medium
+                       <Link href={`systems/${item.slug}`}> <button className="flex py-[7px] px-[20px] cursor-pointer items-center justify-between text-15 text-black bg-white group-hover:bg-primary group-hover:text-white font-medium
                       rounded-[20px] space-x-5 text-xs leading-[1.87] uppercase w-full">
                       <span>READ MORE</span>
                       <span className="rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center">
@@ -104,7 +103,7 @@ console.log(systemss)
           ))}
           </div>
           </div>
-      </div>
+        </div>
     </section>
   );
 };

@@ -6,29 +6,7 @@ import { assets } from "@/public/assets/assets";
 import Link from 'next/link';
 
 import { Home } from '@/public/types/Common';
-const services = [
-  {
-    title: 'Design & Engineering',
-    subtitle: '',
-    description:
-      'Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting (EEL), and public address and voice evacuation (PAVA) systems.',
-      url: "/services#section2"
-  },
-  {
-    title: 'Installation',
-    subtitle: '',
-    description:
-      'Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting (EEL), and public address and voice evacuation (PAVA) systems.',
-    url: "/services#section3"
-  },
-  {
-    title: 'Maintenance',
-    subtitle: '',
-    description:
-      'Our team of experts excels in designing, constructing, and maintaining fire-fighting systems (FFS), fire alarm systems (FAS), electrical evacuation lighting (EEL), and public address and voice evacuation (PAVA) systems.',
-    url: "/services#section1"
-  },
-];
+
 const OurServices = ({ data }: { data: Home }) => {
 console.log(data)
 

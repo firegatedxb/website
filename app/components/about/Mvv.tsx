@@ -15,7 +15,7 @@ const Mvv = ({ data }: { data: About }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch gap-5 pt-10 lg:pt-25">
 
     <div
-      className="bg-graybg p-8 xl:p-15 shadow-lg flex flex-col rounded-2xl w-full transform transition duration-300 group hover:scale-[1.02] hover:shadow-xl"
+      className="bg-graybg p-8 xl:p-15  flex flex-col rounded-2xl w-full transform transition duration-300 group hover:scale-[1.02] hover:shadow-xl"
     >
       <div className="flex justify-center items-center mb-4 xl:mb-10 bg-primary rounded-2xl w-fit p-4 transition duration-300 group-hover:bg-secondary transform group-hover:-translate-y-1 ">
         <Image
@@ -34,7 +34,7 @@ const Mvv = ({ data }: { data: About }) => {
       </p>
     </div>
     <div
-      className="bg-graybg p-8 xl:p-15 shadow-lg flex flex-col rounded-2xl w-full transform transition duration-300 group hover:scale-[1.02] hover:shadow-xl"
+      className="bg-graybg p-8 xl:p-15  flex flex-col rounded-2xl w-full transform transition duration-300 group hover:scale-[1.02] hover:shadow-xl"
     >
       <div className="flex justify-center items-center mb-4 xl:mb-10 bg-primary rounded-2xl w-fit p-4 transition duration-300 group-hover:bg-secondary transform group-hover:-translate-y-1 ">
         <Image
@@ -54,7 +54,7 @@ const Mvv = ({ data }: { data: About }) => {
     </div>
 
     <div
-      className="bg-graybg p-8 xl:p-15 shadow-lg flex flex-col rounded-2xl w-full transform transition duration-300 group hover:scale-[1.02] hover:shadow-xl"
+      className="bg-graybg p-8 xl:p-15  flex flex-col rounded-2xl w-full transform transition duration-300 group hover:scale-[1.02] hover:shadow-xl"
     >
       <div className="flex justify-center items-center mb-4 xl:mb-10 bg-primary rounded-2xl w-fit p-4 transition duration-300 group-hover:bg-secondary transform group-hover:-translate-y-1 ">
         <Image
