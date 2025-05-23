@@ -87,14 +87,26 @@ export default function DynamicGrid({ data, locationData, sectorData }: DynamicG
     setSelectestatus(e.target.value);
   };
 
-  const limit = 10;
-  const [visible,setVisible] = useState(limit);
+  const limit = 5;
+  const [visible,setVisible] = useState(0);
+  const [disableLoadMore,setDisableLoadMore] = useState(false);
+
+  const handleLoadMore = () => {
+    setVisible(visible + limit);
+
+  };
+
+  useEffect(()=>{
+    if(visible + limit >= data.length){
+      setDisableLoadMore(true);
+    }
+  },[visible])
 
   const groupedItems = ProjectList(filteredData);
 useEffect(() => {
   if (!data) return;
 
-  let filtered = data.slice(0, limit);
+  let filtered = data.slice(0, visible + limit);
 
   // 🔹 1. location + sector + status
   if (selected && selectedsector && selectestatus) {
@@ -156,11 +168,12 @@ useEffect(() => {
         String(item.status).toLowerCase() === selectestatus.trim().toLowerCase()
     );
   }
+  setFilteredData(filtered);
 
   // 🔀 Shuffle and set
-  const shuffled = filtered.sort(() => Math.random() - 0.5);
-  setFilteredData(shuffled);
-}, [data, selected, selectedsector, selectestatus]);
+  // const shuffled = filtered.sort(() => Math.random() - 0.5);
+  // setFilteredData(shuffled);
+}, [data, selected, selectedsector, selectestatus, visible]);
 
 
   return (
@@ -269,9 +282,9 @@ useEffect(() => {
           ))}
         </div>
         <div className="container">
-        <div className="mx-auto mb-6 md:mb-[50px]  lg:mb-[100px] w-fit">
+        {!disableLoadMore && <div className="mx-auto mb-6 md:mb-[50px]  lg:mb-[100px] w-fit">
                 <div
-                  onClick={() => setVisible(visible + limit)}
+                  onClick={handleLoadMore}
                   className="flex cursor-pointer items-center bg-primary hover:bg-red-700 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase group"
                 >
                   <span>Load More</span>
@@ -285,7 +298,7 @@ useEffect(() => {
                     ></Image>
                   </span>
                 </div>
-              </div>
+              </div>}
       </div>
       </section>
 
