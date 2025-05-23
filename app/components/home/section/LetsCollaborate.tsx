@@ -55,7 +55,7 @@ const LetsCollaborate = ({ data }: { data: Home }) => {
       <motion.div
         key={index}
 
-      ><a href={platform.link}>
+      ><a href={platform.link} target="_blank" >
           <motion.div className="flex gap-2 items-center group cursor-pointer w-max"
         variants={itemFade}>
            <p className="text-[19px] uppercase text-black">{platform.title}</p>
