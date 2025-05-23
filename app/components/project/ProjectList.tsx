@@ -76,6 +76,7 @@ export default function DynamicGrid({ data, locationData, sectorData }: DynamicG
   featuredProject: boolean;
       }[]
     >([]);
+
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelected(e.target.value);
   };
@@ -86,11 +87,14 @@ export default function DynamicGrid({ data, locationData, sectorData }: DynamicG
     setSelectestatus(e.target.value);
   };
 
+  const limit = 10;
+  const [visible,setVisible] = useState(limit);
+
   const groupedItems = ProjectList(filteredData);
 useEffect(() => {
   if (!data) return;
 
-  let filtered = data;
+  let filtered = data.slice(0, limit);
 
   // 🔹 1. location + sector + status
   if (selected && selectedsector && selectestatus) {
@@ -256,7 +260,7 @@ useEffect(() => {
                   <div className="border-t border-[#cccccc] pt-4 md:pt-8 ">
                      <p className="font-medium text-32">{proj.client}</p>
                                   <p className="font-medium text-md text-[#595959] mb-4 md:mb-8">{proj.sector}</p>
-                                  <Image src={proj.thumbnail} alt={proj.thumbnailAlt} className="rounded-[20px]  " width={794}height={600} />
+                                  <Image src={proj.thumbnail} alt={proj.thumbnailAlt} className="rounded-[20px]  " width={794} height={600} />
 
                   </div>
                 </Link>
@@ -267,6 +271,7 @@ useEffect(() => {
         <div className="container">
         <div className="mx-auto mb-6 md:mb-[50px]  lg:mb-[100px] w-fit">
                 <div
+                  onClick={() => setVisible(visible + limit)}
                   className="flex cursor-pointer items-center bg-primary hover:bg-red-700 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase group"
                 >
                   <span>Load More</span>

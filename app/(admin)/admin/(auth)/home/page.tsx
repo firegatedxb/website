@@ -45,6 +45,7 @@ interface SystemFormProps {
             imageAlt: string;
             title: string;
             description: string;
+            url: string;
         }[];
     };
     systems: {
@@ -393,7 +394,7 @@ const HomePage = () => {
                                     <Input type='text' placeholder='Alt Tag' {...register(`services.items.${index}.imageAlt`)} />
                                 </div>
                                 </div>
-                                <div className=''>
+                                <div className='flex flex-col gap-2'>
                                 <div className='flex flex-col gap-2'>
                                     <Label className='pl-3 font-bold'>Title</Label>
                                     <Input type='text' placeholder='Title' {...register(`services.items.${index}.title`)} />
@@ -402,6 +403,10 @@ const HomePage = () => {
                                     <Label className='pl-3 font-bold'>Description</Label>
                                     <Textarea placeholder='Description' {...register(`services.items.${index}.description`)} />
                                 </div>
+                                <div className='flex flex-col gap-2'>
+                                    <Label className='pl-3 font-bold'>URL</Label>
+                                    <Input type='text' placeholder='URL' {...register(`services.items.${index}.url`)} />
+                                </div>
                                 </div>
                             </div>
 
@@ -409,7 +414,7 @@ const HomePage = () => {
                     ))}
 
                     <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => servicesAppend({ image: "", imageAlt: "", title: "", description: "" })}>Add Item</Button>
+                        <Button type='button' className="w-full cursor-pointer" onClick={() => servicesAppend({ image: "", imageAlt: "", title: "", description: "", url: "" })}>Add Item</Button>
                     </div>
 
                 </div>

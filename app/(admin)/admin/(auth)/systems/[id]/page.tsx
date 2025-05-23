@@ -23,6 +23,8 @@ interface SystemFormProps {
     metaDescription: string;
     banner: string;
     bannerAlt: string;
+    homeImage: string;
+    homeImageAlt: string;
     pageTitle: string;
     componentTitle: string;
     componentDescription: string;
@@ -71,6 +73,8 @@ const SystemForm = () => {
                 setValue("slug", data.data.slug);
                 setValue("banner", data.data.banner);
                 setValue("bannerAlt", data.data.bannerAlt);
+                setValue("homeImage", data.data.homeImage);
+                setValue("homeImageAlt", data.data.homeImageAlt);
                 setValue("pageTitle", data.data.title);
                 setValue("componentTitle", data.data.componentTitle);
                 setValue("componentDescription", data.data.componentDescription);
@@ -165,6 +169,30 @@ const SystemForm = () => {
                     <div>
                         <Label className='pl-3 font-bold'>Alt Tag</Label>
                         <Input type='text' placeholder='Alt Tag' {...register("bannerAlt")} />
+                    </div>
+                </div>
+
+                <div className='flex flex-col gap-2'>
+                    <div>
+                        <Label className="pl-3 font-bold">In Home Image</Label>
+                        <Controller
+                            name="homeImage"
+                            control={control}
+                            rules={{ required: "In Home Image is required" }}
+                            render={({ field }) => (
+                                <ImageUploader
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                />
+                            )}
+                        />
+                        {errors.homeImage && (
+                            <p className="text-red-500">{errors.homeImage.message}</p>
+                        )}
+                    </div>
+                    <div>
+                        <Label className='pl-3 font-bold'>Alt Tag</Label>
+                        <Input type='text' placeholder='Alt Tag' {...register("homeImageAlt")} />
                     </div>
                 </div>
 
