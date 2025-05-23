@@ -77,8 +77,10 @@ import iclocation from './img/projects/iclocation.svg';
 import icststus from './img/projects/icststus.svg';
 import icuser from './img/projects/icuser.svg';
 import dmall from './img/projects/dmall.jpg';
+import whatsapp from './img/icons/whatsapp.svg';
 
 export const assets = {
+    whatsapp,
     dmall,
     iccon,
     iclocation,
