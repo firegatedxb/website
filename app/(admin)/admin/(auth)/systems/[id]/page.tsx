@@ -69,7 +69,6 @@ const SystemForm = () => {
             const response = await fetch(`/api/admin/systems?id=${id}`);
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
                 setValue("slug", data.data.slug);
                 setValue("banner", data.data.banner);
                 setValue("bannerAlt", data.data.bannerAlt);
@@ -137,7 +136,7 @@ const SystemForm = () => {
                         </Label>
                         <Input type='text' placeholder='Slug' {...register("slug", {
                             required: "Slug is required", pattern: {
-                                value: /^[a-z0-9]+(-[a-z0-9]+)*$/,
+                                value: /^[a-z0-9#]+(-[a-z0-9#]+)*$/,
                                 message: "Slug must contain only lowercase letters, numbers, and hyphens (no spaces)"
                             }
                         })} />
@@ -154,7 +153,7 @@ const SystemForm = () => {
                         <Controller
                             name="banner"
                             control={control}
-                            rules={{ required: "Banner is required" }}
+                            
                             render={({ field }) => (
                                 <ImageUploader
                                     value={field.value}
@@ -162,9 +161,7 @@ const SystemForm = () => {
                                 />
                             )}
                         />
-                        {errors.banner && (
-                            <p className="text-red-500">{errors.banner.message}</p>
-                        )}
+                        
                     </div>
                     <div>
                         <Label className='pl-3 font-bold'>Alt Tag</Label>
