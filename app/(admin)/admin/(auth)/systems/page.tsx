@@ -135,7 +135,7 @@ export default function Team() {
         try {
             const response = await fetch(`/api/admin/systems?id=${id}`, {
                 method: "PATCH",
-                body: JSON.stringify({ image, imageAlt }),
+                body: JSON.stringify({ image, imageAlt, title, description, logo, logoAlt }),
             });
             if (response.ok) {
                 const data = await response.json();
