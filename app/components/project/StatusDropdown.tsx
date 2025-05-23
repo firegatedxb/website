@@ -1,6 +1,6 @@
 // components/SelectBox.tsx
 import { Listbox } from '@headlessui/react';
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
+import { CheckIcon } from '@heroicons/react/20/solid';
 
 type Option = { name: string; value: string };
 

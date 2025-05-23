@@ -78,15 +78,7 @@ export default function DynamicGrid({ data, locationData, sectorData }: DynamicG
       }[]
     >([]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelected(e.target.value);
-  };
-  const handleSector = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedsector(e.target.value);
-  };
-  const handleStatus = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectestatus(e.target.value);
-  };
+
 
   const limit = 5;
   const [visible,setVisible] = useState(0);
