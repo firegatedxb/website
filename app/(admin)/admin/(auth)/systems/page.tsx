@@ -296,6 +296,7 @@ export default function Team() {
                                         <Label>Alt Tag</Label>
                                         <Input type="text" placeholder="Alt Tag" value={imageAlt} onChange={(e) => setImageAlt(e.target.value)} />
                                     </div>
+                                    
                                 </div>
                             </DialogHeader>
                             <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={handleAddSystem}>Save</DialogClose>

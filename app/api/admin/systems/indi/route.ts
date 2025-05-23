@@ -12,7 +12,7 @@ try {
 
     await connectDB();
     const body = await req.json();
-    const {introTitle,introDescription,slug,banner,bannerAlt,pageTitle,componentTitle,componentDescription,components,metaTitle,metaDescription} = body;
+    const {introTitle,introDescription,slug,banner,bannerAlt,homeImage,homeImageAlt,pageTitle,componentTitle,componentDescription,components,metaTitle,metaDescription} = body;
     const searchParams = req.nextUrl.searchParams;
     const id = searchParams.get("id");
 
@@ -29,6 +29,8 @@ try {
     systemsData.slug = slug;
     systemsData.banner = banner;
     systemsData.bannerAlt = bannerAlt;
+    systemsData.homeImage = homeImage;
+    systemsData.homeImageAlt = homeImageAlt;
     systemsData.pageTitle = pageTitle;
     systemsData.componentTitle = componentTitle;
     systemsData.componentDescription = componentDescription;
