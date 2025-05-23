@@ -39,6 +39,7 @@ export type Home =
           imageAlt: string
           title: string
           description: string
+          url: string
         }
       ]
     },
