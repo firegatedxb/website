@@ -132,13 +132,14 @@ const FeaturedProjects = ({ data }: { data: Home,  }) => {
         transition={{ delay: projectList.indexOf(project) * 0.15 }}
       >
         <div className="relative mb-8">
+           <Link href={`/projects-details/${project.slug}`}>
           <Image
             src={project.coverPhoto}
             alt={""}
             width={487}
             height={536}
             className="w-full lg:h-[536px] object-cover rounded-3xl"
-          />
+          /></Link> 
           <Link href={`/projects-details/${project.slug}`}>
             <div className="z-10 pointer w-[50px] h-[50px] rounded-full border flex items-center justify-center absolute bottom-[0px] left-[0px] trst">
               <Image src={assets.redarrow} alt="" />
