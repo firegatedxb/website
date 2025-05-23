@@ -5,6 +5,7 @@ import Link from "next/link";
 import Sbttl from "../common/Sbttl";
 import type { StaticImageData } from "next/image";
 import { assets } from "@/public/assets/assets";
+import SelectBox from "./StatusDropdown";
 
 interface Project {
   name: string;
@@ -77,15 +78,7 @@ export default function DynamicGrid({ data, locationData, sectorData }: DynamicG
       }[]
     >([]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelected(e.target.value);
-  };
-  const handleSector = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedsector(e.target.value);
-  };
-  const handleStatus = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectestatus(e.target.value);
-  };
+
 
   const limit = 5;
   const [visible,setVisible] = useState(0);
@@ -186,61 +179,29 @@ useEffect(() => {
 
           <div>
             <div className="bg-secondary rounded-2xl p-8 lg:p-10 gap-2 grid md:grid-cols-2 lg:grid-cols-4 gap-x-4 mb-8 lg:mb-25">
-              <div>
-                <select
-                  id="custom-select"
-                  value={selected}
-                  onChange={handleChange}
-                  className="block w-full py-2 mt-1 focus:outline-none text-white border-b border-graylit"
-                >
+             <SelectBox
+  label="Country"
+  selected={selected}
+  setSelected={setSelected}
+  options={locationData?.data?.map((item) => ({ name: item.name, value: item.name })) || []}
+/>
 
-                    <option value=""disabled > Country
-                    </option>
-                  {locationData?.data?.map((group, index) => (
-                    <option value={group.name}  key={index} className="text-black" >
-                      {group.name}
-                    </option>
-                  ))}
-                </select>
+<SelectBox
+  label="Sector"
+  selected={selectedsector}
+  setSelected={setSelectedsector}
+  options={sectorData?.data?.map((item) => ({ name: item.name, value: item.name })) || []}
+/>
 
-              </div>
-              <div>
-                <select
-                  id="custom-select"
-                  value={selectedsector}
-                  onChange={handleSector}
-                  className="block w-full py-2 mt-1 focus:outline-none text-white border-b border-graylit"
-                >
-                    <option value="" disabled > Sector
-                    </option>
-                  {sectorData?.data?.map((group, index) => (
-
-                      <option value={group.name} key={index} className="text-black " >
-                        {group.name}
-                      </option>
-
-                ))}
-                </select>
-              </div>
-              <div>
-                <select
-                  id="custom-select"
-                  value={selectestatus}
-                  onChange={handleStatus}
-                  className="block w-full py-2 mt-1 focus:outline-none text-white border-b border-graylit"
-                >
-                  <option value="" disabled className="text-black" >
-                   Status
-                  </option>
-                  <option value="true" className="text-black" >
-                   Completed
-                  </option>
-                  <option value="false" className="text-black">
-                    On Going
-                  </option>
-
-                </select>
-              </div>
+<SelectBox
+  label="Status"
+  selected={selectestatus}
+  setSelected={setSelectestatus}
+  options={[
+    { name: 'Completed', value: 'true' },
+    { name: 'On Going', value: 'false' },
+  ]}
+/>
 
               <div className="ml-auto mt-6 md:mt-0">
                 <div
