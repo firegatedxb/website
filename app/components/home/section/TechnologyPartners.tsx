@@ -6,7 +6,6 @@ import { Swiper as SwiperClass } from "swiper";
 import { Autoplay, Grid } from 'swiper/modules';
 import "swiper/css";
 import Image from "next/image";
-import { assets } from "@/public/assets/assets";
 
 import { Home,Partners } from '@/public/types/Common';
 import { motion } from "framer-motion";
@@ -83,11 +82,11 @@ useEffect(() => {
         <div>
           <Image src={slide.logo} alt={slide.logoAlt} width={240} height={70} />
         </div>
-          <a href={slide.website}   target="_blank" rel="noopener noreferrer">
+          {/* <a href={slide.website}   target="_blank" rel="noopener noreferrer">
             <div className="w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center absolute top-[10px] right-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
               <Image src={assets.redarrow} alt="" />
             </div>
-          </a>
+          </a> */}
       </motion.div>
     </SwiperSlide>
   ))}

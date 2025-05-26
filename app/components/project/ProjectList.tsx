@@ -235,7 +235,7 @@ useEffect(() => {
                      <p className="font-medium text-32">{proj.client}</p>
                                   <p className="font-medium text-md text-[#595959] mb-4 md:mb-8">{proj.sector}</p>
                     {/* <Image src={proj.thumbnail} alt={proj.thumbnailAlt} className="rounded-[20px]  " width={794} height={600} /> */}
-                    <figure className="relative h-[450px] lg:h-[600px] ">
+                    <figure className="relative h-[450px] lg:h-[500px] ">
                           <Image src={proj.thumbnail} alt={proj.thumbnailAlt} className="rounded-[20px]   object-cover  h-full object-center " width={794} height={600} />
                     </figure>
 
