@@ -1,8 +1,10 @@
 "use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { assets } from "@/public/assets/assets";
 import {  fadeInUp, itemVariants, listVariants } from "@/public/frameranimation/animation";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 import React, { useRef, useState } from "react";
 const Footer = () => {
@@ -163,6 +165,11 @@ const Footer = () => {
           </div>
         </div>
       </div>
+       <motion.div className=" whatsapp  "   >
+                      <Link href="#"  >
+                        <Image src={assets.whatsapp} alt="slider" className="fixed bottom-5 lg:bottom-[180px] right-[10px] lg:right-[50px] z-50 w-[30px] h-[30px] lg:h-[60px] lg:w-[60px] " />
+                        </Link>
+                    </motion.div>
     </section>
   );
 };

@@ -13,7 +13,7 @@ const Contents = ({ data }: { data: Partners }) => {
                 <div key={index} className={`odd:bg-[#F8F8F8] stylein${index}`}>
                 <div className='container pb-[50px] lg:pb-[100px]'>
                 <div className={`flex flex-col gap-12 first:lg:pt-0 `} key={index} >
-                <div className='flex justify-between items-center border-b pb-10 ptst lg:pt-[150px] lg:pb-[50px]'>
+                <div className='flex justify-between items-center border-b pb-10 ptst lg:pt-[100px] lg:pb-[30px]'>
                     {index % 2 !== 0 ? (
                         <>
                         <div className=''>
