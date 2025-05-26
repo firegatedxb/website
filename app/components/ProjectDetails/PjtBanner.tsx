@@ -17,13 +17,14 @@ const PjtBanner: React.FC<FrameworkSectionProps> = ({
   data,
 
 }) => {
+  console.log("Project Data:", data);
   return (
     <div className="">
       <div>
         <div className="pt-[40px] md:pt-[70px] lg:pt-[100px] ">
           <div className="container">
             <h1 className="mb-5 md:mb[50px] text-secondary text-65 font-bold uppercase">
-              Dubai Hills Estate Mall
+              {data.data.name}
             </h1>
           </div>
           <div className="overflow-hidden   ">
