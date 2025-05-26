@@ -65,7 +65,8 @@ const PjtBanner: React.FC<FrameworkSectionProps> = ({
         <Image src={assets.iclocation} alt={data.data.client} />
         <div>
           <p className="text-md font-medium">Status</p>
-          <p className="text-32 font-medium">Status</p>
+
+                     {data.data.status ?  <p className="text-32 font-medium">Completed</p> : <p> <p className="text-32 font-medium">On Going</p></p>}
         </div>
       </div>
 

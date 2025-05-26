@@ -7,10 +7,10 @@ import { Autoplay, Grid } from 'swiper/modules';
 import "swiper/css";
 import Image from "next/image";
 
-import { Home } from '@/public/types/Common';
+import { Home,Partners } from '@/public/types/Common';
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/public/frameranimation/animation";
-const Certifications = ({ data }: { data: Home }) => {
+const Certifications = ({ data,pdata }: { data: Home, pdata: Partners }) => {
 
     const swiperRef = useRef<SwiperClass | null>(null);
   return (
@@ -28,7 +28,7 @@ const Certifications = ({ data }: { data: Home }) => {
             </motion.h2>
       <Swiper
   modules={[Autoplay, Grid]}
-  autoplay={{ delay: 4000 }}
+              autoplay={{ delay: 4000 }}
   loop
   slidesPerView={1}
   grid={{
@@ -67,20 +67,20 @@ const Certifications = ({ data }: { data: Home }) => {
 
   className="w-full h-full"
 >
-  {data.certifications.items.map((slide, index) => (
+  {pdata.accredit.map((slide, index) => (
     <SwiperSlide key={index} className="border-x border-[#00000015]">
   <motion.div
-    className="bg-white flex items-center justify-center group px-3"
+    className="bg-white flex items-center justify-center group px-3 h-4200a"
     variants={fadeInUp}
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true, amount: 0.2 }}
   >
     <Image
-      src={slide.image}
-      alt={slide.imageAlt}
-      width={240}
-      height={70}
+      src={slide.accreditImage}
+      alt={slide.accreditImageAlt}
+      width={150}
+      height={150}
     />
   </motion.div>
 </SwiperSlide>

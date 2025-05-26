@@ -81,13 +81,9 @@ const RelatedProjects: React.FC<FrameworkSectionProps> = ({ data, sector }) => {
                     <p className="font-medium text-md text-[#595959] mb-4 md:mb-8">
                       {group.sector}
                     </p>
-                    <Image
-                      src={group.thumbnail}
-                      alt={group.thumbnailAlt}
-                      className="rounded-[20px]"
-                      width={521}
-                      height={394}
-                    />
+                    <figure className="relative h-[300px] lg:h-[394px] ">
+                                              <Image src={group.thumbnail} alt={group.thumbnailAlt} className="rounded-[20px]   object-cover  h-full object-center " width={521} height={394} />
+                                        </figure>
                   </div>
                 </Link>
               </div>
