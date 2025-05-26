@@ -6,14 +6,52 @@ import { AnimatePresence, motion, useInView } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 const Footer = () => {
   const tabContentVariants = {
   initial: { opacity: 0, x: 20 },
   animate: { opacity: 1, x: 0 },
   exit: { opacity: 0, x: -20 },
-};
-  const [tabValue, setTabValue] = useState("dubai");
+  };
+  const [contactList, setContactList] = useState<{ metaTitle: string,
+    metaDescription: string,
+    image: string,
+    imageAlt: string,
+    pageTitle: string,
+    contacts: [
+      {
+        title: string,
+        address: string,
+        phone: string,
+        email: string
+      }
+    ],
+    socials: [
+      {
+        title: string,
+        link: string
+      }
+    ]} >();
+   const handleFetchContact = async () => {
+      try {
+        const response = await fetch("/api/admin/contact");
+        if (response.ok) {
+          const data = await response.json();
+          setContactList(data.data);
+        } else {
+          const data = await response.json();
+          alert(data.message);
+        }
+      } catch (error) {
+        console.log("Error fetching industry", error);
+      }
+    }
+
+    useEffect(() => {
+      handleFetchContact();
+    }, [])
+  console.log("Contact List:", contactList);
+  const [tabValue, setTabValue] = useState("Dubai - UAE");
 
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
@@ -26,79 +64,60 @@ const Footer = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}>
-               <Tabs defaultValue="dubai" value={tabValue} onValueChange={setTabValue} className="">
+               <Tabs defaultValue="Dubai - UAE" value={tabValue} onValueChange={setTabValue} className="">
       <TabsList className="relative flex gap-y-5 lg:flex-row rounded-none mb-10 lg:mb-20 bg-transparent justify-start p-0 h-auto">
-        <TabsTrigger
-          value="dubai"
-          className="relative group cursor-pointer data-[state=active]:bg-transparent text-white hover:text-primary capitalize text-left w-fit lg:w-auto lg:text-center pl-0 pr-10 md:pr-20 py-0 text-19 font-medium"
-        >
-          Dubai – UAE
+                  {contactList?.contacts.map((client, index) => (
+                    <div key={index}  >
+                      <TabsTrigger
+                    value={client.title}
+                    className="relative group cursor-pointer data-[state=active]:bg-transparent text-white  capitalize text-left w-fit lg:w-auto lg:text-center pl-0 pr-10 md:pr-20  lg:pr-[90px] py-0 text-19 font-medium"
+                  >
+                    <p className="mb-0 text-[#979797]  group-data-[state=active]:text-white hover:text-white transition-all duration-300"> {client.title}</p>
+
           <div className="flex absolute w-full h-[2px] group-data-[state=active]:bg-primary bottom-[-18px] left-0 z-20"></div>
-        </TabsTrigger>
-        <TabsTrigger
-          value="riyadh"
-          className="relative group cursor-pointer data-[state=active]:bg-transparent text-white hover:text-primary capitalize text-left w-fit lg:w-auto lg:text-center pl-0 md:pr-20 py-0 text-19 font-medium"
-        >
-          Riyadh - KSA
-          <div className="flex absolute w-full h-[2px] group-data-[state=active]:bg-primary bottom-[-18px] left-0 z-20"></div>
-        </TabsTrigger>
+                  </TabsTrigger>
+                    </div>
+                  ))}
+
+
         <div className="absolute w-full h-[1px] bg-white/75 bottom-[-17px] left-0 z-0"></div>
       </TabsList>
 
-      <AnimatePresence mode="wait">
-        {tabValue === "dubai" && (
-          <motion.div
-            key="dubai"
-            variants={tabContentVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-          >
-            <TabsContent value="dubai">
-              <div>
-                <p className="text-32 mb-6"> Dubai – UAE</p>
-                <p className="text-19">
-                  Bayan Building, Dubai Investment Park 1
-                  <br /> PO Box 62335
-                </p>
-                <p className="text-19">
-                  <span className="text-primary">T</span>: +971 (4) 271 3794
-                </p>
-                <p className="text-19">
-                  <span className="text-primary">E</span>: info@firegate.ae
-                </p>
-              </div>
-            </TabsContent>
-          </motion.div>
-        )}
+                <AnimatePresence mode="wait">
 
-        {tabValue === "riyadh" && (
-          <motion.div
-            key="riyadh"
-            variants={tabContentVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-          >
-            <TabsContent value="riyadh">
-              <div>
-                <p className="text-32 mb-6"> Riyadh – KSA</p>
-                <p className="text-19">
-                  Building 2, Office 9, Anas Ibn Malik Road, Al Yasmin <br />
-                  PO Box 13322
-                </p>
-                <p className="text-19">
-                  <span className="text-primary">T</span>: +966 (56) 517 8039
-                </p>
-                <p className="text-19">
-                  <span className="text-primary">E</span>: info@firegate.ae
-                </p>
-              </div>
-            </TabsContent>
-          </motion.div>
-        )}
+
+                  {contactList?.contacts.map((client, index) => (
+                    <div key={index}>
+                      {tabValue === client.title && (
+                        <motion.div
+                          key={client.title}
+                          variants={tabContentVariants}
+                          initial="initial"
+                          animate="animate"
+                          exit="exit"
+                          transition={{ duration: 0.4, ease: "easeInOut" }}
+                        >
+                          <TabsContent value={client.title}>
+                            <div>
+                              <p className="text-32 mb-6"> {client.title}</p>
+                              <p className="text-19">
+                                {client.address?.split('PO')[0]}<br></br>
+                                {client.address?.split('PO')[1]}
+                              </p>
+                              <p className="text-19">
+                                <span className="text-primary">T</span>:  {client.phone}
+
+                              </p>
+                              <p className="text-19">
+                                <span className="text-primary">E</span>:  {client.email}
+                              </p>
+                            </div>
+                          </TabsContent>
+                        </motion.div>
+                      )}
+                    </div>
+                  ))}
+
       </AnimatePresence>
     </Tabs>
             </motion.div>

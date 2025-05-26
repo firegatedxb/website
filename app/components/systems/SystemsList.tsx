@@ -21,13 +21,22 @@ const SystemsList = ({ data }: { data: systems }) => {
               </div>
               <div className="relative z-20 mt-auto translate-y-[95%] group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
 
-                 <Link href={sys.slug ? `/systems/${sys.slug}` : ""} >
-                  <h3 className="text-white text-32 leading-1.3 font-medium mb-10 group-hover:mb-5 transition-all duration-300">{sys.title}</h3>
-                  </Link>
+                 {sys.slug !== '#' ? (
+                    <Link href={`/systems/${sys.slug}`}>
+                      <h3 className="text-white text-32 leading-1.3 font-medium mb-10 group-hover:mb-5 transition-all duration-300">
+                        {sys.title}
+                      </h3>
+                    </Link>
+                  ) : (
+                    <h3 className="text-white text-32 leading-1.3 font-medium mb-10 group-hover:mb-5 transition-all duration-300">
+                      {sys.title}
+                    </h3>
+                  )}
                 <p className="text-white mb-10">{sys.description}</p>
-                <Link href={sys.slug ? `/systems/${sys.slug}` : ""} className="w-[50px] h-[50px] rounded-full border bg-white border-black flex items-center justify-center transition-opacity duration-500 ease-in-out  ">
-                  <Image src={assets.redarrow} alt="" />
-                </Link>
+                {sys.slug !== '#' ? (
+                  <Link href={sys.slug ? `/systems/${sys.slug}` : ""} className="w-[50px] h-[50px] rounded-full border bg-white border-black flex items-center justify-center transition-opacity duration-500 ease-in-out  ">
+                    <Image src={assets.redarrow} alt="" />
+                  </Link>) : ('')}
 
               </div>
             </div>
