@@ -29,7 +29,7 @@ const Mvv = ({ data }: { data: About }) => {
       <h3 className="text-50 font-medium leading-1.2 text-black uppercase mb-2 lg:mb-5 transition-colors duration-300 group-hover:text-primary">
         {data.secondSection.mission.logoAlt}
       </h3>
-      <p className="text-16 font-light transition-opacity duration-300 opacity-90 group-hover:opacity-100">
+      <p className="text-gray text-19 font-light transition-opacity duration-300 opacity-90 group-hover:opacity-100">
         {data.secondSection.mission.description}
       </p>
     </div>
@@ -48,7 +48,7 @@ const Mvv = ({ data }: { data: About }) => {
       <h3 className="text-50 font-medium leading-1.2 text-black uppercase mb-2 lg:mb-5 transition-colors duration-300 group-hover:text-primary">
         {data.secondSection.vision.logoAlt}
       </h3>
-      <p className="text-16 font-light transition-opacity duration-300 opacity-90 group-hover:opacity-100">
+      <p className="text-gray text-19 font-light transition-opacity duration-300 opacity-90 group-hover:opacity-100">
         {data.secondSection.vision.description}
       </p>
     </div>
@@ -68,7 +68,7 @@ const Mvv = ({ data }: { data: About }) => {
       <h3 className="text-50 font-medium leading-1.2 text-black uppercase mb-2 lg:mb-5 transition-colors duration-300 group-hover:text-primary">
         {data.secondSection.values.logoAlt}
       </h3>
-      <p className="text-16 font-light transition-opacity duration-300 opacity-90 group-hover:opacity-100">
+      <p className="text-gray text-19 font-light transition-opacity duration-300 opacity-90 group-hover:opacity-100">
         {data.secondSection.values.description}
       </p>
     </div>

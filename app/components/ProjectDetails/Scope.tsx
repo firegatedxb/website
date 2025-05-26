@@ -18,9 +18,10 @@ const PjtBanner: React.FC<FrameworkSectionProps> = ({
   <h1 className="mb-4 md:mb-[28px] text-secondary text-50 font-bold uppercase">
     {data.data.title}
   </h1>
-
+<div className="text-595959">
   <div  dangerouslySetInnerHTML={{ __html: data.data.description }}>
-  </div>
+            </div>
+            </div>
 </div>
 
       </div>

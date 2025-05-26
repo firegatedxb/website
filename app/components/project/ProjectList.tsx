@@ -178,7 +178,7 @@ useEffect(() => {
           </div>
 
           <div>
-            <div className="bg-secondary rounded-2xl p-8 lg:p-10 gap-2 grid md:grid-cols-2 lg:grid-cols-4 gap-x-4 mb-8 lg:mb-25">
+            <div className="bg-secondary rounded-2xl p-8 lg:p-10 gap-2 xl:gap-[50px] grid md:grid-cols-2 lg:grid-cols-4 gap-x-4 mb-8 lg:mb-25">
              <SelectBox
   label="Country"
   selected={selected}
@@ -232,8 +232,8 @@ useEffect(() => {
               {group.map((proj) => (
                 <Link key={proj.slug} href={`/projects-details/${proj.slug}`}>
                   <div className="border-t border-[#cccccc] pt-4 md:pt-8 ">
-                     <p className="font-medium text-32">{proj.client}</p>
-                                  <p className="font-medium text-md text-[#595959] mb-4 md:mb-8">{proj.sector}</p>
+                     <p className="font-medium text-32">{proj.name}</p>
+                                  <p className="font-medium text-md text-gray mb-4 md:mb-8">{proj.sector}</p>
                     {/* <Image src={proj.thumbnail} alt={proj.thumbnailAlt} className="rounded-[20px]  " width={794} height={600} /> */}
                     <figure className="relative h-[450px] lg:h-[500px] ">
                           <Image src={proj.thumbnail} alt={proj.thumbnailAlt} className="rounded-[20px]   object-cover  h-full object-center " width={794} height={600} />

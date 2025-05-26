@@ -9,10 +9,10 @@ const Leadership = ({ data }: { data: About }) => {
     <section className="pt-66 pb-[50px]  lg:pb-[70px]  xl:pb-0 ">
       <div className="container">
         <div className="mb-5 lg:mb-12">
-          <div className="mb-4">
+          <div className="mb-3">
             <Sbttl title={data.thirdSection.title} />
           </div>
-          <h3 className="text-32 font-medium leading-[1.3125]">{data.thirdSection.description}</h3>
+          <h3 className="text-32 font-medium leading-[1.3125] text-gray">{data.thirdSection.description}</h3>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-10    ">
             <div className="relative group"  >
@@ -28,7 +28,7 @@ const Leadership = ({ data }: { data: About }) => {
                   </div>
                 </div>
                 <div className="p-5 lg:p-10">
-                  <p>
+                  <p className="text-gray text-19">
                     {data.thirdSection.chairman.description}
                   </p>
                 </div>
@@ -47,7 +47,7 @@ const Leadership = ({ data }: { data: About }) => {
                   </div>
                 </div>
                 <div className="p-5 lg:p-10">
-                  <p>
+                  <p  className="text-gray text-19">
                     {data.thirdSection.ceo.description}
                   </p>
                 </div>

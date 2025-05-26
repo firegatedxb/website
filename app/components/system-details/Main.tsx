@@ -14,7 +14,7 @@ console.log(data);
             <div className="mb-4">
               <Sbttl title={data.introTitle} />
             </div>
-            <p>{data.introDescription}</p>
+            <p className="text-gray">{data.introDescription}</p>
           </div>
 
           </div>

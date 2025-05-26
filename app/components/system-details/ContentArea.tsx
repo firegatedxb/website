@@ -14,7 +14,7 @@ const ContentArea = ({ data }: { data: systems }) => {
               <Sbttl title={data.componentTitle} />
           </div>
           {data.componentDescription &&
-            <p>{data.componentDescription}</p>
+            <p className="text-gray">{data.componentDescription}</p>
           }
 
           </div>

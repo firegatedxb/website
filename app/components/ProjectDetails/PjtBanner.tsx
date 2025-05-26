@@ -35,12 +35,11 @@ const PjtBanner: React.FC<FrameworkSectionProps> = ({
                backgroundImage: `url(${data.data.coverPhoto})`
                ,
               }}>
-              {/* <Image
-                src={assets.dmall}
-                alt=""
-                className="absolute top-0 right-0 rounded-tl-[20px] rounded-bl-[20px]"
-              /> */}
-            </div>
+                  <div className="pt-[15px] pl-[15px] md:pt-[30px] md:pl-[37px]">
+                     <div className="bg-white rounded-sm py-[12px] px-[22px] w-fit flex gap-2 items-center uppercase    "> <p className="text-gray text-15">Sector:</p><p className="text-gray text-15 font-[700]">{data.data.sector}</p></div>
+
+             </div>
+                </div>
             </div>
             </div>
             <div className="container">
@@ -48,7 +47,7 @@ const PjtBanner: React.FC<FrameworkSectionProps> = ({
 <div className="md:w-1/2 lg:w-1/3 flex flex-col gap-4 justify-between">
   <div className="flex flex-col gap-4 md:gap-8 justify-stretch h-full">
 
-      <div  className="flex gap-4 md:gap-8 border-b pb-5 md:pb-8">
+      <div  className="flex gap-4 md:gap-8 border-b pb-5 md:pb-8 items-top">
         <Image src={assets.iccon} alt={data.data.client} />
         <div>
           <p className="text-md font-medium">Client</p>
