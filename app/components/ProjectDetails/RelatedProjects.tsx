@@ -78,7 +78,7 @@ const RelatedProjects: React.FC<FrameworkSectionProps> = ({ data, sector }) => {
                 <Link key={group.slug} href={`/projects-details/${group.slug}`}>
                   <div className="  ">
                     <p className="font-medium text-32">{group.name}</p>
-                    <p className="font-medium text-md text-[#595959] mb-4 md:mb-8">
+                    <p className="font-medium text-md text-gray mb-4 md:mb-8">
                       {group.sector}
                     </p>
                     <figure className="relative h-[300px] lg:h-[394px] ">

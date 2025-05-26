@@ -16,7 +16,7 @@ const Main = ({ data }: { data: Services }) => {
               <Sbttl title={service.title} />
             </div>
 
-          <p>{service.description} </p>
+          <p className="text-gray font-19">{service.description} </p>
     </div>
       ))}
       </div>

@@ -17,17 +17,17 @@ const AddressBar = ({ data }: { data: Contact }) => {
       <div className='bg-siteaftr bg-secondary md:bg-none pl-[20px] md:col-span-4 py-[50px] lg:py-[100px] flex flex-col gap-10 lg:gap-20 relative text-white'>
 
         <motion.div
-        className="flex gap-10 lg:gap-[100px] items-center border-b border-[#ffffff35]    w-fit"
+        className="flex gap-6 lg:gap-[38px] items-center border-b border-[#ffffff35]    w-fit"
       >
         {data.contacts.map((item, index) => (
           <motion.p
             key={index}
             onClick={() => setActiveTab(index)}
-            className={`text-19 font-medium  leading-[2.18] cursor-pointer relative top-[1px] pb-1 pr-5 md:pr-10
+            className={`text-19 font-medium  leading-[2.18] cursor-pointer relative top-[1px] pb-1 pr-5 md:pr-10  lg:pr-[125px]
               ${
                 activeTab === index
                   ? "border-b-2 border-primary font-[600]"
-                  : "border-b-2 border-transparent font-[400]"
+                  : "border-b-2 border-transparent font-[400] text-[#d8d8d8a1]"
               }`}
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}

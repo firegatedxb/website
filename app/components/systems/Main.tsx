@@ -14,7 +14,7 @@ const Main = ({ data }: { data: systems }) => {
         <div className="mb-4">
           <Sbttl title={data.title} />
         </div>
-        <div dangerouslySetInnerHTML={{__html: data.description}}></div>
+        <div dangerouslySetInnerHTML={{__html: data.description}} className="text-595959"></div>
       </div>
     </section>
   );

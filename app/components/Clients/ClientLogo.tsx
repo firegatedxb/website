@@ -9,7 +9,7 @@ const ClientLogo = ({ data }: { data: Clients }) => {
   console.log(data)
   return (
     <section className="">
-      <div className="container py-[50px] lg:py-25 pb-12 lg:pb-[70px] border-b border-graylit">
+      <div className="container py-[50px] lg:py-25 pb-[50px] lg:pb-20 border-b border-graylit">
         <div className="overflow-hidden">
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 scale-[1.01] ">
           {data.clients.map((item, i) => (

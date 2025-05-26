@@ -28,7 +28,7 @@ const ServicesList = ({ data }: { data: Services }) => {
 
                     </div>
                     <div>
-                      <p>{item.description}</p>
+                      <p className="text-gray">{item.description}</p>
                     </div>
                      {/* <div className="mt-auto">
                       <MainBtn btnTxt="VIEW MORE" />

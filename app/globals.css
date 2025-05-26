@@ -225,7 +225,12 @@ body {
     top: 0;}
     .stylein0 .ptst{padding-top: 0px !important;}
 
-
+.bggradientsa{background: linear-gradient(180deg, rgba(0, 0, 0, 0) 6.25%, #000000 90.1%);
+}
+.text-595959 p, .text-595959 span{color: #595959 !important;}
+.grbtmgrad {background: linear-gradient(180deg, rgba(38, 57, 103, 0) 39.66%, #263967 100%);}
+.group:hover .grbtmgrad {background: linear-gradient(231.03deg, rgba(38, 57, 103, 0) 8.76%, #263967 63.24%);
+}
 @media only screen and (max-width: 1138px) {
 .stylein0 .ptst{padding-top: 50px   !important;}
 
