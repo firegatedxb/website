@@ -231,7 +231,9 @@ const AboutPage = () => {
                         </div>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Description</Label>
-                            <Textarea placeholder='Description' {...register("secondSection.description")} />
+                            <Controller name="secondSection.description" control={control} render={({ field }) => {
+                                return <ReactQuill theme="snow" value={field.value} onChange={field.onChange} />
+                            }} />
                         </div>
                         
                         <div className='grid grid-cols-3 gap-5'>

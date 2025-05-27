@@ -53,6 +53,12 @@ const PartnersSchema = new mongoose.Schema({
             }
         }
     ],
+    accreditTitle:{
+        type:String,
+    },
+    accreditDescription:{
+        type:String,
+    },
     accredit:[
         {
             accreditImage: {

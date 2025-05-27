@@ -19,6 +19,7 @@ import { ImageUploader } from "@/components/ui/image-uploader";
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false })
 import 'react-quill-new/dist/quill.snow.css';
 import dynamic from 'next/dynamic'
+import { Textarea } from "@/components/ui/textarea";
 
 interface Client {
     _id: string;
@@ -55,6 +56,8 @@ export default function Team() {
     const [metaTitle, setMetaTitle] = useState<string>("");
     const [metaDescription, setMetaDescription] = useState<string>("");
     const [accreditList, setAccreditList] = useState<Accreditation[]>([]);
+    const [accreditTitle, setAccreditTitle] = useState<string>("");
+    const [accreditDescription, setAccreditDescription] = useState<string>("");
     const [accreditImage, setAccreditImage] = useState<string>("");
     const [accreditImageAlt, setAccreditImageAlt] = useState<string>("");
 
@@ -94,6 +97,8 @@ export default function Team() {
                 setAccreditList(data.data.accredit);
                 setMetaTitle(data.data.metaTitle);
                 setMetaDescription(data.data.metaDescription);
+                setAccreditTitle(data.data.accreditTitle);
+                setAccreditDescription(data.data.accreditDescription);
             } else {
                 const data = await response.json();
                 alert(data.message);
@@ -139,6 +144,25 @@ export default function Team() {
             }
         } catch (error) {
             console.log("Error adding partner", error);
+        }
+    }
+
+    const handleSaveAccreditInfo = async () => {
+        try {
+            const response = await fetch("/api/admin/partners/accredit/intro", {
+                method: "PATCH",
+                body: JSON.stringify({ accreditTitle, accreditDescription }),
+            });
+            if (response.ok) {
+                const data = await response.json();
+                alert(data.message);
+                handleFetchData();
+            } else {
+                const data = await response.json();
+                alert(data.message);
+            }
+        } catch (error) {
+            console.log("Error adding accredit", error);
         }
     }
 
@@ -440,7 +464,19 @@ export default function Team() {
             <div className="h-full w-full p-2 border-2 border-gray-300 rounded-md">
                 <div className="flex justify-between border-b-2 pb-2">
                     <Label className="text-sm font-bold">Accreditation</Label>
-                    <Dialog>
+                    <Button className="text-white" onClick={handleSaveAccreditInfo}>Save</Button>
+                </div>
+                <div>
+                    <Label className="text-sm font-bold">Title</Label>
+                    <Input type="text" placeholder="Title" value={accreditTitle} onChange={(e) => setAccreditTitle(e.target.value)} />
+                </div>
+                <div>
+                    <Label className="text-sm font-bold">Description</Label>
+                    <Textarea placeholder="Description" value={accreditDescription} onChange={(e) => setAccreditDescription(e.target.value)} />
+                </div>
+
+                    <div className="flex justify-end mt-5">
+                <Dialog>
                         <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => {setAccreditImage(""); setAccreditImageAlt(""); }}>Add Partner</DialogTrigger>
                         <DialogContent className="">
                             <DialogHeader>
@@ -460,7 +496,7 @@ export default function Team() {
                         </DialogContent>
 
                     </Dialog>
-                </div>
+                    </div>
                 <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
                     {accreditList.map((accredit, index) => (
                         <div key={index} className="relative flex  justify-between border p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300">
