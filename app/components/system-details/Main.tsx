@@ -1,7 +1,9 @@
 "use client";
+import { motion } from "framer-motion";
 import Sbttl from "../common/Sbttl";
 
 import {systems } from '@/public/types/Common';
+import { fadeInUpsec } from "@/public/frameranimation/animation";
 
 
 const Main = ({ data }: { data: systems }) => {
@@ -14,7 +16,10 @@ const Main = ({ data }: { data: systems }) => {
             <div className="mb-4">
               <Sbttl title={data.introTitle} />
             </div>
-            <p className="text-gray">{data.introDescription}</p>
+            <motion.p className="text-gray" variants={fadeInUpsec}
+                                initial="hidden"
+                                whileInView="visible"
+                      viewport={{ once: true, amount: 0.2 }}>{data.introDescription}</motion.p>
           </div>
 
           </div>

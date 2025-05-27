@@ -4,13 +4,19 @@ import Image from 'next/image'
 
 
 import { Contact } from '@/public/types/Common';
+import { motion } from 'framer-motion';
+import { fadeInUpsec } from '@/public/frameranimation/animation';
 
 const Socials = ({ data }: { data: Contact }) => {
   console.log(data.socials)
   return (
     <div className='bg-graybg'>
-    <div className='container lg:py-[110px] py-[60px] flex flex-col gap-12'>
-        <h4 className='text-50 text-site-blue uppercase font-medium'>Social</h4>
+      <div className='container lg:py-[110px] py-[60px] flex flex-col gap-12'>
+         <motion.div variants={fadeInUpsec}
+                            initial="hidden"
+                            whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}>
+        <h4 className='text-50 text-site-blue uppercase font-medium'>Social</h4></motion.div>
         <div className="flex flex-wrap gap-8 lg:gap-[75px] text-[30px] text-black">
   {data.socials.map((platform, index) => (
     <div key={index} className="max-w-fit">

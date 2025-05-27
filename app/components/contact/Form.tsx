@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { fadeInUpsec } from '@/public/frameranimation/animation';
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -87,6 +89,10 @@ const Form = () => {
   return (
     <div className="py-[50px] md:py-[70px] lg:pt-[107px] lg:pb-[121px]">
       <div className="container flex flex-col gap-14">
+         <motion.div variants={fadeInUpsec}
+                            initial="hidden"
+                            whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}>
         <h2 className="text-50 text-site-blue uppercase font-medium">
           We’d love to hear from you.
         </h2>
@@ -143,7 +149,8 @@ const Form = () => {
               </button>
             </div>
           </div>
-        </form>
+          </form>
+          </motion.div>
       </div>
     </div>
   );

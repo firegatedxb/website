@@ -6,6 +6,8 @@ import Sbttl from "../common/Sbttl";
 import type { StaticImageData } from "next/image";
 import { assets } from "@/public/assets/assets";
 import SelectBox from "./StatusDropdown";
+import { motion } from "framer-motion";
+import { fadeInUpsec } from "@/public/frameranimation/animation";
 
 interface Project {
   name: string;
@@ -178,6 +180,10 @@ useEffect(() => {
           </div>
 
           <div>
+            <motion.div  variants={fadeInUpsec}
+                    initial="hidden"
+                    whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}>
             <div className="bg-secondary rounded-2xl p-8 lg:p-10 gap-2 xl:gap-[50px] grid md:grid-cols-2 lg:grid-cols-4 gap-x-4 mb-8 lg:mb-25">
              <SelectBox
   label="Country"
@@ -220,34 +226,57 @@ useEffect(() => {
                   </span>
                 </div>
               </div>
-            </div>
+              </div>
+              </motion.div>
           </div>
 
           {/* Chunked Grid */}
-          {groupedItems.map((group, index) => (
-            <div
-              key={index}
-              className={`grid grid-cols-1 md:grid-cols-${group.length} gap-7 md:gap-[30px] mb-[50px] lg:mb-25`}
-            >
-              {group.map((proj) => (
-                <Link key={proj.slug} href={`/projects-details/${proj.slug}`}>
-                  <div className="border-t border-[#cccccc] pt-4 md:pt-8 ">
-                     <p className="font-medium text-32 truncate overflow-hidden whitespace-nowrap">{proj.name}</p>
-                                  <p className="font-medium text-md text-gray mb-4 md:mb-8">{proj.sector}</p>
-                    {/* <Image src={proj.thumbnail} alt={proj.thumbnailAlt} className="rounded-[20px]  " width={794} height={600} /> */}
-                    <figure className="relative h-[450px] lg:h-[500px] ">
-                          <Image src={proj.thumbnail} alt={proj.thumbnailAlt} className="rounded-[20px]   object-cover  h-full object-center " width={794} height={600} />
-                    </figure>
+          {groupedItems.map((group) => (
+            <motion.div
+      key={group[0]?.slug} // unique key for each group
+      className={`grid grid-cols-1 md:grid-cols-${group.length} gap-7 md:gap-[30px] mb-[50px] lg:mb-25`}
+      initial="hidden"
+      whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
 
-                  </div>
-                </Link>
-              ))}
+    >
+      {group.map((proj, index) => (
+        <motion.div
+          key={proj.slug}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
+        >
+          <Link href={`/projects-details/${proj.slug}`}>
+            <div className="border-t border-[#cccccc] pt-4 md:pt-8 cursor-pointer">
+              <p className="font-medium text-32 truncate overflow-hidden whitespace-nowrap">
+                {proj.name}
+              </p>
+              <p className="font-medium text-md text-gray mb-4 md:mb-8">{proj.sector}</p>
+
+              <figure className="relative h-[450px] lg:h-[500px]">
+                <Image
+                  src={proj.thumbnail}
+                  alt={proj.thumbnailAlt}
+                  className="rounded-[20px] object-cover h-full object-center"
+                  width={794}
+                  height={600}
+                />
+              </figure>
             </div>
+          </Link>
+        </motion.div>
+      ))}
+    </motion.div>
           ))}
         </div>
         <div className="container">
         {!disableLoadMore && <div className="mx-auto mb-6 md:mb-[50px]  lg:mb-[100px] w-fit">
-                <div
+                <motion.div  variants={fadeInUpsec}
+                    initial="hidden"
+                    whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}>
+              <div
                   onClick={handleLoadMore}
                   className="flex cursor-pointer items-center bg-primary hover:bg-red-700 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase group"
                 >
@@ -261,7 +290,8 @@ useEffect(() => {
                       className="w-full h-[14px] object-contain group-hover:animate-pulse  rotate-90 "
                     ></Image>
                   </span>
-                </div>
+              </div>
+              </motion.div>
               </div>}
       </div>
       </section>

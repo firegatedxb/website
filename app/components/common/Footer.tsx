@@ -142,7 +142,7 @@ const Footer = () => {
                     ].map((item, index) => (
                       <motion.li
                         key={index}
-                        className="flex items-center gap-2"
+                        className="flex items-center gap-2 group hover:text-primary transition-all duration-300 transform   ease-in-out hover:translate-x-1"
                         variants={itemVariants}
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
@@ -160,7 +160,7 @@ const Footer = () => {
                     ].map((item, index) => (
                       <motion.li
                         key={index}
-                        className="flex items-center gap-2"
+                        className="flex items-center gap-2 group hover:text-primary transition-all duration-300 transform   ease-in-out hover:translate-x-1"
                         variants={itemVariants}
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
@@ -186,11 +186,11 @@ const Footer = () => {
           </div>
         </div>
       )}
-       <motion.div className=" whatsapp  "   >
-                      <Link href="#"  >
-                        <Image src={assets.whatsapp} alt="slider" className="fixed bottom-5 lg:bottom-[180px] right-[10px] lg:right-[50px] z-50 w-[30px] h-[30px] lg:h-[60px] lg:w-[60px] " />
+        <div className=" whatsapp  "   >
+          <Link href="#"  >
+                        <Image src={assets.whatsapp} alt="slider" className="fixed group hover:text-primary transition-all duration-300 transform   ease-in-out hover:-translate-y-1 bottom-5 lg:bottom-[180px] right-[10px] lg:right-[50px] z-50 w-[30px] h-[30px] lg:h-[60px] lg:w-[60px] " />
                         </Link>
-                    </motion.div>
+                      </div>
     </section>
   );
 };
