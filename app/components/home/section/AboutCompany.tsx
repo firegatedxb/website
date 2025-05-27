@@ -9,7 +9,7 @@ import Link from "next/link";
 
 import { Home } from '@/public/types/Common';
 import { motion } from "framer-motion";
-import { fadeUp } from "@/public/frameranimation/animation";
+import { fadeUp, slideInLeft } from "@/public/frameranimation/animation";
 
 const AboutCompany = ({ data }: { data: Home }) => {
   return (
@@ -22,12 +22,13 @@ const AboutCompany = ({ data }: { data: Home }) => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-    >
-      <motion.h2
-        className="text-50 text-secondary font-medium mb-3 md:mb-[18px] uppercase"
-        variants={fadeUp}
-        custom={0}
-      >
+          >
+             <motion.h2 variants={slideInLeft}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.4 }}
+                            custom={2}className="text-50 text-secondary font-medium mb-3 md:mb-[18px] uppercase" >
+
         {data.aboutSection.title}
       </motion.h2>
 
