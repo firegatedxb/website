@@ -16,7 +16,11 @@ const Socials = ({ data }: { data: Contact }) => {
                             initial="hidden"
                             whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}>
-        <h4 className='text-50 text-site-blue uppercase font-medium'>Social</h4></motion.div>
+          <h4 className='text-50 text-site-blue uppercase font-medium'>Social</h4></motion.div>
+              <motion.div variants={fadeInUpsec}
+                            initial="hidden"
+                            whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}>
         <div className="flex flex-wrap gap-8 lg:gap-[75px] text-[30px] text-black">
   {data.socials.map((platform, index) => (
     <div key={index} className="max-w-fit">
@@ -34,7 +38,8 @@ const Socials = ({ data }: { data: Contact }) => {
       </a>
     </div>
   ))}
-</div>
+          </div>
+          </motion.div>
 
     </div>
     </div>
