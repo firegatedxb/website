@@ -76,6 +76,7 @@ const Accreditation = ({ data }: { data: Partners }) => {
     swiperRef.current = swiper;
   }}
 
+  onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
   className="w-full h-full"
 >
   {data.accredit.map((item, index) => (
