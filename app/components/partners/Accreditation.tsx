@@ -7,10 +7,11 @@ import "swiper/css";
 import Image from "next/image";
 
 import { Partners } from '@/public/types/Common';
+import { motion } from 'framer-motion';
+import { fadeInUpsec, slideInLeft } from '@/public/frameranimation/animation';
 
 
 const Accreditation = ({ data }: { data: Partners }) => {
-
 
   const [showPagination, setShowPagination] = useState(false);
   const swiperRef = useRef<SwiperClass | null>(null);
@@ -37,11 +38,23 @@ const Accreditation = ({ data }: { data: Partners }) => {
   return (
     <div className='container'>
         <div className='py-[50px] md:py-[70px] lg:py-[100px] '>
-            <div className='flex flex-col  '>
-                <h2 className='text-50 text-site-blue font-medium mb-3 lg:mb-[30px] uppercase'>Accreditation</h2>
-                <p className='text-19 text-gray'>Our Products & Systems comply below Certifications, Codes and Authority Requirements</p>
+        <div className='flex flex-col  '>
+          <motion.h2 variants={slideInLeft}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.4 }}
+            custom={2} className='text-50 text-site-blue font-medium mb-3 lg:mb-[30px] uppercase'>{data.accreditTitle}</motion.h2>
+           <motion.div  variants={fadeInUpsec}
+                              initial="hidden"
+                              whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}>
+            <p className='text-19 text-gray'>{data.accreditDescription}</p>
+            </motion.div>
             </div>
-
+<motion.div  variants={fadeInUpsec}
+                              initial="hidden"
+                              whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}>
               <div className='py-[30px] md:py-[50px] lg:py-[70px] '>
                   <Swiper
   modules={[Autoplay, Grid]}
@@ -112,7 +125,8 @@ const Accreditation = ({ data }: { data: Partners }) => {
     </div>
   </div>
 )}
-               </div>
+          </div>
+          </motion.div>
         </div>
     </div>
   )

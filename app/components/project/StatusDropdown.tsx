@@ -17,7 +17,12 @@ export default function SelectBox({ label, selected, setSelected, options }: Sel
       <Listbox value={selected} onChange={setSelected}>
         <div className="relative">
           <Listbox.Button className="relative w-full cursor-pointer  border-b border-graylit bg-transparent py-2   pr-6 text-left text-white focus:outline-none sm:text-sm xl:pb-[20px] pt-0">
-            <span className="block truncate">{selected || label}</span>
+         <span className="block truncate">  {selected === 'true'
+    ? 'Completed'
+    : selected === 'false'
+      ? 'On Going'
+      : label || 'not'}
+</span>
             <span className="pointer-events-none absolute   right-0 flex items-center pr-2 top-[10px]">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none">
 <path d="M15 1L8 8L1 0.999999" stroke="white" stroke-width="2" stroke-linecap="round"/>

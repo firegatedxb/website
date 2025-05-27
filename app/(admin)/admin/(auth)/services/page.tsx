@@ -62,7 +62,7 @@ const ServicesPage = () => {
             const response = await fetch(`/api/admin/services`);
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
+
                 setValue("banner", data.data.banner);
                 setValue("bannerAlt", data.data.bannerAlt);
                 setValue("metaTitle", data.data.metaTitle);
@@ -211,7 +211,7 @@ const ServicesPage = () => {
                 </div>
                 </div>
 
-                
+
                 </div>
 
 
