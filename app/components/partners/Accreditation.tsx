@@ -11,7 +11,6 @@ import { Partners } from '@/public/types/Common';
 
 const Accreditation = ({ data }: { data: Partners }) => {
 
-
   const [showPagination, setShowPagination] = useState(false);
   const swiperRef = useRef<SwiperClass | null>(null);
    const [activeIndex, setActiveIndex] = useState(0);
@@ -38,8 +37,8 @@ const Accreditation = ({ data }: { data: Partners }) => {
     <div className='container'>
         <div className='py-[50px] md:py-[70px] lg:py-[100px] '>
             <div className='flex flex-col  '>
-                <h2 className='text-50 text-site-blue font-medium mb-3 lg:mb-[30px] uppercase'>Accreditation</h2>
-                <p className='text-19 text-gray'>Our Products & Systems comply below Certifications, Codes and Authority Requirements</p>
+                <h2 className='text-50 text-site-blue font-medium mb-3 lg:mb-[30px] uppercase'>{data.accreditTitle}</h2>
+                <p className='text-19 text-gray'>{data.accreditDescription}</p>
             </div>
 
               <div className='py-[30px] md:py-[50px] lg:py-[70px] '>

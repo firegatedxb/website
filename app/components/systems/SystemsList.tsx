@@ -5,7 +5,7 @@ import Link from "next/link";
 import { assets } from "@/public/assets/assets";
 
 const SystemsList = ({ data }: { data: systems }) => {
-  console.log(data);
+  ;
   return (
     <section className="py-10 lg:py-25">
       <div className="container">

@@ -118,7 +118,6 @@ const AboutPage = () => {
             const response = await fetch(`/api/admin/about`);
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
                 setValue("banner", data.data.banner);
                 setValue("bannerAlt", data.data.bannerAlt);
                 setValue("pageTitle", data.data.pageTitle);
@@ -235,9 +234,9 @@ const AboutPage = () => {
                                 return <ReactQuill theme="snow" value={field.value} onChange={field.onChange} />
                             }} />
                         </div>
-                        
+
                         <div className='grid grid-cols-3 gap-5'>
-                            
+
                             <div className='border p-2 rounded-md flex flex-col gap-2'>
                                 <Label className='pl-3 font-bold text-md underline'>Mission</Label>
                                 <div>
@@ -355,7 +354,7 @@ const AboutPage = () => {
 
 
                     <div className='grid grid-cols-2 gap-5'>
-                            
+
                             <div className='border p-2 rounded-md flex flex-col gap-2'>
                                 <Label className='pl-3 font-bold text-md underline'>Chairman</Label>
                                 <div>

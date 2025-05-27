@@ -232,7 +232,7 @@ useEffect(() => {
               {group.map((proj) => (
                 <Link key={proj.slug} href={`/projects-details/${proj.slug}`}>
                   <div className="border-t border-[#cccccc] pt-4 md:pt-8 ">
-                     <p className="font-medium text-32">{proj.name}</p>
+                     <p className="font-medium text-32 truncate overflow-hidden whitespace-nowrap">{proj.name}</p>
                                   <p className="font-medium text-md text-gray mb-4 md:mb-8">{proj.sector}</p>
                     {/* <Image src={proj.thumbnail} alt={proj.thumbnailAlt} className="rounded-[20px]  " width={794} height={600} /> */}
                     <figure className="relative h-[450px] lg:h-[500px] ">

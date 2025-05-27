@@ -30,7 +30,8 @@ const Health = ({ data }: { data: Commitments }) => {
           <Image
             src={item.logo}
             alt={item.logoAlt}
-            className="w-full h-full object-cover  group-hover:scale-105 group-hover:-translate-y-1 transition-transform duration-300 ease-in-out"
+            className="w-full h-full object-cover  group-hover:scale-105 group-hover:-translate-y-1 transition-transform duration-300 ease-in-out
+            transform group-hover:translate-x-1 brightness-[0] invert-[1] group-hover:brightness-[1]  group-hover:invert-[0]"
             width={68}
             height={68}
           />

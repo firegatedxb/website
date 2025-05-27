@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { Home  } from '@/public/types/Common';
 import { motion } from "framer-motion";
-import { containerVariants, imageVariants } from "@/public/frameranimation/animation";
+import { containerVariants } from "@/public/frameranimation/animation";
 
 const OurSystems = ({ data }: { data: Home }) => {
 
@@ -97,8 +97,10 @@ homeImage: string,
 
           <motion.div
             className="relative overflow-hidden"
-            variants={imageVariants}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: index * 0.2 }}
+        viewport={{ once: true, amount: 0.3 }}
           >
             <Image
               src={item.homeImage}

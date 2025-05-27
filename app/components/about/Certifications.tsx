@@ -7,7 +7,7 @@ import { About } from "@/public/types/Common";
 
 
 const Certifications = ({ data }: { data: About }) => {
- console.log(data)
+
   const [selectedImage, setSelectedImage] = useState<string | StaticImageData | null>(null);
 
   return (

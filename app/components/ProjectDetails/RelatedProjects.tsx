@@ -25,9 +25,11 @@ interface Project {
 interface FrameworkSectionProps {
   data: Project[];
   sector: string;
+  pjtname:string;
 }
 
-const RelatedProjects: React.FC<FrameworkSectionProps> = ({ data, sector }) => {
+const RelatedProjects: React.FC<FrameworkSectionProps> = ({ data, sector,pjtname }) => {
+  console.log("Related Projects Data:", data  );
   const [filteredData, setFilteredData] = useState<
     {
       name: string;
@@ -49,11 +51,13 @@ const RelatedProjects: React.FC<FrameworkSectionProps> = ({ data, sector }) => {
   >([]);
 
   useEffect(() => {
-    if (data && sector) {
+
+    if (data && sector &&  pjtname) {
       const filtered = data
         .filter(
           (item) =>
-            item.sector?.trim().toLowerCase() === sector.trim().toLowerCase()
+            item.sector?.trim().toLowerCase() === sector.trim().toLowerCase()&&
+            item.name?.trim().toLowerCase() !== pjtname.trim().toLowerCase()
         )
         .sort(() => Math.random() - 0.5)
         .slice(0, 3);
@@ -77,7 +81,7 @@ const RelatedProjects: React.FC<FrameworkSectionProps> = ({ data, sector }) => {
               <div key={index} className={` `}>
                 <Link key={group.slug} href={`/projects-details/${group.slug}`}>
                   <div className="  ">
-                    <p className="font-medium text-32">{group.name}</p>
+                    <p className="font-medium text-32 truncate overflow-hidden whitespace-nowrap">{group.name}</p>
                     <p className="font-medium text-md text-gray mb-4 md:mb-8">
                       {group.sector}
                     </p>

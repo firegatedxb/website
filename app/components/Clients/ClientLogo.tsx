@@ -6,7 +6,7 @@ import { Clients } from '@/public/types/Common';
 
 const ClientLogo = ({ data }: { data: Clients }) => {
 
-  console.log(data)
+
   return (
     <section className="">
       <div className="container py-[50px] lg:py-25 pb-[50px] lg:pb-20 border-b border-graylit">

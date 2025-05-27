@@ -87,7 +87,7 @@ export default function Team() {
             const response = await fetch("/api/admin/partners");
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
+
                 setValue("title", data.data.title);
                 setValue("description", data.data.description);
                 setValue("banner", data.data.banner);
@@ -450,9 +450,9 @@ export default function Team() {
                                     </DialogContent>
 
                                 </Dialog>
-                                
+
                                     <MdDelete className="mt-1 cursor-pointer text-black" onClick={()=>handleDeletePartner(partner._id)}/>
-                                
+
                             </div>
                         </div>
                     ))}
@@ -530,9 +530,9 @@ export default function Team() {
                                     </DialogContent>
 
                                 </Dialog>
-                                
+
                                     <MdDelete className="mt-1 cursor-pointer text-black" onClick={()=>handleDeleteAccredit(accredit._id)}/>
-                                
+
                             </div>
                         </div>
                     ))}

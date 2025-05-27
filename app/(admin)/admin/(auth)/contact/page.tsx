@@ -66,7 +66,7 @@ const ContactPage = () => {
             const response = await fetch(`/api/admin/contact`);
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
+
                 setValue("image", data.data.image);
                 setValue("imageAlt", data.data.imageAlt);
                 setValue("metaTitle", data.data.metaTitle);
@@ -166,7 +166,7 @@ const ContactPage = () => {
                 </div>
                 </div>
 
-                
+
                 </div>
 
 
@@ -209,7 +209,7 @@ const ContactPage = () => {
                 </div>
                 </div>
 
-                
+
                 </div>
 
                 <div className='flex flex-col gap-2'>

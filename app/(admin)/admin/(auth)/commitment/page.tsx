@@ -92,7 +92,7 @@ const CommitmentPage = () => {
             const response = await fetch(`/api/admin/commitment`);
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
+
                 setValue("banner", data.data.banner);
                 setValue("bannerAlt", data.data.bannerAlt);
                 setValue("pageTitle", data.data.pageTitle);
@@ -239,7 +239,7 @@ const CommitmentPage = () => {
                 </div>
                 </div>
 
-                
+
                 </div>
 
 
@@ -314,7 +314,7 @@ const CommitmentPage = () => {
                 </div>
                 </div>
 
-                
+
                 </div>
 
 
@@ -392,7 +392,7 @@ const CommitmentPage = () => {
                 </div>
                 </div>
 
-                
+
                 </div>
 
 

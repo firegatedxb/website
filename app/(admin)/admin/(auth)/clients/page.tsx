@@ -66,7 +66,7 @@ export default function Team() {
             const response = await fetch("/api/admin/clients");
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
+
                 setValue("title", data.data.title);
                 setValue("description", data.data.description);
                 setValue("banner", data.data.banner);
@@ -312,9 +312,9 @@ export default function Team() {
                                     </DialogContent>
 
                                 </Dialog>
-                                
+
                                     <MdDelete className="mt-1 cursor-pointer text-black" onClick={()=>handleDeleteClient(client._id)}/>
-                                
+
                             </div>
                         </div>
                     ))}

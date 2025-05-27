@@ -51,7 +51,6 @@ const Footer = () => {
       handleFetchContact();
     }, [])
   const defaultTab = contactList?.contacts[0]?.title || "Dubai - UAE";
-  console.log("Default Tab:", defaultTab);
   const [tabValue, setTabValue] = useState<string>(defaultTab);
 
   const ref = useRef(null);

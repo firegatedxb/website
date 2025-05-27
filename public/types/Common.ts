@@ -204,6 +204,8 @@ export type Partners =
     metaTitle: string,
     metaDescription: string,
     banner: string,
+    accreditDescription: string,
+    accreditTitle: string,
     bannerAlt: string,
     pageTitle: string,
     title: string,

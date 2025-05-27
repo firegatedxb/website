@@ -5,7 +5,7 @@ import {systems } from '@/public/types/Common';
 
 
 const Main = ({ data }: { data: systems }) => {
-console.log(data);
+;
   return (
     <section className="">
       <div className="container py-15 lg:py-25    ">

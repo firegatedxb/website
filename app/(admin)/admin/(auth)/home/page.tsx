@@ -141,7 +141,7 @@ const HomePage = () => {
             const response = await fetch(`/api/admin/home`);
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
+
                 setValue("metaTitle", data.data.metaTitle);
                 setValue("metaDescription", data.data.metaDescription);
                 setValue("socials", data.data.socials);
@@ -299,7 +299,7 @@ const HomePage = () => {
                 </div>
                 </div>
 
-                
+
                 </div>
 
 
@@ -357,7 +357,7 @@ const HomePage = () => {
                 </div>
                 </div>
 
-                
+
                 </div>
 
 
@@ -425,7 +425,7 @@ const HomePage = () => {
                 </div>
                 </div>
 
-                
+
                 </div>
 
 
@@ -490,7 +490,7 @@ const HomePage = () => {
                 </div>
                 </div>
 
-                
+
                 </div>
 
 
@@ -548,7 +548,7 @@ const HomePage = () => {
                 </div>
                 </div>
 
-                
+
                 </div>
 
 
@@ -611,14 +611,14 @@ const HomePage = () => {
                                 <RiDeleteBinLine onClick={() => socialsRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
                             <div className='flex flex-col gap-2'>
-                                
+
                                 <div className='flex flex-col gap-2'>
                                     <Label className='pl-3 font-bold'>Title</Label>
                                     <Input type='text' placeholder='Title' {...register(`socials.items.${index}.title`)} />
                                 </div>
                             </div>
                             <div className='flex flex-col gap-2'>
-                                
+
                                 <div className='flex flex-col gap-2'>
                                     <Label className='pl-3 font-bold'>Link</Label>
                                     <Input type='text' placeholder='Link' {...register(`socials.items.${index}.link`)} />
@@ -635,7 +635,7 @@ const HomePage = () => {
                 </div>
                 </div>
 
-                
+
                 </div>
 
 

@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 import { slideInLeft } from '@/public/frameranimation/animation';
 
 const OurServices = ({ data }: { data: Home }) => {
-console.log(data)
+
 
  const [activeIndex, setActiveIndex] = useState(1);
   return (
@@ -33,7 +33,7 @@ console.log(data)
       {data.services.items.map((service, index) => (
         <div key={index} className='sebder last:border-b-0'>
           <div
-            className="border-b border-white cursor-pointer spb"
+            className="border-b border-white  spb"
             onMouseEnter={() => setActiveIndex(index)}
           >
             <p className=  {`text-30 font-medium text-white leading-[3.3] hvtitle  ${
@@ -55,11 +55,11 @@ console.log(data)
                 <p className="mb-4 md:mb-[42px] text-white text-19">{service.description}</p>
               </div>
                 <Link href={service.url}>
-                  <button className="flex cursor-pointer items-center text-white w-fit font-medium rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase">
-                <span>READ MORE</span>
-                <span className="bg-primary rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center">
+                  <button className="flex group cursor-pointer items-center text-white w-fit font-medium rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase">
+                <span >READ MORE</span>
+                <span className="bg-primary rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center transition duration-300 transform group-hover:translate-x-1">
                   <svg
-                    className="w-7 h-14 text-white"
+                    className="w-7 h-14 text-white  "
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"

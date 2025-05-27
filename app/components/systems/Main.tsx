@@ -6,7 +6,7 @@ const Main = ({ data }: { data: systems }) => {
   const serviceArray = Array.isArray(data.systems)
     ? data.systems
     : [data.systems];
-  console.log(data);
+  ;
   console.log(serviceArray);
   return (
     <section className="">

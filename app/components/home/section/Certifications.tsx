@@ -24,7 +24,7 @@ const Certifications = ({ data,pdata }: { data: Home, pdata: Partners }) => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-            > {data.certifications.title}  {data?.systems.title}
+            > {data.certifications.title}
             </motion.h2>
       <Swiper
   modules={[Autoplay, Grid]}
