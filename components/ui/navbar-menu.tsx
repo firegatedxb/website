@@ -1,9 +1,10 @@
 "use client";
 import React, { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Link, { LinkProps } from "next/link";
 import Image from "next/image";
 import arrow from "@/public/assets/img/home/arrow.svg";
+import { slideDown } from "@/public/frameranimation/animation";
 
 const transition = {
   type: "spring",
@@ -33,7 +34,7 @@ export const MenuItem = ({
   return (
     <div
       onMouseEnter={() => (noMenu ? setActive(null) : setActive(item))}
-      className="relative mr-3 xl:mr-[35px]">
+      className="relative mr-0 ml-3 lg:ml-[25px] xl:ml-[35px] first:lg:ml-[45px] first:xl:ml-[65px]">
       <div className="flex gap-2 mb-0">
         <Link href={url}>
           <motion.p
@@ -80,6 +81,13 @@ export const Menu = ({
 
 
   return (
+    <div>
+       <AnimatePresence>
+    <motion.div
+      key="header-menu"
+      {...slideDown()}
+      className=""
+    >
         <div className="relative">
 
       <nav
@@ -121,7 +129,7 @@ export const Menu = ({
             </svg>
             +971 (4) 432 7677
               </Link>
-              <div className="border-b w-full mb-[20px] mt-[15px] border-black"></div>
+              <div className="border-b w-full mb-[20px] mt-[15px] border-black opacity-15"></div>
             </div>
 
             <div className="flex space-x-[25px] xxl:space-x-[20px] xxxl:space-x-[50px] items-center">
@@ -148,10 +156,13 @@ export const Menu = ({
       </nav>
         </div>
 
-
+ </motion.div>
+</AnimatePresence>
+   </div>
 
   );
 };
+
 
 export const ProductItem = ({
   title,

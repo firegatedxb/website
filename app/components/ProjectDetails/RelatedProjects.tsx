@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import "swiper/css";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import {  cardVariantsecs, gridVariants, slideInLeft } from "@/public/frameranimation/animation";
 
 interface Project {
   name: string;
@@ -25,9 +27,11 @@ interface Project {
 interface FrameworkSectionProps {
   data: Project[];
   sector: string;
+  pjtname:string;
 }
 
-const RelatedProjects: React.FC<FrameworkSectionProps> = ({ data, sector }) => {
+const RelatedProjects: React.FC<FrameworkSectionProps> = ({ data, sector,pjtname }) => {
+  console.log("Related Projects Data:", data  );
   const [filteredData, setFilteredData] = useState<
     {
       name: string;
@@ -49,11 +53,13 @@ const RelatedProjects: React.FC<FrameworkSectionProps> = ({ data, sector }) => {
   >([]);
 
   useEffect(() => {
-    if (data && sector) {
+
+    if (data && sector &&  pjtname) {
       const filtered = data
         .filter(
           (item) =>
-            item.sector?.trim().toLowerCase() === sector.trim().toLowerCase()
+            item.sector?.trim().toLowerCase() === sector.trim().toLowerCase()&&
+            item.name?.trim().toLowerCase() !== pjtname.trim().toLowerCase()
         )
         .sort(() => Math.random() - 0.5)
         .slice(0, 3);
@@ -67,32 +73,49 @@ const RelatedProjects: React.FC<FrameworkSectionProps> = ({ data, sector }) => {
     <div className="">
       <div className="container">
         <div className="pt-[40px] md:pt-[50px] lg:pt-[86px] pb-[40px] md:pb-[50px] lg:pb-[100px] border-b border-[#cccccc]">
-          <h1 className="mb-4 md:mb-[55px] text-secondary text-50 font-bold uppercase">
+          <motion.h1 className="mb-4 md:mb-[55px] text-secondary text-50 font-bold uppercase"
+           variants={slideInLeft}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.4 }}
+                            custom={2}  >
             Related projects
-          </h1>
-          <div
-            className={`grid md:grid-cols-2  lg:grid-cols-3 gap-8 md:gap-[30px]  `}
-          >
-            {filteredData.map((group, index) => (
-              <div key={index} className={` `}>
-                <Link key={group.slug} href={`/projects-details/${group.slug}`}>
-                  <div className="  ">
-                    <p className="font-medium text-32">{group.name}</p>
-                    <p className="font-medium text-md text-[#595959] mb-4 md:mb-8">
-                      {group.sector}
-                    </p>
-                    <Image
-                      src={group.thumbnail}
-                      alt={group.thumbnailAlt}
-                      className="rounded-[20px]"
-                      width={521}
-                      height={394}
-                    />
-                  </div>
-                </Link>
-              </div>
-            ))}
-          </div>
+          </motion.h1>
+         <motion.div
+      className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-[30px]"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={gridVariants}
+    >
+      {filteredData.map((group, index) => (
+        <motion.div
+          key={index}
+          variants={cardVariantsecs}
+          className=""
+        >
+          <Link href={`/projects-details/${group.slug}`}>
+            <div>
+              <p className="font-medium text-32 truncate overflow-hidden whitespace-nowrap">
+                {group.name}
+              </p>
+              <p className="font-medium text-md text-gray mb-4 md:mb-8">
+                {group.sector}
+              </p>
+              <figure className="relative h-[300px] lg:h-[394px]">
+                <Image
+                  src={group.thumbnail}
+                  alt={group.thumbnailAlt}
+                  className="rounded-[20px] object-cover h-full object-center"
+                  width={521}
+                  height={394}
+                />
+              </figure>
+            </div>
+          </Link>
+        </motion.div>
+      ))}
+    </motion.div>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { menuItems } from "./data";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
@@ -14,7 +15,100 @@ import Link from "next/link";
 const MobileNav = () => {
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false); // State for menu visibility
+    const [projectList, setProjectList] = useState<
+      {
+      metaTitle: string,
+    metaDescription: string,
+    banners: [
+      {
+        image: string,
+        imageAlt: string,
+        title: string
+      }
+    ],
+    aboutSection: {
+      title: string,
+      description: string,
+      image: string,
+      items: [
+        {
+          number: string,
+          value: string
+        }
+      ]
+    },
+    partners: {
+      title: string,
+      items: [
+        {
+          image: string,
+          imageAlt: string
+        }
+      ]
+    },
+    services: {
+      title: string,
+      items: [
+        {
+          image: string,
+          imageAlt: string
+        }
+      ]
+    },
+    systems: {
+      title: string,
+      items: [
+        {
+          image: string,
+          imageAlt: string,
+          title: string
+        }
+      ]
+    },
+    certifications: {
+      title: string,
+      items: [
+        {
+          image: string,
+          imageAlt: string
+        }
+      ]
+    },
+    projects: {
+      title: string,
+      description: string
+    },
+    socials: {
+      title: string,
+      email: string,
+      phone: string,
+      items: [
+        {
+          title: string,
+          link: string
+        }
+      ]
+    } }
+    >( );
+ const handleFetchProjects = async () => {
+    try {
+      const response = await fetch("/api/admin/home");
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data.data);
+        setProjectList(data.data);
+      } else {
+        const data = await response.json();
+        alert(data.message);
+      }
+    } catch (error) {
+      console.log("Error fetching industry", error);
+    }
+  };
 
+  useEffect(() => {
+    handleFetchProjects();
+  }, []);
   return (
     <>
 
@@ -115,7 +209,7 @@ const MobileNav = () => {
                   )}
                 </li>
               ) : (
-                <li key={index} className="pb-2">
+                <li key={index} className="pb-2 uppercase">
                   <Link
                     href={item.url}
                     onClick={() => setMenuOpen(false)}
@@ -127,7 +221,7 @@ const MobileNav = () => {
             )}
 
             {/* Contact Link */}
-            <li>
+            <li className="uppercase">
               <Link
                 href="/contact"
                 onClick={() => setMenuOpen(false)}
@@ -140,12 +234,34 @@ const MobileNav = () => {
           {/* Social Icons */}
           <div className="mt-auto">
             <hr />
-            <div className="flex space-x-4 mt-4">
-              <FaFacebookF className="cursor-pointer w-6 h-6 hover:text-primary transition-all duration-500" />
-              <FaLinkedinIn className="cursor-pointer w-6 h-6 hover:text-primary transition-all duration-500" />
-              <FaInstagram className="cursor-pointer w-6 h-6 hover:text-primary transition-all duration-500" />
-              <FaYoutube className="cursor-pointer w-6 h-6 hover:text-primary transition-all duration-500" />
-            </div>
+              <div className="flex space-x-4 mt-4">
+              {projectList?.socials?.items.map((platform, index) => (
+                <div key={index}>
+                 <a href={platform.link} target="_blank">
+  <div>
+    {index === 0 && (
+      <FaFacebookF className="cursor-pointer w-6 h-6 hover:text-primary transition-all duration-500" />
+    )}
+    {index === 1 && (
+      <FaInstagram className="cursor-pointer w-6 h-6 hover:text-primary transition-all duration-500" />
+    )}
+    {index === 2 && (
+      <FaLinkedinIn className="cursor-pointer w-6 h-6 hover:text-primary transition-all duration-500" />
+    )}
+    {index === 3 && (
+      <p className="cursor-pointer w-6 h-6 hover:text-primary transition-all duration-500 font-extrabold"  >X</p>
+    )}
+    {index === 4 && (
+      <FaYoutube className="cursor-pointer w-6 h-6 hover:text-primary transition-all duration-500" />
+    )}
+  </div>
+</a>
+                {/* <a href={platform.link} target="_blank"><FaLinkedinIn className="cursor-pointer w-6 h-6 hover:text-primary transition-all duration-500" /></a>
+                <a href={platform.link} target="_blank"><FaInstagram className="cursor-pointer w-6 h-6 hover:text-primary transition-all duration-500" /></a>
+                <a href={platform.link} target="_blank"><FaYoutube className="cursor-pointer w-6 h-6 hover:text-primary transition-all duration-500" /></a> */}
+
+                </div>   ))}
+                </div>
           </div>
         </div>
       </div>

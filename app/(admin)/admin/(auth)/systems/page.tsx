@@ -74,7 +74,7 @@ export default function Team() {
             const response = await fetch("/api/admin/systems");
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
+
                 setValue("title", data.data.title);
                 setValue("description", data.data.description);
                 setValue("banner", data.data.banner);
@@ -135,7 +135,7 @@ export default function Team() {
         try {
             const response = await fetch(`/api/admin/systems?id=${id}`, {
                 method: "PATCH",
-                body: JSON.stringify({ image, imageAlt }),
+                body: JSON.stringify({ image, imageAlt, title, description, logo, logoAlt }),
             });
             if (response.ok) {
                 const data = await response.json();
@@ -296,7 +296,7 @@ export default function Team() {
                                         <Label>Alt Tag</Label>
                                         <Input type="text" placeholder="Alt Tag" value={imageAlt} onChange={(e) => setImageAlt(e.target.value)} />
                                     </div>
-                                    
+
                                 </div>
                             </DialogHeader>
                             <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={handleAddSystem}>Save</DialogClose>
@@ -356,9 +356,9 @@ export default function Team() {
                                 </Dialog>
 
                                     <Link href={`/admin/systems/${system._id}`}><RiPagesFill className="mt-1 cursor-pointer text-black"/></Link>
-                                
+
                                     <MdDelete className="mt-1 cursor-pointer text-black" onClick={()=>handleDeleteSystem(system._id)}/>
-                                
+
                             </div>
                         </div>
                     ))}
