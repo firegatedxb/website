@@ -31,13 +31,13 @@ const PjtBanner: React.FC<FrameworkSectionProps> = ({ data }) => {
           </div>
           <div className="overflow-hidden   ">
             <div>
-              <div className="px-[15px] md:px-0 mb-10 md:mb-0 relative">
+              <div className="px-[15px] lg:px-0 mb-10 lg:mb-0 relative">
                 <motion.div
                   initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
                   viewport={{ once: true, amount: 0.3 }}
-                  className="md:w-[45%] lg:w-[55%] xl:w-[60%] h-[320px] md:h-[521px] lg:h-[785px] xl:h-[785px] z-[1] md:absolute right-0 top-0 object-cover md:rounded-tl-[20px] md:rounded-bl-[20px] bg-no-repeat bg-cover"
+                  className="  lg:w-[55%] xl:w-[60%] h-[320px] md:h-[521px] lg:h-[785px] xl:h-[785px] z-[1] lg:absolute right-0 top-0 object-cover lg:rounded-tl-[20px] lg:rounded-bl-[20px] bg-no-repeat bg-cover"
                   style={{
                     backgroundImage: `url(${data.data.coverPhoto})`,
                   }}

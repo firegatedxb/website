@@ -63,21 +63,34 @@ const FeaturedProjects = ({ data }: { data: Home }) => {
   }, []);
 
   useEffect(() => {
-    if (sourceRef.current && window.innerWidth >= 768) {
-      const updateHeight = () => {
+  if (!sourceRef.current) return;
+
+  let timeout: string | number | NodeJS.Timeout | undefined;
+
+  const updateHeight = () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      if (window.innerWidth >= 1024) {
         const newHeight = sourceRef.current?.offsetHeight || 0;
         setHeight(newHeight);
-      };
+      } else {
+        setHeight('auto'); // Or any default for mobile
+      }
+    });
+  };
 
-      updateHeight();
-      window.addEventListener("resize", updateHeight);
-      return () => window.removeEventListener("resize", updateHeight);
-    }
-  }, [projectList]); // re-run when projectList changes
+  updateHeight(); // Set initial height
+  window.addEventListener("resize", updateHeight);
+
+  return () => {
+    window.removeEventListener("resize", updateHeight);
+    clearTimeout(timeout);
+  };
+}, [projectList]); // re-run when projectList changes
   return (
-    <section className="py-[50px]  md:py-[50px] lg:pt-[120px] lg:pb-[120px] relative bg-secondary text-white">
+    <section className="py-[50px] pb-0 md:pb-[50px]  md:py-[50px] lg:pt-[120px] lg:pb-[120px] relative bg-secondary text-white">
       <div className={`container  `} style={{ height: `${height}px` }}>
-        <div className="flex md:gap-[45px] lg:gap-[108px] h-full">
+        <div className="flex md:gap-[45px] lg:gap-[108px]  h-full">
           <motion.div
             className="lg:w-1/4"
             variants={fadeSlideUp}
@@ -113,7 +126,7 @@ const FeaturedProjects = ({ data }: { data: Home }) => {
         </div>
       </div>
       <div
-        className=" w-full lg:w-2/3 curslider mt-10 lg:mt-0 lg:absolute right-0 top-10 lg:top-[120px] pl-8 lg:px-0"
+        className=" w-full lg:w-2/3   curslider mt-10 lg:mt-0 lg:absolute right-0 top-10 lg:top-[120px] pl-8 lg:px-0"
         ref={sourceRef}
       >
         {projectList.length > 0 && (
@@ -140,7 +153,7 @@ const FeaturedProjects = ({ data }: { data: Home }) => {
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
               }}
-              className="w-full h-full"
+              className="w-full "
             >
               {projectList.map((project) => (
                 <SwiperSlide key={project._id}>
@@ -169,11 +182,10 @@ const FeaturedProjects = ({ data }: { data: Home }) => {
                         </div>
                       </Link>
                     </div>
-                    <h3 className="text-white text-30 font-medium leading-[1.3] mb-3 truncate overflow-hidden whitespace-nowrap
-">
+                    <h3 className="text-white text-30 font-medium leading-[1.3] mb-3 truncate overflow-hidden whitespace-nowrap">
                       {project.name}
                     </h3>
-                    <p className="text-[#bebebe] text-19 font-normal leading-[1.526315789473684]">
+                    <p className="text-[#bebebe] text-19 font-normal leading-[1.526315789473684] truncate overflow-hidden whitespace-nowrap">
                       {project.sector}
                     </p>
                   </motion.div>
