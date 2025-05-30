@@ -4,8 +4,15 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactStrictMode: false,
   images: {
+    unoptimized:true,
     dangerouslyAllowSVG:true,
-    domains: ["dl.dropboxusercontent.com"], // Add Dropbox domain here
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "dl.dropboxusercontent.com",
+      },
+    ],
+    
   },
   
 };
