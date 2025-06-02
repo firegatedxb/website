@@ -72,7 +72,7 @@ const RelatedProjects: React.FC<FrameworkSectionProps> = ({ data, sector,pjtname
   return (
     <div className="">
       <div className="container">
-        {filteredData.length >1 ? (  <div className="pt-[40px] md:pt-[50px] lg:pt-[86px] pb-[40px] md:pb-[50px] lg:pb-[100px] border-b border-[#cccccc]">
+        {filteredData.length > 0 ? (  <div className="pt-[40px] md:pt-[50px] lg:pt-[86px] pb-[40px] md:pb-[50px] lg:pb-[100px] border-b border-[#cccccc]">
        <motion.h1 className="mb-4 md:mb-[55px] text-secondary text-50 font-bold uppercase"
            variants={slideInLeft}
                             initial="hidden"
