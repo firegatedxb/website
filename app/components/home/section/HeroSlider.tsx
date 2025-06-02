@@ -79,15 +79,18 @@ const HeroSlider = ({ data }: { data: Home }) => {
           <div className="container">
             <motion.div className="flex gap-2 justify-end" {...fadeIn(0.8, 0.2)}>
               {data.banners.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-[50px] h-[3px] cursor-pointer rounded-full transition-all duration-300 ${
-                    activeIndex === index
-                      ? "bg-primary scale-125 max-w-[27px]"
-                      : "bg-white max-w-[9px]"
-                  }`}
-                  onClick={() => swiperRef.current?.slideToLoop(index)}
-                />
+                <div key={index}>
+                      {index > 1 ? (
+                  <button
+
+                    className={`w-[50px] h-[3px] cursor-pointer rounded-full transition-all duration-300 ${activeIndex === index
+                        ? "bg-primary scale-125 max-w-[27px]"
+                        : "bg-white max-w-[9px]"
+                      }`}
+                    onClick={() => swiperRef.current?.slideToLoop(index)}
+                  ></button>
+                ):(<div></div>)}
+                </div>
               ))}
             </motion.div>
           </div>

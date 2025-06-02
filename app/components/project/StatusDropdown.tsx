@@ -21,7 +21,7 @@ export default function SelectBox({ label, selected, setSelected, options }: Sel
     ? 'Completed'
     : selected === 'false'
       ? 'On Going'
-      : label || 'not'}
+      : selected || label}
 </span>
             <span className="pointer-events-none absolute   right-0 flex items-center pr-2 top-[10px]">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none">

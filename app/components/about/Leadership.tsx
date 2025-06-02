@@ -35,8 +35,8 @@ const Leadership = ({ data }: { data: About }) => {
       />
 
       <div className="border border-graylit xl:min-h-[460px] lg:min-h-[550px] rounded-3xl z-[-1] transition duration-300 group-hover:shadow-lg xl:relative xl:bottom-[120px]">
-        <div className="text-white relative">
-          <div className="rounded-3xl ml-auto pr-10 bg-secondary transition duration-300 group-hover:shadow-lg group-hover:bg-primary p-5 flex xl:items-end flex-col">
+        <div className="text-white relative ">
+          <div className="rounded-3xl xl:h-[118px] ml-auto pr-10 bg-secondary transition duration-300 group-hover:shadow-lg group-hover:bg-primary p-5 flex xl:items-end flex-col">
             <div>
               <h3 className="text-22 2xl:text-32 font-medium leading-[1.3125] mb-2">
                 {data.thirdSection.chairman.name}
@@ -68,7 +68,7 @@ const Leadership = ({ data }: { data: About }) => {
 
       <div className="border border-graylit xl:min-h-[460px] lg:min-h-[550px] rounded-3xl z-[-1] transition duration-300 group-hover:shadow-lg xl:relative xl:bottom-[120px]">
         <div className="text-white relative">
-          <div className="rounded-3xl ml-auto pr-10 bg-secondary transition duration-300 group-hover:shadow-lg group-hover:bg-primary p-5 flex xl:items-end flex-col">
+          <div className="rounded-3xl xl:h-[118px] ml-auto pr-10 bg-secondary transition duration-300 group-hover:shadow-lg group-hover:bg-primary p-5 flex xl:items-end flex-col">
             <div>
               <h3 className="text-22 2xl:text-32 font-medium leading-[1.3125] mb-2">
                 {data.thirdSection.ceo.name}
