@@ -168,6 +168,10 @@ useEffect(() => {
   // 🔀 Shuffle and set
   // const shuffled = filtered.sort(() => Math.random() - 0.5);
   // setFilteredData(shuffled);
+
+   if(filtered.length < 5){
+     setDisableLoadMore(true);
+  }
 }, [data, selected, selectedsector, selectestatus, visible]);
 
 
@@ -295,7 +299,8 @@ useEffect(() => {
                 </div>
               </motion.div>
             </div>}</>
-          ) : (<div className="pb-10 text-center"><p>No Projects Available</p></div>)}
+          ) : (<div></div>)}
+          {groupedItems.length < 1 ? (<div className="pb-10 text-center"><p>No Projects Available</p></div>):(<div></div>)}
       </div>
       </section>
 
