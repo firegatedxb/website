@@ -93,7 +93,7 @@ const Form = () => {
                             initial="hidden"
                             whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}>
-        <h2 className="text-50 text-site-blue uppercase font-medium">
+        <h2 className="text-50 text-site-blue uppercase font-medium mb-8 lg:mb-[74px]">
           We’d love to hear from you.
         </h2>
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>

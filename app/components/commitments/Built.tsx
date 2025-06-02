@@ -12,7 +12,7 @@ const Built = ({ data }: { data: Commitments }) => {
     <div className="relative">
       <div className="container">
           <motion.div
-      className="lg:grid grid-cols-13 gap-5"
+      className="lg:grid grid-cols-13  "
       initial="hidden"
       animate="visible"
       variants={containerserVariants}
@@ -22,14 +22,14 @@ const Built = ({ data }: { data: Commitments }) => {
         className="col-span-6"
       >
         <div
-          className="lg:w-[45%] mt-10 lg:mt-0 h-[350px] lg:h-full lg:absolute left-0 object-cover rounded-xl lg:rounded-tl-[0px] lg:rounded-bl-[0px] bg-no-repeat bg-cover"
+          className="lg:w-[42%] mt-10 lg:mt-0 h-[350px] lg:h-full lg:absolute left-0 object-cover rounded-xl lg:rounded-tl-[0px] lg:rounded-bl-[0px] bg-no-repeat bg-cover"
           style={{ backgroundImage: `url(${data.firstSection.image})` }}
         />
       </div>
 
       {/* Right Content */}
       <motion.div
-        className="col-span-7 lg:pl-10 flex flex-col gap-5 pt-[50px] md:pt-[70px] lg:pt-[100px] pb-[20px] md:pb-[30px] lg:pb-[70px]"
+        className="col-span-7 lg:pl-4  flex flex-col gap-5 pt-[50px] md:pt-[70px] lg:pt-[100px] pb-[20px] md:pb-[30px] lg:pb-[70px]"
         variants={sideVariants}
       >
         <div className="flex flex-col">

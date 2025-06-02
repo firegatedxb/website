@@ -13,7 +13,7 @@ import { fadeUp, slideInLeft } from "@/public/frameranimation/animation";
 
 const AboutCompany = ({ data }: { data: Home }) => {
   return (
-    <section className="py-[50px]  md:py-[50px] lg:pt-[97px] lg:pb-[131px]  relative">
+    <section className="py-[50px] pb-0 md:pb-0  md:py-[50px] lg:pt-[97px] lg:pb-[131px]  relative">
       <div className="container">
         <div className="flex">
 
@@ -83,7 +83,7 @@ const AboutCompany = ({ data }: { data: Home }) => {
       </div>
 
        <motion.div
-  className="absolute right-0 bottom-0 z-[-1] w-1/2 invisible lg:visible"
+  className="lg:absolute right-0 bottom-0 z-[-1] lg:w-1/2  "
   initial={{ opacity: 0, y: 100, scale: 0.8 }}
   whileInView={{ opacity: 1, y: 0, scale: 1 }}
   viewport={{ once: true, amount: 0.3 }} // only animate once when 30% is in view
@@ -94,7 +94,7 @@ const AboutCompany = ({ data }: { data: Home }) => {
     alt={data.aboutSection.title}
     width={952}
     height={904}
-    className="w-full h-full object-cover"
+    className="w-full h-full object-cover mt-6 lg:mt-0"
     animate={{
       y: [0, 10, 0],
     }}

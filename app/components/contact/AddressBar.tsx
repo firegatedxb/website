@@ -64,21 +64,22 @@ const AddressBar = ({ data }: { data: Contact }) => {
                     <div className="w-full flex flex-col gap-5">
                       <div className="flex gap-4 border-b pb-5">
                         <Image
-                          src="/assets/img/contact/phone.svg"
-                          alt="phone"
-                          width={41}
-                          height={34}
-                        />
-                        <p className="text-30">{item.phone}</p>
-                      </div>
-                      <div className="flex gap-4 ">
-                        <Image
                           src="/assets/img/contact/message.svg"
                           alt="message"
                           width={41}
                           height={34}
                         />
                         <p className="text-30">{item.email}</p>
+                      </div>
+                      <div className="flex gap-4 ">
+
+                        <Image
+                          src="/assets/img/contact/phone.svg"
+                          alt="phone"
+                          width={41}
+                          height={34}
+                        />
+                        <p className="text-30">{item.phone}</p>
                       </div>
                     </div>
 
