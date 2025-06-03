@@ -43,7 +43,7 @@ const Health = ({ data }: { data: Commitments }) => {
         >
           <div className="flex items-center gap-5 border-b border-[#ffffff30] pb-6 md:pb-8 lg:pb-10">
             <div>
-              <Image
+              <img
                 src={item.logo}
                 alt={item.logoAlt}
                 className="w-full h-full object-cover group-hover:scale-105 group-hover:-translate-y-1 transition-transform duration-300 ease-in-out transform group-hover:translate-x-1 brightness-[0] invert-[1] group-hover:brightness-[1] group-hover:invert-[0]"
