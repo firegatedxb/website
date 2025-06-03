@@ -24,12 +24,12 @@ const Certifications = ({ data }: { data: About }) => {
                 key={index}
                 {...cardVariant(0.4)}
                 viewport={{ once: true, amount: 0.3 }}
-                className="border group border-[#cccccc] transition duration-300 hover:shadow-lg rounded-2xl max-h-[350px] overflow-hidden relative p-5 lg:p-10 transform hover:-translate-y-1"
+                className="border group border-[#cccccc] transition duration-300 hover:shadow-lg rounded-2xl max-h-[350px] overflow-hidden relative p-5 xl:p-10 transform hover:-translate-y-1"
                 onClick={() => setSelectedImage(item.image)}
                 style={{ cursor: "pointer" }}
               >
                 <h3 className="text-32 text-black font-medium leading-[1.3] mb-4 lg:mb-5">{item.title}</h3>
-                <Image src={item.image} alt={item.title} width={400} height={500} />
+                <div className="overflow-hidden h-[205px]"><Image src={item.image} alt={item.title} width={400} height={500} className="m-auto"/></div>
               </motion.div>
             ))}
           </div>

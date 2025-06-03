@@ -88,7 +88,7 @@ const FeaturedProjects = ({ data }: { data: Home }) => {
   };
 }, [projectList]); // re-run when projectList changes
   return (
-    <section className="py-[50px] pb-0 md:pb-[50px]  md:py-[50px] lg:pt-[120px] lg:pb-[120px] relative bg-secondary text-white">
+    <section className="py-[50px] pb-[20px] md:pb-[50px]  md:py-[50px] lg:pt-[120px] lg:pb-[120px] relative bg-secondary text-white">
       <div className={`container  `} style={{ height: `${height}px` }}>
         <div className="flex md:gap-[45px] lg:gap-[108px]  h-full">
           <motion.div

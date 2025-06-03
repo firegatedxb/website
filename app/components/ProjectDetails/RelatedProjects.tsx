@@ -72,8 +72,8 @@ const RelatedProjects: React.FC<FrameworkSectionProps> = ({ data, sector,pjtname
   return (
     <div className="">
       <div className="container">
-        <div className="pt-[40px] md:pt-[50px] lg:pt-[86px] pb-[40px] md:pb-[50px] lg:pb-[100px] border-b border-[#cccccc]">
-          <motion.h1 className="mb-4 md:mb-[55px] text-secondary text-50 font-bold uppercase"
+        {filteredData.length > 0 ? (  <div className="pt-[40px] md:pt-[50px] lg:pt-[86px] pb-[40px] md:pb-[50px] lg:pb-[100px] border-b border-[#cccccc]">
+       <motion.h1 className="mb-4 md:mb-[55px] text-secondary text-50 font-bold uppercase"
            variants={slideInLeft}
                             initial="hidden"
                             whileInView="visible"
@@ -81,6 +81,7 @@ const RelatedProjects: React.FC<FrameworkSectionProps> = ({ data, sector,pjtname
                             custom={2}  >
             Related projects
           </motion.h1>
+
          <motion.div
       className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-[30px]"
       initial="hidden"
@@ -115,8 +116,10 @@ const RelatedProjects: React.FC<FrameworkSectionProps> = ({ data, sector,pjtname
           </Link>
         </motion.div>
       ))}
-    </motion.div>
+          </motion.div>
+
         </div>
+            ):(<div></div>)}
       </div>
     </div>
   );

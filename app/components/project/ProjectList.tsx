@@ -54,7 +54,7 @@ export default function DynamicGrid({ data, locationData, sectorData }: DynamicG
   setSelected('');         // reset location
   setSelectedsector('');   // reset sector
   setSelectestatus('');    // reset status
-  setFilteredData(data);   // show all data
+  setFilteredData(filteredData);   // show all data
 };
   const [selected, setSelected] = useState("");
   const [selectedsector, setSelectedsector] = useState("");
@@ -168,6 +168,10 @@ useEffect(() => {
   // 🔀 Shuffle and set
   // const shuffled = filtered.sort(() => Math.random() - 0.5);
   // setFilteredData(shuffled);
+
+   if(filtered.length < 5){
+     setDisableLoadMore(true);
+  }
 }, [data, selected, selectedsector, selectestatus, visible]);
 
 
@@ -271,12 +275,14 @@ useEffect(() => {
           ))}
         </div>
         <div className="container">
-        {!disableLoadMore && <div className="mx-auto mb-6 md:mb-[50px]  lg:mb-[100px] w-fit">
-                <motion.div  variants={fadeInUpsec}
-                    initial="hidden"
-                    whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}>
-              <div
+
+          {groupedItems.length > 0 ? (
+            <>{!disableLoadMore && <div className="mx-auto mb-6 md:mb-[50px]  lg:mb-[100px] w-fit">
+              <motion.div variants={fadeInUpsec}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}>
+                <div
                   onClick={handleLoadMore}
                   className="flex cursor-pointer items-center bg-primary hover:bg-red-700 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase group"
                 >
@@ -290,9 +296,11 @@ useEffect(() => {
                       className="w-full h-[14px] object-contain group-hover:animate-pulse  rotate-90 "
                     ></Image>
                   </span>
-              </div>
+                </div>
               </motion.div>
-              </div>}
+            </div>}</>
+          ) : (<div></div>)}
+          {groupedItems.length < 1 ? (<div className="pb-10 text-center"><p>No Projects Available</p></div>):(<div></div>)}
       </div>
       </section>
 
