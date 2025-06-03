@@ -177,7 +177,7 @@ const FeaturedProjects = ({ data }: { data: Home }) => {
                         />
                       </Link>
                       <Link href={`/projects-details/${project.slug}`}>
-                        <div className="z-10 pointer w-[50px] h-[50px] rounded-full border flex items-center justify-center absolute bottom-[0px] left-[0px] trst">
+                        <div className="z-10 pointer w-[30px] h-[30px] md:w-[50px] md:h-[50px] rounded-full border flex items-center justify-center absolute bottom-[0px] left-[0px] trst">
                           <Image src={assets.redarrow} alt="" />
                         </div>
                       </Link>

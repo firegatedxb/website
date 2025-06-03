@@ -216,6 +216,14 @@ body {
   display: flex;
 }
 }
+@media only screen and (max-width: 767px) {
+  .curslider .swiper-slide-active .mnsuy img {
+  border-bottom-left-radius: 100px !important;
+}
+    .curslider .swiper-slide-active .trst {
+        display: flex;
+    }
+}
 .bg-siteaftr::before{content: '';
     position: absolute;
     width: 150%;
