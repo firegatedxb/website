@@ -98,7 +98,7 @@ const Form = () => {
         </h2>
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-14">
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {["name", "phone", "email"].map((field) => (
                 <div key={field} className="flex flex-col">
                   <label htmlFor={field} className="text-19 text-gray capitalize">
