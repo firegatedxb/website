@@ -25,7 +25,7 @@ export default function SelectBox({ label, selected, setSelected, options }: Sel
 </span>
             <span className="pointer-events-none absolute   right-0 flex items-center pr-2 top-[10px]">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none">
-<path d="M15 1L8 8L1 0.999999" stroke="white" stroke-width="2" stroke-linecap="round"/>
+<path d="M15 1L8 8L1 0.999999" stroke="white" strokeWidth="2" stroke-linecap="round"/>
 </svg>
             </span>
           </Listbox.Button>
