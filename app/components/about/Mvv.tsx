@@ -20,7 +20,7 @@ const Mvv = ({ data }: { data: About }) => {
     initial="hidden"
     whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            className="text-19 font-light leading-base max-w-8xl mb-4 lg:mb-6" dangerouslySetInnerHTML={{ __html: data.secondSection.description }}></motion.div>
+            className="text-19 font-light leading-base max-w-8xl  " dangerouslySetInnerHTML={{ __html: data.secondSection.description }}></motion.div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch gap-5 pt-10 lg:pt-25">
  <motion.div
@@ -34,7 +34,7 @@ const Mvv = ({ data }: { data: About }) => {
       <h3 className="text-50 font-medium leading-1.2 text-black uppercase mb-2 lg:mb-5 transition-colors duration-300 group-hover:text-primary">
         {data.secondSection.mission.logoAlt}
       </h3>
-      <p className="text-gray text-19 font-light transition-opacity duration-300 opacity-90 group-hover:opacity-100">
+      <p className="text-gray text-19 font-normal transition-opacity duration-300 opacity-90 group-hover:opacity-100">
         {data.secondSection.mission.description}
       </p>
     </motion.div>
@@ -50,7 +50,7 @@ const Mvv = ({ data }: { data: About }) => {
       <h3 className="text-50 font-medium leading-1.2 text-black uppercase mb-2 lg:mb-5 transition-colors duration-300 group-hover:text-primary">
         {data.secondSection.vision.logoAlt}
       </h3>
-      <p className="text-gray text-19 font-light transition-opacity duration-300 opacity-90 group-hover:opacity-100">
+      <p className="text-gray text-19 font-normal transition-opacity duration-300 opacity-90 group-hover:opacity-100">
         {data.secondSection.vision.description}
       </p>
     </motion.div>
@@ -66,7 +66,7 @@ const Mvv = ({ data }: { data: About }) => {
       <h3 className="text-50 font-medium leading-1.2 text-black uppercase mb-2 lg:mb-5 transition-colors duration-300 group-hover:text-primary">
         {data.secondSection.values.logoAlt}
       </h3>
-      <p className="text-gray text-19 font-light transition-opacity duration-300 opacity-90 group-hover:opacity-100">
+      <p className="text-gray text-19 font-normal transition-opacity duration-300 opacity-90 group-hover:opacity-100">
         {data.secondSection.values.description}
       </p>
     </motion.div>

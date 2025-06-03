@@ -18,7 +18,8 @@ const ContentArea = ({ data }: { data: systems }) => {
           {data.componentDescription &&
              <motion.p className="text-gray" variants={fadeInUpsec}
                                 initial="hidden"
-                                whileInView="visible">
+              whileInView="visible"
+             viewport={{ once: true, amount: 0.3 }}>
              {data.componentDescription}</motion.p>
           }
 

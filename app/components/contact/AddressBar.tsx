@@ -88,18 +88,19 @@ const AddressBar = ({ data }: { data: Contact }) => {
                         href="https://maps.app.goo.gl/GnLcXnJD9r66u73QA"
                         target="_blank"
                       >
-                        <button className="bg-primary cursor-pointer text-white px-6 py-2 flex items-center gap-3 rounded-lg">
-                          LOCATE US
-                          <div className="rounded-full bg-white flex items-center justify-center p-2">
-                            <Image
-                              src="/assets/img/contact/location.svg"
-                              alt="arrow"
-                              width={60}
-                              height={60}
-                              className="object-cover w-full h-full"
-                            />
-                          </div>
-                        </button>
+                        <button className="bg-primary cursor-pointer text-white px-6 py-2 flex items-center gap-3 rounded-lg group">
+  LOCATE US
+  <div className="rounded-full bg-white flex items-center justify-center transform transition-transform duration-300 group-hover:-translate-y-0.5 w-[36px] h-[36px]">
+    <Image
+      src="/assets/img/contact/location.svg"
+      alt="location"
+      width={17}
+      height={20}
+      className="object-cover  "
+    />
+  </div>
+</button>
+
                       </Link>
                     </div>
                   </div>
