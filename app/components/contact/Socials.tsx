@@ -11,7 +11,7 @@ const Socials = ({ data }: { data: Contact }) => {
   console.log(data.socials)
   return (
     <div className='bg-graybg'>
-      <div className='container lg:py-[110px] py-[60px] flex flex-col gap-12'>
+      <div className='container  py-[50px] lg:py-[70px] 2xl:py-[110px] flex flex-col gap-7 lg:gap-12'>
          <motion.div variants={fadeInUpsec}
                             initial="hidden"
                             whileInView="visible"

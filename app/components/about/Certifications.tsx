@@ -13,9 +13,9 @@ const Certifications = ({ data }: { data: About }) => {
   const [selectedImage, setSelectedImage] = useState<string | StaticImageData | null>(null);
 
   return (
-    <section className="bg-graybg py-10 lg:py-25">
+    <section className="bg-graybg py-10 lg:py-[70px] 2xl:py-25">
       <div className="container">
-        <div className="mb-4 lg:mb-18">
+        <div className="mb-4 lg:mb-8 2xl:mb-18">
           <Sbttl title="Certifications" />
         </div>
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-10">

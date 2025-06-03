@@ -87,7 +87,7 @@ const Form = () => {
   };
 
   return (
-    <div className="py-[50px] md:py-[70px] lg:pt-[107px] lg:pb-[121px]">
+    <div className="py-[50px] md:py-[70px] 2xl:pt-[107px] 2xl:pb-[121px]">
       <div className="container flex flex-col gap-14">
          <motion.div variants={fadeInUpsec}
                             initial="hidden"

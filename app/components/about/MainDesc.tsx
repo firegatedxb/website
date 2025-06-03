@@ -7,7 +7,7 @@ import { About } from '@/public/types/Common';
 
 const MainDesc = ({ data }: { data: About }) => {
   return (
-    <section className="py-[50px] md:py-[50px] lg:py-[97px]">
+    <section className="py-[50px] md:py-[50px] lg:py-[70px] 2xl:py-[97px]">
       <div className="container">
           <div className="xl:flex items-center gap-20">
           <motion.div variants={moveUp(0)} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="  lg:block xl:w-1/2  overflow-hidden">

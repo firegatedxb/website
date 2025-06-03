@@ -37,7 +37,7 @@ const Accreditation = ({ data }: { data: Partners }) => {
   }, []);
   return (
     <div className='container'>
-        <div className='py-[50px] md:py-[70px] lg:py-[100px] '>
+        <div className='py-[30px] md:py-[40px] 2xl:py-[100px] '>
         <div className='flex flex-col  '>
           <motion.h2 variants={slideInLeft}
                 initial="hidden"

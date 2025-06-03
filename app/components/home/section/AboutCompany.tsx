@@ -13,7 +13,7 @@ import { fadeUp, slideInLeft } from "@/public/frameranimation/animation";
 
 const AboutCompany = ({ data }: { data: Home }) => {
   return (
-    <section className="py-[50px] pb-0 md:pb-0  md:py-[50px] lg:pt-[97px] lg:pb-[131px]  relative">
+    <section className="py-[50px]  pb-0 md:pb-0  md:py-[50px] lg:pt-[70px] lg:pb-[100px] 2xl:pt-[97px] 2xl:pb-[131px]  relative">
       <div className="container">
         <div className="flex">
 
@@ -58,7 +58,7 @@ const AboutCompany = ({ data }: { data: Home }) => {
       </motion.div>
 
       <motion.div
-        className="grid grid-cols-2 mt-8 lg:mt-[94px]"
+        className="grid grid-cols-2 mt-8 lg:mt-[54px] 2xl:mt-[94px]"
         variants={fadeUp}
         custom={3}
       >

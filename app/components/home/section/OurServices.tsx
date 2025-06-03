@@ -14,7 +14,7 @@ const OurServices = ({ data }: { data: Home }) => {
 
  const [activeIndex, setActiveIndex] = useState(1);
   return (
-    <section className="py-[50px]  md:py-[50px] lg:pt-[108px]  lg:pb-[78px] relative bg-secondary">
+    <section className="py-[50px]  md:py-[50px] lg:py-[70px] 2xl:pt-[108px]  2xl:pb-[78px] relative bg-secondary">
       <div className="container">
         <div className="md:flex items-center">
           <div className="md:w-1/2 pr-0 md:pr-5 lg:pr-[140px] ">

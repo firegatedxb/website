@@ -38,7 +38,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <section className="py-[50px]  md:py-[50px] lg:pt-[108px]  lg:pb-[78px] relative bg-EFEFEF">
+    <section className="py-[50px]  md:py-[50px] lg:pt-[70px]  lg:pb-[70px] 2xl:pt-[108px]  2xl:pb-[78px] relative bg-EFEFEF">
       <div className="container">
         <div className=" ">
           <div className=" ">

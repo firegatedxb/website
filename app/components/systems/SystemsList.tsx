@@ -13,7 +13,7 @@ const SystemsList = ({ data }: { data: systems }) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
   return (
-    <section className="py-10 lg:py-25">
+    <section className="py-10 lg:py-[70px] 2xl:py-25">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-42">
           {data.systems.map((sys, index) => (

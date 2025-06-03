@@ -9,7 +9,7 @@ import {  containerVariants, fadeSlideUp, itemVariants, slideInLeft } from "@/pu
 const LetsCollaborate = ({ data }: { data: Home }) => {
   const [username, domain] = data.socials.email.split("@");
   return (
-    <section className="py-[50px] md:py-[50px] lg:pt-[99px]  lg:pb-[111px] relative bg-EFEFEF ">
+    <section className="py-[50px] md:py-[50px] lg:py-[70px] 2xl:pt-[99px]  2xl:pb-[111px] relative bg-EFEFEF ">
       <div className="container">
         <div className="border-b mb-6 lg:mb-[87px]">
           <motion.p  variants={slideInLeft}

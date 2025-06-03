@@ -9,7 +9,7 @@ import { cardVariants, fadeInUpsec } from "@/public/frameranimation/animation";
 
 const ContentArea = ({ data }: { data: systems }) => {
   return (
-    <section className="pb-[50px] lg:pb-25">
+    <section className="pb-[50px] lg:pb-[70px] 2xl:pb-25">
       <div className="container">
           <div>
             <div className="mb-4">

@@ -29,7 +29,7 @@ const Built = ({ data }: { data: Commitments }) => {
 
       {/* Right Content */}
       <motion.div
-        className="col-span-7 lg:pl-4  flex flex-col gap-5 pt-[50px] md:pt-[70px] lg:pt-[100px] pb-[20px] md:pb-[30px] lg:pb-[70px]"
+        className="col-span-7 lg:pl-4  flex flex-col gap-5 pt-[50px] md:pt-[70px] 2xl:pt-[100px] pb-[20px] md:pb-[30px] lg:pb-[70px]"
         variants={sideVariants}
       >
         <div className="flex flex-col">

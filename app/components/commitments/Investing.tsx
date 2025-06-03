@@ -9,7 +9,7 @@ import { cardVariants, fadeInUpsec, slideInLeft } from '@/public/frameranimation
 
 const Investing = ({ data }: { data: Commitments }) => {
   return (
-    <div className='container   py-[50px] md:py-[50px] lg:py-[100px] flex flex-col gap-6 md:gap-16'>
+    <div className='container   py-[50px] md:py-[50px]  lg:py-[70px]  2xl:py-[100px] flex flex-col gap-6 md:gap-8 xl:gap-16'>
       <div className='flex flex-col  '>
         <motion.h3 className='uppercase text-50 font-medium text-site-blue mb-5 md:mb-[30px] leading-[1.1]' variants={slideInLeft}
                                 initial="hidden"
