@@ -31,6 +31,7 @@ const Contents = ({ data }: { data: Partners }) => {
               className="w-full h-full object-cover"
               width={150}
               height={50}
+              priority
             />
           </div>
           <div>
@@ -49,6 +50,7 @@ const Contents = ({ data }: { data: Partners }) => {
               className="w-full h-full object-cover"
               width={150}
               height={50}
+              priority
             />
           </div>
         </>
