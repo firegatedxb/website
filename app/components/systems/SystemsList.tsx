@@ -68,7 +68,7 @@ const SystemsList = ({ data }: { data: systems }) => {
                       href={`/systems/${sys.slug}`}
                       className="w-[50px] h-[50px] lg:w-[80px] lg:h-[80px] rounded-full border bg-white border-black flex items-center justify-center transition-opacity duration-500 ease-in-out"
                     >
-                      <Image src={assets.redarrow} alt="" width={17} height={17} />
+                      <Image src={assets.redarrow} alt="" width={17} height={17} unoptimized/>
                     </Link>
                   )}
                 </div>
