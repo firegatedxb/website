@@ -32,6 +32,7 @@ const ServicesList = ({ data }: { data: Services }) => {
                     alt={item.logoAlt}
                     width={31.3}
                     height={31.3}
+                    priority
                   />
                 </div>
               </div>
