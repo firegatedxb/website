@@ -1,6 +1,6 @@
 "use client"
 import React, { useRef } from 'react'
-import Image from 'next/image'
+// import Image from 'next/image'
 
 import { Commitments } from '@/public/types/Common';
 import { motion, useInView } from 'framer-motion';
