@@ -8,7 +8,7 @@ import { fadeInUpsec } from "@/public/frameranimation/animation";
 const Main = ({ data }: { data: Clients }) => {
   return (
     <section className="">
-      <div className="container py-15 lg:py-25  pb-0 lg:pb-0  ">
+      <div className="container py-[50px] lg:py-[70px] 2xl:py-[100px]  pb-0 lg:pb-0  ">
         <div className="mb-4">
           <Sbttl title={data.title} />
         </div>

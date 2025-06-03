@@ -71,7 +71,7 @@ homeImage: string,
   }, []);
 
   return (
-    <section className="pt-[50px]  md:pt-[50px] lg:pt-[108px] ">
+    <section className="pt-[50px]  md:pt-[50px] lg:pt-[70px] 2xl:pt-[108px] ">
       <div className="container ">
         <motion.h2
   className="text-50 text-secondary font-medium mb-3 md:mb-8 uppercase"
@@ -84,7 +84,7 @@ homeImage: string,
 </motion.h2>
 
  <motion.div
-  className="relative border-b border-[#00000020] pb-[50px] md:pb-[70px] lg:pb-[121px]"
+  className="relative border-b border-[#00000020] pb-[50px] md:pb-[70px] 2xl:pb-[121px]"
   variants={containerVariants}
   initial="hidden"
   whileInView="visible"

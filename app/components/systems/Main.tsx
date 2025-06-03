@@ -12,7 +12,7 @@ const Main = ({ data }: { data: systems }) => {
   console.log(serviceArray);
   return (
     <section className="">
-      <div className="container pt-[50px] lg:pt-25 ">
+      <div className="container pt-[50px] lg:pt-[70px] 2xl:pt-25 ">
         <div className="mb-4">
           <Sbttl title={data.title} />
         </div>

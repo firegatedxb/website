@@ -8,8 +8,8 @@ import { fadeInUpsec, slideInLeft } from '@/public/frameranimation/animation';
 
 const Header = ({ data }: { data: Partners }) => {
   return (
-    <div className='container pt-[50px] pb-[50px] md:py-[70px] lg:py-[100px]'>
-      <div className='flex flex-col gap-7'>
+    <div className='container pt-[50px] pb-[50px] md:py-[70px] 2xl:py-[100px]'>
+      <div className='flex flex-col gap-5 lg:gap-7'>
          <motion.h3 variants={slideInLeft}
                 initial="hidden"
                 whileInView="visible"

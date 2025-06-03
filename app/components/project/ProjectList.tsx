@@ -106,9 +106,9 @@ const handleLoadMore = () => {
   const groupedItems = ProjectList(slicedData);
 
   return (
-    <section className="pt-20 pbc-120">
+    <section className="pt-[50px] lg:pt-[70px] 2xl:pt-[103px] ">
       <div className="container">
-        <div className="mb-12">
+        <div className="mb-8 lg:mb-10 2xl:mb-12">
           <Sbttl title="Projects" />
         </div>
 
@@ -118,7 +118,7 @@ const handleLoadMore = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <div className="bg-secondary rounded-2xl p-8 lg:p-10 grid md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-[50px] mb-8 lg:mb-25">
+          <div className="bg-secondary rounded-2xl p-8 lg:p-10 grid md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-[50px] mb-[50px] lg:mb-[70px] 2xl:mb-25">
             <SelectBox
               label="Country"
               selected={selected}
@@ -164,7 +164,7 @@ const handleLoadMore = () => {
         {groupedItems.map((group, gIndex) => (
           <motion.div
             key={group[0]?.slug || gIndex}
-            className={`grid grid-cols-1 md:grid-cols-${group.length} gap-7 md:gap-[30px] mb-[50px] lg:mb-25`}
+            className={`grid grid-cols-1  md:grid-cols-${group.length} gap-7 md:gap-[30px] mb-[50px]   2xl:mb-[80px]`}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
@@ -179,10 +179,10 @@ const handleLoadMore = () => {
                 <Link href={`/projects-details/${proj.slug}`}>
                   <div className="border-t border-[#cccccc] pt-4 md:pt-8 cursor-pointer">
                     <p className="font-medium text-32 truncate">{proj.name}</p>
-                    <p className="font-medium text-md text-gray mb-4 md:mb-8">
+                    <p className="font-medium text-md text-gray mb-4 md:mb-8 truncate ">
                       {proj.sector}
                     </p>
-                    <figure className="relative h-[450px] lg:h-[500px]">
+                    <figure className="relative h-[350px]  md:h-[250px] lg:h-[500px]">
                       <Image
                         src={proj.thumbnail}
                         alt={proj.thumbnailAlt}
@@ -209,7 +209,7 @@ const handleLoadMore = () => {
             >
               <div
                 onClick={handleLoadMore}
-                className="mx-auto flex cursor-pointer items-center bg-primary hover:bg-red-700 text-white font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs uppercase w-fit mb-10"
+                className="mx-auto flex cursor-pointer items-center bg-primary hover:bg-red-700 text-white font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs uppercase w-fit mb-15 lg:mb-[70px] 2xl:mb-25"
               >
                 <span>Load More</span>
                 <span className="bg-white rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center">

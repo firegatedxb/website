@@ -17,7 +17,7 @@ const Contents = ({ data }: { data: Partners }) => {
       <div className="container pb-[50px] lg:pb-[100px]">
         <div className={`flex flex-col gap-12 first:lg:pt-0 `} key={index}>
           <motion.div
-            className="flex justify-between items-center border-b border-[#59595920] pb-10 ptst lg:pt-[100px] lg:pb-[30px]"
+            className="flex justify-between items-center border-b border-[#59595920] pb-10 ptst pt-[30px] 2xl:pt-[100px] lg:pb-[30px]"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -56,11 +56,11 @@ const Contents = ({ data }: { data: Partners }) => {
             )}
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-[70px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-[70px]">
             {index % 2 == 0 ? (
               <>
             <motion.div
-              className="text-gray text-19 flex flex-col gap-10 justify-center mb-8 lg:mb-0"
+              className="text-gray text-19 flex flex-col gap-10 justify-center "
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -73,9 +73,9 @@ const Contents = ({ data }: { data: Partners }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <button className="bg-primary cursor-pointer text-white px-6 py-2 flex items-center gap-3 rounded-lg">
+                  <button className="bg-primary cursor-pointer text-white px-6 py-2 flex items-center gap-3 rounded-lg group">
                     VISIT WEBSITE
-                    <div className="rounded-full bg-white flex items-center justify-center px-3 py-2">
+                    <div className="rounded-full bg-white flex items-center justify-center px-3 py-2 transition-transform duration-300 group-hover:translate-x-1">
                       <Image
                         src="/assets/img/contact/arrow.svg"
                         alt="arrow"
@@ -120,7 +120,7 @@ const Contents = ({ data }: { data: Partners }) => {
               />
                   </motion.div>
                   <motion.div
-              className="text-gray text-19 flex flex-col gap-10 justify-center mb-8 lg:mb-0"
+              className="text-gray text-19 flex flex-col gap-10 justify-center  "
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -133,9 +133,9 @@ const Contents = ({ data }: { data: Partners }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <button className="bg-primary cursor-pointer text-white px-6 py-2 flex items-center gap-3 rounded-lg">
+                  <button className="bg-primary cursor-pointer text-white px-6 py-2 flex items-center gap-3 rounded-lg group">
                     VISIT WEBSITE
-                    <div className="rounded-full bg-white flex items-center justify-center px-3 py-2">
+                    <div className="rounded-full bg-white flex items-center justify-center px-3 py-2 transition-transform duration-300 group-hover:translate-x-1">
                       <Image
                         src="/assets/img/contact/arrow.svg"
                         alt="arrow"

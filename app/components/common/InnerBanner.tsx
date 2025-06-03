@@ -13,7 +13,7 @@ const InnerBanner = ({ data }: { data: About | Clients | Commitments | Partners 
       <Image src={data.banner} alt={data.bannerAlt} width={1920} height={540} className="absolute top-0 left-0 w-full h-full object-cover object-center z-0" />
       <div className={`absolute top-0 left-0 w-full h-full ${data.banner ? "bggradientsa" : ""} z-1`}></div>
       <div className="container relative z-2 h-full">
-        <div className="flex flex-col justify-end h-full pb-10 lg:pb-20 xl:pb-25 ">
+        <div className="flex flex-col justify-end h-full pb-10 lg:pb-15  xl:pb-25 ">
 
 
           {(data.pageTitle || data.title) && (

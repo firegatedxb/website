@@ -7,7 +7,7 @@ import { slideInLeft } from '@/public/frameranimation/animation';
 
 const Header = ({ data }: { data: Contact }) => {
   return (
-    <div className='container pt-[50px] lg:pt-[112px] pb-[22px]'>
+    <div className='container pt-[50px] lg:pt-[70px] 2xl:pt-[112px] pb-[22px]'>
        <motion.h1 variants={slideInLeft}
                 initial="hidden"
                 whileInView="visible"

@@ -10,7 +10,7 @@ const Main = ({ data }: { data: systems }) => {
 ;
   return (
     <section className="">
-      <div className="container py-15 lg:py-25    ">
+      <div className="container py-[50px] lg:py-[70px] 2xl:py-[100px]    ">
 
           <div>
             <div className="mb-4">

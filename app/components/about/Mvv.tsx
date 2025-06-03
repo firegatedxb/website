@@ -7,9 +7,9 @@ import { fadeedInUp, fadeInUpsec, slideInLeft } from "@/public/frameranimation/a
 
 const Mvv = ({ data }: { data: About }) => {
   return (
-    <section className="pt-[50px] pb-[50px] lg:pb-0 lg:pt-[120px] relative bg-secondary lg:bg-transparent">
+    <section className="pt-[50px] pb-[50px] lg:pb-0 lg:pt-[70px] xl:pt-[120px] relative bg-secondary lg:bg-transparent">
       <div className="hidden lg:block absolute w-full h-screen top-0 left-0 bg-secondary z-[-1]"></div>
-      <div className="container lg:border-b border-black/20 lg:pb-[120px]">
+      <div className="container lg:border-b border-black/20 lg:pb-[80px] 2xl:pb-[120px]">
         <div className="text-white">
           <motion.h2 className="text-white text-50 font-medium leading-[1.3] uppercase mb-5 lg:max-w-[48%]"
            variants={slideInLeft}
@@ -22,7 +22,7 @@ const Mvv = ({ data }: { data: About }) => {
             viewport={{ once: true, amount: 0.2 }}
             className="text-19 font-light leading-base max-w-8xl  " dangerouslySetInnerHTML={{ __html: data.secondSection.description }}></motion.div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch gap-5 pt-10 lg:pt-25">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch gap-5 pt-10 lg:pt-15 2xl:pt-25">
  <motion.div
       {...fadeedInUp(0)} // 1st card, no delay
       viewport={{ once: true }}

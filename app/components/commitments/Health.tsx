@@ -13,7 +13,7 @@ const Health = ({ data }: { data: Commitments }) => {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   return (
     <div className='bg-site-blue'>
-        <div className='container py-[50px] md:py-[70px] lg:py-[100px]'>
+        <div className='container py-[50px] lg:py-[70px] 2xl:py-[100px]'>
 
         <div className='flex flex-col gap-7 pb-[50px] md:pb-[70px] lg:pb-[100px]'>
 

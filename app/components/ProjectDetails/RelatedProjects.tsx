@@ -83,7 +83,7 @@ const RelatedProjects: React.FC<FrameworkSectionProps> = ({ data, sector,pjtname
           </motion.h1>
 
          <motion.div
-      className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-[30px]"
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-[30px]"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}

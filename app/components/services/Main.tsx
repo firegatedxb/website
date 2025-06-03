@@ -11,7 +11,7 @@ const Main = ({ data }: { data: Services }) => {
 
   return (
     <section className="">
-      <div className="container py-[50px] lg:py-25 border-b border-graylit">
+      <div className="container py-[50px] lg:py-15 2xl:py-25 border-b border-graylit">
       {serviceArray.map((service, index) => (
           <div key={index}>
             <div className="mb-4">

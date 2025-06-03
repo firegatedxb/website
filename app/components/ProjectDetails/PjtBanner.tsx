@@ -16,7 +16,7 @@ const PjtBanner: React.FC<FrameworkSectionProps> = ({ data }) => {
   return (
     <div className="">
       <div>
-        <div className="pt-[40px] md:pt-[70px] lg:pt-[100px] ">
+        <div className="pt-[50px]   lg:pt-[70px] 2xl:pt-25 ">
           <div className="container">
             <motion.h1
               variants={slideInLeft}
