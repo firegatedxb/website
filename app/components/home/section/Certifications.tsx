@@ -19,7 +19,7 @@ const Certifications = ({ data,pdata }: { data: Home, pdata: Partners }) => {
         <div className=" ">
           <div className=" ">
              <motion.h2
-              className="text-30 md:text-50 text-secondary font-medium mb-3 md:mb-[50px] lg:mb-[40px] 2xl:mb-[84px] uppercase"
+              className="text-30 md:text-50 text-secondary font-medium mb-8 md:mb-[50px] lg:mb-[40px] 2xl:mb-[84px] uppercase"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
