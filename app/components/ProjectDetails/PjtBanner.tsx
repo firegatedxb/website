@@ -99,7 +99,7 @@ const PjtBanner: React.FC<FrameworkSectionProps> = ({ data }) => {
                         <Image src={item.icon} alt={item.label} />
                         <div>
                           <p className="text-md font-medium">{item.label}</p>
-                          <p className="text-32 font-medium">{item.value}</p>
+                          <p className="text-32 font-medium line-clamp-3">{item.value}</p>
                         </div>
                       </motion.div>
                     ))}

@@ -16,7 +16,7 @@ const MainDesc = ({ data }: { data: About }) => {
           <motion.div variants={moveUp(0.5)} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="w-full xl:w-1/2">
               <h2 className="text-50 font-medium leading-[1.3] uppercase text-secondary mb-4 lg:mb-[37px]" >{data.firstSection.title}</h2>
 
-            <div className="text-19 mb-4 lg:mb-6 leading-[1.526315789473684]" dangerouslySetInnerHTML={{__html: data.firstSection.description}}></div>
+            <div className="text-19 mb-4 lg:mb-6 leading-[1.526315789473684] text-gray" dangerouslySetInnerHTML={{__html: data.firstSection.description}}></div>
             </motion.div>
           </div>
       </div>

@@ -16,7 +16,7 @@ const Main = ({ data }: { data: Clients }) => {
                             initial="hidden"
                             whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}>
-          <div dangerouslySetInnerHTML={{ __html: data.description }}></div>
+          <div className="text-gray" dangerouslySetInnerHTML={{ __html: data.description }}></div>
           </motion.div>
       </div>
     </section>

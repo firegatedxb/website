@@ -258,3 +258,10 @@ display:none; }
 .logocsi{height: 30px;}
 }
 .dwe::after{content: 'ddd';}
+@media only screen and (min-width: 1024px) {
+.h-fullcalc{
+  height: calc(100% - 393px);
+}
+}
+.text-gray p,
+.text-gray span{color: #595959 !important;}

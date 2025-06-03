@@ -39,21 +39,22 @@ const AboutCompany = ({ data }: { data: Home }) => {
         />
       </motion.div>
 
-      <motion.div variants={fadeUp} custom={2}>
-        <Link href="/about">
-          <button className="flex cursor-pointer items-center bg-primary hover:bg-primary/90 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase group">
-            <span>About Us</span>
-            <span className="bg-white rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center">
-              <Image
-                src={assets.bluearrowRight}
-                width={14}
-                height={28}
-                alt="read-more"
-                className="w-full h-[14px] object-contain group-hover:animate-pulse"
-              />
-            </span>
-          </button>
-        </Link>
+      <motion.div variants={fadeUp} custom={2} className="w-fit">
+       <Link href="/about">
+  <button className="flex cursor-pointer items-center bg-primary hover:bg-primary/90 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase group transition">
+    <span>About Us</span>
+    <span className="bg-white rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
+      <Image
+        src={assets.bluearrowRight}
+        width={14}
+        height={28}
+        alt="read-more"
+        className="w-full h-[14px] object-contain"
+      />
+    </span>
+  </button>
+</Link>
+
       </motion.div>
 
       <motion.div

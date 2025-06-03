@@ -134,10 +134,10 @@ const Form = () => {
             <div>
               <button
                 type="submit"
-                className="cursor-pointer bg-primary text-white px-6 py-2 flex items-center gap-3 rounded-lg"
+                className="cursor-pointer bg-primary text-white px-6 py-2 flex items-center gap-3 rounded-lg group"
               >
                 SUBMIT
-                <div className="rounded-full bg-white flex items-center justify-center px-3 py-2">
+                <div className="rounded-full bg-white flex items-center justify-center px-3 py-2 transition-transform duration-300 group-hover:translate-x-1">
                   <Image
                     src="/assets/img/contact/arrow.svg"
                     alt="arrow"
