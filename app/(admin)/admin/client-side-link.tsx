@@ -45,11 +45,12 @@ export default function ClientSideLink({
   return (
     <>
       <Link
-        href={href}
+        href={href == "/admin/logout" ? "#" : href}
         onClick={() => {  // Prevent navigation on click
           setOpenLink?.(isOpen ? null : href);
           if (href === "/admin/logout") {
             handleLogout();
+            return;
           }
         }}
         className={cn(
