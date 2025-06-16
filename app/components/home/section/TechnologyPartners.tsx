@@ -73,6 +73,7 @@ useEffect(() => {
 >
   {pdata.partners.map((slide, index) => (
     <SwiperSlide key={index}>
+          <a href={slide.website}   target="_blank" rel="noopener noreferrer">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -80,15 +81,14 @@ useEffect(() => {
         viewport={{ once: true, amount: 0.3 }}
         className="relative bg-white flex items-center justify-center rounded-[20px] h-[200px] md:h-[226px] lg:h-[286px] group"
       >
-          <a href={slide.website}   target="_blank" rel="noopener noreferrer">
         <div>
           <Image src={slide.logo} alt={slide.logoAlt} width={240} height={70} />
         </div>
             <div className="w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center absolute top-[10px] right-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
               <Image src={assets.redarrow} alt="" />
             </div>
-          </a>
       </motion.div>
+      </a>
     </SwiperSlide>
   ))}
 </Swiper>
