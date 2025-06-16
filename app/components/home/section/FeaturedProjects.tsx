@@ -147,7 +147,7 @@ const FeaturedProjects = ({ data }: { data: Home }) => {
                   spaceBetween: 8,
                 },
                 1024: {
-                  slidesPerView: 1.5,
+                  slidesPerView: 2.5,
                   spaceBetween: 20,
                 },
               }}

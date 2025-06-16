@@ -9,9 +9,9 @@ import {  containerVariants, fadeSlideUp, itemVariants, slideInLeft } from "@/pu
 const LetsCollaborate = ({ data }: { data: Home }) => {
   const [username, domain] = data.socials.email.split("@");
   return (
-    <section className="py-[50px] md:py-[50px] lg:py-[70px] 2xl:pt-[99px]  2xl:pb-[111px] relative bg-EFEFEF ">
+    <section className="py-[50px] md:py-[50px] lg:py-[50px] 2xl:py-[85px]    relative bg-EFEFEF ">
       <div className="container">
-        <div className="border-b mb-6 lg:mb-[87px]">
+        <div className="border-b mb-6 lg:mb-10">
           <motion.p  variants={slideInLeft}
               initial="hidden"
               whileInView="visible"
@@ -27,14 +27,18 @@ const LetsCollaborate = ({ data }: { data: Home }) => {
               whileInView="visible"
       className="space-y-4"
     >
-      <p className="text-40 xl:text-60 text-black font-semibold">
+      <a href={`tel:${data.socials.phone}`} >
+      <p className="text-40 mb-0 text-black font-semibold">
         {data.socials.phone}
       </p>
-      <p className="text-40 xl:text-60 text-black font-semibold">
+      </a>
+      <a href={`mailto:${data.socials.email}`}>
+      <p className="text-40  text-black font-semibold">
         {username}
         <span className="text-primary">@</span>
         {domain}
       </p>
+      </a>
     </motion.div>
 
           <motion.div
