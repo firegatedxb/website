@@ -10,6 +10,7 @@ const Form = () => {
     phone: "",
     email: "",
     message: "",
+    type: "",
   });
 
   const [errors, setErrors] = useState<{
@@ -84,8 +85,7 @@ const Form = () => {
     if (validate()) {
       // console.log("Form submitted!", formData);
     }
-  };
-
+  }; 
   return (
     <div className="py-[50px] md:py-[70px] 2xl:pt-[107px] 2xl:pb-[121px]">
       <div className="container flex flex-col gap-14">
@@ -116,6 +116,24 @@ const Form = () => {
                   )}
                 </div>
               ))}
+            </div>
+            <div   className="flex flex-col">
+              <label  className="text-19 text-gray capitalize">
+                Type
+              </label>
+              <select
+  name="type"
+  value={formData.type}
+  onChange={handleChange}
+  className="mt-2 text-gray border-gray-300 outline-none border-b bg-transparent"
+>
+  <option value=""> </option>
+  <option value="type1">Design</option>
+  <option value="type2">Accounts/Finance</option>
+  <option value="type3">Careers/HR</option>
+  <option value="type4">Sales/Enquiries</option>
+  <option value="type5">Complaints</option>
+</select>
             </div>
 
             <div className="flex flex-col">

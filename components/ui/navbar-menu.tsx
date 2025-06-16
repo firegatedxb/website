@@ -92,23 +92,26 @@ export const Menu = ({
 
       <nav
         onMouseLeave={() => setActive(null)} // resets the state
-        className=" relative bg-[#F9F9F9] z-50 dark:bg-black dark:border-white/[0.2] shadow-input flex justify-center items-stretch  gap-2 xl:gap-[42px]  h-full">
+        className=" relative bg-[#F9F9F9] z-50 dark:bg-black dark:border-white/[0.2] shadow-input flex justify-center items-stretch  gap-2 xl:gap-[20px]  h-full">
         <div className="left-spacing pr-[20px] xxl:pr-[20px] xxxl:pr-[50px] w-full flex items-center justify-between gap-3 pt-[16.5px] pb-[21px]  ">
+          <div>
           <div className="flex items-center ">
             <Link href="/">
               <Image
                 src="/assets/img/logo.svg"
                 alt="Crest Logo"
-                width={80}
-                height={50}
-                className="h-[41px] logocsi w-auto"
+                width={323}
+                height={41}
+                className="h-[41px]  w-auto"
               />
             </Link>
+          </div>
+          <p className="mb-0 text-center text-[14px] text-gray mt-1">Protection Without Compromise</p>
           </div>
           <div>
 
             <div>
-              <Link href="tel:9744327677" className="flex items-center justify-end gap-2 text-17 font-bold text-gray-800  leading-tight  group">
+              <Link href="tel:+971 (4) 432 7677" className="flex items-center justify-end gap-2 text-17 font-bold text-gray-800  leading-tight  group">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="group-hover:animate-bounce">
               <g clipPath="url(#clip0_160_2538)">
                 <path

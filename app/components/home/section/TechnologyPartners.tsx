@@ -10,6 +10,7 @@ import Image from "next/image";
 import { Home,Partners } from '@/public/types/Common';
 import { motion } from "framer-motion";
 import {  slideInLeft } from "@/public/frameranimation/animation";
+import { assets } from "@/public/assets/assets";
 
 const TechnologyPartners = ({ data, pdata }: { data: Home, pdata: Partners}) => {
 
@@ -79,14 +80,14 @@ useEffect(() => {
         viewport={{ once: true, amount: 0.3 }}
         className="relative bg-white flex items-center justify-center rounded-[20px] h-[200px] md:h-[226px] lg:h-[286px] group"
       >
+          <a href={slide.website}   target="_blank" rel="noopener noreferrer">
         <div>
           <Image src={slide.logo} alt={slide.logoAlt} width={240} height={70} />
         </div>
-          {/* <a href={slide.website}   target="_blank" rel="noopener noreferrer">
             <div className="w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center absolute top-[10px] right-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
               <Image src={assets.redarrow} alt="" />
             </div>
-          </a> */}
+          </a>
       </motion.div>
     </SwiperSlide>
   ))}
