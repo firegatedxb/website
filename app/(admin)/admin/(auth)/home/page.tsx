@@ -62,6 +62,7 @@ interface SystemFormProps {
         items: {
             image: string;
             imageAlt: string;
+            link: string;
         }[];
     };
     projects: {
@@ -537,12 +538,16 @@ const HomePage = () => {
                                     <Input type='text' placeholder='Alt Tag' {...register(`certifications.items.${index}.imageAlt`)} />
                                 </div>
                             </div>
+                            <div>
+                                <Label className='pl-3 font-bold'>Link</Label>
+                                <Input type='text' placeholder='Link' {...register(`certifications.items.${index}.link`)} />
+                            </div>
 
                         </div>
                     ))}
 
                     <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => certificationsAppend({ image: "", imageAlt: "" })}>Add Item</Button>
+                        <Button type='button' className="w-full cursor-pointer" onClick={() => certificationsAppend({ image: "", imageAlt: "", link: "" })}>Add Item</Button>
                     </div>
 
                 </div>
