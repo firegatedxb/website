@@ -28,6 +28,7 @@ interface Client {
     description: string;
     banner: string;
     bannerAlt: string;
+    link: string;
     pageTitle: string;
 }
 
@@ -35,6 +36,7 @@ export default function Team() {
 
     const [image, setImage] = useState<string>("");
     const [imageAlt, setImageAlt] = useState<string>("");
+    const [link, setLink] = useState<string>("");
     const [clientList, setClientList] = useState<Client[]>([]);
     const { register, handleSubmit, setValue, control, watch } = useForm<Client>();
     const [metaTitle, setMetaTitle] = useState<string>("");
@@ -108,7 +110,7 @@ export default function Team() {
         try {
             const response = await fetch("/api/admin/clients", {
                 method: "POST",
-                body: JSON.stringify({ image, imageAlt }),
+                body: JSON.stringify({ image, imageAlt, link }),
             });
             if (response.ok) {
                 const data = await response.json();
@@ -127,7 +129,7 @@ export default function Team() {
         try {
             const response = await fetch(`/api/admin/clients?id=${id}`, {
                 method: "PATCH",
-                body: JSON.stringify({ image, imageAlt }),
+                body: JSON.stringify({ image, imageAlt, link }),
             });
             if (response.ok) {
                 const data = await response.json();
@@ -259,7 +261,7 @@ export default function Team() {
                 <div className="flex justify-between border-b-2 pb-2">
                     <Label className="text-sm font-bold">Clients</Label>
                     <Dialog>
-                        <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => { setImage(""); setImageAlt(""); }}>Add Client</DialogTrigger>
+                        <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => { setImage(""); setImageAlt(""); setLink("") }}>Add Client</DialogTrigger>
                         <DialogContent>
                             <DialogHeader>
                                 <DialogTitle>Add Client</DialogTitle>
@@ -271,6 +273,10 @@ export default function Team() {
                                     <div>
                                         <Label>Alt Tag</Label>
                                         <Input type="text" placeholder="Alt Tag" value={imageAlt} onChange={(e) => setImageAlt(e.target.value)} />
+                                    </div>
+                                    <div>
+                                        <Label>Link</Label>
+                                        <Input type="text" placeholder="Link" value={link} onChange={(e) => setLink(e.target.value)} />
                                     </div>
                                 </div>
                             </DialogHeader>
@@ -289,7 +295,7 @@ export default function Team() {
                             </div>
                             <div className="absolute top-1 right-1 flex gap-2">
                                 <Dialog>
-                                    <DialogTrigger className=" text-white px-2 py-1 rounded-md" onClick={() => { setImage(client.image); setImageAlt(client.imageAlt) }}>
+                                    <DialogTrigger className=" text-white px-2 py-1 rounded-md" onClick={() => { setImage(client.image); setImageAlt(client.imageAlt); setLink(client.link) }}>
 
                                             <MdEdit className="text-black cursor-pointer"/>
 
@@ -305,6 +311,10 @@ export default function Team() {
                                                 <div>
                                                     <Label>Alt Tag</Label>
                                                     <Input type="text" placeholder="Alt Tag" value={imageAlt} onChange={(e) => setImageAlt(e.target.value)} />
+                                                </div>
+                                                <div>
+                                                    <Label>Link</Label>
+                                                    <Input type="text" placeholder="Link" value={link} onChange={(e) => setLink(e.target.value)} />
                                                 </div>
                                             </div>
                                         </DialogHeader>

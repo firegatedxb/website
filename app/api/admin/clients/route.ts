@@ -23,12 +23,12 @@ export async function POST(req: NextRequest) {
 
         await connectDB();
         const body = await req.json();
-        const { image,imageAlt } = body;
+        const { image,imageAlt,link } = body;
         const client = await Client.findOne({});
         if (!client) {
             return NextResponse.json({ success: false, message: "Error adding client" }, { status: 500 });
         }
-        client.clients.push({ image,imageAlt });
+        client.clients.push({ image,imageAlt,link });
         await client.save();
         return NextResponse.json({ success: true, message: "Client added successfully" }, { status: 201 });
     } catch (error) {
@@ -46,7 +46,7 @@ export async function PATCH(req: NextRequest) {
 
         await connectDB();
         const body = await req.json();
-        const { image,imageAlt } = body;
+        const { image,imageAlt,link } = body;
         const searchParams = req.nextUrl.searchParams;
         const id = searchParams.get("id");
 
@@ -60,6 +60,7 @@ export async function PATCH(req: NextRequest) {
         }
         clientData.image = image;
         clientData.imageAlt = imageAlt;
+        clientData.link = link;
         await client.save();
         return NextResponse.json({ success: true, message: "Client updated successfully" }, { status: 201 });
     } catch (error) {
