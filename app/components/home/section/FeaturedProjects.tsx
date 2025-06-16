@@ -196,7 +196,7 @@ const FeaturedProjects = ({ data }: { data: Home }) => {
 
             <button
               onClick={() => swiperRef.current?.slideNext()}
-              className="invisible lg:visible absolute top-2/5 right-40 transform -translate-y-1/2 bg-white text-black rounded-full py-3 px-8 lg:py-[13.5px] shadow-lg z-10 cursor-pointer"
+              className="invisible lg:visible absolute top-2/5 right-20 transform -translate-y-1/2 bg-white text-black rounded-full py-3 px-8 lg:py-[13.5px] shadow-lg z-10 cursor-pointer"
             >
               <Image
                 src={assets.bluearrowRight}
