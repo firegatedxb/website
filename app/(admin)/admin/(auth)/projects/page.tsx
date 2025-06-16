@@ -23,8 +23,11 @@ export default function Projects() {
   const [oldCountry, setOldCountry] = useState<string>("");
   const [sector, setSector] = useState<string>("");
   const [country, setCountry] = useState<string>("");
+  const [client, setClient] = useState<string>("");
+  const [oldClient, setOldClient] = useState<string>("");
   const [projectList, setProjectList] = useState<{ _id: string, name: string, client: string, industry: string, scope: string, location: string, description: string }[]>([]);
   const [countryList, setCountryList] = useState<{ _id: string, name: string }[]>([]);
+  const [clientList, setClientList] = useState<{ _id: string, name: string }[]>([]);
   const [sectorList, setSectorList] = useState<{ _id: string, name: string }[]>([]);
   const [metaTitle, setMetaTitle] = useState<string>("");
   const [metaDescription, setMetaDescription] = useState<string>("");
@@ -42,6 +45,79 @@ export default function Projects() {
       }
     } catch (error) {
       console.log("Error fetching industry", error);
+    }
+  }
+
+  const handleAddClient = async () => {
+    try {
+      const response = await fetch("/api/admin/project/client", {
+        method: "POST",
+        body: JSON.stringify({ name: client }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setClient("");
+        alert(data.message);
+        handleFetchClient();
+      } else {
+        const data = await response.json();
+        alert(data.message);
+      }
+    } catch (error) {
+      console.log("Error adding client", error);
+    }
+  }
+
+  const handleFetchClient = async () => {
+    try {
+      const response = await fetch("/api/admin/project/client");
+      if (response.ok) {
+        const data = await response.json();
+        setClientList(data.data);
+      } else {
+        const data = await response.json();
+        alert(data.message);
+      }
+    } catch (error) {
+      console.log("Error fetching client", error);
+    }
+  }
+
+  const handleEditClient = async (id: string) => {
+    try {
+      const response = await fetch(`/api/admin/project/client?id=${id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ name: client, oldName: oldClient }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.message);
+        handleFetchClient();
+        setOldClient("");
+      } else {
+        const data = await response.json();
+        alert(data.message);
+      }
+    } catch (error) {
+      console.log("Error editing client", error);
+    }
+  }
+
+  const handleDeleteClient = async (id: string) => {
+    try {
+      const response = await fetch(`/api/admin/project/client?id=${id}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.message);
+        handleFetchClient();
+      } else {
+        const data = await response.json();
+        alert(data.message);
+      }
+    } catch (error) {
+      console.log("Error deleting client", error);
     }
   }
 
@@ -249,6 +325,7 @@ export default function Projects() {
     handleFetchProjects();
     handleFetchSector();
     handleFetchCountry();
+    handleFetchClient();
     fetchMeta();
   }, [])
 
@@ -389,6 +466,73 @@ export default function Projects() {
                           <div className="flex gap-2">
                             <DialogClose className="bg-black text-white px-2 py-1 rounded-md">No</DialogClose>
                             <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={() => handleDeleteCountry(item._id)}>Yes</DialogClose>
+                          </div>
+
+                        </DialogContent>
+
+                      </Dialog>
+
+                    </div>
+                  </div>
+                ))}
+
+              </div>
+
+            </div>
+          </div>
+
+
+          <div className="h-1/2 w-full p-2 border-2 border-gray-300 rounded-md overflow-y-hidden">
+            <div className="flex justify-between border-b-2 pb-2">
+              <Label className="text-sm font-bold">Clients</Label>
+              <Dialog>
+                <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => setClient("")}>Add Client</DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Add Client</DialogTitle>
+                    <DialogDescription>
+                      <Input type="text" placeholder="Client Name" value={client} onChange={(e) => setClient(e.target.value)} />
+                    </DialogDescription>
+                  </DialogHeader>
+                  <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={handleAddClient}>Save</DialogClose>
+                </DialogContent>
+
+              </Dialog>
+            </div>
+            <div className="h-full">
+
+              <div className="mt-2 flex flex-col gap-2 overflow-y-scroll h-full">
+                {clientList.map((item) => (
+                  <div className="flex justify-between border p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
+                    <div>
+                      {item.name}
+                    </div>
+                    <div className="flex gap-5">
+                      <Dialog>
+                        <DialogTrigger onClick={() => { setClient(item.name); setOldClient(item.name) }}><MdEdit /></DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle>Edit Client</DialogTitle>
+                            <DialogDescription>
+                              <Input type="text" placeholder="Client Name" value={client} onChange={(e) => setClient(e.target.value)} />
+                            </DialogDescription>
+                          </DialogHeader>
+                          <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={() => handleEditClient(item._id)}>Save</DialogClose>
+                        </DialogContent>
+
+                      </Dialog>
+
+
+
+                      <Dialog>
+                        <DialogTrigger><MdDelete /></DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle>Are you sure?</DialogTitle>
+                          </DialogHeader>
+                          <div className="flex gap-2">
+                            <DialogClose className="bg-black text-white px-2 py-1 rounded-md">No</DialogClose>
+                            <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={() => handleDeleteClient(item._id)}>Yes</DialogClose>
                           </div>
 
                         </DialogContent>
