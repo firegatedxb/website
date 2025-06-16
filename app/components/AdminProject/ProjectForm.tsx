@@ -46,6 +46,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
 
     const [sectorList, setSectorList] = useState<{ name: string }[]>([]);
     const [locationList, setLocationList] = useState<{ name: string }[]>([]);
+    const [clientList, setClientList] = useState<{ name: string }[]>([]);
 
     const { register, handleSubmit, setValue, watch,control, formState: { errors } } = useForm<ProjectFormProps>();
 
@@ -121,8 +122,20 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
         }
     }
 
+    const fetchClient = async () => {
+        try {
+            const response = await fetch("/api/admin/project/client");
+            if (response.ok) {
+                const data = await response.json();
+                setClientList(data.data);
+            }
+        } catch (error) {
+            console.log("Error in fetching client", error);
+        }
+    }
+
     useEffect(() => {
-        fetchSector().then(() => fetchLocation().then(() => ((editMode) ? fetchProjectData() : null)));
+        fetchSector().then(() => fetchLocation().then(() => fetchClient().then(() => ((editMode) ? fetchProjectData() : null))));
     }, []);
 
 
@@ -194,8 +207,31 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                 </div>
                 <div className='flex flex-col gap-2'>
                     <Label className='pl-3 font-bold'>Client</Label>
-                    <Input type='text' placeholder='Client Name' {...register("client", { required: "Client is required" })} />
-                    {errors.client && <p className='text-red-500'>{errors.client.message}</p>}
+                    <Controller
+                        name="client"
+                        control={control}
+                        rules={{ required: "Client is required" }}
+                        render={({ field }) => (
+                            <Select
+                                onValueChange={field.onChange}
+                                value={field.value}
+                                defaultValue=""
+                            >
+                                <SelectTrigger className="w-full">
+                                    <SelectValue placeholder="Select Client" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {clientList.map((item, index) => (
+                                        <SelectItem key={index} value={item.name}>
+                                            {item.name}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        )}
+                    />
+                    {errors.client && <p className="text-red-500">{errors.client.message}</p>}
+
                 </div>
                 <div className='flex flex-col gap-2'>
                     <Label className='pl-3 font-bold'>Sector</Label>
