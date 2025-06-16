@@ -119,15 +119,15 @@ const Form = () => {
             </div>
             <div   className="flex flex-col">
               <label  className="text-19 text-gray capitalize">
-                Type
+                Department
               </label>
               <select
   name="type"
   value={formData.type}
   onChange={handleChange}
-  className="mt-2 text-gray border-gray-300 outline-none border-b bg-transparent"
+  className=" text-gray border-gray-300 outline-none border-b bg-transparent py-2"
 >
-  <option value=""> </option>
+  <option value="">Select Department</option>
   <option value="type1">Design</option>
   <option value="type2">Accounts/Finance</option>
   <option value="type3">Careers/HR</option>
