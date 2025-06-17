@@ -50,13 +50,14 @@ const Footer = () => {
     useEffect(() => {
       handleFetchContact();
     }, [])
+    console.log(contactList);
   const defaultTab = contactList?.contacts[0]?.title || "Dubai - UAE";
   const [tabValue, setTabValue] = useState<string>(defaultTab);
 
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   return (
-    <section className="py-[50px] md:py-[50px] lg:pt-[99px]  lg:pb-[111px] relative bg-black text-white ">
+    <section className="py-[50px] md:py-[50px] lg:py-[65px] 2xl:py-[85px] relative bg-black text-white ">
       {defaultTab && (
         <div className="container">
           <div className="flex flex-wrap gap-4 lg:gap-0">
@@ -106,11 +107,13 @@ const Footer = () => {
                                   {client.address?.split('PO')[1]}
                                 </p>
                                 <p className="text-19">
-                                  <span className="text-primary">T</span>:  {client.phone}
+                                  <span className="text-primary">T</span>:  
+                                  <a href={`tel:${client.phone}`}> {client.phone}</a>
 
                                 </p>
                                 <p className="text-19">
-                                  <span className="text-primary">E</span>:  {client.email}
+                                  <span className="text-primary">E</span>: 
+                                  <a href={`mailto:${client.email}`}> {client.email}</a> 
                                 </p>
                               </div>
                             </TabsContent>
@@ -136,9 +139,9 @@ const Footer = () => {
                 <div className="flex flex-wrap gap-7 md:gap-10 h-full justify-between">
                   <motion.ul className="ulsmn" variants={listVariants}>
                     {[
-                      { href: "/services#section0", label: "Maintenance" },
                       { href: "/services#section1", label: "Design & Engineering" },
                       { href: "/services#section2", label: "Installation" },
+                      { href: "/services#section0", label: "Maintenance" },
                     ].map((item, index) => (
                       <motion.li
                         key={index}
@@ -186,9 +189,9 @@ const Footer = () => {
           </div>
         </div>
       )}
-        <div className=" whatsapp  "   >
-          <Link href="#"  >
-                        <Image src={assets.whatsapp} alt="slider" className="fixed group hover:text-primary transition-all duration-300 transform   ease-in-out hover:-translate-y-1 bottom-5 lg:bottom-[180px] right-[10px] lg:right-[50px] z-50 w-[30px] h-[30px] lg:h-[60px] lg:w-[60px] " />
+        <div className=" whatsapp  "   > 
+          <Link href="https://wa.me/+97144327677" target="_blank"> 
+                        <Image src={assets.whatsapp} alt="slider" className="fixed group hover:text-primary transition-all duration-300 transform   ease-in-out hover:-translate-y-1 bottom-5 lg:bottom-[40px] right-[10px] lg:right-[50px]  z-50 w-[20px] h-[20px] lg:h-[40px] lg:w-[40px] " />
                         </Link>
                       </div>
     </section>

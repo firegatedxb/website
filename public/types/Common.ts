@@ -59,6 +59,7 @@ export type Home =
         {
           image: string,
           imageAlt: string
+          link: string
         }
       ]
     },
@@ -149,6 +150,7 @@ export type Clients =
       {
         image: string,
         imageAlt: string
+        link: string,
       }
     ]
   }

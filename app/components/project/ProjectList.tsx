@@ -32,6 +32,7 @@ interface DynamicGridProps {
   data: Project[];
   locationData: { data: { name: string }[] };
   sectorData: { data: { name: string }[] };
+  clientData: { data: { name: string }[] };
 }
 
 function ProjectList(items: Project[]): Project[][] {
@@ -40,7 +41,7 @@ function ProjectList(items: Project[]): Project[][] {
   let takeTwo = true;
 
   while (i < items.length) {
-    const size = takeTwo ? 2 : 3;
+    const size = takeTwo ? 3 : 3;
     chunks.push(items.slice(i, i + size));
     i += size;
     takeTwo = !takeTwo;
@@ -49,11 +50,12 @@ function ProjectList(items: Project[]): Project[][] {
   return chunks;
 }
 
-export default function DynamicGrid({ data, locationData, sectorData }: DynamicGridProps) {
-  const limit = 5;
-
+export default function DynamicGrid({ data, clientData, locationData, sectorData }: DynamicGridProps) {
+  const limit = 9;
+  console.log(clientData);
   const [selected, setSelected] = useState("");
   const [selectedsector, setSelectedsector] = useState("");
+  const [selecteclient, setSelecteclient] = useState("");
   const [selectestatus, setSelectestatus] = useState("");
   const [visible, setVisible] = useState(limit);
   const [filteredData, setFilteredData] = useState<Project[]>([]);
@@ -62,6 +64,7 @@ export default function DynamicGrid({ data, locationData, sectorData }: DynamicG
   const handleClearFilters = () => {
     setSelected("");
     setSelectedsector("");
+    setSelecteclient("");
     setSelectestatus("");
     setVisible(limit);
   };
@@ -70,6 +73,7 @@ export default function DynamicGrid({ data, locationData, sectorData }: DynamicG
   if (!data) return;
 
   let filtered = data;
+  console.log(filtered);
 
   if (selected) {
     filtered = filtered.filter(
@@ -86,12 +90,17 @@ export default function DynamicGrid({ data, locationData, sectorData }: DynamicG
       (item) => String(item.status).toLowerCase() === selectestatus.toLowerCase()
     );
   }
+  if (selecteclient) {
+    filtered = filtered.filter(
+      (item) => item.client?.toLowerCase() === selecteclient.toLowerCase()
+    );
+  }
 
   // ✅ Reset visible count when filters change
   setVisible(limit);
   setFilteredData(filtered);
   setDisableLoadMore(filtered.length <= limit);
-}, [data, selected, selectedsector, selectestatus]);
+}, [data, selected, selectedsector, selectestatus, selecteclient]);
 
 const handleLoadMore = () => {
   const newVisible = visible + limit;
@@ -109,7 +118,7 @@ const handleLoadMore = () => {
     <section className="pt-[50px] lg:pt-[70px] 2xl:pt-[103px] ">
       <div className="container">
         <div className="mb-8 lg:mb-10 2xl:mb-12">
-          <Sbttl title="Projects" />
+          <Sbttl title="Portfolio" />
         </div>
 
         <motion.div
@@ -118,9 +127,9 @@ const handleLoadMore = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <div className="bg-secondary rounded-2xl p-8 lg:p-10 grid md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-[50px] mb-[50px] lg:mb-[70px] 2xl:mb-25">
+          <div className="bg-secondary rounded-2xl p-8 lg:p-10 grid md:grid-cols-2 lg:grid-cols-5 gap-4 xl:gap-[50px] mb-[50px] lg:mb-[70px] 2xl:mb-25">
             <SelectBox
-              label="Country"
+              label="Type"
               selected={selected}
               setSelected={setSelected}
               options={locationData?.data?.map((item) => ({ name: item.name, value: item.name })) || []}
@@ -139,6 +148,13 @@ const handleLoadMore = () => {
                 { name: "Completed", value: "true" },
                 { name: "On Going", value: "false" },
               ]}
+            />
+            <SelectBox
+              label="Client"
+              selected={selecteclient}
+              setSelected={setSelecteclient}
+              options={clientData?.data?.map((item) => ({ name: item.name, value: item.name })) || []}
+          
             />
             <div className="ml-auto mt-6 md:mt-0">
               <div
