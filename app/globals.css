@@ -265,3 +265,19 @@ display:none; }
 }
 .text-gray p,
 .text-gray span{color: #595959 !important;}
+.adminstyle label{
+  margin-bottom: 10px ;
+  padding-left: 0px ;
+  padding-top: 10px ;
+} 
+.adminstyle input , .adminstyle textarea{
+  border: 1px solid #c7c3d1;
+  border-radius: 3px;
+}
+.adminstyle input:focus,
+.adminstyle input:focus-visible,
+.adminstyle textarea:focus,
+.adminstyle textarea:focus-visible{
+  border: 1px solid #c7c3d1;
+  outline: none;
+}

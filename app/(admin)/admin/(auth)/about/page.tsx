@@ -144,13 +144,17 @@ const AboutPage = () => {
 
 
     return (
-        <div className='flex flex-col gap-5'>
-            <form className='flex flex-col gap-5' onSubmit={handleSubmit(handleAddAbout)}>
+        <div className='flex flex-col gap-5 adminstyle'>
+            <form className='flex flex-col gap-5 ' onSubmit={handleSubmit(handleAddAbout)}>
 
 
+           <div>
+           <Label className='pl-3 font-bold    p-2 py-0 text-md'>Banner Section</Label>
                 <div className='flex flex-col gap-2'>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5 mt-1'>
                     <div>
                         <Label className="pl-3 font-bold">Banner</Label>
+                        <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5 mt-1'>
                         <Controller
                             name="banner"
                             control={control}
@@ -166,6 +170,7 @@ const AboutPage = () => {
                             <p className="text-red-500">{errors.banner.message}</p>
                         )}
                     </div>
+                    </div>
                     <div>
                         <Label className='pl-3 font-bold'>Alt Tag</Label>
                         <Input type='text' placeholder='Alt Tag' {...register("bannerAlt")} />
@@ -174,10 +179,13 @@ const AboutPage = () => {
                         <Label className='pl-3 font-bold'>Page Title</Label>
                         <Input type='text' placeholder='Page Title' {...register("pageTitle")} />
                     </div>
+                    </div>
                 </div>
-
-                <Label className='pl-3 font-bold border-b p-2 text-lg'>First Section</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-2'>
+           </div>
+ 
+               <div>
+               <Label className='pl-3 font-bold    p-2 py-0 text-md'>First Section</Label>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
                     <div className='flex flex-col gap-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -216,10 +224,11 @@ const AboutPage = () => {
                     </div>
 
                 </div>
+               </div>
 
-
-                <Label className='pl-3 font-bold border-b p-2 text-lg'>Second Section</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-2'>
+               <div>
+                <Label className='pl-3 font-bold    p-2 py-0 text-md'>Second Section</Label>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
                     <div className='flex flex-col gap-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -237,7 +246,7 @@ const AboutPage = () => {
 
                         <div className='grid grid-cols-3 gap-5'>
 
-                            <div className='border p-2 rounded-md flex flex-col gap-2'>
+                            <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
                                 <Label className='pl-3 font-bold text-md underline'>Mission</Label>
                                 <div>
                                 <Label className='pl-3 font-bold'>Logo</Label>
@@ -267,7 +276,7 @@ const AboutPage = () => {
                             </div>
 
 
-                            <div className='border p-2 rounded-md flex flex-col gap-2'>
+                            <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
                                 <Label className='pl-3 font-bold text-md underline'>Vision</Label>
                                 <div>
                                 <Label className='pl-3 font-bold'>Logo</Label>
@@ -297,7 +306,7 @@ const AboutPage = () => {
                             </div>
 
 
-                            <div className='border p-2 rounded-md flex flex-col gap-2'>
+                            <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
                                 <Label className='pl-3 font-bold text-md underline'>Values</Label>
                                 <div>
                                 <Label className='pl-3 font-bold'>Logo</Label>
@@ -333,10 +342,11 @@ const AboutPage = () => {
                     </div>
 
                 </div>
+                </div>
 
-
-                <Label className='pl-3 font-bold border-b p-2 text-lg'>Third Section</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-2'>
+                <div>
+                <Label className='pl-3 font-bold    p-2 py-0 text-md'>Third Section</Label>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
                     <div className='flex flex-col gap-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -355,7 +365,7 @@ const AboutPage = () => {
 
                     <div className='grid grid-cols-2 gap-5'>
 
-                            <div className='border p-2 rounded-md flex flex-col gap-2'>
+                            <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
                                 <Label className='pl-3 font-bold text-md underline'>Chairman</Label>
                                 <div>
                                 <Label className='pl-3 font-bold'>Image</Label>
@@ -389,7 +399,7 @@ const AboutPage = () => {
                             </div>
 
 
-                            <div className='border p-2 rounded-md flex flex-col gap-2'>
+                            <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
                                 <Label className='pl-3 font-bold text-md underline'>CEO</Label>
                                 <div>
                                 <Label className='pl-3 font-bold'>Image</Label>
@@ -428,17 +438,18 @@ const AboutPage = () => {
                         </div>
 
                 </div>
-
+                </div>
 
                 <div>
-                    <div className='flex border-b mb-5'>
-                    <Label className='pl-3 font-bold text-lg'>Certifications</Label>
+                <div>
+                    <div className='flex border-b border-[#ddd] mb-5'> 
+                    <Label className='pl-3 font-bold    p-2 py-0 text-md'>Certifications</Label>
                     </div>
-                <div className='border p-2 rounded-md flex flex-col gap-5'>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
 
 
                     {fields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-2 rounded-md'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => remove(index)} className='cursor-pointer text-red-600' />
                             </div>
@@ -472,9 +483,10 @@ const AboutPage = () => {
                     ))}
 
                     <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => append({ image: "", imageAlt: "", title: "" })}>Add Item</Button>
+                        <Button type='button' className="text-white w-full cursor-pointer" onClick={() => append({ image: "", imageAlt: "", title: "" })}>Add Item</Button>
                     </div>
 
+                </div>
                 </div>
                 </div>
 
@@ -491,8 +503,8 @@ const AboutPage = () => {
                 </div>
 
                 <div className='flex justify-center'>
-                    <Button type='submit'>Submit</Button>
-                </div>
+                    <Button type='submit' className='text-white'>Submit</Button>
+                </div> 
 
             </form>
         </div>

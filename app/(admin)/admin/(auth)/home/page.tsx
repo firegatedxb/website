@@ -176,21 +176,21 @@ const HomePage = () => {
 
 
     return (
-        <div className='flex flex-col gap-5'>
+        <div className='flex flex-col gap-5 adminstyle'>
             <form className='flex flex-col gap-5' onSubmit={handleSubmit(handleAddCommitment)}>
 
-            <div className='flex flex-col gap-2'>
-            <Label className='pl-3 font-bold border-b p-2 text-lg'>Banner Section</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-5'>
-                <Label className='pl-3 font-bold'>Banners</Label>
+            <div className='flex flex-col gap-x-2'>
+            <Label className='pl-3 font-bold    p-2 py-0 text-md'>Banner Section</Label>
+                <div className='   flex flex-col gap-5  '>
+                <div> 
 
                     {bannerFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-2 rounded-md mb-3'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => bannerRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
-                            <div className='flex flex-col gap-2'>
-                                <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-x-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Image</Label>
                                     <Controller
                                         name={`banners.${index}.image`}
@@ -205,13 +205,13 @@ const HomePage = () => {
                                     />
                                     {errors.banners?.[index]?.image && <p className='text-red-500'>{errors.banners?.[index]?.image.message}</p>}
                                 </div>
-                                <div className='flex flex-col gap-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Alt Tag</Label>
                                     <Input type='text' placeholder='Alt Tag' {...register(`banners.${index}.imageAlt`)} />
                                 </div>
                             </div>
-                            <div className='flex flex-col gap-2'>
-                                <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-x-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Title</Label>
                                     <Input type='text' placeholder='Title' {...register(`banners.${index}.title`, {
                                         required: "Title is required"
@@ -224,16 +224,18 @@ const HomePage = () => {
                     ))}
 
                     <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => bannerAppend({ image: "", imageAlt: "", title: "" })}>Add Item</Button>
+                </div>
+                        <Button type='button' className="w-full cursor-pointer mt-4 text-white" onClick={() => bannerAppend({ image: "", imageAlt: "", title: "" })}>Add Item</Button>
                     </div>
 
                 </div>
                 </div>
 
 
-                <Label className='pl-3 font-bold border-b p-2 text-lg'>About Section</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-2'>
-                    <div className='flex flex-col gap-2'>
+                <div>
+                <Label className='pl-3 font-bold    p-2 py-0 text-md'>About Section</Label>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-x-2 mt-1'>
+                    <div className='flex flex-col gap-x-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
                             <Input type='text' placeholder='Title' {...register("aboutSection.title", {
@@ -266,22 +268,22 @@ const HomePage = () => {
 
                             <div>
                     <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-5'>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
 
 
                     {aboutSectionFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-2 rounded-md'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => aboutSectionRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
-                            <div className='flex flex-col gap-2'>
-                                <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-x-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Number</Label>
                                     <Input type='text' placeholder='Number' {...register(`aboutSection.items.${index}.number`)} />
                                 </div>
                             </div>
-                            <div className='flex flex-col gap-2'>
-                                <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-x-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Value</Label>
                                     <Input type='text' placeholder='Value' {...register(`aboutSection.items.${index}.value`, {
                                         required: "Value is required"
@@ -294,7 +296,7 @@ const HomePage = () => {
                     ))}
 
                     <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => aboutSectionAppend({ number: "", value: "" })}>Add Item</Button>
+                        <Button type='button' className="w-full cursor-pointer   text-white" onClick={() => aboutSectionAppend({ number: "", value: "" })}>Add Item</Button>
                     </div>
 
                 </div>
@@ -302,28 +304,30 @@ const HomePage = () => {
 
 
                 </div>
+                </div>
 
 
-                <Label className='pl-3 font-bold border-b p-2 text-lg'>Partners Section</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-2'>
-                <div className='flex flex-col gap-2'>
-                                <div className='flex flex-col gap-2'>
+                <div>
+                <Label className='pl-3 font-bold p-2 py-0 text-md'>Partners Section</Label>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-x-2 mt-1'>
+                <div className='flex flex-col gap-x-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Title</Label>
                                     <Input type='text' placeholder='Title' {...register(`partners.title`)} />
                                 </div>
                             </div>
                             <div>
-                    <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-5'>
+                    <Label className='pl-3 font-bold p-2 py-0 text-md'>Items</Label>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
 
 
                     {partnersFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-2 rounded-md'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => partnersRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
-                            <div className='flex flex-col gap-2'>
-                                <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-x-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Image</Label>
                                     <Controller
                                         name={`partners.items.${index}.image`}
@@ -338,11 +342,11 @@ const HomePage = () => {
                                     />
                                     {errors.partners?.items?.[index]?.image && <p className='text-red-500'>{errors.partners?.items?.[index]?.image.message}</p>}
                                 </div>
-                                <div className='flex flex-col gap-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Alt Tag</Label>
                                     <Input type='text' placeholder='Alt Tag' {...register(`partners.items.${index}.imageAlt`)} />
                                 </div>
-                                <div className='flex flex-col gap-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>URL</Label>
                                     <Input type='text' placeholder='URL' {...register(`partners.items.${index}.url`)} />
                                 </div>
@@ -352,7 +356,7 @@ const HomePage = () => {
                     ))}
 
                     <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => partnersAppend({ image: "", imageAlt: "", url: "" })}>Add Item</Button>
+                        <Button type='button' className="w-full cursor-pointer  text-white" onClick={() => partnersAppend({ image: "", imageAlt: "", url: "" })}>Add Item</Button>
                     </div>
 
                 </div>
@@ -360,28 +364,30 @@ const HomePage = () => {
 
 
                 </div>
+                </div>
 
 
-                <Label className='pl-3 font-bold border-b p-2 text-lg'>Services Section</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-2'>
-                <div className='flex flex-col gap-2'>
-                                <div className='flex flex-col gap-2'>
+                <div>
+                <Label className='pl-3 font-bold p-2 py-0 text-md'>Services Section</Label>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-x-2'>
+                <div className='flex flex-col gap-x-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Title</Label>
                                     <Input type='text' placeholder='Title' {...register(`services.title`)} />
                                 </div>
                             </div>
                             <div>
                     <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-5'>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
 
 
                     {servicesFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-1 gap-2 relative border p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-1 gap-x-2 relative border border-[#ddd]  p-2 rounded-md'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => servicesRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
-                            <div className='grid grid-cols-2 gap-2'>
-                                <div className='flex flex-col gap-2'>
+                            <div className='grid grid-cols-2 gap-x-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Image</Label>
                                     <Controller
                                         name={`services.items.${index}.image`}
@@ -395,21 +401,21 @@ const HomePage = () => {
                                         )}
                                     />
                                     {errors.services?.items?.[index]?.image && <p className='text-red-500'>{errors.services?.items?.[index]?.image.message}</p>}
-                                    <div className='flex flex-col gap-2'>
+                                    <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Alt Tag</Label>
                                     <Input type='text' placeholder='Alt Tag' {...register(`services.items.${index}.imageAlt`)} />
                                 </div>
                                 </div>
-                                <div className='flex flex-col gap-2'>
-                                <div className='flex flex-col gap-2'>
+                                <div className='flex flex-col gap-x-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Title</Label>
                                     <Input type='text' placeholder='Title' {...register(`services.items.${index}.title`)} />
                                 </div>
-                                <div className='flex flex-col gap-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Description</Label>
                                     <Textarea placeholder='Description' {...register(`services.items.${index}.description`)} />
                                 </div>
-                                <div className='flex flex-col gap-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>URL</Label>
                                     <Input type='text' placeholder='URL' {...register(`services.items.${index}.url`)} />
                                 </div>
@@ -420,7 +426,7 @@ const HomePage = () => {
                     ))}
 
                     <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => servicesAppend({ image: "", imageAlt: "", title: "", description: "", url: "" })}>Add Item</Button>
+                        <Button type='button' className="w-full cursor-pointer  text-white" onClick={() => servicesAppend({ image: "", imageAlt: "", title: "", description: "", url: "" })}>Add Item</Button>
                     </div>
 
                 </div>
@@ -428,11 +434,13 @@ const HomePage = () => {
 
 
                 </div>
+                </div>
 
 
-                <Label className='pl-3 font-bold border-b p-2 text-lg'>Systems Section</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-2'>
-                    <div className='flex flex-col gap-2'>
+                <div>
+                <Label className='pl-3 font-bold p-2 py-0 text-md'>Systems Section</Label>
+                <div className='border border-[#ddd]  p-2 rounded-md flex flex-col gap-x-2'>
+                    <div className='flex flex-col gap-x-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
                             <Input type='text' placeholder='Title' {...register("systems.title", {
@@ -444,16 +452,16 @@ const HomePage = () => {
 
                             <div>
                     <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-5'>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
 
 
                     {systemsFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-2 rounded-md'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => systemsRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
-                            <div className='flex flex-col gap-2'>
-                                <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-x-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Image</Label>
                                     <Controller
                                         name={`systems.items.${index}.image`}
@@ -468,11 +476,11 @@ const HomePage = () => {
                                     />
                                     {errors.systems?.items?.[index]?.image && <p className='text-red-500'>{errors.systems?.items?.[index]?.image.message}</p>}
                                 </div>
-                                <div className='flex flex-col gap-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Alt Tag</Label>
                                     <Input type='text' placeholder='Alt Tag' {...register(`systems.items.${index}.imageAlt`)} />
                                 </div>
-                                <div className='flex flex-col gap-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Title</Label>
                                     <Input type='text' placeholder='Title' {...register(`systems.items.${index}.title`, {
                                         required: "Title is required"
@@ -485,7 +493,7 @@ const HomePage = () => {
                     ))}
 
                     <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => systemsAppend({ title: "", image: "", imageAlt: "" })}>Add Item</Button>
+                        <Button type='button' className="w-full cursor-pointer   text-white" onClick={() => systemsAppend({ title: "", image: "", imageAlt: "" })}>Add Item</Button>
                     </div>
 
                 </div>
@@ -493,11 +501,13 @@ const HomePage = () => {
 
 
                 </div>
+                </div>
 
 
-                <Label className='pl-3 font-bold border-b p-2 text-lg'>Certifications Section</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-2'>
-                    <div className='flex flex-col gap-2'>
+                <div>
+                <Label className='pl-3 font-bold p-2 py-0 text-md'>Certifications Section</Label>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-x-2'>
+                    <div className='flex flex-col gap-x-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
                             <Input type='text' placeholder='Title' {...register("certifications.title", {
@@ -509,16 +519,16 @@ const HomePage = () => {
 
                             <div>
                     <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-5'>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
 
 
                     {certificationsFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-2 rounded-md'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => certificationsRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
-                            <div className='flex flex-col gap-2'>
-                                <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-x-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Image</Label>
                                     <Controller
                                         name={`certifications.items.${index}.image`}
@@ -533,7 +543,7 @@ const HomePage = () => {
                                     />
                                     {errors.certifications?.items?.[index]?.image && <p className='text-red-500'>{errors.certifications?.items?.[index]?.image.message}</p>}
                                 </div>
-                                <div className='flex flex-col gap-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Alt Tag</Label>
                                     <Input type='text' placeholder='Alt Tag' {...register(`certifications.items.${index}.imageAlt`)} />
                                 </div>
@@ -547,7 +557,7 @@ const HomePage = () => {
                     ))}
 
                     <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => certificationsAppend({ image: "", imageAlt: "", link: "" })}>Add Item</Button>
+                        <Button type='button' className="w-full cursor-pointer   text-white" onClick={() => certificationsAppend({ image: "", imageAlt: "", link: "" })}>Add Item</Button>
                     </div>
 
                 </div>
@@ -555,11 +565,13 @@ const HomePage = () => {
 
 
                 </div>
+                </div>
 
 
-                <Label className='pl-3 font-bold border-b p-2 text-lg'>Projects Section</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-2'>
-                    <div className='flex flex-col gap-2'>
+                <div>
+                <Label className='pl-3 font-bold p-2 py-0 text-md'>Projects Section</Label>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-x-2'>
+                    <div className='flex flex-col gap-x-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
                             <Input type='text' placeholder='Title' {...register("projects.title", {
@@ -577,11 +589,13 @@ const HomePage = () => {
                     </div>
 
                 </div>
+                </div>  
 
 
-                <Label className='pl-3 font-bold border-b p-2 text-lg'>Socials Section</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-2'>
-                    <div className='flex flex-col gap-2'>
+                <div>
+                <Label className='pl-3 font-bold p-2 py-0 text-md'>Socials Section</Label>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-x-2'>
+                    <div className='flex flex-col gap-x-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
                             <Input type='text' placeholder='Title' {...register("socials.title", {
@@ -607,24 +621,24 @@ const HomePage = () => {
 
                             <div>
                     <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-5'>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
 
 
                     {socialsFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-2 rounded-md'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => socialsRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
-                            <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-x-2'>
 
-                                <div className='flex flex-col gap-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Title</Label>
                                     <Input type='text' placeholder='Title' {...register(`socials.items.${index}.title`)} />
                                 </div>
                             </div>
-                            <div className='flex flex-col gap-2'>
+                            <div className='flex flex-col gap-x-2'>
 
-                                <div className='flex flex-col gap-2'>
+                                <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Link</Label>
                                     <Input type='text' placeholder='Link' {...register(`socials.items.${index}.link`)} />
                                 </div>
@@ -634,7 +648,7 @@ const HomePage = () => {
                     ))}
 
                     <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => socialsAppend({ title: "", link: "" })}>Add Item</Button>
+                        <Button type='button' className="w-full cursor-pointer   text-white" onClick={() => socialsAppend({ title: "", link: "" })}>Add Item</Button>
                     </div>
 
                 </div>
@@ -642,21 +656,22 @@ const HomePage = () => {
 
 
                 </div>
+                </div>
 
 
 
 
-                <div className='flex flex-col gap-2'>
+                <div className='flex flex-col gap-x-2'>
                     <Label className='pl-3 font-bold'>Meta Title</Label>
                     <Input type='text' placeholder='Meta Title' {...register("metaTitle")} />
                 </div>
-                <div className='flex flex-col gap-2'>
+                <div className='flex flex-col gap-x-2'>
                     <Label className='pl-3 font-bold'>Meta Description</Label>
                     <Input type='text' placeholder='Meta Description' {...register("metaDescription")} />
                 </div>
 
                 <div className='flex justify-center'>
-                    <Button type='submit'>Submit</Button>
+                    <Button type='submit' className='mt-4 text-white cursor-pointer'>Submit</Button>
                 </div>
 
             </form>

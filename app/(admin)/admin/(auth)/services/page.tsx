@@ -87,13 +87,18 @@ const ServicesPage = () => {
 
 
     return (
-        <div className='flex flex-col gap-5'>
+        <div className='flex flex-col gap-5 adminstyle'>
             <form className='flex flex-col gap-5' onSubmit={handleSubmit(handleAddCommitment)}>
 
 
-                <div className='flex flex-col gap-2'>
-                    <div>
-                        <Label className="pl-3 font-bold">Banner</Label>
+                <div className='flex flex-col '>
+                    <div> 
+                        
+                     <Label className='pl-3 font-bold    p-2 py-0 text-md'>Banner Section</Label>
+                     </div>
+                     <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5 mt-1'>
+                     <div>
+                     <Label className='pl-3 font-bold'>Banner Image</Label>
                         <Controller
                             name="banner"
                             control={control}
@@ -105,10 +110,11 @@ const ServicesPage = () => {
                                 />
                             )}
                         />
+                     </div>
                         {errors.banner && (
                             <p className="text-red-500">{errors.banner.message}</p>
                         )}
-                    </div>
+                    
                     <div>
                         <Label className='pl-3 font-bold'>Alt Tag</Label>
                         <Input type='text' placeholder='Alt Tag' {...register("bannerAlt")} />
@@ -117,10 +123,12 @@ const ServicesPage = () => {
                         <Label className='pl-3 font-bold'>Page Title</Label>
                         <Input type='text' placeholder='Page Title' {...register("pageTitle")} />
                     </div>
+                    </div>
                 </div>
 
-                <Label className='pl-3 font-bold border-b p-2 text-lg'>Services</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-2'>
+                <div>
+                <Label className='pl-3 font-bold    p-2 py-0 text-md'>Services</Label>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
                     <div className='flex flex-col gap-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -137,11 +145,11 @@ const ServicesPage = () => {
 
                             <div>
                     <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-5'>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
 
 
                     {fields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-2 rounded-md'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => remove(index)} className='cursor-pointer text-red-600' />
                             </div>
@@ -205,13 +213,14 @@ const ServicesPage = () => {
                     ))}
 
                     <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => append({ title: "", logo: "", logoAlt: "", description: "", image: "", imageAlt: "" })}>Add Item</Button>
+                        <Button type='button' className="w-full cursor-pointer text-white" onClick={() => append({ title: "", logo: "", logoAlt: "", description: "", image: "", imageAlt: "" })}>Add Item</Button>
                     </div>
 
                 </div>
                 </div>
 
 
+                </div>
                 </div>
 
 
@@ -225,7 +234,7 @@ const ServicesPage = () => {
                 </div>
 
                 <div className='flex justify-center'>
-                    <Button type='submit'>Submit</Button>
+                    <Button type='submit' className='text-white'>Submit</Button>
                 </div>
 
             </form>
