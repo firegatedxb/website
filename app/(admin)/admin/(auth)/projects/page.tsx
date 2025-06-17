@@ -330,12 +330,12 @@ export default function Projects() {
   }, [])
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 adminstyle">
 
-      <div className="h-fit w-full p-2 border-2 border-gray-300 rounded-md mt-5">
-        <div className="flex justify-between border-b-2 pb-2">
+      <div className="h-fit w-full p-2 border border-[#ddd] rounded-md mt-5">
+        <div className="flex justify-between border-b border-[#ddd] pb-2">
           <Label className="text-sm font-bold">Meta Section</Label>
-          <Button onClick={handleSaveMeta}>Save</Button>
+          <Button onClick={handleSaveMeta} className="text-white">Save</Button>
         </div>
         <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
           <div>
@@ -352,14 +352,14 @@ export default function Projects() {
       <div className="h-screen grid grid-cols-2 gap-5">
 
         <div className="flex flex-col gap-2 h-screen">
-          <div className="h-1/2 w-full p-2 border-2 border-gray-300 rounded-md overflow-y-hidden">
-            <div className="flex justify-between border-b-2 pb-2">
+          <div className="h-1/2 w-full p-2 border border-[#ddd] rounded-md overflow-y-hidden">
+            <div className="flex justify-between border-b border-[#ddd] pb-2">
               <Label className="text-sm font-bold">Sector</Label>
               <Dialog>
-                <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => setSector("")}>Add Sector</DialogTrigger>
+                <DialogTrigger className="bg-primary text-white px-2   rounded-md text-sm" onClick={() => setSector("")}>Add Sector</DialogTrigger>
                 <DialogContent>
                   <DialogHeader>
-                    <DialogTitle>Add Sector</DialogTitle>
+                    <DialogTitle >Add Sector</DialogTitle>
                     <DialogDescription>
                       <Input type="text" placeholder="Sector Name" value={sector} onChange={(e) => setSector(e.target.value)} />
                     </DialogDescription>
@@ -371,10 +371,10 @@ export default function Projects() {
             </div>
             <div className="mt-2 flex flex-col gap-2 overflow-y-scroll h-full">
               {sectorList.map((item) => (
-                <div className="flex justify-between border p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
-                  <div>
+                <div className="flex justify-between border border-[#ddd] p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
+                 <p className="mb-0 text-sm">
                     {item.name}
-                  </div>
+                  </p>
                   <div className="flex gap-5">
                     <Dialog>
                       <DialogTrigger onClick={() => { setSector(item.name); setOldSector(item.name) }}><MdEdit /></DialogTrigger>
@@ -415,11 +415,11 @@ export default function Projects() {
           </div>
 
 
-          <div className="h-1/2 w-full p-2 border-2 border-gray-300 rounded-md overflow-y-hidden">
-            <div className="flex justify-between border-b-2 pb-2">
+          <div className="h-1/2 w-full p-2 border  border-[#ddd] rounded-md overflow-y-hidden">
+            <div className="flex justify-between border-b border-[#ddd] pb-2">
               <Label className="text-sm font-bold">Country</Label>
               <Dialog>
-                <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => setCountry("")}>Add Country</DialogTrigger>
+                <DialogTrigger className="bg-primary text-white px-2 text-sm rounded-md" onClick={() => setCountry("")}>Add Country</DialogTrigger>
                 <DialogContent>
                   <DialogHeader>
                     <DialogTitle>Add Country</DialogTitle>
@@ -436,10 +436,10 @@ export default function Projects() {
 
               <div className="mt-2 flex flex-col gap-2 overflow-y-scroll h-full">
                 {countryList.map((item) => (
-                  <div className="flex justify-between border p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
-                    <div>
+                  <div className="flex justify-between border border-[#ddd] p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
+                    <p className="mb-0 text-sm">
                       {item.name}
-                    </div>
+                    </p>
                     <div className="flex gap-5">
                       <Dialog>
                         <DialogTrigger onClick={() => { setCountry(item.name); setOldCountry(item.name) }}><MdEdit /></DialogTrigger>
@@ -482,8 +482,8 @@ export default function Projects() {
           </div>
 
 
-          <div className="h-1/2 w-full p-2 border-2 border-gray-300 rounded-md overflow-y-hidden">
-            <div className="flex justify-between border-b-2 pb-2">
+          <div className="h-1/2 w-full p-2 border border-[#ddd] rounded-md overflow-y-hidden">
+            <div className="flex justify-between border-b border-[#ddd] pb-2">
               <Label className="text-sm font-bold">Clients</Label>
               <Dialog>
                 <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => setClient("")}>Add Client</DialogTrigger>
@@ -503,10 +503,10 @@ export default function Projects() {
 
               <div className="mt-2 flex flex-col gap-2 overflow-y-scroll h-full">
                 {clientList.map((item) => (
-                  <div className="flex justify-between border p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
-                    <div>
+                  <div className="flex justify-between border border-[#ddd] p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
+                   <p className="mb-0 text-sm">
                       {item.name}
-                    </div>
+                    </p>
                     <div className="flex gap-5">
                       <Dialog>
                         <DialogTrigger onClick={() => { setClient(item.name); setOldClient(item.name) }}><MdEdit /></DialogTrigger>
@@ -550,17 +550,17 @@ export default function Projects() {
 
         </div>
 
-        <div className="h-screen w-full p-2 border-2 border-gray-300 rounded-md overflow-y-hidden">
-          <div className="flex justify-between border-b-2 pb-2">
+        <div className="h-screen w-full p-2 border border-[#ddd] rounded-md overflow-y-hidden">
+          <div className="flex justify-between border-b border-[#ddd] pb-2">
             <Label className="text-sm font-bold">Projects</Label>
-            <Button onClick={() => router.push("/admin/projects/add")}>Add Project</Button>
+            <Button onClick={() => router.push("/admin/projects/add")} className="text-white">Add Project</Button>
           </div>
           <div className="mt-2 flex flex-col gap-2 overflow-y-scroll h-full">
             {projectList.map((item) => (
-              <div className="flex justify-between border p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
-                <div>
+              <div className="flex justify-between border border-[#ddd] p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
+               <p className="mb-0 text-sm">
                   {item.name}
-                </div>
+               </p>
                 <div className="flex gap-5">
                   <MdEdit onClick={() => router.push(`/admin/projects/edit/${item._id}`)} />
 

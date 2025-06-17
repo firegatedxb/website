@@ -95,8 +95,8 @@ export const Menu = ({
         className=" relative bg-[#F9F9F9] z-50 dark:bg-black dark:border-white/[0.2] shadow-input flex justify-center items-stretch  gap-2 xl:gap-[20px]  h-full">
         <div className="left-spacing pr-[20px] xxl:pr-[20px] xxxl:pr-[50px] w-full flex items-center justify-between gap-3 pt-[16.5px] pb-[21px]  ">
           <div>
+          <Link href="/">
           <div className="flex items-center ">
-            <Link href="/">
               <Image
                 src="/assets/img/logo.svg"
                 alt="Crest Logo"
@@ -104,9 +104,9 @@ export const Menu = ({
                 height={41}
                 className="h-[41px]  w-auto"
               />
-            </Link>
           </div>
-          <p className="mb-0 text-center text-[14px] text-gray mt-1">Protection Without Compromise</p>
+          <p className="mb-0 text-center text-[10px] xl:text-[14px] text-gray xl:mt-1">Protection Without Compromise</p>
+          </Link>
           </div>
           <div>
 

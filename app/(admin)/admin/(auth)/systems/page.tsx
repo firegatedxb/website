@@ -210,12 +210,12 @@ export default function Team() {
     }
 
     return (
-        <div className="h-screen grid grid-cols-1 gap-5">
+        <div className="h-screen grid grid-cols-1 gap-5 adminstyle">
 
-            <div className="h-fit w-full p-2 border-2 border-gray-300 rounded-md mt-5">
-                                        <div className="flex justify-between border-b-2 pb-2">
+            <div className="h-fit w-full p-2 border border-[#ddd] rounded-md mt-5">
+                                        <div className="flex justify-between border-b border-[#ddd] pb-2">
                                             <Label className="text-sm font-bold">Meta Section</Label>
-                                            <Button onClick={submitMetaSection}>Save</Button>
+                                            <Button onClick={submitMetaSection} className="text-white">Save</Button>
                                         </div>
                                         <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
                                             <div>
@@ -229,10 +229,10 @@ export default function Team() {
                                         </div>
                                     </div>
 
-            <form className="h-full w-full p-2 border-2 border-gray-300 rounded-md" onSubmit={handleSubmit(onSubmit)}>
-                <div className="flex justify-between border-b-2 pb-2">
+            <form className="h-full w-full p-2 border border-[#ddd] rounded-md" onSubmit={handleSubmit(onSubmit)}>
+                <div className="flex justify-between border-b border-[#ddd] pb-2">
                     <Label className="text-sm font-bold">Intro Section</Label>
-                    <Button type="submit">Save</Button>
+                    <Button type="submit" className="text-white">Save</Button>
                 </div>
                 <div className="mt-2 flex flex-col gap-2 h-fit">
                 <div>
@@ -263,8 +263,8 @@ export default function Team() {
 
 
 
-            <div className="h-full w-full p-2 border-2 border-gray-300 rounded-md">
-                <div className="flex justify-between border-b-2 pb-2">
+            <div className="h-full w-full p-2 border border-[#ddd] rounded-md">
+                <div className="flex justify-between border-b border-[#ddd] pb-2">
                     <Label className="text-sm font-bold">Systems</Label>
                     <Dialog>
                         <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => { setLogo(""); setLogoAlt(""); setImage(""); setImageAlt(""); setTitle(""); setDescription(""); }}>Add System</DialogTrigger>
@@ -306,7 +306,7 @@ export default function Team() {
                 </div>
                 <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
                     {systemList?.map((system, index) => (
-                        <div key={index} className="relative flex  justify-between border p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300">
+                        <div key={index} className="relative flex  justify-between border border-[#ddd] p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300">
                             <div className="flex gap-4 items-center">
                                 <div>
                                     <p>{system.title}</p>
