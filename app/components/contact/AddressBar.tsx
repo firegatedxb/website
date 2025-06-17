@@ -85,7 +85,7 @@ const AddressBar = ({ data }: { data: Contact }) => {
 
                     <div>
                       <Link
-                        href="https://maps.app.goo.gl/GnLcXnJD9r66u73QA"
+                        href={item.buttonLink}
                         target="_blank"
                       >
                         <button className="bg-primary cursor-pointer text-white px-6 py-2 flex items-center gap-3 rounded-lg group">
