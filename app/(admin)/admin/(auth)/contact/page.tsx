@@ -22,6 +22,7 @@ interface SystemFormProps {
         address: string;
         phone: string;
         email: string;
+        buttonLink: string;
     }[];
     socials: {
         title: string;
@@ -154,13 +155,17 @@ const ContactPage = () => {
                                     <Label className='pl-3 font-bold'>Email</Label>
                                     <Input type='text' placeholder='Email' {...register(`contacts.${index}.email`)} />
                                 </div>
+                                <div className='flex flex-col gap-2'>
+                                    <Label className='pl-3 font-bold'>Button Link</Label>
+                                        <Input type='text' placeholder='Button Link' {...register(`contacts.${index}.buttonLink`)} />
+                                    </div>
                             </div>
 
                         </div>
                     ))}
 
                     <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => contactAppend({ title: "", address: "", phone: "", email: "" })}>Add Item</Button>
+                        <Button type='button' className="w-full cursor-pointer" onClick={() => contactAppend({ title: "", address: "", phone: "", email: "", buttonLink: "" })}>Add Item</Button>
                     </div>
 
                 </div>

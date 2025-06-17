@@ -306,7 +306,8 @@ export type Contact=
         title: string,
         address: string,
         phone: string,
-        email: string
+        email: string,
+        buttonLink: string
       }
     ],
     socials: [
