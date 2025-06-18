@@ -5,6 +5,9 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px; /* Adjust based on your header height */
+ 
+  scrollbar-width: thin; /* minimal width */
+  scrollbar-color: rgba(0,0,0,0.3) transparent; /* optional styling */
 }
 :root {
   --background: #ffffff;
