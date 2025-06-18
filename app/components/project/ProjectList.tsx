@@ -32,7 +32,7 @@ interface DynamicGridProps {
   data: Project[];
   locationData: { data: { name: string }[] };
   sectorData: { data: { name: string }[] };
-  clientData: { data: { name: string }[] };
+  // clientData: { data: { name: string }[] };
 }
 
 function ProjectList(items: Project[]): Project[][] {
@@ -50,9 +50,8 @@ function ProjectList(items: Project[]): Project[][] {
   return chunks;
 }
 
-export default function DynamicGrid({ data, clientData, locationData, sectorData }: DynamicGridProps) {
-  const limit = 9;
-  console.log(clientData);
+export default function DynamicGrid({ data, locationData, sectorData }: DynamicGridProps) {
+  const limit = 9; 
   const [selected, setSelected] = useState("");
   const [selectedsector, setSelectedsector] = useState("");
   const [selecteclient, setSelecteclient] = useState("");
@@ -127,7 +126,7 @@ const handleLoadMore = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <div className="bg-secondary rounded-2xl p-8 lg:p-10 grid md:grid-cols-2 lg:grid-cols-5 gap-4 xl:gap-[50px] mb-[50px] lg:mb-[70px] 2xl:mb-25">
+          <div className="bg-secondary rounded-2xl p-8 lg:p-10 grid md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-[50px] mb-[50px] lg:mb-[70px] 2xl:mb-25">
             <SelectBox
               label="Type"
               selected={selected}
@@ -149,13 +148,13 @@ const handleLoadMore = () => {
                 { name: "On Going", value: "false" },
               ]}
             />
-            <SelectBox
+            {/* <SelectBox
               label="Client"
               selected={selecteclient}
               setSelected={setSelecteclient}
               options={clientData?.data?.map((item) => ({ name: item.name, value: item.name })) || []}
           
-            />
+            /> */}
             <div className="ml-auto mt-6 md:mt-0">
               <div
                 onClick={handleClearFilters}
