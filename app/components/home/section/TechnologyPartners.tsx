@@ -73,7 +73,7 @@ useEffect(() => {
 >
   {pdata.partners.map((slide, index) => (
     <SwiperSlide key={index}>
-          <a href={slide.website}   target="_blank" rel="noopener noreferrer">
+          <a href={`partners#section${index}`}   >
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
