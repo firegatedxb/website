@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { fadeInUpsec } from '@/public/frameranimation/animation';
+import { Listbox } from '@headlessui/react';
+import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'; 
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -86,6 +88,15 @@ const Form = () => {
       // console.log("Form submitted!", formData);
     }
   }; 
+  const departments = [
+    { id: '', name: 'Select Department', disabled: true },
+    { id: 'type1', name: 'Design' },
+    { id: 'type2', name: 'Accounts/Finance' },
+    { id: 'type3', name: 'Careers/HR' },
+    { id: 'type4', name: 'Sales/Enquiries' },
+    { id: 'type5', name: 'Complaints' },
+  ];
+  const selected = departments.find((d) => d.id === formData.type) || departments[0];
   return (
     <div className="py-[50px] md:py-[70px] 2xl:pt-[107px] 2xl:pb-[121px]">
       <div className="container flex flex-col gap-14">
@@ -109,7 +120,7 @@ const Form = () => {
                     name={field}
                     value={formData[field as keyof typeof formData]}
                     onChange={handleChange}
-                    className="border-gray-300 outline-none border-b text-black"
+                    className="border-gray-300 outline-none border-b text-black text-sm"
                   />
                   {errors[field as keyof typeof errors] && (
                     <p className="text-red-500 text-sm">{errors[field as keyof typeof errors]}</p>
@@ -121,19 +132,66 @@ const Form = () => {
               <label  className="text-19 text-gray capitalize">
                 Department
               </label>
-              <select
-  name="type"
-  value={formData.type}
-  onChange={handleChange}
-  className=" text-gray border-gray-300 outline-none border-b bg-transparent py-2"
->
-  <option value="">Select Department</option>
-  <option value="type1">Design</option>
-  <option value="type2">Accounts/Finance</option>
-  <option value="type3">Careers/HR</option>
-  <option value="type4">Sales/Enquiries</option>
-  <option value="type5">Complaints</option>
-</select>
+              <div className="w-full">
+      <Listbox
+        value={selected}
+        onChange={(value) =>
+          setFormData((prev) => ({ ...prev, type: value.id }))
+        }
+      >
+        <div className="relative">
+          <Listbox.Button
+            className={`relative w-full cursor-pointer border-b border-gray-300 bg-transparent py-2 pr-10 text-left ${
+              selected.id === ''
+                ? 'text-black text-sm'
+                : 'text-gray-800 text-base'
+            }`}
+          >
+            <span>{selected.name}</span>
+            <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+              <ChevronUpDownIcon className="h-5 w-5 text-gray-400" />
+            </span>
+          </Listbox.Button>
+
+          <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+            {departments.map((dept) => (
+              <Listbox.Option
+                key={dept.id}
+                value={dept}
+                disabled={dept.disabled}
+                className={({ active }) =>
+                  `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
+                    dept.disabled
+                      ? 'text-gray-400 cursor-not-allowed'
+                      : active
+                      ? 'bg-primary text-white'
+                      : 'text-gray-900'
+                  }`
+                }
+              >
+                {({ selected }) => (
+                  <>
+                    <span
+                      className={`block truncate ${
+                        selected ? 'font-medium' : 'font-normal'
+                      }`}
+                    >
+                      {dept.name}
+                    </span>
+                    {selected && (
+                      <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                        <CheckIcon className="h-5 w-5 text-white" />
+                      </span>
+                    )}
+                  </>
+                )}
+              </Listbox.Option>
+            ))}
+          </Listbox.Options>
+        </div>
+      </Listbox>
+    </div>
+
             </div>
 
             <div className="flex flex-col">
@@ -144,7 +202,7 @@ const Form = () => {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                className="h-[150px] border-gray-300 outline-none border-b appearance-none text-black resize-none"
+                className="h-[150px] text-sm border-gray-300 outline-none border-b appearance-none text-black resize-none"
               ></textarea>
               {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
             </div>
