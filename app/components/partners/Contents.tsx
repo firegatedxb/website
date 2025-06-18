@@ -12,6 +12,7 @@ import {
 } from "@/public/frameranimation/animation";
 
 const Contents = ({ data }: { data: Partners }) => {
+ 
   return data.partners.map((item, index) => (
     <div key={index} className={`odd:bg-[#F8F8F8] stylein${index} scroll-mt-[120px]`} 
     id={`section${index}`}>
@@ -19,10 +20,10 @@ const Contents = ({ data }: { data: Partners }) => {
         <div className={`flex flex-col gap-12 first:lg:pt-0 `} key={index} >
           <motion.div
             className="flex justify-between items-center border-b border-[#59595920] pb-10 ptst pt-[30px] 2xl:pt-[100px] lg:pb-[30px]"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={getVariants(index)}
+            // initial="hidden"
+            // whileInView="visible"
+            // viewport={{ once: true }}
+            // variants={getVariants(index)}
           >
             {index % 2 !== 0 ? (
               <>
@@ -62,10 +63,10 @@ const Contents = ({ data }: { data: Partners }) => {
               <>
             <motion.div
               className="text-gray text-19 flex flex-col gap-10 justify-center "
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeSlideLeft}
+              // initial="hidden"
+              // whileInView="visible"
+              // viewport={{ once: true }}
+              // variants={fadeSlideLeft}
             >
               <div dangerouslySetInnerHTML={{ __html: item.description }}></div>
               <div>
@@ -91,15 +92,16 @@ const Contents = ({ data }: { data: Partners }) => {
             </motion.div>
 
             <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeSlideRight}
+              // initial="hidden"
+              // whileInView="visible"
+              // viewport={{ once: true }}
+              // variants={fadeSlideRight}
             >
               <Image
                 src={item.image}
                 alt={item.imageAlt}
-                className="rounded-[20px] object-cover"
+                
+                className="rounded-[20px] object-cover aspect-[16/9]"
                 width={800}
                 height={434}
               />
@@ -107,25 +109,25 @@ const Contents = ({ data }: { data: Partners }) => {
               </>) : (
                 <>
                    <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeSlideRight}
+              // initial="hidden"
+              // whileInView="visible"
+              // viewport={{ once: true }}
+              // variants={fadeSlideRight}
             >
               <Image
                 src={item.image}
                 alt={item.imageAlt}
-                className="rounded-[20px] object-cover"
+                className="rounded-[20px] object-cover aspect-[16/9]"
                 width={800}
                 height={434}
               />
                   </motion.div>
                   <motion.div
               className="text-gray text-19 flex flex-col gap-10 justify-center  "
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeSlideLeft}
+              // initial="hidden"
+              // whileInView="visible"
+              // viewport={{ once: true }}
+              // variants={fadeSlideLeft}
             >
               <div dangerouslySetInnerHTML={{ __html: item.description }}></div>
               <div>
