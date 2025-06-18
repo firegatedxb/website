@@ -12,6 +12,7 @@ import {
 } from "@/public/frameranimation/animation";
 
 const Contents = ({ data }: { data: Partners }) => {
+ 
   return data.partners.map((item, index) => (
     <div key={index} className={`odd:bg-[#F8F8F8] stylein${index} scroll-mt-[120px]`} 
     id={`section${index}`}>
@@ -99,7 +100,8 @@ const Contents = ({ data }: { data: Partners }) => {
               <Image
                 src={item.image}
                 alt={item.imageAlt}
-                className="rounded-[20px] object-cover"
+                
+                className="rounded-[20px] object-cover aspect-[16/9]"
                 width={800}
                 height={434}
               />
@@ -115,7 +117,7 @@ const Contents = ({ data }: { data: Partners }) => {
               <Image
                 src={item.image}
                 alt={item.imageAlt}
-                className="rounded-[20px] object-cover"
+                className="rounded-[20px] object-cover aspect-[16/9]"
                 width={800}
                 height={434}
               />
