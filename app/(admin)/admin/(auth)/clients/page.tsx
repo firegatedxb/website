@@ -206,9 +206,9 @@ export default function Team() {
     return (
         <div className="h-screen grid grid-cols-1 gap-5 adminstyle">
 
-            <div className="h-fit w-full p-2 border border-[#ddd] rounded-md mt-5">
+            <div className="h-fit w-full p-4  border border-[#ddd] rounded-md mt-3">
                                         <div className="flex justify-between border-b  border-[#ddd] pb-2">
-                                            <Label className="text-sm font-bold">Meta Section</Label>
+                                            <Label className="text-md font-bold text-secondary">Meta Section</Label>
                                             <Button className="text-white" onClick={submitMetaSection}>Save</Button>
                                         </div>
                                         <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
@@ -223,9 +223,9 @@ export default function Team() {
                                         </div>
                                     </div>
 
-            <form className="h-full w-full p-2 border border-[#ddd] rounded-md" onSubmit={handleSubmit(onSubmit)}>
+            <form className="h-full w-full p-4 border border-[#ddd] rounded-md" onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex justify-between border-b border-[#ddd] pb-2">
-                    <Label className="text-sm font-bold">Intro Section</Label>
+                    <Label className="text-md font-bold text-secondary">Intro Section</Label>
                     <Button className="text-white" type="submit">Save</Button>
                 </div>
                 <div className="mt-2 flex flex-col gap-2 h-fit">
@@ -257,11 +257,11 @@ export default function Team() {
 
 
 
-            <div className="h-full w-full p-2 border border-[#ddd] rounded-md ">
-                <div className="flex justify-between border-b border-[#ddd] pb-2">
-                    <Label className="text-sm font-bold">Clients</Label>
+            <div className="h-full w-full p-4 border border-[#ddd] rounded-md ">
+                <div className="flex justify-between items-center border-b border-[#ddd] pb-4 mb-4">
+                    <Label className="text-md font-bold text-secondary">Clients</Label>
                     <Dialog>
-                        <DialogTrigger className="bg-primary cursor-pointer text-white px-2 py-1 rounded-md" onClick={() => { setImage(""); setImageAlt(""); setLink("") }}>Add Client</DialogTrigger>
+                        <DialogTrigger className="bg-primary cursor-pointer text-white h-9 text-sm px-2 py-1 rounded-md" onClick={() => { setImage(""); setImageAlt(""); setLink("") }}>Add Client</DialogTrigger>
                         <DialogContent>
                             <DialogHeader className="adminstyle">
                                 <DialogTitle>Add Client</DialogTitle>

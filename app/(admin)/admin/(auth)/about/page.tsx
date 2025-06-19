@@ -148,13 +148,14 @@ const AboutPage = () => {
             <form className='flex flex-col gap-5 ' onSubmit={handleSubmit(handleAddAbout)}>
 
 
-           <div>
-           <Label className='pl-3 font-bold    p-2 py-0 text-md'>Banner Section</Label>
-                <div className='flex flex-col gap-2'>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5 mt-1'>
+           <div> 
+                <div className='flex flex-col gap-2'> 
+                     <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col  '>
+                                            <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Banner Section</Label>
+                                  
                     <div>
                         <Label className="pl-3 font-bold">Banner</Label>
-                        <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5 mt-1'>
+                        <div className='  flex flex-col gap-5 mt-1'>
                         <Controller
                             name="banner"
                             control={control}
@@ -172,20 +173,21 @@ const AboutPage = () => {
                     </div>
                     </div>
                     <div>
-                        <Label className='pl-3 font-bold'>Alt Tag</Label>
+                        <Label className='pl-3 font-bold mt-2'>Alt Tag</Label>
                         <Input type='text' placeholder='Alt Tag' {...register("bannerAlt")} />
                     </div>
                     <div>
-                        <Label className='pl-3 font-bold'>Page Title</Label>
+                        <Label className='pl-3 font-bold mt-2'>Page Title</Label>
                         <Input type='text' placeholder='Page Title' {...register("pageTitle")} />
                     </div>
                     </div>
                 </div>
            </div>
  
-               <div>
-               <Label className='pl-3 font-bold    p-2 py-0 text-md'>First Section</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
+               <div> 
+                <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-2'>
+                            <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>First Section</Label>
+                                   
                     <div className='flex flex-col gap-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -226,9 +228,10 @@ const AboutPage = () => {
                 </div>
                </div>
 
-               <div>
-                <Label className='pl-3 font-bold    p-2 py-0 text-md'>Second Section</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
+               <div> 
+                <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-2'>
+                            <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Second Section</Label>
+                                   
                     <div className='flex flex-col gap-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -237,7 +240,7 @@ const AboutPage = () => {
                             })} />
                             {errors.secondSection?.title && <p className='text-red-500'>{errors.secondSection?.title.message}</p>}
                         </div>
-                        <div className='flex flex-col gap-1'>
+                        <div className='flex flex-col gap-1 mb-3'>
                             <Label className='pl-3 font-bold'>Description</Label>
                             <Controller name="secondSection.description" control={control} render={({ field }) => {
                                 return <ReactQuill theme="snow" value={field.value} onChange={field.onChange} />
@@ -246,8 +249,9 @@ const AboutPage = () => {
 
                         <div className='grid grid-cols-3 gap-5'>
 
-                            <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
-                                <Label className='pl-3 font-bold text-md underline'>Mission</Label>
+                            <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-2'>
+                                <div>
+                                <p className='  font-bold text-md border-b border-[#ccc] mb-2 pb-2'>Mission</p>
                                 <div>
                                 <Label className='pl-3 font-bold'>Logo</Label>
                                 <Controller
@@ -265,6 +269,7 @@ const AboutPage = () => {
                                     <p className="text-red-500">{errors.secondSection?.mission?.logo.message}</p>
                                 )}
                                 </div>
+                                </div>
                                 <div>
                                 <Label className='pl-3 font-bold'>Alt Tag</Label>
                                 <Input type='text' placeholder='Alt Tag' {...register("secondSection.mission.logoAlt")} />
@@ -276,8 +281,9 @@ const AboutPage = () => {
                             </div>
 
 
-                            <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
-                                <Label className='pl-3 font-bold text-md underline'>Vision</Label>
+                            <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-2'>
+                                <div>
+                                <p className='  font-bold text-md border-b border-[#ccc] mb-2 pb-2'>Vision</p>
                                 <div>
                                 <Label className='pl-3 font-bold'>Logo</Label>
                                 <Controller
@@ -295,6 +301,7 @@ const AboutPage = () => {
                                     <p className="text-red-500">{errors.secondSection?.vision?.logo.message}</p>
                                 )}
                                 </div>
+                                </div>
                                 <div>
                                 <Label className='pl-3 font-bold'>Alt Tag</Label>
                                 <Input type='text' placeholder='Alt Tag' {...register("secondSection.vision.logoAlt")} />
@@ -306,8 +313,9 @@ const AboutPage = () => {
                             </div>
 
 
-                            <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
-                                <Label className='pl-3 font-bold text-md underline'>Values</Label>
+                            <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-2'>
+                                
+                            <div><p className='  font-bold text-md border-b border-[#ccc] mb-2 pb-2'>Values</p>
                                 <div>
                                 <Label className='pl-3 font-bold'>Logo</Label>
                                 <Controller
@@ -324,6 +332,7 @@ const AboutPage = () => {
                                 {errors.secondSection?.values?.logo && (
                                     <p className="text-red-500">{errors.secondSection?.values?.logo.message}</p>
                                 )}
+                                </div>
                                 </div>
                                 <div>
                                 <Label className='pl-3 font-bold'>Alt Tag</Label>
@@ -344,9 +353,10 @@ const AboutPage = () => {
                 </div>
                 </div>
 
-                <div>
-                <Label className='pl-3 font-bold    p-2 py-0 text-md'>Third Section</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
+                <div> 
+                <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-2'>
+                            <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Third Section</Label>
+                                    
                     <div className='flex flex-col gap-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -365,8 +375,9 @@ const AboutPage = () => {
 
                     <div className='grid grid-cols-2 gap-5'>
 
-                            <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
-                                <Label className='pl-3 font-bold text-md underline'>Chairman</Label>
+                            <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-2'>
+                                <div>
+                                <Label className='  font-bold text-md border-b border-[#ccc] mb-2 pb-2'>Chairman</Label>
                                 <div>
                                 <Label className='pl-3 font-bold'>Image</Label>
                                 <Controller
@@ -384,6 +395,7 @@ const AboutPage = () => {
                                     <p className="text-red-500">{errors.thirdSection?.chairman?.image.message}</p>
                                 )}
                                 </div>
+                                </div>
                                 <div>
                                 <Label className='pl-3 font-bold'>Alt Tag</Label>
                                 <Input type='text' placeholder='Alt Tag' {...register("thirdSection.chairman.imageAlt")} />
@@ -399,8 +411,9 @@ const AboutPage = () => {
                             </div>
 
 
-                            <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
-                                <Label className='pl-3 font-bold text-md underline'>CEO</Label>
+                            <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-2'>
+                               <div>
+                               <Label className='  font-bold text-md border-b border-[#ccc] mb-2 pb-2'>CEO</Label>
                                 <div>
                                 <Label className='pl-3 font-bold'>Image</Label>
                                 <Controller
@@ -418,6 +431,7 @@ const AboutPage = () => {
                                     <p className="text-red-500">{errors.thirdSection?.ceo?.image.message}</p>
                                 )}
                                 </div>
+                               </div>
                                 <div>
                                 <Label className='pl-3 font-bold'>Alt Tag</Label>
                                 <Input type='text' placeholder='Alt Tag' {...register("thirdSection.ceo.imageAlt")} />
@@ -440,16 +454,15 @@ const AboutPage = () => {
                 </div>
                 </div>
 
-                <div>
-                <div>
-                    <div className='flex border-b border-[#ddd] mb-5'> 
-                    <Label className='pl-3 font-bold    p-2 py-0 text-md'>Certifications</Label>
-                    </div>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
+                <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-2'>
+               
+                    <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Certifications</Label>
+                         
+                <div className='  flex flex-col gap-5'>
 
 
                     {fields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-4 rounded-md'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => remove(index)} className='cursor-pointer text-red-600' />
                             </div>
@@ -486,8 +499,7 @@ const AboutPage = () => {
                         <Button type='button' className="text-white w-full cursor-pointer" onClick={() => append({ image: "", imageAlt: "", title: "" })}>Add Item</Button>
                     </div>
 
-                </div>
-                </div>
+                </div> 
                 </div>
 
 

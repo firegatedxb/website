@@ -125,9 +125,9 @@ const CommitmentPage = () => {
             <form className='flex flex-col gap-5' onSubmit={handleSubmit(handleAddCommitment)}>
 
            <div>
-           <div><label data-slot="label" className="flex items-center gap-2 select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 font-bold p-2 py-0 text-md">
-                Banner Section</label></div>
-            <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
+            
+            <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col  '>
+            <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Banner Section</Label>
                 <div className='flex flex-col gap-2'>
                     <div>
                         <Label className="pl-3 font-bold">Banner</Label>
@@ -159,9 +159,9 @@ const CommitmentPage = () => {
             </div>
             </div>
 
-                <div className="border border-[#ddd] p-2 rounded-md flex flex-col gap-2">
-                    <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md'>First Section</Label>
-                    <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
+                <div className="border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-2">
+                    <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>First Section</Label>
+                    <div className='   flex flex-col gap-2'>
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-1'>
                                 <Label className='pl-3 font-bold'>Title</Label>
@@ -190,7 +190,7 @@ const CommitmentPage = () => {
                                 {errors.firstSection?.image && <p className='text-red-500'>{errors.firstSection?.image.message}</p>}
                             </div>
                             </div>
-                            <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
+                            <div className=' flex flex-col gap-2'>
                             <div className='flex flex-col gap-1'>
                                 <Label className='pl-3 font-bold'>Image Alt</Label>
                                 <Input type='text' placeholder='Image Alt' {...register("firstSection.imageAlt")} />
@@ -199,11 +199,11 @@ const CommitmentPage = () => {
 
                                 <div>
                         <Label className='pl-3 font-bold text-sm'>Items</Label>
-                    <div className='flex flex-col gap-5'>
+                    <div className='border border-[#ddd] p-4  rounded-md flex flex-col gap-5'>
 
 
                         {fields.map((field, index) => (
-                            <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-2 rounded-md'>
+                            <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-4 rounded-md'>
                                 <div className='absolute top-2 right-2'>
                                     <RiDeleteBinLine onClick={() => remove(index)} className='cursor-pointer text-red-600' />
                                 </div>
@@ -253,9 +253,9 @@ const CommitmentPage = () => {
                 </div>
 
 
-                <div className="border border-[#ddd] p-2 rounded-md flex flex-col gap-2"> 
-                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md'>Second Section</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
+                <div className="border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-2"> 
+                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Second Section</Label>
+                <div className='  flex flex-col gap-2'>
                     <div className='flex flex-col gap-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -272,11 +272,11 @@ const CommitmentPage = () => {
 
                             <div>
                     <Label className='pl-3 font-bold'>Items</Label>
-                <div className=' flex flex-col gap-5'>
+                <div className='border border-[#ddd] p-4  rounded-md flex flex-col gap-5'>
 
 
                     {secondSectionFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-4 rounded-md'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => secondSectionRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
@@ -330,9 +330,9 @@ const CommitmentPage = () => {
                 </div>
 
 
-                <div className="border border-[#ddd] p-2 rounded-md flex flex-col gap-2"> 
-                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md'>Third Section</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
+                <div className="border border-[#ddd] p-4 pt-1 rounded-md flex flex-col gap-2"> 
+                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Third Section</Label>
+                <div className=' flex flex-col gap-2'>
                     <div className='flex flex-col gap-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -349,11 +349,11 @@ const CommitmentPage = () => {
 
                             <div>
                     <Label className='pl-3 font-bold'>Items</Label>
-                <div className=' flex flex-col gap-5'>
+                <div className='border border-[#ddd] p-4  rounded-md flex flex-col gap-5'>
 
 
                     {thirdSectionFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-4 rounded-md'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => thirdSectionRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
