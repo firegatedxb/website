@@ -210,12 +210,12 @@ export default function Team() {
     }
 
     return (
-        <div className="h-screen grid grid-cols-1 gap-5 adminstyle">
+        <div className="h-screen grid grid-cols-1 gap-5 adminstyle ">
 
-            <div className="h-fit w-full p-2 border border-[#ddd] rounded-md mt-5">
+            <div className="h-fit w-full p-2 border border-[#ddd] rounded-md mt-5 ">
                                         <div className="flex justify-between border-b border-[#ddd] pb-2">
                                             <Label className="text-sm font-bold">Meta Section</Label>
-                                            <Button onClick={submitMetaSection} className="text-white">Save</Button>
+                                            <Button onClick={submitMetaSection} className="text-white cursor-pointer">Save</Button>
                                         </div>
                                         <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
                                             <div>
@@ -232,7 +232,7 @@ export default function Team() {
             <form className="h-full w-full p-2 border border-[#ddd] rounded-md" onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex justify-between border-b border-[#ddd] pb-2">
                     <Label className="text-sm font-bold">Intro Section</Label>
-                    <Button type="submit" className="text-white">Save</Button>
+                    <Button type="submit" className="text-white cursor-pointer">Save</Button>
                 </div>
                 <div className="mt-2 flex flex-col gap-2 h-fit">
                 <div>
@@ -263,11 +263,12 @@ export default function Team() {
 
 
 
-            <div className="h-full w-full p-2 border border-[#ddd] rounded-md">
+           <div className="mb-5">
+           <div className="h-full w-full p-2 border border-[#ddd] rounded-md ">
                 <div className="flex justify-between border-b border-[#ddd] pb-2">
                     <Label className="text-sm font-bold">Systems</Label>
                     <Dialog>
-                        <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => { setLogo(""); setLogoAlt(""); setImage(""); setImageAlt(""); setTitle(""); setDescription(""); }}>Add System</DialogTrigger>
+                        <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md text-sm cursor-pointer" onClick={() => { setLogo(""); setLogoAlt(""); setImage(""); setImageAlt(""); setTitle(""); setDescription(""); }}>Add System</DialogTrigger>
                         <DialogContent className="h-[500px] overflow-y-auto">
                             <DialogHeader>
                                 <DialogTitle>Add System</DialogTitle>
@@ -299,7 +300,7 @@ export default function Team() {
 
                                 </div>
                             </DialogHeader>
-                            <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={handleAddSystem}>Save</DialogClose>
+                            <DialogClose className="bg-black text-white px-2 cursor-pointer py-1 rounded-md" onClick={handleAddSystem}>Save</DialogClose>
                         </DialogContent>
 
                     </Dialog>
@@ -320,7 +321,7 @@ export default function Team() {
 
 
                                     </DialogTrigger>
-                                    <DialogContent className="h-[500px] overflow-y-auto">
+                                    <DialogContent className="h-[500px] overflow-y-auto adminstyle">
                                         <DialogHeader>
                                             <DialogTitle>Edit System</DialogTitle>
                                             <div className="flex flex-col gap-4">
@@ -350,7 +351,7 @@ export default function Team() {
                                                 </div>
                                             </div>
                                         </DialogHeader>
-                                        <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={()=>handleEditSystem(system._id)}>Save</DialogClose>
+                                        <DialogClose className="bg-black text-white px-2 cursor-pointer py-1 rounded-md" onClick={()=>handleEditSystem(system._id)}>Save</DialogClose>
                                     </DialogContent>
 
                                 </Dialog>
@@ -364,6 +365,7 @@ export default function Team() {
                     ))}
                 </div>
             </div>
+           </div>
         </div>
     );
 }

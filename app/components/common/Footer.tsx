@@ -139,9 +139,9 @@ const Footer = () => {
                 <div className="flex flex-wrap gap-7 md:gap-10 h-full justify-between">
                   <motion.ul className="ulsmn" variants={listVariants}>
                     {[
-                      { href: "/services#section1", label: "Design & Engineering" },
-                      { href: "/services#section2", label: "Installation" },
-                      { href: "/services#section0", label: "Maintenance" },
+                      { href: "/services#section0", label: "Design & Engineering" },
+                      { href: "/services#section1", label: "Installation" },
+                      { href: "/services#section2", label: "Maintenance" },
                     ].map((item, index) => (
                       <motion.li
                         key={index}

@@ -185,8 +185,8 @@ const HomePage = () => {
                 <div> 
 
                     {bannerFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-2 rounded-md mb-3'>
-                            <div className='absolute top-2 right-2'>
+                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-4 rounded-md mb-3'>
+                            <div className='absolute top-4 right-4'>
                                 <RiDeleteBinLine onClick={() => bannerRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
                             <div className='flex flex-col gap-x-2'>
@@ -205,7 +205,7 @@ const HomePage = () => {
                                     />
                                     {errors.banners?.[index]?.image && <p className='text-red-500'>{errors.banners?.[index]?.image.message}</p>}
                                 </div>
-                                <div className='flex flex-col gap-x-2'>
+                                <div className='flex flex-col gap-x-2 mt-2'>
                                     <Label className='pl-3 font-bold'>Alt Tag</Label>
                                     <Input type='text' placeholder='Alt Tag' {...register(`banners.${index}.imageAlt`)} />
                                 </div>
@@ -234,7 +234,7 @@ const HomePage = () => {
 
                 <div>
                 <Label className='pl-3 font-bold    p-2 py-0 text-md'>About Section</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-x-2 mt-1'>
+                <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-x-2 mt-1'>
                     <div className='flex flex-col gap-x-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -244,13 +244,13 @@ const HomePage = () => {
                             {errors.aboutSection?.title && <p className='text-red-500'>{errors.aboutSection?.title.message}</p>}
                         </div>
                         <div>
-                                                <Label className="text-sm font-bold">Description</Label>
+                                                <Label className="text-sm font-bold mt-2">Description</Label>
                                                 <Controller name="aboutSection.description" control={control} rules={{ required: "Description is required" }} render={({ field }) => {
                                                     return <ReactQuill theme="snow" value={field.value} onChange={field.onChange} />
                                                 }} />
                                             </div>
                         <div className='flex flex-col gap-1'>
-                            <Label className='pl-3 font-bold'>Image</Label>
+                            <Label className='pl-3 font-bold mt-2'>Image</Label>
                             <Controller
                                 name="aboutSection.image"
                                 control={control}
@@ -267,24 +267,24 @@ const HomePage = () => {
                     </div>
 
                             <div>
-                    <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
+                    <Label className='pl-3 font-bold mt-2'>Items</Label>
+                <div className='  flex flex-col gap-5'>
 
 
                     {aboutSectionFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-2 rounded-md'>
-                            <div className='absolute top-2 right-2'>
+                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-4 pt-0 rounded-md'>
+                            <div className='absolute top-2 right-4'>
                                 <RiDeleteBinLine onClick={() => aboutSectionRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
                             <div className='flex flex-col gap-x-2'>
                                 <div className='flex flex-col gap-x-2'>
-                                    <Label className='pl-3 font-bold'>Number</Label>
+                                    <Label className='pl-3 text-[14px] font-bold'>Number</Label>
                                     <Input type='text' placeholder='Number' {...register(`aboutSection.items.${index}.number`)} />
                                 </div>
                             </div>
                             <div className='flex flex-col gap-x-2'>
                                 <div className='flex flex-col gap-x-2'>
-                                    <Label className='pl-3 font-bold'>Value</Label>
+                                    <Label className='pl-3 text-[14px] font-bold'>Value</Label>
                                     <Input type='text' placeholder='Value' {...register(`aboutSection.items.${index}.value`, {
                                         required: "Value is required"
                                     })} />
@@ -309,7 +309,7 @@ const HomePage = () => {
 
                 <div>
                 <Label className='pl-3 font-bold p-2 py-0 text-md'>Partners Section</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-x-2 mt-1'>
+                <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-x-2 mt-1'>
                 <div className='flex flex-col gap-x-2'>
                                 <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Title</Label>
@@ -318,7 +318,7 @@ const HomePage = () => {
                             </div>
                             <div>
                     <Label className='pl-3 font-bold p-2 py-0 text-md'>Items</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
+                <div className=' flex flex-col gap-5'>
 
 
                     {partnersFields.map((field, index) => (
@@ -369,21 +369,21 @@ const HomePage = () => {
 
                 <div>
                 <Label className='pl-3 font-bold p-2 py-0 text-md'>Services Section</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-x-2'>
+                <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-x-2'>
                 <div className='flex flex-col gap-x-2'>
                                 <div className='flex flex-col gap-x-2'>
-                                    <Label className='pl-3 font-bold'>Title</Label>
+                                    <Label className='pl-3 font-bold mt-2'>Title</Label>
                                     <Input type='text' placeholder='Title' {...register(`services.title`)} />
                                 </div>
                             </div>
                             <div>
-                    <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
+                    <Label className='pl-3 font-bold mt-2'>Items</Label>
+                <div className='   flex flex-col gap-5'>
 
 
                     {servicesFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-1 gap-x-2 relative border border-[#ddd]  p-2 rounded-md'>
-                            <div className='absolute top-2 right-2'>
+                        <div key={field.id} className='grid grid-cols-1 gap-x-2 relative border border-[#ddd]  p-4 rounded-md'>
+                            <div className='absolute top-2 right-4'>
                                 <RiDeleteBinLine onClick={() => servicesRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
                             <div className='grid grid-cols-2 gap-x-2'>
@@ -439,7 +439,7 @@ const HomePage = () => {
 
                 <div>
                 <Label className='pl-3 font-bold p-2 py-0 text-md'>Systems Section</Label>
-                <div className='border border-[#ddd]  p-2 rounded-md flex flex-col gap-x-2'>
+                <div className='border border-[#ddd]  p-4 rounded-md flex flex-col gap-x-2'>
                     <div className='flex flex-col gap-x-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -451,12 +451,12 @@ const HomePage = () => {
                     </div>
 
                             <div>
-                    <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
+                    <Label className='pl-3 font-bold mt-2'>Items</Label>
+                <div className=' flex flex-col gap-5'>
 
 
                     {systemsFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-4 rounded-md'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => systemsRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
@@ -506,7 +506,7 @@ const HomePage = () => {
 
                 <div>
                 <Label className='pl-3 font-bold p-2 py-0 text-md'>Certifications Section</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-x-2'>
+                <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-x-2'>
                     <div className='flex flex-col gap-x-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -518,13 +518,13 @@ const HomePage = () => {
                     </div>
 
                             <div>
-                    <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
+                    <Label className='pl-3 font-bold mt-2'>Items</Label>
+                <div className='  flex flex-col gap-5'>
 
 
                     {certificationsFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-2 rounded-md'>
-                            <div className='absolute top-2 right-2'>
+                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-4 rounded-md'>
+                            <div className='absolute top-2 right-4'>
                                 <RiDeleteBinLine onClick={() => certificationsRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
                             <div className='flex flex-col gap-x-2'>
@@ -570,7 +570,7 @@ const HomePage = () => {
 
                 <div>
                 <Label className='pl-3 font-bold p-2 py-0 text-md'>Projects Section</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-x-2'>
+                <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-x-2'>
                     <div className='flex flex-col gap-x-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -579,7 +579,7 @@ const HomePage = () => {
                             })} />
                             {errors.projects?.title && <p className='text-red-500'>{errors.projects?.title.message}</p>}
                         </div>
-                        <div className='flex flex-col gap-1'>
+                        <div className='flex flex-col gap-1 mt-2'>
                             <Label className='pl-3 font-bold'>Description</Label>
                             <Textarea placeholder='Description' {...register("projects.description", {
                                 required: "Description is required"
@@ -594,7 +594,7 @@ const HomePage = () => {
 
                 <div>
                 <Label className='pl-3 font-bold p-2 py-0 text-md'>Socials Section</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-x-2'>
+                <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-x-2'>
                     <div className='flex flex-col gap-x-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -603,14 +603,14 @@ const HomePage = () => {
                             })} />
                             {errors.socials?.title && <p className='text-red-500'>{errors.socials?.title.message}</p>}
                         </div>
-                        <div className='flex flex-col gap-1'>
+                        <div className='flex flex-col gap-1 mt-2'>
                             <Label className='pl-3 font-bold'>Email</Label>
                             <Input type='text' placeholder='Email' {...register("socials.email", {
                                 required: "Email is required"
                             })} />
                             {errors.socials?.email && <p className='text-red-500'>{errors.socials?.email.message}</p>}
                         </div>
-                        <div className='flex flex-col gap-1'>
+                        <div className='flex flex-col gap-1 mt-2'>
                             <Label className='pl-3 font-bold'>Phone</Label>
                             <Input type='text' placeholder='Phone' {...register("socials.phone", {
                                 required: "Phone is required"
@@ -621,12 +621,12 @@ const HomePage = () => {
 
                             <div>
                     <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
+                <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-5'>
 
 
                     {socialsFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-2 rounded-md'>
-                            <div className='absolute top-2 right-2'>
+                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-4 rounded-md'>
+                            <div className='absolute top-2 right-4'>
                                 <RiDeleteBinLine onClick={() => socialsRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
                             <div className='flex flex-col gap-x-2'>

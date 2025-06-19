@@ -257,13 +257,13 @@ export default function Team() {
 
 
 
-            <div className="h-full w-full p-2 border border-[#ddd] rounded-md">
+            <div className="h-full w-full p-2 border border-[#ddd] rounded-md ">
                 <div className="flex justify-between border-b border-[#ddd] pb-2">
                     <Label className="text-sm font-bold">Clients</Label>
                     <Dialog>
-                        <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => { setImage(""); setImageAlt(""); setLink("") }}>Add Client</DialogTrigger>
+                        <DialogTrigger className="bg-primary cursor-pointer text-white px-2 py-1 rounded-md" onClick={() => { setImage(""); setImageAlt(""); setLink("") }}>Add Client</DialogTrigger>
                         <DialogContent>
-                            <DialogHeader>
+                            <DialogHeader className="adminstyle">
                                 <DialogTitle>Add Client</DialogTitle>
                                 <div className="flex flex-col gap-4">
                                     <div>
@@ -280,7 +280,7 @@ export default function Team() {
                                     </div>
                                 </div>
                             </DialogHeader>
-                            <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={handleAddClient}>Save</DialogClose>
+                            <DialogClose className="bg-black text-white px-2 py-1 rounded-md text-sm" onClick={handleAddClient}>Save</DialogClose>
                         </DialogContent>
 
                     </Dialog>
@@ -300,7 +300,7 @@ export default function Team() {
                                             <MdEdit className="text-black cursor-pointer"/>
 
                                     </DialogTrigger>
-                                    <DialogContent>
+                                    <DialogContent className="adminstyle">
                                         <DialogHeader>
                                             <DialogTitle>Edit Client</DialogTitle>
                                             <div className="flex flex-col gap-4">
@@ -318,7 +318,7 @@ export default function Team() {
                                                 </div>
                                             </div>
                                         </DialogHeader>
-                                        <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={()=>handleEditClient(client._id)}>Save</DialogClose>
+                                        <DialogClose className="bg-black cursor-pointer text-white px-2 py-1 rounded-md" onClick={()=>handleEditClient(client._id)}>Save</DialogClose>
                                     </DialogContent>
 
                                 </Dialog>

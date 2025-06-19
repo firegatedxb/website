@@ -153,7 +153,9 @@ body {
 }
 
 .left-spacing {
-  @apply pl-[15px] lg:pl-[calc((100%-930px)/2)] xl:pl-[calc((100%-79rem)/2)] 3xl:pl-[calc((100%-101.25rem)/2)];
+  @apply pl-[15px] 
+  /* lg:pl-[calc((100%-930px)/2)]  */
+  xl:pl-[calc((100%-79rem)/2)] 3xl:pl-[calc((100%-101.25rem)/2)];
 }
 
 .header-container-padding {
@@ -284,3 +286,4 @@ display:none; }
   border: 1px solid #c7c3d1;
   outline: none;
 }
+.stps button{cursor: pointer;}

@@ -118,9 +118,9 @@ const SystemForm = () => {
     };
 
     return (
-        <div className='flex flex-col gap-5'>
+        <div className='flex flex-col gap-5 adminstyle'>
             <h1 className='text-lg font-bold'>Edit System</h1>
-            <form className='flex flex-col gap-5 border p-2 rounded-md' onSubmit={handleSubmit(handleAddSystem)}>
+            <form className='flex flex-col gap-5 border border-[#ddd] p-2 rounded-md' onSubmit={handleSubmit(handleAddSystem)}>
                 <div className='grid grid-cols-2 gap-2'>
                     <div>
                         <Label className='pl-3 font-bold'>Page Title</Label>
@@ -222,11 +222,11 @@ const SystemForm = () => {
                 </div>
 
                 <Label className='pl-3 font-bold'>Components</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-5'>
+                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
 
 
                     {fields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd]  p-2 rounded-md'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => remove(index)} className='cursor-pointer text-red-600' />
                             </div>
@@ -272,7 +272,7 @@ const SystemForm = () => {
                     ))}
 
                     <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => append({ title: "", description: "", image: "", imageAlt: "" })}>Add Component</Button>
+                        <Button type='button' className="w-full cursor-pointer text-white" onClick={() => append({ title: "", description: "", image: "", imageAlt: "" })}>Add Component</Button>
                     </div>
 
                 </div>
@@ -290,7 +290,7 @@ const SystemForm = () => {
                 </div>
 
                 <div className='flex justify-center'>
-                    <Button type='submit'>Submit</Button>
+                    <Button type='submit' className="text-white cursor-pointer">Submit</Button>
                 </div>
 
             </form>

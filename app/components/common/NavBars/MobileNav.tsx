@@ -168,7 +168,8 @@ const MobileNav = () => {
           </button>
 
           {/* Logo */}
-          <div className="text-left mb-[50px]">
+         <div className="mb-[50px]">
+         <div className="text-left ">
             <Link href="/">
               <Image
                 src="/assets/img/logo.svg"
@@ -179,7 +180,9 @@ const MobileNav = () => {
               />
             </Link>
           </div>
+          <p className="mb-0 text-center text-[10px] xl:text-[14px] text-gray xl:mt-1">Protection Without Compromise</p>
 
+         </div>
           {/* Navigation Items */}
           <ul className="flex flex-col gap-4">
             {menuItems.map((item, index) =>

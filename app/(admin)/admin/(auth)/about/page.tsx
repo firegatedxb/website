@@ -254,11 +254,11 @@ const AboutPage = () => {
                                     name="secondSection.mission.logo"
                                     control={control}
                                     rules={{ required: "Image is required" }}
-                                    render={({ field }) => (
-                                        <ImageUploader
+                                    render={({ field }) => ( 
+                                        <ImageUploader 
                                             value={field.value}
                                             onChange={field.onChange}
-                                        />
+                                        /> 
                                     )}
                                 />
                                 {errors.secondSection?.mission?.logo && (
