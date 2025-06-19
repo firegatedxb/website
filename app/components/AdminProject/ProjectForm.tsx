@@ -157,9 +157,9 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
           };
 
     return (
-        <div className='flex flex-col gap-5'>
+        <div className='flex flex-col gap-5 adminstyle'>
             <h1 className='text-lg font-bold'>{editMode ? "Edit Project" : "Add Project"}</h1>
-            <form className='flex flex-col gap-5 border p-2 rounded-md' onSubmit={handleSubmit(handleAddProject)}>
+            <form className='flex flex-col gap-5 border border-[#ddd] p-2 rounded-md' onSubmit={handleSubmit(handleAddProject)}>
                 <div className='grid grid-cols-2 gap-2'>
                     <div>
                         <Label className='pl-3 font-bold'>Name</Label>
@@ -267,7 +267,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                     {errors.consultant && <p className='text-red-500'>{errors.consultant.message}</p>}
                 </div>
 
-                <div className='flex flex-col gap-2'>
+                <div className='flex flex-col gap-2 '>
                     <Label className='pl-3 font-bold'>Location</Label>
                     <Controller
                         name="location"
@@ -372,7 +372,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                 </div>
 
                 <div className='flex justify-center'>
-                    <Button type='submit'>Submit</Button>
+                    <Button type='submit' className='text-white cursor-pointer'>Submit</Button>
                 </div>
 
             </form>

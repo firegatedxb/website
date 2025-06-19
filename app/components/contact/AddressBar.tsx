@@ -51,7 +51,7 @@ const AddressBar = ({ data }: { data: Contact }) => {
               >
                 <motion.div
                   key={index}
-                  className="flex gap-5 items-start"
+                  className="flex gap-5 items-start "
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.5 }}

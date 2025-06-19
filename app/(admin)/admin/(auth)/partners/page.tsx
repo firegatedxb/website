@@ -300,12 +300,12 @@ export default function Team() {
     }
 
     return (
-        <div className="h-screen grid grid-cols-1 gap-5">
+        <div className="h-screen grid grid-cols-1 gap-5 adminstyle">
 
-            <div className="h-fit w-full p-2 border-2 border-gray-300 rounded-md mt-5">
-                                        <div className="flex justify-between border-b-2 pb-2">
+            <div className="h-fit w-full p-2 border border-[#ddd] rounded-md mt-5">
+                                        <div className="flex justify-between border-b border-[#ddd] pb-2">
                                             <Label className="text-sm font-bold">Meta Section</Label>
-                                            <Button onClick={submitMetaSection}>Save</Button>
+                                            <Button onClick={submitMetaSection} className="text-white cursor-pointer">Save</Button>
                                         </div>
                                         <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
                                             <div>
@@ -319,10 +319,10 @@ export default function Team() {
                                         </div>
                                     </div>
 
-            <form className="h-full w-full p-2 border-2 border-gray-300 rounded-md" onSubmit={handleSubmit(onSubmit)}>
-                <div className="flex justify-between border-b-2 pb-2">
+            <form className="h-full w-full p-2 border border-[#ddd] rounded-md" onSubmit={handleSubmit(onSubmit)}>
+                <div className="flex justify-between border-b border-[#ddd] pb-2">
                     <Label className="text-sm font-bold">Intro Section</Label>
-                    <Button type="submit">Save</Button>
+                    <Button type="submit" className="text-white cursor-pointer">Save</Button>
                 </div>
                 <div className="mt-2 flex flex-col gap-2 h-fit">
                 <div>
@@ -353,11 +353,11 @@ export default function Team() {
 
 
 
-            <div className="h-full w-full p-2 border-2 border-gray-300 rounded-md">
-                <div className="flex justify-between border-b-2 pb-2">
+            <div className="h-full w-full p-2 border border-[#ddd] rounded-md adminstyle">
+                <div className="flex justify-between border-b border-[#ddd] pb-2">
                     <Label className="text-sm font-bold">Partners</Label>
                     <Dialog>
-                        <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => {setName(""); setLogo(""); setLogoAlt(""); setImage(""); setImageAlt(""); setWebsite(""); }}>Add Partner</DialogTrigger>
+                        <DialogTrigger className="bg-primary text-white cursor-pointer px-2 text-sm py-1 rounded-md" onClick={() => {setName(""); setLogo(""); setLogoAlt(""); setImage(""); setImageAlt(""); setWebsite(""); }}>Add Partner</DialogTrigger>
                         <DialogContent className="h-[500px] overflow-y-auto">
                             <DialogHeader>
                                 <DialogTitle>Add Partner</DialogTitle>
@@ -399,10 +399,10 @@ export default function Team() {
                 </div>
                 <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
                     {partnerList.map((partner, index) => (
-                        <div key={index} className="relative flex  justify-between border p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300">
+                        <div key={index} className="relative flex  justify-between border border-[#ddd] p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300">
                             <div className="flex gap-4 items-center">
                                 <div>
-                                    <p>{partner.name}</p>
+                                    <p className="text-sm ">{partner.name}</p>
                                 </div>
                             </div>
                             <div className="absolute top-1 right-1 flex gap-2">
@@ -461,10 +461,10 @@ export default function Team() {
 
 
 
-            <div className="h-full w-full p-2 border-2 border-gray-300 rounded-md">
-                <div className="flex justify-between border-b-2 pb-2">
+            <div className="h-full w-full p-2 border border-[#ddd] rounded-md">
+                <div className="flex justify-between border-b border-[#ddd] pb-2">
                     <Label className="text-sm font-bold">Accreditation</Label>
-                    <Button className="text-white" onClick={handleSaveAccreditInfo}>Save</Button>
+                    <Button className="text-white cursor-pointer" onClick={handleSaveAccreditInfo}>Save</Button>
                 </div>
                 <div>
                     <Label className="text-sm font-bold">Title</Label>
@@ -475,31 +475,31 @@ export default function Team() {
                     <Textarea placeholder="Description" value={accreditDescription} onChange={(e) => setAccreditDescription(e.target.value)} />
                 </div>
 
-                    <div className="flex justify-end mt-5">
+                    <div className="flex justify-end mt-5 ">
                 <Dialog>
-                        <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => {setAccreditImage(""); setAccreditImageAlt(""); }}>Add Partner</DialogTrigger>
+                        <DialogTrigger className="bg-primary  cursor-pointer text-white px-2 text-sm py-1 rounded-md" onClick={() => {setAccreditImage(""); setAccreditImageAlt(""); }}>Add Accreditation</DialogTrigger>
                         <DialogContent className="">
                             <DialogHeader>
-                                <DialogTitle>Add Partner</DialogTitle>
+                                <DialogTitle>Add Accreditation</DialogTitle>
                                 <div className="flex flex-col gap-4">
-                                    <div>
+                                    <div className="flex flex-col gap-2">
                                         <Label>Image</Label>
                                         <ImageUploader onChange={(url) => setAccreditImage(url)} value={accreditImage} />
                                     </div>
-                                    <div>
+                                    <div className="flex flex-col gap-2">
                                         <Label>Alt Tag</Label>
                                         <Input type="text" placeholder="Alt Tag" value={accreditImageAlt} onChange={(e) => setAccreditImageAlt(e.target.value)} />
                                     </div>
                                 </div>
                             </DialogHeader>
-                            <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={handleAddAccredit}>Save</DialogClose>
+                            <DialogClose className="bg-black cursor-pointer text-white px-2 py-1 rounded-md" onClick={handleAddAccredit}>Save</DialogClose>
                         </DialogContent>
 
                     </Dialog>
                     </div>
                 <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
                     {accreditList.map((accredit, index) => (
-                        <div key={index} className="relative flex  justify-between border p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300">
+                        <div key={index} className="relative flex  justify-between border border-[#ddd]p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300">
                             <div className="flex gap-4 items-center">
                                 <div>
                                     <Image src={accredit.accreditImage} alt={accredit.accreditImageAlt} width={100} height={100} />
