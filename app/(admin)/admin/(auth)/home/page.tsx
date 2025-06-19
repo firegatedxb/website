@@ -179,14 +179,16 @@ const HomePage = () => {
         <div className='flex flex-col gap-5 adminstyle'>
             <form className='flex flex-col gap-5' onSubmit={handleSubmit(handleAddCommitment)}>
 
-            <div className='flex flex-col gap-x-2'>
-            <Label className='pl-3 font-bold    p-2 py-0 text-md'>Banner Section</Label>
+
+            <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col  '>
+                        <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Banner Section</Label>
                 <div className='   flex flex-col gap-5  '>
+                    
                 <div> 
 
                     {bannerFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-4 rounded-md mb-3'>
-                            <div className='absolute top-4 right-4'>
+                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative   rounded-md mb-3'>
+                            <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => bannerRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
                             <div className='flex flex-col gap-x-2'>
@@ -232,9 +234,9 @@ const HomePage = () => {
                 </div>
 
 
-                <div>
-                <Label className='pl-3 font-bold    p-2 py-0 text-md'>About Section</Label>
-                <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-x-2 mt-1'>
+                <div> 
+                <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-x-2 mt-1'>
+                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>About Section</Label>
                     <div className='flex flex-col gap-x-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -268,7 +270,7 @@ const HomePage = () => {
 
                             <div>
                     <Label className='pl-3 font-bold mt-2'>Items</Label>
-                <div className='  flex flex-col gap-5'>
+                <div className='border border-[#ddd] p-4   rounded-md flex flex-col gap-5'>
 
 
                     {aboutSectionFields.map((field, index) => (
@@ -307,9 +309,9 @@ const HomePage = () => {
                 </div>
 
 
-                <div>
-                <Label className='pl-3 font-bold p-2 py-0 text-md'>Partners Section</Label>
-                <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-x-2 mt-1'>
+                <div> 
+                <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-x-2 mt-1'>
+                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Partners Section</Label>
                 <div className='flex flex-col gap-x-2'>
                                 <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold'>Title</Label>
@@ -367,9 +369,9 @@ const HomePage = () => {
                 </div>
 
 
-                <div>
-                <Label className='pl-3 font-bold p-2 py-0 text-md'>Services Section</Label>
-                <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-x-2'>
+                <div> 
+                <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-x-2'>
+                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Services Section</Label>
                 <div className='flex flex-col gap-x-2'>
                                 <div className='flex flex-col gap-x-2'>
                                     <Label className='pl-3 font-bold mt-2'>Title</Label>
@@ -437,9 +439,9 @@ const HomePage = () => {
                 </div>
 
 
-                <div>
-                <Label className='pl-3 font-bold p-2 py-0 text-md'>Systems Section</Label>
-                <div className='border border-[#ddd]  p-4 rounded-md flex flex-col gap-x-2'>
+                <div> 
+                <div className='border border-[#ddd]  p-4 pt-0 rounded-md flex flex-col gap-x-2'>
+                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Systems Section</Label>
                     <div className='flex flex-col gap-x-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -504,9 +506,9 @@ const HomePage = () => {
                 </div>
 
 
-                <div>
-                <Label className='pl-3 font-bold p-2 py-0 text-md'>Certifications Section</Label>
-                <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-x-2'>
+                <div> 
+                <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-x-2'>
+                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Certifications Section</Label>
                     <div className='flex flex-col gap-x-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -568,9 +570,9 @@ const HomePage = () => {
                 </div>
 
 
-                <div>
-                <Label className='pl-3 font-bold p-2 py-0 text-md'>Projects Section</Label>
-                <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-x-2'>
+                <div> 
+                <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-x-2'>
+                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Projects Section</Label>
                     <div className='flex flex-col gap-x-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -592,9 +594,9 @@ const HomePage = () => {
                 </div>  
 
 
-                <div>
-                <Label className='pl-3 font-bold p-2 py-0 text-md'>Socials Section</Label>
-                <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-x-2'>
+                <div> 
+                <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-x-2'>
+                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Socials Section</Label>
                     <div className='flex flex-col gap-x-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -621,11 +623,11 @@ const HomePage = () => {
 
                             <div>
                     <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-5'>
+                <div className='border border-[#ddd] p-4  rounded-md flex flex-col gap-5'>
 
 
                     {socialsFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-4 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-4 pt-1 rounded-md'>
                             <div className='absolute top-2 right-4'>
                                 <RiDeleteBinLine onClick={() => socialsRemove(index)} className='cursor-pointer text-red-600' />
                             </div>

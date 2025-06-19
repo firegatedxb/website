@@ -93,11 +93,11 @@ const ServicesPage = () => {
 
                 <div className='flex flex-col '>
                     <div> 
-                        
-                     <Label className='pl-3 font-bold    p-2 py-0 text-md'>Banner Section</Label>
+                         
                      </div>
-                     <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5 mt-1'>
-                     <div>
+                     <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col  '>
+                          <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Banner Section</Label>
+                                                       <div>
                      <Label className='pl-3 font-bold'>Banner Image</Label>
                         <Controller
                             name="banner"
@@ -116,19 +116,21 @@ const ServicesPage = () => {
                         )}
                     
                     <div>
-                        <Label className='pl-3 font-bold'>Alt Tag</Label>
+                        <Label className='pl-3 font-bold mt-2'>Alt Tag</Label>
                         <Input type='text' placeholder='Alt Tag' {...register("bannerAlt")} />
                     </div>
                     <div>
-                        <Label className='pl-3 font-bold'>Page Title</Label>
+                        <Label className='pl-3 font-bold mt-2'>Page Title</Label>
                         <Input type='text' placeholder='Page Title' {...register("pageTitle")} />
                     </div>
                     </div>
                 </div>
 
                 <div>
-                <Label className='pl-3 font-bold    p-2 py-0 text-md'>Services</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
+                <div className='border border-[#ddd] p-4 pt-2 rounded-md flex flex-col gap-2'>
+              <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Services</Label>
+                                                  
+                                 
                     <div className='flex flex-col gap-2'>
                         <div className='flex flex-col gap-1'>
                             <Label className='pl-3 font-bold'>Title</Label>
@@ -145,11 +147,11 @@ const ServicesPage = () => {
 
                             <div>
                     <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-5'>
+                <div className='  rounded-md flex flex-col gap-5'>
 
 
                     {fields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-4 rounded-md'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => remove(index)} className='cursor-pointer text-red-600' />
                             </div>

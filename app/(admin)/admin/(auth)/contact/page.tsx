@@ -96,9 +96,10 @@ const ContactPage = () => {
             <form className='flex flex-col gap-5' onSubmit={handleSubmit(handleAddContact)}>
 
             <div>
-                <div><label data-slot="label" className="flex items-center gap-2 select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 font-bold p-2 py-0 text-md">
-                Banner Section</label></div>
-                <div className=' border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
+                
+                <div className=' border border-[#ddd] p-4 pt-0 rounded-md flex flex-col '>
+                    
+                 <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Banner Section</Label>
                     <div>
                         <Label className="pl-3 font-bold">Image</Label>
                         <Controller
@@ -126,9 +127,9 @@ const ContactPage = () => {
                     </div>
                 </div>
             </div>
-            <div className="border border-[#ddd] p-2 rounded-md flex flex-col gap-2">
-                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md'>Contacts</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
+            <div className="border border-[#ddd] p-4 pt-0 rounded-md flex flex-col  ">
+                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Contacts</Label>
+                <div className='  flex flex-col gap-2'>
 
                             <div>
                     <Label className='pl-3 font-bold'>Items</Label>
@@ -136,7 +137,7 @@ const ContactPage = () => {
 
 
                     {contactFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-4  rounded-md'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => contactRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
@@ -179,13 +180,13 @@ const ContactPage = () => {
                 </div>
 
 
-                <div className="border border-[#ddd] p-2 rounded-md flex flex-col gap-2">
-             <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md'>Socials</Label>
-                <div className='border border-[#ddd] p-2 rounded-md flex flex-col gap-2'>
+                <div className="border border-[#ddd] p-4 pt-0 rounded-md flex flex-col  ">
+             <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Socials</Label>
+                <div className=' flex flex-col gap-2'>
 
                             <div>
                     <Label className='pl-3 font-bold'>Items</Label>
-                <div className=' flex flex-col gap-5'>
+                <div className=' border border-[#ddd] p-4  rounded-md flex flex-col gap-5'>
 
 
                     {socialsFields.map((field, index) => (
