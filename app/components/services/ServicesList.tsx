@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { Services } from '@/public/types/Common';
 import { motion } from "framer-motion";
-import { fadeUpVariant } from "@/public/frameranimation/animation";
+// import { fadeUpVariant } from "@/public/frameranimation/animation";
 
 
 const ServicesList = ({ data }: { data: Services }) => {
@@ -15,8 +15,8 @@ const ServicesList = ({ data }: { data: Services }) => {
       {serviceArray[0].items.map((item, index) => (
         <motion.div
           key={index}
-          {...fadeUpVariant(index)}
-          viewport={{ once: true, amount: 0.3 }}
+          // {...fadeUpVariant(index)}
+          // viewport={{ once: true, amount: 0.3 }}
           className="border-b border-graylit py-[50px] lg:py-75"
           id={`section${index}`}
         >
@@ -44,10 +44,10 @@ const ServicesList = ({ data }: { data: Services }) => {
               </div> */}
             </div>
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
-              viewport={{ once: true, amount: 0.3 }}
+              // initial={{ opacity: 0, y: 30 }}
+              // whileInView={{ opacity: 1, y: 0 }}
+              // transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
+              // viewport={{ once: true, amount: 0.3 }}
             >
               <Image
                 src={item.image}
