@@ -187,7 +187,7 @@ const HomePage = () => {
                 <div> 
 
                     {bannerFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative   rounded-md mb-3'>
+                        <div key={field.id} className='border border-[#ddd] p-4 grid grid-cols-2 gap-x-2 relative   rounded-md mb-3'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => bannerRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
