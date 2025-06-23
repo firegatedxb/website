@@ -159,7 +159,7 @@ const Footer = () => {
                   <motion.ul className="ulsmn" variants={listVariants}>
                     {[
                       { href: "/about", label: "About Us" },
-                      { href: "#", label: "Health Safety Environment" }, // Replace `#` if needed
+                      { href: "/commitments", label: "Commitments" }, // Replace `#` if needed
                     ].map((item, index) => (
                       <motion.li
                         key={index}
