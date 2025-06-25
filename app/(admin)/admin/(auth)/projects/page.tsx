@@ -369,7 +369,7 @@ export default function Projects() {
 
               </Dialog>
             </div>
-            <div className="mt-2 flex flex-col gap-3 overflow-y-scroll h-full" style={{ maxHeight: "calc(100vh - 100px)"  }}>
+            <div className="mt-2 flex flex-col gap-3 overflow-y-scroll h-[140px]">
               {sectorList.map((item) => (
                 <div className="flex justify-between border border-[#ddd] p-2 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
                  <p className="mb-0 text-sm stps">
@@ -501,7 +501,7 @@ export default function Projects() {
             </div>
             <div className="h-full">
 
-              <div className="mt-2 flex flex-col gap-3 overflow-y-scroll h-full" style={{ maxHeight: "calc(100vh - 100px)" }}>
+              <div className="mt-2 flex flex-col gap-3 overflow-y-scroll h-[140px]">
                 {clientList.map((item) => (
                   <div className="flex justify-between border border-[#ddd] p-2 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
                    <p className="mb-0 text-sm stps">
@@ -555,7 +555,7 @@ export default function Projects() {
             <Label className="text-md font-bold text-secondary">Projects</Label>
             <Button onClick={() => router.push("/admin/projects/add")} className="text-white h-9 text-sm cursor-pointer">Add Project</Button>
           </div>
-          <div className="mt-2 flex flex-col gap-3 overflow-y-scroll h-full" style={{ maxHeight: "calc(100vh - 100px)" }}>
+          <div className="mt-2 flex flex-col gap-3 overflow-y-scroll h-[600px]">
             {projectList.map((item) => (
               <div className="flex justify-between border border-[#ddd] p-2 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
                <p className="mb-0 text-sm stps">

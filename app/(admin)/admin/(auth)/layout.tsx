@@ -15,7 +15,7 @@ import Image from "next/image";
         {/* Sidebar */}
         <aside className="w-64 bg-white shadow-md flex flex-col">
 
-          <div className="flex-1 bg-[#001524]  ">
+          <div className="flex-1 bg-white  ">
             <div className=" py-5 px-4 flex flex-col gap-2 border-b border-gray-200 bg-white">
             <div>
               <div className="flex items-center justify-center">
@@ -27,7 +27,6 @@ import Image from "next/image";
             </div>
             </div>
             <div className="flex-1 px-3 py-4 " >
-               <h2 className="text-[22px] ps-3 pb-3 mb-3 border-b border-[#243136] font-semibold text-white">Admin Panel</h2>
             <nav className="space-y-1">
               <AdminNavbar />
             </nav>
