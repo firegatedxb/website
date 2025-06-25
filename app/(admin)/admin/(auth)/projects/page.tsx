@@ -417,14 +417,14 @@ export default function Projects() {
 
           <div className="h-1/2 w-full p-2 border  border-[#ddd] rounded-md overflow-y-hidden mb-3">
             <div className="flex justify-between align-items-center border-b border-[#ddd] pb-3 mb-3">
-              <Label className="text-md font-bold text-secondary">Country</Label>
+              <Label className="text-md font-bold text-secondary">Category</Label>
               <Dialog>
-                <DialogTrigger className="bg-primary text-white cursor-pointer px-2 text-sm rounded-md h-9" onClick={() => setCountry("")}>Add Country</DialogTrigger>
+                <DialogTrigger className="bg-primary text-white cursor-pointer px-2 text-sm rounded-md h-9" onClick={() => setCountry("")}>Add Category</DialogTrigger>
                 <DialogContent>
                   <DialogHeader>
-                    <DialogTitle>Add Country</DialogTitle>
+                    <DialogTitle>Add Category</DialogTitle>
                     <DialogDescription>
-                      <Input type="text" placeholder="Location Name" value={country} onChange={(e) => setCountry(e.target.value)} />
+                      <Input type="text" placeholder="Category Name" value={country} onChange={(e) => setCountry(e.target.value)} />
                     </DialogDescription>
                   </DialogHeader>
                   <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={handleAddCountry}>Save</DialogClose>
