@@ -26,7 +26,7 @@ const AddressBar = ({ data }: { data: Contact }) => {
               <motion.p
                 key={index}
                 onClick={() => setActiveTab(index)}
-                className={`text-19 font-medium  leading-[2.18] cursor-pointer relative top-[1px] pb-1 pr-5 md:pr-10  lg:pr-[125px]
+                className={`text-19 md:text-sm 2xl:text-19 font-medium  leading-[2.18] cursor-pointer relative top-[1px] pb-1 pr-1 md:pr-10  2xl:pr-[125px]
               ${
                 activeTab === index
                   ? "border-b-2 border-primary font-[600]"
@@ -72,7 +72,7 @@ const AddressBar = ({ data }: { data: Contact }) => {
                         />
                         <p className="text-30">{item.email}</p>
                       </div>
-                      </a>  
+                      </a>
                       <a href={`tel:${item.phone}`}>
                       <div className="flex gap-4 ">
 
@@ -84,7 +84,7 @@ const AddressBar = ({ data }: { data: Contact }) => {
                         />
                      <p className="text-30">{item.phone}</p>
                       </div>
-                      </a>  
+                      </a>
                     </div>
 
                     <div>
