@@ -11,7 +11,6 @@ const projectSchema = new mongoose.Schema({
     },
     client: {
         type: String,
-        required: true,
     },
     sector: {
         type: String,
@@ -19,7 +18,6 @@ const projectSchema = new mongoose.Schema({
     },
     consultant: {
         type: String,
-        required: true,
     },
     location: {
         type: String,
