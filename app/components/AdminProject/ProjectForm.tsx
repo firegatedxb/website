@@ -210,7 +210,6 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                     <Controller
                         name="client"
                         control={control}
-                        rules={{ required: "Client is required" }}
                         render={({ field }) => (
                             <Select
                                 onValueChange={field.onChange}
@@ -230,7 +229,6 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                             </Select>
                         )}
                     />
-                    {errors.client && <p className="text-red-500">{errors.client.message}</p>}
 
                 </div>
                 <div className='flex flex-col gap-2'>
@@ -263,16 +261,15 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                 </div>
                 <div className='flex flex-col gap-2'>
                     <Label className='pl-3 font-bold'>Consultant</Label>
-                    <Input type='text' placeholder='Consultant' {...register("consultant", { required: "Consultant is required" })} />
-                    {errors.consultant && <p className='text-red-500'>{errors.consultant.message}</p>}
+                    <Input type='text' placeholder='Consultant' {...register("consultant")} />
                 </div>
 
                 <div className='flex flex-col gap-2 '>
-                    <Label className='pl-3 font-bold'>Location</Label>
+                    <Label className='pl-3 font-bold'>Category</Label>
                     <Controller
                         name="location"
                         control={control}
-                        rules={{ required: "Location is required" }}
+                        rules={{ required: "Category is required" }}
                         render={({ field }) => (
                             <Select
                                 onValueChange={field.onChange}
@@ -280,7 +277,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                                 defaultValue=""
                             >
                                 <SelectTrigger className="w-full">
-                                    <SelectValue placeholder="Select Location" />
+                                    <SelectValue placeholder="Select Category" />
                                 </SelectTrigger>
                                 <SelectContent className='bg-white'>
                                     {locationList.map((item, index) => (

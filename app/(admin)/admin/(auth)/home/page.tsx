@@ -12,6 +12,7 @@ import { Textarea } from '@/components/ui/textarea'
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false })
 import 'react-quill-new/dist/quill.snow.css';
 import dynamic from 'next/dynamic'
+import AdminItemContainer from '@/app/components/AdminItemContainer/AdminItemContainer';
 
 interface SystemFormProps {
 
@@ -180,20 +181,21 @@ const HomePage = () => {
             <form className='flex flex-col gap-5' onSubmit={handleSubmit(handleAddCommitment)}>
 
 
-            <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col  '>
-                        <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Banner Section</Label>
-                <div className='   flex flex-col gap-5  '>
+            <AdminItemContainer>
+                        <Label  className='' main>Banner Section</Label>
+                <div className='flex flex-col gap-5 p-5'>
                     
                 <div> 
-
+                    <Label>Items</Label>
+                    <div className='border border-[#ddd] rounded-md p-2'>
                     {bannerFields.map((field, index) => (
-                        <div key={field.id} className='border border-[#ddd] p-4 grid grid-cols-2 gap-x-2 relative   rounded-md mb-3'>
+                        <div key={field.id} className='border-b border-[#ddd] grid grid-cols-2 gap-x-2 relative pb-5 mb-3 last:border-b-0'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => bannerRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
                             <div className='flex flex-col gap-x-2'>
                                 <div className='flex flex-col gap-x-2'>
-                                    <Label className='pl-3 font-bold'>Image</Label>
+                                    <Label className=''>Image</Label>
                                     <Controller
                                         name={`banners.${index}.image`}
                                         control={control}
@@ -208,13 +210,13 @@ const HomePage = () => {
                                     {errors.banners?.[index]?.image && <p className='text-red-500'>{errors.banners?.[index]?.image.message}</p>}
                                 </div>
                                 <div className='flex flex-col gap-x-2 mt-2'>
-                                    <Label className='pl-3 font-bold'>Alt Tag</Label>
+                                    <Label className='pl-3'>Alt Tag</Label>
                                     <Input type='text' placeholder='Alt Tag' {...register(`banners.${index}.imageAlt`)} />
                                 </div>
                             </div>
                             <div className='flex flex-col gap-x-2'>
                                 <div className='flex flex-col gap-x-2'>
-                                    <Label className='pl-3 font-bold'>Title</Label>
+                                    <Label className='pl-3'>Title</Label>
                                     <Input type='text' placeholder='Title' {...register(`banners.${index}.title`, {
                                         required: "Title is required"
                                     })} />
@@ -224,35 +226,36 @@ const HomePage = () => {
 
                         </div>
                     ))}
+                    </div>
 
-                    <div>
-                </div>
-                        <Button type='button' className="w-full cursor-pointer mt-4 text-white" onClick={() => bannerAppend({ image: "", imageAlt: "", title: "" })}>Add Item</Button>
+                        <div className='flex justify-end'>
+                        <Button type='button' className="cursor-pointer mt-4 text-white" addItem onClick={() => bannerAppend({ image: "", imageAlt: "", title: "" })}>Add Item</Button>
+                        </div>
                     </div>
 
                 </div>
-                </div>
+                </AdminItemContainer>
 
 
                 <div> 
-                <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-x-2 mt-1'>
-                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>About Section</Label>
-                    <div className='flex flex-col gap-x-2'>
+                <AdminItemContainer>
+                <Label main>About Section</Label>
+                    <div className='flex flex-col gap-x-2 p-5'>
                         <div className='flex flex-col gap-1'>
-                            <Label className='pl-3 font-bold'>Title</Label>
+                            <Label className=''>Title</Label>
                             <Input type='text' placeholder='Title' {...register("aboutSection.title", {
                                 required: "Title is required"
                             })} />
                             {errors.aboutSection?.title && <p className='text-red-500'>{errors.aboutSection?.title.message}</p>}
                         </div>
                         <div>
-                                                <Label className="text-sm font-bold mt-2">Description</Label>
+                                                <Label className="">Description</Label>
                                                 <Controller name="aboutSection.description" control={control} rules={{ required: "Description is required" }} render={({ field }) => {
                                                     return <ReactQuill theme="snow" value={field.value} onChange={field.onChange} />
                                                 }} />
                                             </div>
                         <div className='flex flex-col gap-1'>
-                            <Label className='pl-3 font-bold mt-2'>Image</Label>
+                            <Label className=''>Image</Label>
                             <Controller
                                 name="aboutSection.image"
                                 control={control}
@@ -268,13 +271,13 @@ const HomePage = () => {
                         </div>
                     </div>
 
-                            <div>
-                    <Label className='pl-3 font-bold mt-2'>Items</Label>
-                <div className='border border-[#ddd] p-4   rounded-md flex flex-col gap-5'>
+                            <div className='p-5'>
+                    <Label className=''>Items</Label>
+                <div className='border border-[#ddd] p-4   rounded-md grid grid-cols-2 gap-5'>
 
 
                     {aboutSectionFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border border-[#ddd] p-4 pt-0 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-x-2 relative border-r border-[#ddd] p-4 pt-0 even:border-r-0 pr-5'>
                             <div className='absolute top-2 right-4'>
                                 <RiDeleteBinLine onClick={() => aboutSectionRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
@@ -297,29 +300,30 @@ const HomePage = () => {
                         </div>
                     ))}
 
-                    <div>
-                        <Button type='button' className="w-full cursor-pointer   text-white" onClick={() => aboutSectionAppend({ number: "", value: "" })}>Add Item</Button>
+                    
+
+                </div>
+                <div className='flex justify-end mt-2'>
+                        <Button type='button' className="cursor-pointer text-white" addItem onClick={() => aboutSectionAppend({ number: "", value: "" })}>Add Item</Button>
                     </div>
-
-                </div>
                 </div>
 
 
-                </div>
+                </AdminItemContainer>
                 </div>
 
 
                 <div> 
-                <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-x-2 mt-1'>
-                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Partners Section</Label>
-                <div className='flex flex-col gap-x-2'>
+                <AdminItemContainer>
+                <Label main>Partners Section</Label>
+                <div className='flex flex-col gap-x-2 p-5'>
                                 <div className='flex flex-col gap-x-2'>
-                                    <Label className='pl-3 font-bold'>Title</Label>
+                                    <Label className=''>Title</Label>
                                     <Input type='text' placeholder='Title' {...register(`partners.title`)} />
                                 </div>
                             </div>
-                            <div>
-                    <Label className='pl-3 font-bold p-2 py-0 text-md'>Items</Label>
+                            <div className='p-5'>
+                    <Label className=''>Items</Label>
                 <div className=' flex flex-col gap-5'>
 
 
@@ -365,7 +369,7 @@ const HomePage = () => {
                 </div>
 
 
-                </div>
+                </AdminItemContainer>
                 </div>
 
 
