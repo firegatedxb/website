@@ -94,7 +94,7 @@ export const Menu = ({
         onMouseLeave={() => setActive(null)} // resets the state
         className=" relative bg-[#F9F9F9] z-50 dark:bg-black dark:border-white/[0.2] shadow-input flex justify-center items-stretch  gap-2 xl:gap-[20px]  h-full">
         <div className="left-spacing pr-[20px] xxl:pr-[20px] xxxl:pr-[50px] w-full flex items-center justify-between gap-3 pt-[16.5px] pb-[21px]  ">
-          <div>
+          <div className="pl-5">
           <Link href="/">
           <div className="flex items-center ">
               <Image

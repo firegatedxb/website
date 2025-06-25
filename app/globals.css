@@ -5,7 +5,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px; /* Adjust based on your header height */
- 
+
   scrollbar-width: thin; /* minimal width */
   scrollbar-color: rgba(0,0,0,0.3) transparent; /* optional styling */
 }
@@ -153,9 +153,9 @@ body {
 }
 
 .left-spacing {
-  @apply pl-[15px] 
+  @apply pl-[15px]
   /* lg:pl-[calc((100%-930px)/2)]  */
-  xl:pl-[calc((100%-79rem)/2)] 3xl:pl-[calc((100%-101.25rem)/2)];
+  xl:pl-[calc((100%-93rem)/2)] 3xl:pl-[calc((100%-115.25rem)/2)];
 }
 
 .header-container-padding {
@@ -274,7 +274,7 @@ display:none; }
   margin-bottom: 10px ;
   padding-left: 0px ;
   padding-top: 10px ;
-} 
+}
 .adminstyle input , .adminstyle textarea{
   border: 1px solid #c7c3d1;
   border-radius: 3px;
@@ -288,5 +288,5 @@ display:none; }
 }
 .stps button{cursor: pointer;}
 #section0,#section1,#section2 {
-  scroll-margin-top: 100px;  
+  scroll-margin-top: 100px;
 }
