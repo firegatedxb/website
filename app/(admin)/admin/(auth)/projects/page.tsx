@@ -434,7 +434,7 @@ export default function Projects() {
             </div>
             <div className="h-full">
 
-              <div className="mt-2 flex flex-col gap-3 overflow-y-scroll h-full">
+              <div className="mt-2 flex flex-col gap-3 overflow-y-scroll h-full" style={{ maxHeight: "calc(100vh - 100px)" }}>
                 {countryList.map((item) => (
                   <div className="flex justify-between border border-[#ddd] p-2 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
                     <p className="mb-0 text-sm stps">

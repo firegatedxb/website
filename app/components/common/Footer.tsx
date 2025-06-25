@@ -72,11 +72,11 @@ const Footer = () => {
                       <div key={index}  >
                         <TabsTrigger
                           value={client.title}
-                          className="relative group cursor-pointer data-[state=active]:bg-transparent text-white  capitalize text-left w-fit lg:w-auto lg:text-center pl-0 pr-10 md:pr-20  lg:pr-[90px] py-0 text-19 font-medium"
+                          className="relative group cursor-pointer data-[state=active]:bg-transparent text-white  capitalize text-left w-fit lg:w-auto lg:text-center pl-0 pr-[10px] md:pr-[15px]  lg:pr-[90px] py-0 text-19 font-medium"
                         >
-                          <p className="mb-0 text-[#979797]  group-data-[state=active]:text-white hover:text-white transition-all duration-300"> {client.title}</p>
+                          <p className="mb-0 text-[#979797]  group-data-[state=active]:text-white hover:text-white transition-all duration-300 text-sm md:text-md xl:text-[19px]"> {client.title}</p>
 
-                          <div className="flex absolute w-full h-[2px] group-data-[state=active]:bg-primary bottom-[-19px] left-0 z-20"></div>
+                          <div className="flex absolute w-full h-[2px] group-data-[state=active]:bg-primary bottom-[-21px] md:bottom-[-19px] left-0 z-20"></div>
                         </TabsTrigger>
                       </div>
                     ))}
@@ -107,13 +107,13 @@ const Footer = () => {
                                   {client.address?.split('PO')[1]}
                                 </p>
                                 <p className="text-19">
-                                  <span className="text-primary">T</span>:  
+                                  <span className="text-primary">T</span>:
                                   <a href={`tel:${client.phone}`}> {client.phone}</a>
 
                                 </p>
                                 <p className="text-19">
-                                  <span className="text-primary">E</span>: 
-                                  <a href={`mailto:${client.email}`}> {client.email}</a> 
+                                  <span className="text-primary">E</span>:
+                                  <a href={`mailto:${client.email}`}> {client.email}</a>
                                 </p>
                               </div>
                             </TabsContent>
@@ -189,8 +189,8 @@ const Footer = () => {
           </div>
         </div>
       )}
-        <div className=" whatsapp  "   > 
-          <Link href="https://wa.me/+971508454714" target="_blank"> 
+        <div className=" whatsapp  "   >
+          <Link href="https://wa.me/+971508454714" target="_blank">
                         <Image src={assets.whatsapp} alt="slider" className="fixed group hover:text-primary transition-all duration-300 transform   ease-in-out hover:-translate-y-1 bottom-5 lg:bottom-[40px] right-[10px] lg:right-[50px]  z-50 w-[20px] h-[20px] lg:h-[40px] lg:w-[40px] " />
                         </Link>
                       </div>

@@ -126,9 +126,9 @@ const MobileNav = () => {
                 className="h-[35px] w-[200px]"
               />
             </Link>
-          </div>  
-          <p className="mb-0 text-center text-[10px] xl:text-[14px] text-gray xl:mt-1">Protection Without Compromise</p>
-        
+          </div>
+          <p className="mb-0 text-center text-[10px] xl:text-[14px] text-gray xl:mt-1 italic">Your gateway to safety </p>
+
           </div>
           {/* Hamburger Button */}
           <div
@@ -180,7 +180,7 @@ const MobileNav = () => {
               />
             </Link>
           </div>
-          <p className="mb-0 text-center text-[10px] xl:text-[14px] text-gray xl:mt-1">Protection Without Compromise</p>
+          <p className="mb-0 text-center text-[10px] xl:text-[14px] text-gray xl:mt-1 italic">Your gateway to safety </p>
 
          </div>
           {/* Navigation Items */}
