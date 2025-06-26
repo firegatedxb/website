@@ -16,10 +16,11 @@ const Label = React.forwardRef<
     VariantProps<typeof labelVariants>
     & { main?: boolean }
     & { oneInput?: boolean }
->(({ className, main, oneInput, ...props }, ref) => (
+    & { generalSection?: boolean }
+>(({ className, main, oneInput, generalSection, ...props }, ref) => (
   <LabelPrimitive.Root
     ref={ref}
-    className={cn(labelVariants(), `${main ? "pl-5 border-b py-2" : "text-[16px] font-light"} ${oneInput ? "font-semibold text-md" : ""}, ${className}`)}
+    className={cn(labelVariants(), `${main ? "pl-5 border-b py-2" : "text-[16px] font-light"} ${oneInput ? "font-semibold text-md" : ""},${generalSection ? "font-semibold text-[20px] border-b-0" : ""}, ${className}`)}
     style={{paddingLeft: `${main ? `calc(var(--spacing) * 5)` : "0"}`}}
     {...props}
   />
