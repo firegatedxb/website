@@ -12,6 +12,7 @@ import { Textarea } from '@/components/ui/textarea'
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false })
 import 'react-quill-new/dist/quill.snow.css';
 import dynamic from 'next/dynamic'
+import AdminItemContainer from '@/app/components/AdminItemContainer/AdminItemContainer';
 
 interface SystemFormProps {
 
@@ -150,11 +151,11 @@ const AboutPage = () => {
 
            <div> 
                 <div className='flex flex-col gap-2'> 
-                     <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col  '>
-                                            <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Banner Section</Label>
-                                  
+                     <AdminItemContainer>
+                                            <Label main>Banner Section</Label>
+                      <div className='p-5'>            
                     <div>
-                        <Label className="pl-3 font-bold">Banner</Label>
+                        <Label className="">Banner</Label>
                         <div className='  flex flex-col gap-5 mt-1'>
                         <Controller
                             name="banner"
@@ -173,37 +174,38 @@ const AboutPage = () => {
                     </div>
                     </div>
                     <div>
-                        <Label className='pl-3 font-bold mt-2'>Alt Tag</Label>
+                        <Label className=''>Alt Tag</Label>
                         <Input type='text' placeholder='Alt Tag' {...register("bannerAlt")} />
                     </div>
                     <div>
-                        <Label className='pl-3 font-bold mt-2'>Page Title</Label>
+                        <Label className=''>Page Title</Label>
                         <Input type='text' placeholder='Page Title' {...register("pageTitle")} />
                     </div>
                     </div>
+                    </AdminItemContainer>
                 </div>
            </div>
  
                <div> 
-                <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-2'>
-                            <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>First Section</Label>
+                <AdminItemContainer>
+                            <Label main>First Section</Label>
                                    
-                    <div className='flex flex-col gap-2'>
+                    <div className='flex flex-col gap-2 p-5'>
                         <div className='flex flex-col gap-1'>
-                            <Label className='pl-3 font-bold'>Title</Label>
+                            <Label className=''>Title</Label>
                             <Input type='text' placeholder='Title' {...register("firstSection.title", {
                                 required: "Title is required"
                             })} />
                             {errors.firstSection?.title && <p className='text-red-500'>{errors.firstSection?.title.message}</p>}
                         </div>
                         <div>
-                            <Label className="text-sm font-bold">Description</Label>
+                            <Label className="">Description</Label>
                             <Controller name="firstSection.description" control={control} rules={{ required: "Description is required" }} render={({ field }) => {
                                 return <ReactQuill theme="snow" value={field.value} onChange={field.onChange} />
                             }} />
                         </div>
                         <div>
-                        <Label className='pl-3 font-bold'>Image</Label>
+                        <Label className=''>Image</Label>
                         <Controller
                             name="firstSection.image"
                             control={control}
@@ -220,28 +222,28 @@ const AboutPage = () => {
                         )}
                         </div>
                         <div>
-                        <Label className='pl-3 font-bold'>Alt Tag</Label>
+                        <Label className=''>Alt Tag</Label>
                         <Input type='text' placeholder='Alt Tag' {...register("firstSection.imageAlt")} />
                         </div>
                     </div>
 
-                </div>
+                </AdminItemContainer>
                </div>
 
                <div> 
-                <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-2'>
-                            <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Second Section</Label>
+                <AdminItemContainer>
+                            <Label main>Second Section</Label>
                                    
-                    <div className='flex flex-col gap-2'>
+                    <div className='flex flex-col gap-2 p-5'>
                         <div className='flex flex-col gap-1'>
-                            <Label className='pl-3 font-bold'>Title</Label>
+                            <Label className=''>Title</Label>
                             <Input type='text' placeholder='Title' {...register("secondSection.title", {
                                 required: "Title is required"
                             })} />
                             {errors.secondSection?.title && <p className='text-red-500'>{errors.secondSection?.title.message}</p>}
                         </div>
                         <div className='flex flex-col gap-1 mb-3'>
-                            <Label className='pl-3 font-bold'>Description</Label>
+                            <Label className=''>Description</Label>
                             <Controller name="secondSection.description" control={control} render={({ field }) => {
                                 return <ReactQuill theme="snow" value={field.value} onChange={field.onChange} />
                             }} />
@@ -251,9 +253,9 @@ const AboutPage = () => {
 
                             <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-2'>
                                 <div>
-                                <p className='  font-bold text-md border-b border-[#ccc] mb-2 pb-2'>Mission</p>
+                                <p className='text-sm border-b border-[#ccc] mb-2 pb-2'>Mission</p>
                                 <div>
-                                <Label className='pl-3 font-bold'>Logo</Label>
+                                <Label className=''>Logo</Label>
                                 <Controller
                                     name="secondSection.mission.logo"
                                     control={control}
@@ -262,6 +264,7 @@ const AboutPage = () => {
                                         <ImageUploader 
                                             value={field.value}
                                             onChange={field.onChange}
+                                            isLogo
                                         /> 
                                     )}
                                 />
@@ -271,11 +274,11 @@ const AboutPage = () => {
                                 </div>
                                 </div>
                                 <div>
-                                <Label className='pl-3 font-bold'>Alt Tag</Label>
+                                <Label className=''>Alt Tag</Label>
                                 <Input type='text' placeholder='Alt Tag' {...register("secondSection.mission.logoAlt")} />
                                 </div>
                                 <div>
-                                <Label className='pl-3 font-bold'>Description</Label>
+                                <Label className=''>Description</Label>
                                 <Textarea placeholder='Description' {...register("secondSection.mission.description")} />
                                 </div>
                             </div>
@@ -283,9 +286,9 @@ const AboutPage = () => {
 
                             <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-2'>
                                 <div>
-                                <p className='  font-bold text-md border-b border-[#ccc] mb-2 pb-2'>Vision</p>
+                                <p className='text-sm border-b border-[#ccc] mb-2 pb-2'>Vision</p>
                                 <div>
-                                <Label className='pl-3 font-bold'>Logo</Label>
+                                <Label className=''>Logo</Label>
                                 <Controller
                                     name="secondSection.vision.logo"
                                     control={control}
@@ -294,6 +297,7 @@ const AboutPage = () => {
                                         <ImageUploader
                                             value={field.value}
                                             onChange={field.onChange}
+                                            isLogo
                                         />
                                     )}
                                 />
@@ -303,11 +307,11 @@ const AboutPage = () => {
                                 </div>
                                 </div>
                                 <div>
-                                <Label className='pl-3 font-bold'>Alt Tag</Label>
+                                <Label className=''>Alt Tag</Label>
                                 <Input type='text' placeholder='Alt Tag' {...register("secondSection.vision.logoAlt")} />
                                 </div>
                                 <div>
-                                <Label className='pl-3 font-bold'>Description</Label>
+                                <Label className=''>Description</Label>
                                 <Textarea placeholder='Description' {...register("secondSection.vision.description")} />
                                 </div>
                             </div>
@@ -315,9 +319,9 @@ const AboutPage = () => {
 
                             <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-2'>
                                 
-                            <div><p className='  font-bold text-md border-b border-[#ccc] mb-2 pb-2'>Values</p>
+                            <div><p className='text-sm border-b border-[#ccc] mb-2 pb-2'>Values</p>
                                 <div>
-                                <Label className='pl-3 font-bold'>Logo</Label>
+                                <Label className=''>Logo</Label>
                                 <Controller
                                     name="secondSection.values.logo"
                                     control={control}
@@ -326,6 +330,7 @@ const AboutPage = () => {
                                         <ImageUploader
                                             value={field.value}
                                             onChange={field.onChange}
+                                            isLogo
                                         />
                                     )}
                                 />
@@ -350,36 +355,36 @@ const AboutPage = () => {
 
                     </div>
 
-                </div>
+                </AdminItemContainer>
                 </div>
 
                 <div> 
-                <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-2'>
-                            <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Third Section</Label>
+                <AdminItemContainer>
+                            <Label main>Third Section</Label>
                                     
-                    <div className='flex flex-col gap-2'>
+                    <div className='flex flex-col gap-2 p-5'>
                         <div className='flex flex-col gap-1'>
-                            <Label className='pl-3 font-bold'>Title</Label>
+                            <Label className=''>Title</Label>
                             <Input type='text' placeholder='Title' {...register("thirdSection.title", {
                                 required: "Title is required"
                             })} />
                             {errors.thirdSection?.title && <p className='text-red-500'>{errors.thirdSection?.title.message}</p>}
                         </div>
                         <div className='flex flex-col gap-1'>
-                            <Label className='pl-3 font-bold'>Description</Label>
+                            <Label className=''>Description</Label>
                             <Textarea placeholder='Description' {...register("thirdSection.description")} />
                         </div>
                     </div>
 
 
 
-                    <div className='grid grid-cols-2 gap-5'>
+                    <div className='grid grid-cols-2 gap-5 p-5'>
 
                             <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-2'>
                                 <div>
-                                <Label className='  font-bold text-md border-b border-[#ccc] mb-2 pb-2'>Chairman</Label>
+                                <Label className='  font-bold text-md border-[#ccc] mb-2 pb-2'>Chairman</Label>
                                 <div>
-                                <Label className='pl-3 font-bold'>Image</Label>
+                                <Label className=''>Image</Label>
                                 <Controller
                                     name="thirdSection.chairman.image"
                                     control={control}
@@ -397,15 +402,15 @@ const AboutPage = () => {
                                 </div>
                                 </div>
                                 <div>
-                                <Label className='pl-3 font-bold'>Alt Tag</Label>
+                                <Label className=''>Alt Tag</Label>
                                 <Input type='text' placeholder='Alt Tag' {...register("thirdSection.chairman.imageAlt")} />
                                 </div>
                                 <div>
-                                <Label className='pl-3 font-bold'>Name</Label>
+                                <Label className=''>Name</Label>
                                 <Input type='text' placeholder='Name' {...register("thirdSection.chairman.name")} />
                                 </div>
                                 <div>
-                                <Label className='pl-3 font-bold'>Description</Label>
+                                <Label className=''>Description</Label>
                                 <Textarea placeholder='Description' {...register("thirdSection.chairman.description")} />
                                 </div>
                             </div>
@@ -413,9 +418,9 @@ const AboutPage = () => {
 
                             <div className='border border-[#ddd] p-4 rounded-md flex flex-col gap-2'>
                                <div>
-                               <Label className='  font-bold text-md border-b border-[#ccc] mb-2 pb-2'>CEO</Label>
+                               <Label className='  font-bold text-md border-[#ccc] mb-2 pb-2'>CEO</Label>
                                 <div>
-                                <Label className='pl-3 font-bold'>Image</Label>
+                                <Label className=''>Image</Label>
                                 <Controller
                                     name="thirdSection.ceo.image"
                                     control={control}
@@ -433,15 +438,15 @@ const AboutPage = () => {
                                 </div>
                                </div>
                                 <div>
-                                <Label className='pl-3 font-bold'>Alt Tag</Label>
+                                <Label className=''>Alt Tag</Label>
                                 <Input type='text' placeholder='Alt Tag' {...register("thirdSection.ceo.imageAlt")} />
                                 </div>
                                 <div>
-                                <Label className='pl-3 font-bold'>Name</Label>
+                                <Label className=''>Name</Label>
                                 <Input type='text' placeholder='Name' {...register("thirdSection.ceo.name")} />
                                 </div>
                                 <div>
-                                <Label className='pl-3 font-bold'>Description</Label>
+                                <Label className=''>Description</Label>
                                 <Textarea placeholder='Description' {...register("thirdSection.ceo.description")} />
                                 </div>
                             </div>
@@ -451,24 +456,24 @@ const AboutPage = () => {
 
                         </div>
 
-                </div>
+                </AdminItemContainer>
                 </div>
 
-                <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-2'>
+                <AdminItemContainer>
                
-                    <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Certifications</Label>
+                    <Label main>Certifications</Label>
                          
-                <div className='  flex flex-col gap-5'>
+                <div className='grid grid-cols-2 gap-5 p-5'>
 
 
                     {fields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-4 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border-r border-[#ddd] pb-5 even:border-r-0'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => remove(index)} className='cursor-pointer text-red-600' />
                             </div>
                             <div className='flex flex-col gap-2'>
                                 <div className='flex flex-col gap-2'>
-                                    <Label className='pl-3 font-bold'>Image</Label>
+                                    <Label className=''>Image</Label>
                                     <Controller
                                         name={`certifications.${index}.image`}
                                         control={control}
@@ -483,11 +488,11 @@ const AboutPage = () => {
                                     {errors.certifications?.[index]?.image && <p className='text-red-500'>{errors.certifications?.[index]?.image.message}</p>}
                                 </div>
                                 <div className='flex flex-col gap-2'>
-                                    <Label className='pl-3 font-bold'>Alt Tag</Label>
+                                    <Label className=''>Alt Tag</Label>
                                     <Input type='text' placeholder='Alt Tag' {...register(`certifications.${index}.imageAlt`)} />
                                 </div>
                                 <div className='flex flex-col gap-2'>
-                                    <Label className='pl-3 font-bold'>Title</Label>
+                                    <Label className=''>Title</Label>
                                     <Input type='text' placeholder='Title' {...register(`certifications.${index}.title`)} />
                                 </div>
                             </div>
@@ -495,12 +500,13 @@ const AboutPage = () => {
                         </div>
                     ))}
 
-                    <div>
-                        <Button type='button' className="text-white w-full cursor-pointer" onClick={() => append({ image: "", imageAlt: "", title: "" })}>Add Item</Button>
-                    </div>
+                    
 
                 </div> 
-                </div>
+                <div className='mb-5 mr-5 flex justify-end'>
+                        <Button type='button' className="text-white cursor-pointer" addItem onClick={() => append({ image: "", imageAlt: "", title: "" })}>Add Item</Button>
+                    </div>
+                </AdminItemContainer>
 
 
 
@@ -515,7 +521,7 @@ const AboutPage = () => {
                 </div>
 
                 <div className='flex justify-center'>
-                    <Button type='submit' className='text-white'>Submit</Button>
+                    <Button type='submit' className='text-white w-full cursor-pointer'>Submit</Button>
                 </div> 
 
             </form>

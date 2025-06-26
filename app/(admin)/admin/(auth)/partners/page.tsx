@@ -20,6 +20,7 @@ const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false })
 import 'react-quill-new/dist/quill.snow.css';
 import dynamic from 'next/dynamic'
 import { Textarea } from "@/components/ui/textarea";
+import AdminItemContainer from "@/app/components/AdminItemContainer/AdminItemContainer";
 
 interface Client {
     _id: string;
@@ -302,12 +303,12 @@ export default function Team() {
     return (
         <div className="h-screen grid grid-cols-1 gap-5 adminstyle">
 
-            <div className="h-fit w-full p-4 border border-[#ddd] rounded-md mt-5">
-                                        <div className="flex justify-between border-b border-[#ddd] pb-2">
+            <AdminItemContainer>
+                                        <div className="flex justify-between border-b border-[#ddd] pb-2 p-5">
                                             <Label className="text-md font-bold text-secondary">Meta Section</Label>
                                             <Button onClick={submitMetaSection} className="text-white cursor-pointer">Save</Button>
                                         </div>
-                                        <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
+                                        <div className="mt-2 grid grid-cols-1 gap-2  h-fit p-5">
                                             <div>
                                                 <Label>Meta title</Label>
                                                 <Input type="text" value={metaTitle} onChange={(e) => setMetaTitle(e.target.value)} />
@@ -317,44 +318,46 @@ export default function Team() {
                                                 <Input type="text" value={metaDescription} onChange={(e) => setMetaDescription(e.target.value)} />
                                             </div>
                                         </div>
-                                    </div>
+                                    </AdminItemContainer>
 
-            <form className="h-full w-full p-4 border border-[#ddd] rounded-md" onSubmit={handleSubmit(onSubmit)}>
-                <div className="flex justify-between border-b border-[#ddd] pb-2">
+<AdminItemContainer>
+            <form className="h-full w-full border-[#ddd] rounded-md" onSubmit={handleSubmit(onSubmit)}>
+                <div className="flex justify-between border-b border-[#ddd] pb-2 p-5">
                     <Label className="text-md font-bold text-secondary">Intro Section</Label>
                     <Button type="submit" className="text-white cursor-pointer">Save</Button>
                 </div>
-                <div className="mt-2 flex flex-col gap-2 h-fit">
+                <div className="mt-2 flex flex-col gap-2 h-fit p-5">
                 <div>
-                        <Label className="text-sm font-bold">Banner</Label>
+                        <Label className="">Banner</Label>
                         <ImageUploader  value={watch("banner")} onChange={(url) => setValue("banner", url)} />
                     </div>
                     <div>
-                        <Label className="text-sm font-bold">Banner Alt</Label>
+                        <Label className="">Banner Alt</Label>
                         <Input type="text" placeholder="Banner Alt" {...register("bannerAlt")} />
                     </div>
                     <div>
-                        <Label className="text-sm font-bold">Page Title</Label>
+                        <Label className="">Page Title</Label>
                         <Input type="text" placeholder="Page Title" {...register("pageTitle")} />
                     </div>
                     <div>
-                        <Label className="text-sm font-bold">Title</Label>
+                        <Label className="">Title</Label>
                         <Input type="text" placeholder="Title" {...register("title")} />
                     </div>
                     <div>
-                        <Label className="text-sm font-bold">Description</Label>
+                        <Label className="">Description</Label>
                         <Controller name="description" control={control} rules={{ required: "Description is required" }} render={({ field }) => {
                             return <ReactQuill theme="snow" value={field.value} onChange={field.onChange} />
                         }} />
                     </div>
                 </div>
             </form>
+            </AdminItemContainer>
 
 
 
 
-            <div className="h-full w-full p-4 border border-[#ddd] rounded-md adminstyle">
-                <div className="flex justify-between border-b border-[#ddd] pb-4 mb-4">
+            <AdminItemContainer>
+                <div className="flex justify-between border-b border-[#ddd] pb-4 mb-4 p-5">
                     <Label className="text-md font-bold text-secondary">Partners</Label>
                     <Dialog>
                         <DialogTrigger className="bg-primary h-9 text-white cursor-pointer px-2 text-sm py-1 rounded-md" onClick={() => {setName(""); setLogo(""); setLogoAlt(""); setImage(""); setImageAlt(""); setWebsite(""); }}>Add Partner</DialogTrigger>
@@ -367,12 +370,12 @@ export default function Team() {
                                         <Input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
                                     </div>
                                     <div>
-                                        <Label className="text-sm font-bold">Description</Label>
+                                        <Label>Description</Label>
                                         <ReactQuill theme="snow" value={description} onChange={(value) => setDescription(value)} />
                                     </div>
                                     <div>
                                         <Label>Logo</Label>
-                                        <ImageUploader onChange={(url) => setLogo(url)} value={logo} />
+                                        <ImageUploader onChange={(url) => setLogo(url)} value={logo} isLogo/>
                                     </div>
                                     <div>
                                         <Label>Logo Alt Tag</Label>
@@ -397,7 +400,7 @@ export default function Team() {
 
                     </Dialog>
                 </div>
-                <div className="mt-2 grid grid-cols-1 gap-4  h-fit">
+                <div className="mt-2 grid grid-cols-1 gap-4  h-fit p-5">
                     {partnerList.map((partner, index) => (
                         <div key={index} className="relative flex  justify-between border border-[#ddd] p-2 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300">
                             <div className="flex gap-4 items-center">
@@ -426,7 +429,7 @@ export default function Team() {
                                                 </div>
                                                 <div>
                                                     <Label>Logo</Label>
-                                                    <ImageUploader onChange={(url) => setLogo(url)} value={logo} />
+                                                    <ImageUploader onChange={(url) => setLogo(url)} value={logo} isLogo/>
                                                 </div>
                                                 <div>
                                                     <Label>Logo Alt Tag</Label>
@@ -457,15 +460,16 @@ export default function Team() {
                         </div>
                     ))}
                 </div>
-            </div>
+            </AdminItemContainer>
 
 
 
-            <div className="h-full w-full p-4 border border-[#ddd] rounded-md">
-                <div className="flex justify-between border-b border-[#ddd] pb-2 mb-2">
+            <AdminItemContainer>
+                <div className="flex justify-between border-b border-[#ddd] pb-2 mb-2 p-5">
                     <Label className="text-md font-bold text-secondary">Accreditation</Label>
                     <Button className="text-white cursor-pointer" onClick={handleSaveAccreditInfo}>Save</Button>
                 </div>
+                <div className="p-5">
                 <div>
                     <Label className="text-sm font-bold">Title</Label>
                     <Input type="text" placeholder="Title" value={accreditTitle} onChange={(e) => setAccreditTitle(e.target.value)} />
@@ -474,8 +478,9 @@ export default function Team() {
                     <Label className="text-sm font-bold">Description</Label>
                     <Textarea placeholder="Description" value={accreditDescription} onChange={(e) => setAccreditDescription(e.target.value)} />
                 </div>
+                </div>
 
-                    <div className="flex justify-end mt-5 ">
+                    <div className="flex justify-end mt-5 p-5">
                 <Dialog>
                         <DialogTrigger className="bg-primary  cursor-pointer text-white px-2 text-sm py-1 rounded-md" onClick={() => {setAccreditImage(""); setAccreditImageAlt(""); }}>Add Accreditation</DialogTrigger>
                         <DialogContent className="">
@@ -497,7 +502,7 @@ export default function Team() {
 
                     </Dialog>
                     </div>
-                <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
+                <div className="mt-2 grid grid-cols-1 gap-2  h-fit p-5">
                     {accreditList.map((accredit, index) => (
                         <div key={index} className="relative flex  justify-between border border-[#ddd]p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300">
                             <div className="flex gap-4 items-center">
@@ -537,7 +542,7 @@ export default function Team() {
                         </div>
                     ))}
                 </div>
-            </div>
+            </AdminItemContainer>
 
 
         </div>
