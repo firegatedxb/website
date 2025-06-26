@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 import { ImageUploader } from '@/components/ui/image-uploader'
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Textarea } from '@/components/ui/textarea'
+import AdminItemContainer from '@/app/components/AdminItemContainer/AdminItemContainer';
 
 interface SystemFormProps {
 
@@ -126,11 +127,11 @@ const CommitmentPage = () => {
 
            <div>
             
-            <div className='border border-[#ddd] p-4 pt-0 rounded-md flex flex-col  '>
-            <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Banner Section</Label>
-                <div className='flex flex-col gap-2'>
+            <AdminItemContainer>
+            <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-black' main>Banner Section</Label>
+                <div className='flex flex-col gap-2 p-5'>
                     <div>
-                        <Label className="pl-3 font-bold">Banner</Label>
+                        <Label className="">Banner</Label>
                         <Controller
                             name="banner"
                             control={control}
@@ -147,35 +148,35 @@ const CommitmentPage = () => {
                         )}
                     </div>
                     <div>
-                        <Label className='pl-3 font-bold'>Alt Tag</Label>
+                        <Label className=''>Alt Tag</Label>
                         <Input type='text' placeholder='Alt Tag' {...register("bannerAlt")} />
                     </div>
                     <div>
-                        <Label className='pl-3 font-bold'>Page Title</Label>
+                        <Label className=''>Page Title</Label>
                         <Input type='text' placeholder='Page Title' {...register("pageTitle")} />
                     </div>
                 </div>
                 
-            </div>
+            </AdminItemContainer>
             </div>
 
-                <div className="border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-2">
-                    <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>First Section</Label>
-                    <div className='   flex flex-col gap-2'>
+                <AdminItemContainer>
+                    <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-black' main>First Section</Label>
+                    <div className='   flex flex-col gap-2 p-5'>
                         <div className='flex flex-col gap-2'>
                             <div className='flex flex-col gap-1'>
-                                <Label className='pl-3 font-bold'>Title</Label>
+                                <Label className=''>Title</Label>
                                 <Input type='text' placeholder='Title' {...register("firstSection.title", {
                                     required: "Title is required"
                                 })} />
                                 {errors.firstSection?.title && <p className='text-red-500'>{errors.firstSection?.title.message}</p>}
                             </div>
                             <div className='flex flex-col gap-1'>
-                                <Label className='pl-3 font-bold'>Description</Label>
+                                <Label className=''>Description</Label>
                                 <Textarea placeholder='Description' {...register("firstSection.description")} />
                             </div>
                             <div className='flex flex-col gap-1'>
-                                <Label className='pl-3 font-bold'>Image</Label>
+                                <Label className=''>Image</Label>
                                 <Controller
                                     name="firstSection.image"
                                     control={control}
@@ -192,24 +193,24 @@ const CommitmentPage = () => {
                             </div>
                             <div className=' flex flex-col gap-2'>
                             <div className='flex flex-col gap-1'>
-                                <Label className='pl-3 font-bold'>Image Alt</Label>
+                                <Label className=''>Image Alt</Label>
                                 <Input type='text' placeholder='Image Alt' {...register("firstSection.imageAlt")} />
                             </div>
                         </div>
 
                                 <div>
-                        <Label className='pl-3 font-bold text-sm'>Items</Label>
-                    <div className='border border-[#ddd] p-4  rounded-md flex flex-col gap-5'>
+                        <Label className=''>Items</Label>
+                    <div className='border border-[#ddd] p-2  rounded-md flex flex-col gap-5'>
 
 
                         {fields.map((field, index) => (
-                            <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-4 rounded-md'>
+                            <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b border-[#ddd] pb-5 last:border-b-0'>
                                 <div className='absolute top-2 right-2'>
                                     <RiDeleteBinLine onClick={() => remove(index)} className='cursor-pointer text-red-600' />
                                 </div>
                                 <div className='flex flex-col gap-2'>
                                     <div className='flex flex-col gap-2'>
-                                        <Label className='pl-3 font-bold'>Logo</Label>
+                                        <Label className=''>Logo</Label>
                                         <Controller
                                             name={`firstSectionItems.${index}.logo`}
                                             control={control}
@@ -218,19 +219,20 @@ const CommitmentPage = () => {
                                                 <ImageUploader
                                                     value={field.value}
                                                     onChange={field.onChange}
+                                                    isLogo
                                                 />
                                             )}
                                         />
                                         {errors.firstSectionItems?.[index]?.logo && <p className='text-red-500'>{errors.firstSectionItems?.[index]?.logo.message}</p>}
                                     </div>
                                     <div className='flex flex-col gap-2'>
-                                        <Label className='pl-3 font-bold'>Alt Tag</Label>
+                                        <Label className=''>Alt Tag</Label>
                                         <Input type='text' placeholder='Alt Tag' {...register(`firstSectionItems.${index}.logoAlt`)} />
                                     </div>
                                 </div>
                                 <div className='flex flex-col gap-2'>
                                     <div className='flex flex-col gap-2'>
-                                        <Label className='pl-3 font-bold'>Title</Label>
+                                        <Label className=''>Title</Label>
                                         <Input type='text' placeholder='Title' {...register(`firstSectionItems.${index}.title`, {
                                             required: "Title is required"
                                         })} />
@@ -241,48 +243,49 @@ const CommitmentPage = () => {
                             </div>
                         ))}
 
-                        <div>
-                            <Button type='button' className="w-full text-white cursor-pointer" onClick={() => append({ title: "", logo: "", logoAlt: "" })}>Add Item</Button>
+                        
+
+                    </div>
+                    <div className='flex justify-end mt-2'>
+                            <Button type='button' className="text-white cursor-pointer" addItem onClick={() => append({ title: "", logo: "", logoAlt: "" })}>Add Item</Button>
                         </div>
-
-                    </div>
                     </div>
 
 
                     </div>
-                </div>
+                </AdminItemContainer>
 
 
-                <div className="border border-[#ddd] p-4 pt-0 rounded-md flex flex-col gap-2"> 
-                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Second Section</Label>
-                <div className='  flex flex-col gap-2'>
+                <AdminItemContainer>
+                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-black' main>Second Section</Label>
+                <div className='  flex flex-col gap-2 p-5'>
                     <div className='flex flex-col gap-2'>
                         <div className='flex flex-col gap-1'>
-                            <Label className='pl-3 font-bold'>Title</Label>
+                            <Label className=''>Title</Label>
                             <Input type='text' placeholder='Title' {...register("secondSection.title", {
                                 required: "Title is required"
                             })} />
                             {errors.secondSection?.title && <p className='text-red-500'>{errors.secondSection?.title.message}</p>}
                         </div>
                         <div className='flex flex-col gap-1'>
-                            <Label className='pl-3 font-bold'>Description</Label>
+                            <Label className=''>Description</Label>
                             <Textarea placeholder='Description' {...register("secondSection.description")} />
                         </div>
                     </div>
 
                             <div>
-                    <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border border-[#ddd] p-4  rounded-md flex flex-col gap-5'>
+                    <Label className=''>Items</Label>
+                <div className='border border-[#ddd] p-2  rounded-md flex flex-col gap-5'>
 
 
                     {secondSectionFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-4 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b border-[#ddd] pb-5 last:border-b-0'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => secondSectionRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
                             <div className='flex flex-col gap-2'>
                                 <div className='flex flex-col gap-2'>
-                                    <Label className='pl-3 font-bold'>Logo</Label>
+                                    <Label className=''>Logo</Label>
                                     <Controller
                                         name={`secondSectionItems.${index}.logo`}
                                         control={control}
@@ -291,26 +294,27 @@ const CommitmentPage = () => {
                                             <ImageUploader
                                                 value={field.value}
                                                 onChange={field.onChange}
+                                                isLogo
                                             />
                                         )}
                                     />
                                     {errors.secondSectionItems?.[index]?.logo && <p className='text-red-500'>{errors.secondSectionItems?.[index]?.logo.message}</p>}
                                 </div>
                                 <div className='flex flex-col gap-2'>
-                                    <Label className='pl-3 font-bold'>Alt Tag</Label>
+                                    <Label className=''>Alt Tag</Label>
                                     <Input type='text' placeholder='Alt Tag' {...register(`secondSectionItems.${index}.logoAlt`)} />
                                 </div>
                             </div>
                             <div className='flex flex-col gap-2'>
                                 <div className='flex flex-col gap-2'>
-                                    <Label className='pl-3 font-bold'>Title</Label>
+                                    <Label className=''>Title</Label>
                                     <Input type='text' placeholder='Title' {...register(`secondSectionItems.${index}.title`, {
                                         required: "Title is required"
                                     })} />
                                     {errors.secondSectionItems?.[index]?.title && <p className='text-red-500'>{errors.secondSectionItems?.[index]?.title.message}</p>}
                                 </div>
                                 <div className='flex flex-col gap-2'>
-                                    <Label className='pl-3 font-bold'>Description</Label>
+                                    <Label className=''>Description</Label>
                                     <Textarea placeholder='Description' {...register(`secondSectionItems.${index}.description`)} />
                                 </div>
                             </div>
@@ -318,48 +322,49 @@ const CommitmentPage = () => {
                         </div>
                     ))}
 
-                    <div>
-                        <Button type='button' className="w-full text-white cursor-pointer" onClick={() => secondSectionAppend({ title: "", logo: "", logoAlt: "", description: "" })}>Add Item</Button>
+                    
+
+                </div>
+                <div className='flex justify-end mt-2'>
+                        <Button type='button' className="text-white cursor-pointer" addItem onClick={() => secondSectionAppend({ title: "", logo: "", logoAlt: "", description: "" })}>Add Item</Button>
                     </div>
-
-                </div>
                 </div>
 
 
                 </div>
-                </div>
+                </AdminItemContainer>
 
 
-                <div className="border border-[#ddd] p-4 pt-1 rounded-md flex flex-col gap-2"> 
-                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-secondary'>Third Section</Label>
-                <div className=' flex flex-col gap-2'>
+                <AdminItemContainer>
+                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-black' main>Third Section</Label>
+                <div className=' flex flex-col gap-2 p-5'>
                     <div className='flex flex-col gap-2'>
                         <div className='flex flex-col gap-1'>
-                            <Label className='pl-3 font-bold'>Title</Label>
+                            <Label className=''>Title</Label>
                             <Input type='text' placeholder='Title' {...register("thirdSection.title", {
                                 required: "Title is required"
                             })} />
                             {errors.thirdSection?.title && <p className='text-red-500'>{errors.thirdSection?.title.message}</p>}
                         </div>
                         <div className='flex flex-col gap-1'>
-                            <Label className='pl-3 font-bold'>Description</Label>
+                            <Label className=''>Description</Label>
                             <Textarea placeholder='Description' {...register("thirdSection.description")} />
                         </div>
                     </div>
 
                             <div>
-                    <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border border-[#ddd] p-4  rounded-md flex flex-col gap-5'>
+                    <Label className=''>Items</Label>
+                <div className='border border-[#ddd] p-2  rounded-md flex flex-col gap-5'>
 
 
                     {thirdSectionFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border border-[#ddd] p-4 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border-b border-[#ddd] pb-5 last:border-b-0'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => thirdSectionRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
                             <div className='flex flex-col gap-2'>
                                 <div className='flex flex-col gap-2'>
-                                    <Label className='pl-3 font-bold'>Image</Label>
+                                    <Label className=''>Image</Label>
                                     <Controller
                                         name={`thirdSectionItems.${index}.image`}
                                         control={control}
@@ -398,31 +403,32 @@ const CommitmentPage = () => {
                         </div>
                     ))}
 
-                    <div>
-                        <Button type='button' className="w-full text-white cursor-pointer" onClick={() => thirdSectionAppend({ title: "", image: "", imageAlt: "", description: "" })}>Add Item</Button>
+                    
+
+                </div>
+                <div className='flex justify-end mt-2'>
+                        <Button type='button' className="text-white cursor-pointer" addItem onClick={() => thirdSectionAppend({ title: "", image: "", imageAlt: "", description: "" })}>Add Item</Button>
                     </div>
-
-                </div>
                 </div>
 
 
                 </div>
-                </div>
+                </AdminItemContainer>
 
 
 
 
                 <div className='flex flex-col gap-2'>
-                    <Label className='pl-3 font-bold'>Meta Title</Label>
+                    <Label className=''>Meta Title</Label>
                     <Input type='text' placeholder='Meta Title' {...register("metaTitle")} />
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <Label className='pl-3 font-bold'>Meta Description</Label>
+                    <Label className=''>Meta Description</Label>
                     <Input type='text' placeholder='Meta Description' {...register("metaDescription")} />
                 </div>
 
                 <div className='flex justify-center'>
-                    <Button type='submit' className='text-white cursor-pointer'>Submit</Button>
+                    <Button type='submit' className='text-white cursor-pointer w-full'>Submit</Button>
                 </div>
 
             </form>

@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { useRouter } from "next/navigation";
+import AdminItemContainer from "@/app/components/AdminItemContainer/AdminItemContainer";
 
 
 export default function Projects() {
@@ -332,12 +333,13 @@ export default function Projects() {
   return (
     <div className="flex flex-col gap-5 adminstyle">
 
-      <div className="h-fit w-full p-4 pt-2 border border-[#ddd] rounded-md mt-5">
-        <div className="flex justify-between border-b border-[#ddd] pb-2">
-          <Label className="text-md font-bold text-secondary">Meta Section</Label>
+      <AdminItemContainer>
+        <div className="h-fit w-full border-[#ddd] rounded-md mt-5">
+        <div className="flex justify-between border-b border-[#ddd] pb-2 px-5">
+          <Label className="text-md font-bold text-black">Meta Section</Label>
           <Button onClick={handleSaveMeta} className="text-white cursor-pointer ">Save</Button>
         </div>
-        <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
+        <div className="mt-2 grid grid-cols-1 gap-2  h-fit p-5">
           <div>
             <Label>Meta title</Label>
             <Input type="text" value={metaTitle} onChange={(e) => setMetaTitle(e.target.value)} />
@@ -348,13 +350,14 @@ export default function Projects() {
           </div>
         </div>
       </div>
+      </AdminItemContainer>
 
       <div className="h-screen grid grid-cols-2 gap-5">
 
         <div className="flex flex-col gap-2 h-screen">
-          <div className="h-1/2 w-full p-4 pt-2 border border-[#ddd] rounded-md overflow-y-hidden mb-3">
-            <div className="flex justify-between justify-items-center align-items-center   border-b border-[#ddd] pb-3 mb-3">
-              <Label className="text-md font-bold text-secondary">Sector</Label>
+          <AdminItemContainer>
+            <div className="flex justify-between justify-items-center align-items-center   border-b border-[#ddd] pb-3 mb-3 p-5">
+              <Label className="text-md font-bold text-black">Sector</Label>
               <Dialog>
                 <DialogTrigger className="bg-primary text-white px-2  cursor-pointer rounded-md text-sm h-9" onClick={() => setSector("")}>Add Sector</DialogTrigger>
                 <DialogContent>
@@ -369,7 +372,7 @@ export default function Projects() {
 
               </Dialog>
             </div>
-            <div className="mt-2 flex flex-col gap-3 overflow-y-scroll h-[140px]">
+            <div className="flex flex-col gap-3 overflow-y-scroll h-[calc(50vh-230px)] px-5 py-2">
               {sectorList.map((item) => (
                 <div className="flex justify-between border border-[#ddd] p-2 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
                  <p className="mb-0 text-sm stps">
@@ -412,12 +415,12 @@ export default function Projects() {
               ))}
 
             </div>
-          </div>
+          </AdminItemContainer>
 
 
-          <div className="h-1/2 w-full p-2 border  border-[#ddd] rounded-md overflow-y-hidden mb-3">
-            <div className="flex justify-between align-items-center border-b border-[#ddd] pb-3 mb-3">
-              <Label className="text-md font-bold text-secondary">Category</Label>
+          <AdminItemContainer>
+            <div className="flex justify-between align-items-center border-b border-[#ddd] pb-3 mb-3 p-5">
+              <Label className="text-md font-bold text-black">Category</Label>
               <Dialog>
                 <DialogTrigger className="bg-primary text-white cursor-pointer px-2 text-sm rounded-md h-9" onClick={() => setCountry("")}>Add Category</DialogTrigger>
                 <DialogContent>
@@ -434,7 +437,7 @@ export default function Projects() {
             </div>
             <div className="h-full">
 
-              <div className="mt-2 flex flex-col gap-3 overflow-y-scroll h-full" style={{ maxHeight: "calc(100vh - 100px)" }}>
+              <div className="flex flex-col gap-3 overflow-y-scroll h-[calc(50vh-270px)] px-5 py-2">
                 {countryList.map((item) => (
                   <div className="flex justify-between border border-[#ddd] p-2 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
                     <p className="mb-0 text-sm stps">
@@ -479,12 +482,12 @@ export default function Projects() {
               </div>
 
             </div>
-          </div>
+          </AdminItemContainer>
 
 
-          <div className="h-1/2 w-full p-2 border border-[#ddd] rounded-md overflow-y-hidden adminstyle">
-            <div className="flex justify-between align-items-center border-b border-[#ddd]   pb-3 mb-3">
-              <Label className="text-md font-bold text-secondary">Clients</Label>
+          <AdminItemContainer>
+            <div className="flex justify-between align-items-center border-b border-[#ddd]   pb-3 mb-3 p-5">
+              <Label className="text-md font-bold text-black">Clients</Label>
               <Dialog>
                 <DialogTrigger className="bg-primary cursor-pointer text-white px-2 py-1 rounded-md text-sm h-9" onClick={() => setClient("")}>Add Client</DialogTrigger>
                 <DialogContent>
@@ -501,7 +504,7 @@ export default function Projects() {
             </div>
             <div className="h-full">
 
-              <div className="mt-2 flex flex-col gap-3 overflow-y-scroll h-[140px]">
+              <div className="flex flex-col gap-3 overflow-y-scroll h-[calc(50vh-185px)] px-5 py-2">
                 {clientList.map((item) => (
                   <div className="flex justify-between border border-[#ddd] p-2 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
                    <p className="mb-0 text-sm stps">
@@ -546,16 +549,16 @@ export default function Projects() {
               </div>
 
             </div>
-          </div>
+          </AdminItemContainer>
 
         </div>
 
-        <div className="h-screen w-full p-4 border border-[#ddd] rounded-md overflow-y-hidden">
-          <div className="flex justify-between align-items-center border-b border-[#ddd] pb-3 mb- ">
-            <Label className="text-md font-bold text-secondary">Projects</Label>
+        <AdminItemContainer>
+          <div className="flex justify-between align-items-center border-b border-[#ddd] pb-3 p-5 h-fit">
+            <Label className="text-md font-bold text-black">Projects</Label>
             <Button onClick={() => router.push("/admin/projects/add")} className="text-white h-9 text-sm cursor-pointer">Add Project</Button>
           </div>
-          <div className="mt-2 flex flex-col gap-3 overflow-y-scroll h-[600px]">
+          <div className="flex flex-col gap-3 overflow-y-scroll  px-5 py-2 h-[calc(100vh-100px)]">
             {projectList.map((item) => (
               <div className="flex justify-between border border-[#ddd] p-2 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
                <p className="mb-0 text-sm stps">
@@ -584,7 +587,7 @@ export default function Projects() {
 
 
           </div>
-        </div>
+        </AdminItemContainer>
       </div>
     </div>
   );

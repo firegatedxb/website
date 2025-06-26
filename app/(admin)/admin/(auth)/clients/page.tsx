@@ -19,6 +19,7 @@ import { ImageUploader } from "@/components/ui/image-uploader";
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false })
 import 'react-quill-new/dist/quill.snow.css';
 import dynamic from 'next/dynamic'
+import AdminItemContainer from "@/app/components/AdminItemContainer/AdminItemContainer";
 
 interface Client {
     _id: string;
@@ -206,12 +207,12 @@ export default function Team() {
     return (
         <div className="h-screen grid grid-cols-1 gap-5 adminstyle">
 
-            <div className="h-fit w-full p-4  border border-[#ddd] rounded-md mt-3">
-                                        <div className="flex justify-between border-b  border-[#ddd] pb-2">
-                                            <Label className="text-md font-bold text-secondary">Meta Section</Label>
+            <AdminItemContainer>
+                                        <div className="flex justify-between border-b  border-[#ddd] pb-2 p-5">
+                                            <Label className="text-md font-bold text-black">Meta Section</Label>
                                             <Button className="text-white" onClick={submitMetaSection}>Save</Button>
                                         </div>
-                                        <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
+                                        <div className="mt-2 grid grid-cols-1 gap-2  h-fit p-5">
                                             <div>
                                                 <Label>Meta title</Label>
                                                 <Input type="text" value={metaTitle} onChange={(e) => setMetaTitle(e.target.value)} />
@@ -221,45 +222,47 @@ export default function Team() {
                                                 <Input type="text" value={metaDescription} onChange={(e) => setMetaDescription(e.target.value)} />
                                             </div>
                                         </div>
-                                    </div>
+                                        </AdminItemContainer>
 
-            <form className="h-full w-full p-4 border border-[#ddd] rounded-md" onSubmit={handleSubmit(onSubmit)}>
-                <div className="flex justify-between border-b border-[#ddd] pb-2">
-                    <Label className="text-md font-bold text-secondary">Intro Section</Label>
+            <form className="h-full w-full border-[#ddd] rounded-md" onSubmit={handleSubmit(onSubmit)}>
+            <AdminItemContainer>
+                <div className="flex justify-between border-b border-[#ddd] pb-2 p-5">
+                    <Label className="text-md font-bold text-black">Intro Section</Label>
                     <Button className="text-white" type="submit">Save</Button>
                 </div>
-                <div className="mt-2 flex flex-col gap-2 h-fit">
+                <div className="mt-2 flex flex-col gap-2 h-fit p-5">
                 <div>
-                        <Label className="text-sm font-bold">Banner Image</Label>
+                        <Label className="">Banner Image</Label>
                         <ImageUploader onChange={(url) => setValue("banner", url)} value={watch("banner")} />
                     </div>
                     <div>
-                        <Label className="text-sm font-bold">Banner Alt Tag</Label>
+                        <Label className="">Banner Alt Tag</Label>
                         <Input type="text" placeholder="Alt Tag" {...register("bannerAlt")} />
                     </div>
                 <div>
-                        <Label className="text-sm font-bold">Page Title</Label>
+                        <Label className="">Page Title</Label>
                         <Input type="text" placeholder="Title" {...register("pageTitle")} />
                     </div>
                     <div>
-                        <Label className="text-sm font-bold">Title</Label>
+                        <Label className="">Title</Label>
                         <Input type="text" placeholder="Title" {...register("title")} />
                     </div>
                     <div>
-                        <Label className="text-sm font-bold">Description</Label>
+                        <Label className="">Description</Label>
                         <Controller name="description" control={control} rules={{ required: "Description is required" }} render={({ field }) => {
                             return <ReactQuill theme="snow" value={field.value} onChange={field.onChange} />
                         }} />
                     </div>
                 </div>
+            </AdminItemContainer>
             </form>
 
 
 
 
-            <div className="h-full w-full p-4 border border-[#ddd] rounded-md ">
-                <div className="flex justify-between items-center border-b border-[#ddd] pb-4 mb-4">
-                    <Label className="text-md font-bold text-secondary">Clients</Label>
+            <AdminItemContainer>
+                <div className="flex justify-between items-center border-b border-[#ddd] pb-4 mb-4 p-5">
+                    <Label className="text-md font-bold text-black">Clients</Label>
                     <Dialog>
                         <DialogTrigger className="bg-primary cursor-pointer text-white h-9 text-sm px-2 py-1 rounded-md" onClick={() => { setImage(""); setImageAlt(""); setLink("") }}>Add Client</DialogTrigger>
                         <DialogContent>
@@ -285,7 +288,7 @@ export default function Team() {
 
                     </Dialog>
                 </div>
-                <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
+                <div className="mt-2 grid grid-cols-1 gap-2  h-fit p-5">
                     {clientList.map((client, index) => (
                         <div key={index} className="relative flex  justify-between border border-[#ddd] p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300">
                             <div className="flex gap-4 items-center">
@@ -329,7 +332,7 @@ export default function Team() {
                         </div>
                     ))}
                 </div>
-            </div>
+            </AdminItemContainer>
         </div>
     );
 }
