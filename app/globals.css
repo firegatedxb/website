@@ -290,3 +290,67 @@ display:none; }
 #section0,#section1,#section2 {
   scroll-margin-top: 100px;
 }
+
+
+
+.error {
+  color: #20293F;
+      display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  animation: fadein 1.2s ease-in;
+   user-select: none;
+   background: #fbfdff;
+}
+.error > .code {
+  font-size: 15.5em;
+  text-shadow:  0 6px 1px rgba(0,0,0,0.0980392) , 0 0 5px rgba(0,0,0,0.0980392) , 0 1px 3px rgba(0,0,0,0.298039) , 0 3px 5px rgba(0,0,0,0.2) , 0 5px 10px rgba(0,0,0,0.247059) , 0 10px 10px rgba(0,0,0,0.2) , 0 20px 20px rgba(0,0,0,0.14902) ;
+  margin: 0;
+  line-height: 1;
+}
+.fortext{
+  font-size: 25rem;
+  color: var(--primary);
+}
+.error > .desc {
+  text-shadow: 0 3px 5px #00000045, 0 6px 17px #00000008;
+  font-weight: 400;
+      box-shadow: 0 5px 0 -2px #20293f;
+      width: fit-content;
+      margin: 0px auto;
+      padding-bottom: 5px;
+      padding-bottom: 5px;
+}
+@keyframes fadein {
+  0% {
+    margin-top: -50px;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.footerfof {
+  position: absolute;
+  bottom: 0px;
+}
+
+@media   (max-width: 700px)
+{.error > .code {
+  font-size: 10.5em;
+}
+.fortext{
+  font-size: 16rem;
+}}
+@media   (max-width: 500px)
+{.error > .code {
+  font-size: 7.5em;
+}
+.fortext{
+  font-size: 10rem;
+}}
