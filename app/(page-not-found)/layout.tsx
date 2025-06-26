@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Host_Grotesk } from "next/font/google";
 import "../../app/globals.css";
 import Navbar from "../components/common/NavBars/Navbar";
-import Footer from "../components/common/Footer";
 export const dynamic = 'force-dynamic'
 const hostGrostek = Host_Grotesk({
   variable: "--font-host-grotesk",

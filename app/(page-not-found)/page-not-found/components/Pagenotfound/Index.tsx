@@ -1,17 +1,13 @@
 
 'use client';
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import Image from "next/image";
 import { assets } from "@/public/assets/assets";
 import Link from "next/link";
 
 const Index = () => {
-   const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
   return (
       <div>
         <div className='error px-3'>
