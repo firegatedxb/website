@@ -27,6 +27,7 @@ const AdminNavbar = () => {
         { name: "Partners", href: "/admin/partners", icon: UserGroupIcon },
         { name: "Commitment", href: "/admin/commitment", icon:NewspaperIcon },
         { name: "Contact", href: "/admin/contact", icon: EnvelopeIcon },
+        { name: "Enquiries", href: "/admin/enquiry", icon: EnvelopeIcon },
         { name: "Tag Codes", href: "/admin/codes", icon: CodeIcon},
       ];
 
