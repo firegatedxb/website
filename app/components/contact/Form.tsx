@@ -1,11 +1,11 @@
 "use client";
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { fadeInUpsec } from '@/public/frameranimation/animation';
 import { Listbox } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'; 
-import { useForm, SubmitHandler, Controller } from "react-hook-form"
+import { useForm, Controller } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { contactFormSchema } from "@/app/schemas/contactForm"
 import { z } from "zod";
@@ -17,7 +17,6 @@ const Form = () => {
   const {
     register,
     handleSubmit,
-    watch,
     control,
     formState: { errors },
     reset,
