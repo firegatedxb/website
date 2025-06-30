@@ -105,7 +105,7 @@ export const Menu = ({
                 className="h-[41px]  w-auto"
               />
           </div>
-          <p className="mb-0 text-center text-[10px] xl:text-[14px] text-gray xl:mt-1 italic">Your gateway to safety </p>
+          <p className="mb-0 text-center text-[14px] xl:text-[20px] text-gray xl:mt-1 italic">Your gateway to safety </p>
           </Link>
           </div>
           <div>
