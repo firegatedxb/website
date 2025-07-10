@@ -10,7 +10,7 @@ import {
     CheckBadgeIcon,
     PresentationChartBarIcon,
   } from "@heroicons/react/24/outline";
-import { CodeIcon } from 'lucide-react';
+import { Settings } from 'lucide-react';
 
 const AdminNavbar = () => {
 
@@ -28,7 +28,7 @@ const AdminNavbar = () => {
         { name: "Commitment", href: "/admin/commitment", icon:NewspaperIcon },
         { name: "Contact", href: "/admin/contact", icon: EnvelopeIcon },
         { name: "Enquiries", href: "/admin/enquiry", icon: EnvelopeIcon },
-        { name: "Tag Codes", href: "/admin/codes", icon: CodeIcon},
+        { name: "Settings", href: "/admin/settings", icon: Settings},
       ];
 
   return (
