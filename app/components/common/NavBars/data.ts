@@ -40,7 +40,7 @@ export const menuItems: MenuItem[] = [
 
 {
     title: "Portfolio",
-    url: "/projects",
+    url: "/portfolio",
   },
 {
     title: "Clients",

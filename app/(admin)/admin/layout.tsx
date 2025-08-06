@@ -4,6 +4,9 @@ import "../../../app/globals.css";
 export const metadata: Metadata = {
   title: "Fire Gate | Backend Console",
   description: "Fire Gate",
+  icons:{
+    icon:"/flogo.png"
+  }
 };
 
 export default function RootLayout({
