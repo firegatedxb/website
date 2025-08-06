@@ -10,6 +10,7 @@ import { ImageUploader } from '@/components/ui/image-uploader'
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Textarea } from '@/components/ui/textarea'
 import AdminItemContainer from '@/app/components/AdminItemContainer/AdminItemContainer';
+import { generateDimentions } from '@/lib/generateDimentions';
 
 interface SystemFormProps {
 
@@ -115,6 +116,7 @@ const ContactPage = () => {
                                 />
                             )}
                         />
+                        <p className='text-xs text-gray-500'>{generateDimentions("contact", "cover")}</p>
                         {errors.image && (
                             <p className="text-red-500">{errors.image.message}</p>
                         )}

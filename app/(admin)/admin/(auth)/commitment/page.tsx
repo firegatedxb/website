@@ -10,6 +10,7 @@ import { ImageUploader } from '@/components/ui/image-uploader'
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Textarea } from '@/components/ui/textarea'
 import AdminItemContainer from '@/app/components/AdminItemContainer/AdminItemContainer';
+import { generateDimentions } from '@/lib/generateDimentions';
 
 interface SystemFormProps {
 
@@ -143,6 +144,7 @@ const CommitmentPage = () => {
                                 />
                             )}
                         />
+                        <p className='text-xs text-gray-500'>{generateDimentions("commitment", "banner")}</p>
                         {errors.banner && (
                             <p className="text-red-500">{errors.banner.message}</p>
                         )}
@@ -188,6 +190,7 @@ const CommitmentPage = () => {
                                         />
                                     )}
                                 />
+                                <p className='text-xs text-gray-500'>{generateDimentions("commitment", "cover")}</p>
                                 {errors.firstSection?.image && <p className='text-red-500'>{errors.firstSection?.image.message}</p>}
                             </div>
                             </div>
@@ -223,6 +226,7 @@ const CommitmentPage = () => {
                                                 />
                                             )}
                                         />
+                                        <p className='text-xs text-gray-500'>{generateDimentions("commitment", "logo")}</p>
                                         {errors.firstSectionItems?.[index]?.logo && <p className='text-red-500'>{errors.firstSectionItems?.[index]?.logo.message}</p>}
                                     </div>
                                     <div className='flex flex-col gap-2'>
@@ -298,6 +302,7 @@ const CommitmentPage = () => {
                                             />
                                         )}
                                     />
+                                    <p className='text-xs text-gray-500'>{generateDimentions("commitment", "logo")}</p>
                                     {errors.secondSectionItems?.[index]?.logo && <p className='text-red-500'>{errors.secondSectionItems?.[index]?.logo.message}</p>}
                                 </div>
                                 <div className='flex flex-col gap-2'>
@@ -376,6 +381,7 @@ const CommitmentPage = () => {
                                             />
                                         )}
                                     />
+                                    <p className='text-xs text-gray-500'>{generateDimentions("commitment", "investingCards")}</p>
                                     {errors.thirdSectionItems?.[index]?.image && <p className='text-red-500'>{errors.thirdSectionItems?.[index]?.image.message}</p>}
                                 </div>
                                 <div className='flex flex-col gap-2'>

@@ -22,6 +22,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { RiPagesFill } from "react-icons/ri";
 import Link from "next/link";
 import AdminItemContainer from "@/app/components/AdminItemContainer/AdminItemContainer";
+import { generateDimentions } from "@/lib/generateDimentions";
 
 interface System {
     banner: string;
@@ -240,6 +241,7 @@ export default function Team() {
                 <div>
                         <Label className="">Banner Image</Label>
                         <ImageUploader onChange={(url) => setValue("banner", url)} value={watch("banner")}/>
+                            <p className='text-xs text-gray-500'>{generateDimentions("systems", "banner")}</p>
                     </div>
                     <div>
                         <Label className="">Banner Alt</Label>
@@ -279,6 +281,7 @@ export default function Team() {
                                 <div>
                                         <Label>Logo</Label>
                                         <ImageUploader onChange={(url) => setLogo(url)} value={logo} isLogo/>
+                                        <p className='text-xs text-gray-500'>{generateDimentions("systems", "itemLogo")}</p>
                                     </div>
                                     <div>
                                         <Label>Logo Alt Tag</Label>
@@ -295,6 +298,7 @@ export default function Team() {
                                     <div>
                                         <Label>Image</Label>
                                         <ImageUploader onChange={(url) => setImage(url)} value={image} />
+                                        <p className='text-xs text-gray-500'>{generateDimentions("systems", "itemImage")}</p>
                                     </div>
                                     <div>
                                         <Label>Alt Tag</Label>
@@ -331,6 +335,7 @@ export default function Team() {
                                                 <div>
                                                     <Label>Logo</Label>
                                                     <ImageUploader onChange={(url) => setLogo(url)} value={logo} isLogo/>
+                                                    <p className='text-xs text-gray-500'>{generateDimentions("systems", "itemLogo")}</p>
                                                 </div>
                                                 <div>
                                                     <Label>Logo Alt Tag</Label>
@@ -347,6 +352,7 @@ export default function Team() {
                                                 <div>
                                                     <Label>Image</Label>
                                                     <ImageUploader onChange={(url) => setImage(url)} value={image} />
+                                                    <p className='text-xs text-gray-500'>{generateDimentions("systems", "itemImage")}</p>
                                                 </div>
                                                 <div>
                                                     <Label>Alt Tag</Label>

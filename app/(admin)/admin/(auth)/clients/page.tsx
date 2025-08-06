@@ -20,6 +20,7 @@ const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false })
 import 'react-quill-new/dist/quill.snow.css';
 import dynamic from 'next/dynamic'
 import AdminItemContainer from "@/app/components/AdminItemContainer/AdminItemContainer";
+import { generateDimentions } from "@/lib/generateDimentions";
 
 interface Client {
     _id: string;
@@ -234,6 +235,7 @@ export default function Team() {
                 <div>
                         <Label className="">Banner Image</Label>
                         <ImageUploader onChange={(url) => setValue("banner", url)} value={watch("banner")} />
+                            <p className='text-xs text-gray-500'>{generateDimentions("clients", "banner")}</p>
                     </div>
                     <div>
                         <Label className="">Banner Alt Tag</Label>
@@ -272,6 +274,7 @@ export default function Team() {
                                     <div>
                                         <Label>Image</Label>
                                         <ImageUploader onChange={(url) => setImage(url)} value={image} />
+                                            <p className='text-xs text-gray-500'>{generateDimentions("clients", "itemImage")}</p>
                                     </div>
                                     <div>
                                         <Label>Alt Tag</Label>
@@ -310,6 +313,7 @@ export default function Team() {
                                                 <div>
                                                     <Label>Image</Label>
                                                     <ImageUploader onChange={(url) => setImage(url)} value={image} />
+                                                    <p className='text-xs text-gray-500'>{generateDimentions("clients", "itemImage")}</p>
                                                 </div>
                                                 <div>
                                                     <Label>Alt Tag</Label>

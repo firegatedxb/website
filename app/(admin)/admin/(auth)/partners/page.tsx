@@ -21,6 +21,7 @@ import 'react-quill-new/dist/quill.snow.css';
 import dynamic from 'next/dynamic'
 import { Textarea } from "@/components/ui/textarea";
 import AdminItemContainer from "@/app/components/AdminItemContainer/AdminItemContainer";
+import { generateDimentions } from "@/lib/generateDimentions";
 
 interface Client {
     _id: string;
@@ -330,6 +331,7 @@ export default function Team() {
                 <div>
                         <Label className="">Banner</Label>
                         <ImageUploader  value={watch("banner")} onChange={(url) => setValue("banner", url)} />
+                            <p className='text-xs text-gray-500'>{generateDimentions("partners", "banner")}</p>
                     </div>
                     <div>
                         <Label className="">Banner Alt</Label>
@@ -376,6 +378,7 @@ export default function Team() {
                                     <div>
                                         <Label>Logo</Label>
                                         <ImageUploader onChange={(url) => setLogo(url)} value={logo} isLogo/>
+                                            <p className='text-xs text-gray-500'>{generateDimentions("partners", "itemLogo")}</p>
                                     </div>
                                     <div>
                                         <Label>Logo Alt Tag</Label>
@@ -384,6 +387,7 @@ export default function Team() {
                                     <div>
                                         <Label>Image</Label>
                                         <ImageUploader onChange={(url) => setImage(url)} value={image} />
+                                            <p className='text-xs text-gray-500'>{generateDimentions("partners", "itemImage")}</p>
                                     </div>
                                     <div>
                                         <Label>Alt Tag</Label>
@@ -430,6 +434,7 @@ export default function Team() {
                                                 <div>
                                                     <Label>Logo</Label>
                                                     <ImageUploader onChange={(url) => setLogo(url)} value={logo} isLogo/>
+                                                    <p className='text-xs text-gray-500'>{generateDimentions("partners", "itemLogo")}</p>
                                                 </div>
                                                 <div>
                                                     <Label>Logo Alt Tag</Label>
@@ -438,6 +443,7 @@ export default function Team() {
                                                 <div>
                                                     <Label>Image</Label>
                                                     <ImageUploader onChange={(url) => setImage(url)} value={image} />
+                                                    <p className='text-xs text-gray-500'>{generateDimentions("partners", "itemImage")}</p>
                                                 </div>
                                                 <div>
                                                     <Label>Alt Tag</Label>
@@ -490,6 +496,7 @@ export default function Team() {
                                     <div className="flex flex-col gap-2">
                                         <Label>Image</Label>
                                         <ImageUploader onChange={(url) => setAccreditImage(url)} value={accreditImage} />
+                                        <p className='text-xs text-gray-500'>{generateDimentions("partners", "accreditation")}</p>
                                     </div>
                                     <div className="flex flex-col gap-2">
                                         <Label>Alt Tag</Label>
@@ -524,6 +531,7 @@ export default function Team() {
                                                 <div>
                                                     <Label>Image</Label>
                                                     <ImageUploader onChange={(url) => setAccreditImage(url)} value={accreditImage} />
+                                                    <p className='text-xs text-gray-500'>{generateDimentions("partners", "accreditation")}</p>
                                                 </div>
                                                 <div>
                                                     <Label>Alt Tag</Label>
