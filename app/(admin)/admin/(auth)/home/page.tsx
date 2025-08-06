@@ -13,6 +13,7 @@ const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false })
 import 'react-quill-new/dist/quill.snow.css';
 import dynamic from 'next/dynamic'
 import AdminItemContainer from '@/app/components/AdminItemContainer/AdminItemContainer';
+import { generateDimentions } from '@/lib/generateDimentions';
 
 interface SystemFormProps {
 
@@ -207,6 +208,7 @@ const HomePage = () => {
                                             />
                                         )}
                                     />
+                                    <p className='text-xs text-gray-500'>{generateDimentions("home", "banner")}</p>
                                     {errors.banners?.[index]?.image && <p className='text-red-500'>{errors.banners?.[index]?.image.message}</p>}
                                 </div>
                                 <div className='flex flex-col gap-x-2 mt-2'>
@@ -267,6 +269,7 @@ const HomePage = () => {
                                     />
                                 )}
                             />
+                            <p className='text-xs text-gray-500'>{generateDimentions("home", "about")}</p>
                             {errors.aboutSection?.image && <p className='text-red-500'>{errors.aboutSection?.image.message}</p>}
                         </div>
                     </div>
@@ -346,6 +349,7 @@ const HomePage = () => {
                                             />
                                         )}
                                     />
+                                    <p className='text-xs text-gray-500'>{generateDimentions("home", "partners")}</p>
                                     {errors.partners?.items?.[index]?.image && <p className='text-red-500'>{errors.partners?.items?.[index]?.image.message}</p>}
                                 </div>
                                 <div className='flex flex-col gap-x-2'>
@@ -406,6 +410,7 @@ const HomePage = () => {
                                             />
                                         )}
                                     />
+                                    <p className='text-xs text-gray-500'>{generateDimentions("home", "services")}</p>
                                     {errors.services?.items?.[index]?.image && <p className='text-red-500'>{errors.services?.items?.[index]?.image.message}</p>}
                                     <div className='flex flex-col gap-x-2'>
                                     <Label className=''>Alt Tag</Label>
@@ -481,6 +486,7 @@ const HomePage = () => {
                                             />
                                         )}
                                     />
+                                    <p className='text-xs text-gray-500'>{generateDimentions("home", "systems")}</p>
                                     {errors.systems?.items?.[index]?.image && <p className='text-red-500'>{errors.systems?.items?.[index]?.image.message}</p>}
                                 </div>
                                 <div className='flex flex-col gap-x-2'>
@@ -549,6 +555,7 @@ const HomePage = () => {
                                             />
                                         )}
                                     />
+                                    <p className='text-xs text-gray-500'>{generateDimentions("home", "certifications")}</p>
                                     {errors.certifications?.items?.[index]?.image && <p className='text-red-500'>{errors.certifications?.items?.[index]?.image.message}</p>}
                                 </div>
                                 <div className='flex flex-col gap-x-2'>

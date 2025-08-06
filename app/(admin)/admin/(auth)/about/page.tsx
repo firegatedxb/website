@@ -13,6 +13,7 @@ const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false })
 import 'react-quill-new/dist/quill.snow.css';
 import dynamic from 'next/dynamic'
 import AdminItemContainer from '@/app/components/AdminItemContainer/AdminItemContainer';
+import { generateDimentions } from '@/lib/generateDimentions';
 
 interface SystemFormProps {
 
@@ -156,7 +157,7 @@ const AboutPage = () => {
                       <div className='p-5'>            
                     <div>
                         <Label className="">Banner</Label>
-                        <div className='  flex flex-col gap-5 mt-1'>
+                        <div className='  flex flex-col mt-1'>
                         <Controller
                             name="banner"
                             control={control}
@@ -168,6 +169,7 @@ const AboutPage = () => {
                                 />
                             )}
                         />
+                        <p className='text-xs text-gray-500'>{generateDimentions("about", "banner")}</p>
                         {errors.banner && (
                             <p className="text-red-500">{errors.banner.message}</p>
                         )}
@@ -217,6 +219,7 @@ const AboutPage = () => {
                                 />
                             )}
                         />
+                        <p className='text-xs text-gray-500'>{generateDimentions("about", "intro")}</p>
                         {errors.firstSection?.image && (
                             <p className="text-red-500">{errors.firstSection?.image.message}</p>
                         )}
@@ -268,6 +271,7 @@ const AboutPage = () => {
                                         /> 
                                     )}
                                 />
+                                <p className='text-xs text-gray-500'>{generateDimentions("about", "mission")}</p>
                                 {errors.secondSection?.mission?.logo && (
                                     <p className="text-red-500">{errors.secondSection?.mission?.logo.message}</p>
                                 )}
@@ -301,6 +305,7 @@ const AboutPage = () => {
                                         />
                                     )}
                                 />
+                                <p className='text-xs text-gray-500'>{generateDimentions("about", "vision")}</p>
                                 {errors.secondSection?.vision?.logo && (
                                     <p className="text-red-500">{errors.secondSection?.vision?.logo.message}</p>
                                 )}
@@ -334,6 +339,7 @@ const AboutPage = () => {
                                         />
                                     )}
                                 />
+                                <p className='text-xs text-gray-500'>{generateDimentions("about", "values")}</p>
                                 {errors.secondSection?.values?.logo && (
                                     <p className="text-red-500">{errors.secondSection?.values?.logo.message}</p>
                                 )}
@@ -396,6 +402,7 @@ const AboutPage = () => {
                                         />
                                     )}
                                 />
+                                <p className='text-xs text-gray-500'>{generateDimentions("about", "chairman")}</p>
                                 {errors.thirdSection?.chairman?.image && (
                                     <p className="text-red-500">{errors.thirdSection?.chairman?.image.message}</p>
                                 )}
@@ -432,6 +439,7 @@ const AboutPage = () => {
                                         />
                                     )}
                                 />
+                                <p className='text-xs text-gray-500'>{generateDimentions("about", "ceo")}</p>
                                 {errors.thirdSection?.ceo?.image && (
                                     <p className="text-red-500">{errors.thirdSection?.ceo?.image.message}</p>
                                 )}
@@ -485,6 +493,7 @@ const AboutPage = () => {
                                             />
                                         )}
                                     />
+                                    <p className='text-xs text-gray-500'>{generateDimentions("about", "certifications")}</p>
                                     {errors.certifications?.[index]?.image && <p className='text-red-500'>{errors.certifications?.[index]?.image.message}</p>}
                                 </div>
                                 <div className='flex flex-col gap-2'>

@@ -10,6 +10,7 @@ import { ImageUploader } from '@/components/ui/image-uploader'
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Textarea } from '@/components/ui/textarea'
 import AdminItemContainer from '@/app/components/AdminItemContainer/AdminItemContainer';
+import { generateDimentions } from '@/lib/generateDimentions';
 
 interface SystemFormProps {
 
@@ -112,6 +113,7 @@ const ServicesPage = () => {
                                 />
                             )}
                         />
+                        <p className='text-xs text-gray-500'>{generateDimentions("services", "banner")}</p>
                      </div>
                         {errors.banner && (
                             <p className="text-red-500">{errors.banner.message}</p>
@@ -172,6 +174,7 @@ const ServicesPage = () => {
                                             />
                                         )}
                                     />
+                                    <p className='text-xs text-gray-500'>{generateDimentions("services", "itemImage")}</p>
                                     {errors.services?.items?.[index]?.logo && <p className='text-red-500'>{errors.services?.items?.[index]?.logo.message}</p>}
                                 </div>
                                 <div className='flex flex-col gap-2'>
@@ -210,6 +213,7 @@ const ServicesPage = () => {
                                             />
                                         )}
                                     />
+                                    <p className='text-xs text-gray-500'>{generateDimentions("services", "itemLogo")}</p>
                                     {errors.services?.items?.[index]?.logo && <p className='text-red-500'>{errors.services?.items?.[index]?.logo.message}</p>}
                                 </div>
                                 <div className='flex flex-col gap-2'>

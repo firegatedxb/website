@@ -12,6 +12,7 @@ import { ImageUploader } from '@/components/ui/image-uploader'
 import { RiAiGenerateText, RiDeleteBinLine } from "react-icons/ri";
 import { Textarea } from '@/components/ui/textarea'
 import AdminItemContainer from '@/app/components/AdminItemContainer/AdminItemContainer';
+import { generateDimentions } from '@/lib/generateDimentions';
 
 interface SystemFormProps {
     name: string;
@@ -163,6 +164,7 @@ const SystemForm = () => {
                                 />
                             )}
                         />
+                        <p className='text-xs text-gray-500'>{generateDimentions("fire_fighting", "banner")}</p>
                         
                     </div>
                     <div>
@@ -185,6 +187,7 @@ const SystemForm = () => {
                                 />
                             )}
                         />
+                        <p className='text-xs text-gray-500'>{generateDimentions("home", "systems")}</p>
                         {errors.homeImage && (
                             <p className="text-red-500">{errors.homeImage.message}</p>
                         )}
@@ -246,6 +249,7 @@ const SystemForm = () => {
                                             />
                                         )}
                                     />
+                                    <p className='text-xs text-gray-500'>{generateDimentions("fire_fighting", "itemImage")}</p>
                                     {errors.components?.[index]?.image && <p className='text-red-500'>{errors.components?.[index]?.image.message}</p>}
                                 </div>
                                 <div className='flex flex-col gap-2'>

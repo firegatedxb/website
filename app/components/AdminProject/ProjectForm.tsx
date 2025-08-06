@@ -20,6 +20,7 @@ import { useParams } from 'next/navigation'
 import { ImageUploader } from '@/components/ui/image-uploader'
 import { RiAiGenerateText } from "react-icons/ri";
 import AdminItemContainer from '../AdminItemContainer/AdminItemContainer'
+import { generateDimentions } from '@/lib/generateDimentions'
 
 interface ProjectFormProps {
     name: string;
@@ -186,6 +187,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                         <div>
                         <Label className=''>Thumbnail</Label>
                         <ImageUploader onChange={(url)=>setValue("thumbnail",url)} value={watch("thumbnail")} />
+                            <p className='text-xs text-gray-500'>{generateDimentions("projects", "itemImage")}</p>
                         {errors.thumbnail && <p className='text-red-500'>{errors.thumbnail.message}</p>}
                         </div>
                         <div>
@@ -198,6 +200,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                         <div>
                         <Label className=''>Cover Photo</Label>
                         <ImageUploader onChange={(url)=>setValue("coverPhoto",url)} value={watch("coverPhoto")} />
+                            <p className='text-xs text-gray-500'>{generateDimentions("project_details", "cover")}</p>
                         {errors.coverPhoto && <p className='text-red-500'>{errors.coverPhoto.message}</p>}
                         </div>
                         <div>
