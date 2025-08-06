@@ -95,7 +95,7 @@ const RelatedProjects: React.FC<FrameworkSectionProps> = ({ data, sector,pjtname
           variants={cardVariantsecs}
           className=""
         >
-          <Link href={`/projects-details/${group.slug}`}>
+          <Link href={`/portfolio/${group.slug}`}>
             <div>
               <p className="font-medium text-32 truncate overflow-hidden whitespace-nowrap mb-1">
                 {group.name}

@@ -5,6 +5,8 @@ import React from "react";
 import Image from "next/image";
 import { assets } from "@/public/assets/assets";
 import Link from "next/link";
+import CountUp from "react-countup";
+import { useInView } from "react-intersection-observer";
 
 
 import { Home } from '@/public/types/Common';
@@ -12,6 +14,10 @@ import { motion } from "framer-motion";
 import { fadeUp, slideInLeft } from "@/public/frameranimation/animation";
 
 const AboutCompany = ({ data }: { data: Home }) => {
+
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
+
+
   return (
     <section className="py-[50px]  pb-0 md:pb-0  md:py-[50px] lg:pt-[70px] lg:pb-[100px] 2xl:pt-[97px] 2xl:pb-[131px]  relative">
       <div className="container">
@@ -61,6 +67,7 @@ const AboutCompany = ({ data }: { data: Home }) => {
         className="grid grid-cols-2 mt-8 lg:mt-[54px] 2xl:mt-[94px]"
         variants={fadeUp}
         custom={3}
+        ref={ref}
       >
         {data.aboutSection.items.map((item, index) => (
           <motion.div
@@ -71,7 +78,7 @@ const AboutCompany = ({ data }: { data: Home }) => {
             variants={fadeUp}
             custom={4 + index}
           >
-            <p className="text-50 text-secondary font-medium">{item.number}</p>
+            {inView && item.number.includes("+") ? <p className="text-50 text-secondary font-medium"><CountUp end={Number(item.number.replace("+", ""))} />+</p> : <p className="text-50 text-secondary font-medium">{item.number}</p>}
             <p className="font-medium text-30 text-graytext pr-2">{item.value}</p>
           </motion.div>
         ))}

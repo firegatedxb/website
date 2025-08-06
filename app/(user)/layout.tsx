@@ -15,6 +15,9 @@ const hostGrostek = Host_Grotesk({
 export const metadata: Metadata = {
   title: "Fire Gate Safety & Security Systems",
   description: "",
+  icons:{
+    icon:"/flogo.png"
+  }
 };
 
 export default async function RootLayout({

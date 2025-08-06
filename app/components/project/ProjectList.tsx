@@ -191,7 +191,7 @@ const handleLoadMore = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
               >
-                <Link href={`/projects-details/${proj.slug}`}>
+                <Link href={`/portfolio/${proj.slug}`}>
                   <div className="border-t border-[#cccccc] pt-4 md:pt-8 cursor-pointer">
                     <p className="font-medium text-32 truncate">{proj.name}</p>
                     <p className="font-medium text-md text-gray mb-4 md:mb-8 truncate ">
