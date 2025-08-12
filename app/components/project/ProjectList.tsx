@@ -6,13 +6,15 @@ import Sbttl from "../common/Sbttl";
 import type { StaticImageData } from "next/image";
 import { assets } from "@/public/assets/assets";
 import SelectBox from "./StatusDropdown";
+import { motion } from "framer-motion";
+import { fadeInUpsec } from "@/public/frameranimation/animation";
 
 interface Project {
   name: string;
   slug: string;
   client: string;
   sector: string;
-  status:boolean;
+  status: boolean;
   consultant: string;
   location: string;
   thumbnail: string | StaticImageData;
@@ -30,6 +32,7 @@ interface DynamicGridProps {
   data: Project[];
   locationData: { data: { name: string }[] };
   sectorData: { data: { name: string }[] };
+  // clientData: { data: { name: string }[] };
 }
 
 function ProjectList(items: Project[]): Project[][] {
@@ -38,7 +41,7 @@ function ProjectList(items: Project[]): Project[][] {
   let takeTwo = true;
 
   while (i < items.length) {
-    const size = takeTwo ? 2 : 3;
+    const size = takeTwo ? 3 : 3;
     chunks.push(items.slice(i, i + size));
     i += size;
     takeTwo = !takeTwo;
@@ -48,223 +51,200 @@ function ProjectList(items: Project[]): Project[][] {
 }
 
 export default function DynamicGrid({ data, locationData, sectorData }: DynamicGridProps) {
-  const handleClearFilters = () => {
-  setSelected('');         // reset location
-  setSelectedsector('');   // reset sector
-  setSelectestatus('');    // reset status
-  setFilteredData(data);   // show all data
-};
+  const limit = 9; 
   const [selected, setSelected] = useState("");
   const [selectedsector, setSelectedsector] = useState("");
+  const [selecteclient, setSelecteclient] = useState("");
   const [selectestatus, setSelectestatus] = useState("");
-  const [filteredData, setFilteredData] = useState<
-      {
-      name: string;
-  slug: string;
-  client: string;
-  sector: string;
-  status:boolean;
-  consultant: string;
-  location: string;
-  thumbnail: string | StaticImageData;
-  thumbnailAlt: string;
-  coverPhoto: string;
-  coverPhotoAlt: string;
-  title: string;
-  description: string;
-  metaTitle: string;
-  metaDescription: string;
-  featuredProject: boolean;
-      }[]
-    >([]);
+  const [visible, setVisible] = useState(limit);
+  const [filteredData, setFilteredData] = useState<Project[]>([]);
+  const [disableLoadMore, setDisableLoadMore] = useState(false);
 
-
-
-  const limit = 5;
-  const [visible,setVisible] = useState(0);
-  const [disableLoadMore,setDisableLoadMore] = useState(false);
-
-  const handleLoadMore = () => {
-    setVisible(visible + limit);
-
+  const handleClearFilters = () => {
+    setSelected("");
+    setSelectedsector("");
+    setSelecteclient("");
+    setSelectestatus("");
+    setVisible(limit);
   };
 
-  useEffect(()=>{
-    if(visible + limit >= data.length){
-      setDisableLoadMore(true);
-    }
-  },[visible])
-
-  const groupedItems = ProjectList(filteredData);
-useEffect(() => {
+  useEffect(() => {
   if (!data) return;
 
-  let filtered = data.slice(0, visible + limit);
+  let filtered = data;
+  console.log(filtered);
 
-  // 🔹 1. location + sector + status
-  if (selected && selectedsector && selectestatus) {
-    filtered = data.filter(
-      (item) =>
-        item.location?.trim().toLowerCase() === selected.trim().toLowerCase() &&
-        item.sector?.trim().toLowerCase() === selectedsector.trim().toLowerCase() &&
-        String(item.status).toLowerCase() === selectestatus.trim().toLowerCase()
+  if (selected) {
+    filtered = filtered.filter(
+      (item) => item.location?.toLowerCase() === selected.toLowerCase()
+    );
+  }
+  if (selectedsector) {
+    filtered = filtered.filter(
+      (item) => item.sector?.toLowerCase() === selectedsector.toLowerCase()
+    );
+  }
+  if (selectestatus) {
+    filtered = filtered.filter(
+      (item) => String(item.status).toLowerCase() === selectestatus.toLowerCase()
+    );
+  }
+  if (selecteclient) {
+    filtered = filtered.filter(
+      (item) => item.client?.toLowerCase() === selecteclient.toLowerCase()
     );
   }
 
-  // 🔹 2. location + sector
-  else if (selected && selectedsector) {
-    filtered = data.filter(
-      (item) =>
-        item.location?.trim().toLowerCase() === selected.trim().toLowerCase() &&
-        item.sector?.trim().toLowerCase() === selectedsector.trim().toLowerCase()
-    );
-  }
-
-  // 🔹 3. location + status
-  else if (selected && selectestatus) {
-    filtered = data.filter(
-      (item) =>
-        item.location?.trim().toLowerCase() === selected.trim().toLowerCase() &&
-        String(item.status).toLowerCase() === selectestatus.trim().toLowerCase()
-    );
-  }
-
-  // 🔹 4. sector + status
-  else if (selectedsector && selectestatus) {
-    filtered = data.filter(
-      (item) =>
-        item.sector?.trim().toLowerCase() === selectedsector.trim().toLowerCase() &&
-        String(item.status).toLowerCase() === selectestatus.trim().toLowerCase()
-    );
-  }
-
-  // 🔹 5. location only
-  else if (selected) {
-    filtered = data.filter(
-      (item) =>
-        item.location?.trim().toLowerCase() === selected.trim().toLowerCase()
-    );
-  }
-
-  // 🔹 6. sector only
-  else if (selectedsector) {
-    filtered = data.filter(
-      (item) =>
-        item.sector?.trim().toLowerCase() === selectedsector.trim().toLowerCase()
-    );
-  }
-
-  // 🔹 7. status only
-  else if (selectestatus) {
-    filtered = data.filter(
-      (item) =>
-        String(item.status).toLowerCase() === selectestatus.trim().toLowerCase()
-    );
-  }
+  // ✅ Reset visible count when filters change
+  setVisible(limit);
   setFilteredData(filtered);
+  setDisableLoadMore(filtered.length <= limit);
+}, [data, selected, selectedsector, selectestatus, selecteclient]);
 
-  // 🔀 Shuffle and set
-  // const shuffled = filtered.sort(() => Math.random() - 0.5);
-  // setFilteredData(shuffled);
-}, [data, selected, selectedsector, selectestatus, visible]);
+const handleLoadMore = () => {
+  const newVisible = visible + limit;
+  setVisible(newVisible);
 
+  if (newVisible >= filteredData.length) {
+    setDisableLoadMore(true);
+  }
+};
+
+  const slicedData = filteredData.slice(0, visible);
+  const groupedItems = ProjectList(slicedData);
 
   return (
-    <>
-      <section className="pt-20 pbc-120">
-        <div className="container">
-          <div className="mb-12">
-            <Sbttl title="Projects" />
-          </div>
+    <section className="pt-[50px] lg:pt-[70px] 2xl:pt-[103px] ">
+      <div className="container">
+        <div className="mb-8 lg:mb-10 2xl:mb-12">
+          <Sbttl title="Portfolio" />
+        </div>
 
-          <div>
-            <div className="bg-secondary rounded-2xl p-8 lg:p-10 gap-2 grid md:grid-cols-2 lg:grid-cols-4 gap-x-4 mb-8 lg:mb-25">
-             <SelectBox
-  label="Country"
-  selected={selected}
-  setSelected={setSelected}
-  options={locationData?.data?.map((item) => ({ name: item.name, value: item.name })) || []}
-/>
-
-<SelectBox
-  label="Sector"
-  selected={selectedsector}
-  setSelected={setSelectedsector}
-  options={sectorData?.data?.map((item) => ({ name: item.name, value: item.name })) || []}
-/>
-
-<SelectBox
-  label="Status"
-  selected={selectestatus}
-  setSelected={setSelectestatus}
-  options={[
-    { name: 'Completed', value: 'true' },
-    { name: 'On Going', value: 'false' },
-  ]}
-/>
-
-              <div className="ml-auto mt-6 md:mt-0">
-                <div
-                 onClick={handleClearFilters}
-                  className="flex cursor-pointer items-center bg-primary hover:bg-red-700 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase group"
-                >
-                  <span>Clear filter</span>
-                  <span className="bg-white rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center ">
-                    <Image
-                      src={assets.bluearrowRight}
-                      width={14}
-                      height={28}
-                      alt="read-more"
-                      className="w-full h-[14px] object-contain group-hover:animate-pulse  rotate-180"
-                    ></Image>
-                  </span>
-                </div>
+        <motion.div
+          variants={fadeInUpsec}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <div className="bg-secondary rounded-2xl p-8 lg:p-10 grid md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-[50px] mb-[50px] lg:mb-[70px] 2xl:mb-25">
+            <SelectBox
+              label="Type"
+              selected={selected}
+              setSelected={setSelected}
+              options={locationData?.data?.map((item) => ({ name: item.name, value: item.name })) || []}
+            />
+            <SelectBox
+              label="Sector"
+              selected={selectedsector}
+              setSelected={setSelectedsector}
+              options={sectorData?.data?.map((item) => ({ name: item.name, value: item.name })) || []}
+            />
+            <SelectBox
+              label="Status"
+              selected={selectestatus}
+              setSelected={setSelectestatus}
+              options={[
+                { name: "Completed", value: "true" },
+                { name: "On Going", value: "false" },
+              ]}
+            />
+            {/* <SelectBox
+              label="Client"
+              selected={selecteclient}
+              setSelected={setSelecteclient}
+              options={clientData?.data?.map((item) => ({ name: item.name, value: item.name })) || []}
+          
+            /> */}
+            <div className="ml-auto mt-6 md:mt-0">
+              <div
+                onClick={handleClearFilters}
+                className="flex cursor-pointer items-center bg-primary hover:bg-red-700 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs uppercase group"
+              >
+                <span>Clear filter</span>
+                <span className="bg-white rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center">
+                  <Image
+                    src={assets.bluearrowRight}
+                    width={14}
+                    height={28}
+                    alt="clear"
+                    className="h-[14px] object-contain group-hover:animate-pulse rotate-180"
+                  />
+                </span>
               </div>
             </div>
           </div>
+        </motion.div>
 
-          {/* Chunked Grid */}
-          {groupedItems.map((group, index) => (
-            <div
-              key={index}
-              className={`grid grid-cols-1 md:grid-cols-${group.length} gap-7 md:gap-[30px] mb-[50px] lg:mb-25`}
-            >
-              {group.map((proj) => (
-                <Link key={proj.slug} href={`/projects-details/${proj.slug}`}>
-                  <div className="border-t border-[#cccccc] pt-4 md:pt-8 ">
-                     <p className="font-medium text-32">{proj.client}</p>
-                                  <p className="font-medium text-md text-[#595959] mb-4 md:mb-8">{proj.sector}</p>
-                                  <Image src={proj.thumbnail} alt={proj.thumbnailAlt} className="rounded-[20px]  " width={794} height={600} />
-
+        {/* Project Grid */}
+        {groupedItems.map((group, gIndex) => (
+          <motion.div
+            key={group[0]?.slug || gIndex}
+            className={`grid grid-cols-1  md:grid-cols-${group.length} gap-7 md:gap-[30px] mb-[50px]   2xl:mb-[80px]`}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            {group.map((proj, index) => (
+              <motion.div
+                key={proj.slug}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
+              >
+                <Link href={`/portfolio/${proj.slug}`}>
+                  <div className="border-t border-[#cccccc] pt-4 md:pt-8 cursor-pointer">
+                    <p className="font-medium text-32 truncate">{proj.name}</p>
+                    <p className="font-medium text-md text-gray mb-4 md:mb-8 truncate ">
+                      {proj.sector}
+                    </p>
+                    <figure className="relative h-[350px]  md:h-[250px] lg:h-[500px]">
+                      <Image
+                        src={proj.thumbnail}
+                        alt={proj.thumbnailAlt}
+                        className="rounded-[20px] object-cover h-full object-center"
+                        width={794}
+                        height={600}
+                      />
+                    </figure>
                   </div>
                 </Link>
-              ))}
-            </div>
-          ))}
+              </motion.div>
+            ))}
+          </motion.div>
+        ))}
+
+        {/* Load More / Empty State */}
+        <div className="text-center">
+          {groupedItems.length > 0 && !disableLoadMore && (
+            <motion.div
+              variants={fadeInUpsec}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <div
+                onClick={handleLoadMore}
+                className="mx-auto flex cursor-pointer items-center bg-primary hover:bg-red-700 text-white font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs uppercase w-fit mb-15 lg:mb-[70px] 2xl:mb-25"
+              >
+                <span>Load More</span>
+                <span className="bg-white rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center">
+                  <Image
+                    src={assets.bluearrowRight}
+                    width={14}
+                    height={28}
+                    alt="load-more"
+                    className="h-[14px] object-contain group-hover:animate-pulse rotate-90"
+                  />
+                </span>
+              </div>
+            </motion.div>
+          )}
+
+          {groupedItems.length < 1 && (
+            <p className="text-gray-500 text-lg py-10">No Projects Available</p>
+          )}
         </div>
-        <div className="container">
-        {!disableLoadMore && <div className="mx-auto mb-6 md:mb-[50px]  lg:mb-[100px] w-fit">
-                <div
-                  onClick={handleLoadMore}
-                  className="flex cursor-pointer items-center bg-primary hover:bg-red-700 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase group"
-                >
-                  <span>Load More</span>
-                  <span className="bg-white rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center ">
-                    <Image
-                      src={assets.bluearrowRight}
-                      width={14}
-                      height={28}
-                      alt="read-more"
-                      className="w-full h-[14px] object-contain group-hover:animate-pulse  rotate-90 "
-                    ></Image>
-                  </span>
-                </div>
-              </div>}
       </div>
-      </section>
-
-
-
-    </>
+    </section>
   );
 }

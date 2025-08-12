@@ -19,6 +19,8 @@ import { useRouter } from 'next/navigation'
 import { useParams } from 'next/navigation'
 import { ImageUploader } from '@/components/ui/image-uploader'
 import { RiAiGenerateText } from "react-icons/ri";
+import AdminItemContainer from '../AdminItemContainer/AdminItemContainer'
+import { generateDimentions } from '@/lib/generateDimentions'
 
 interface ProjectFormProps {
     name: string;
@@ -46,6 +48,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
 
     const [sectorList, setSectorList] = useState<{ name: string }[]>([]);
     const [locationList, setLocationList] = useState<{ name: string }[]>([]);
+    const [clientList, setClientList] = useState<{ name: string }[]>([]);
 
     const { register, handleSubmit, setValue, watch,control, formState: { errors } } = useForm<ProjectFormProps>();
 
@@ -121,8 +124,20 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
         }
     }
 
+    const fetchClient = async () => {
+        try {
+            const response = await fetch("/api/admin/project/client");
+            if (response.ok) {
+                const data = await response.json();
+                setClientList(data.data);
+            }
+        } catch (error) {
+            console.log("Error in fetching client", error);
+        }
+    }
+
     useEffect(() => {
-        fetchSector().then(() => fetchLocation().then(() => ((editMode) ? fetchProjectData() : null)));
+        fetchSector().then(() => fetchLocation().then(() => fetchClient().then(() => ((editMode) ? fetchProjectData() : null))));
     }, []);
 
 
@@ -144,19 +159,20 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
           };
 
     return (
-        <div className='flex flex-col gap-5'>
-            <h1 className='text-lg font-bold'>{editMode ? "Edit Project" : "Add Project"}</h1>
-            <form className='flex flex-col gap-5 border p-2 rounded-md' onSubmit={handleSubmit(handleAddProject)}>
+        <div className='flex flex-col gap-5 adminstyle'>
+            <h1 className='text-md font-bold'>{editMode ? "Edit Project" : "Add Project"}</h1>
+            <AdminItemContainer>
+            <form className='flex flex-col gap-5 border-[#ddd] p-4 rounded-md' onSubmit={handleSubmit(handleAddProject)}>
                 <div className='grid grid-cols-2 gap-2'>
                     <div>
-                        <Label className='pl-3 font-bold'>Name</Label>
+                        <Label className=''>Name</Label>
                         <Input type='text' placeholder='Project Name' {...register("name", { required: "Name is required" })} />
                         {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
                     </div>
                     <div>
-                                            <Label className='pl-3 font-bold mb-1'>
+                                            <Label className=''>
                                                 Slug
-                                                <div className='flex gap-2 items-center bg-green-600 text-white p-1 rounded-md cursor-pointer' onClick={handleAutoGenerate}>
+                                                <div className='w-fit flex gap-2 items-center bg-green-600 text-white p-1 rounded-md cursor-pointer' onClick={handleAutoGenerate}>
                                                     <p>Auto Generate</p>
                                                     <RiAiGenerateText />
                                                 </div>
@@ -169,36 +185,59 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                                         </div>
                     <div className='flex flex-col gap-2'>
                         <div>
-                        <Label className='pl-3 font-bold'>Thumbnail</Label>
+                        <Label className=''>Thumbnail</Label>
                         <ImageUploader onChange={(url)=>setValue("thumbnail",url)} value={watch("thumbnail")} />
+                            <p className='text-xs text-gray-500'>{generateDimentions("projects", "itemImage")}</p>
                         {errors.thumbnail && <p className='text-red-500'>{errors.thumbnail.message}</p>}
                         </div>
                         <div>
-                        <Label className='pl-3 font-bold'>Alt Tag</Label>
+                        <Label className=''>Alt Tag</Label>
                         <Input type='text' placeholder='Alt Tag' {...register("thumbnailAlt")} />
                     </div>
                     </div>
 
                     <div className='flex flex-col gap-2'>
                         <div>
-                        <Label className='pl-3 font-bold'>Cover Photo</Label>
+                        <Label className=''>Cover Photo</Label>
                         <ImageUploader onChange={(url)=>setValue("coverPhoto",url)} value={watch("coverPhoto")} />
+                            <p className='text-xs text-gray-500'>{generateDimentions("project_details", "cover")}</p>
                         {errors.coverPhoto && <p className='text-red-500'>{errors.coverPhoto.message}</p>}
                         </div>
                         <div>
-                        <Label className='pl-3 font-bold'>Alt Tag</Label>
+                        <Label className=''>Alt Tag</Label>
                         <Input type='text' placeholder='Alt Tag' {...register("coverPhotoAlt")} />
                     </div>
                     </div>
 
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <Label className='pl-3 font-bold'>Client</Label>
-                    <Input type='text' placeholder='Client Name' {...register("client", { required: "Client is required" })} />
-                    {errors.client && <p className='text-red-500'>{errors.client.message}</p>}
+                    <Label className=''>Client</Label>
+                    <Controller
+                        name="client"
+                        control={control}
+                        render={({ field }) => (
+                            <Select
+                                onValueChange={field.onChange}
+                                value={field.value}
+                                defaultValue=""
+                            >
+                                <SelectTrigger className="w-full">
+                                    <SelectValue placeholder="Select Client" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {clientList.map((item, index) => (
+                                        <SelectItem key={index} value={item.name}>
+                                            {item.name}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        )}
+                    />
+
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <Label className='pl-3 font-bold'>Sector</Label>
+                    <Label className=''>Sector</Label>
                     <Controller
                         name="sector"
                         control={control}
@@ -226,17 +265,16 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
 
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <Label className='pl-3 font-bold'>Consultant</Label>
-                    <Input type='text' placeholder='Consultant' {...register("consultant", { required: "Consultant is required" })} />
-                    {errors.consultant && <p className='text-red-500'>{errors.consultant.message}</p>}
+                    <Label className=''>Consultant</Label>
+                    <Input type='text' placeholder='Consultant' {...register("consultant")} />
                 </div>
 
-                <div className='flex flex-col gap-2'>
-                    <Label className='pl-3 font-bold'>Location</Label>
+                <div className='flex flex-col gap-2 '>
+                    <Label className=''>Category</Label>
                     <Controller
                         name="location"
                         control={control}
-                        rules={{ required: "Location is required" }}
+                        rules={{ required: "Category is required" }}
                         render={({ field }) => (
                             <Select
                                 onValueChange={field.onChange}
@@ -244,7 +282,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                                 defaultValue=""
                             >
                                 <SelectTrigger className="w-full">
-                                    <SelectValue placeholder="Select Location" />
+                                    <SelectValue placeholder="Select Category" />
                                 </SelectTrigger>
                                 <SelectContent className='bg-white'>
                                     {locationList.map((item, index) => (
@@ -260,14 +298,14 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                 </div>
 
                 <div className='flex flex-col gap-2'>
-                    <Label className='pl-3 font-bold'>Title</Label>
+                    <Label className=''>Title</Label>
                     <Input type='text' placeholder='Title' {...register("title", { required: "Title is required" })} />
                     {errors.title && <p className='text-red-500'>{errors.title.message}</p>}
                 </div>
 
 
                 <div>
-                <Label className='pl-3 font-bold'>Description</Label>
+                <Label className=''>Description</Label>
                     <Controller name="description" control={control} rules={{ required: "Description is required" }} render={({ field }) => {
                         return <ReactQuill theme="snow" value={field.value} onChange={field.onChange} />
                     }} />
@@ -276,7 +314,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
 
 
                 <div className='flex flex-col gap-2'>
-                    <Label className='pl-3 font-bold'>Status</Label>
+                    <Label className=''>Status</Label>
                     <Controller name="status" control={control} rules={{ required: "Status is required" }} render={({ field }) => {
                         return <Select
                             onValueChange={field.onChange}
@@ -301,7 +339,7 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
                 </div>
 
                 <div className='flex flex-col gap-2'>
-                    <Label className='pl-3 font-bold'>Featured Project</Label>
+                    <Label className=''>Featured Project</Label>
                     <Controller name="featuredProject" control={control} rules={{ required: "Featured Project is required" }} render={({ field }) => {
                         return <Select
                             onValueChange={field.onChange}
@@ -327,19 +365,20 @@ const ProjectForm = ({ editMode }: { editMode?: boolean }) => {
 
 
                 <div className='flex flex-col gap-2'>
-                    <Label className='pl-3 font-bold'>Meta Title</Label>
+                    <Label className=''>Meta Title</Label>
                     <Input type='text' placeholder='Meta Title' {...register("metaTitle")} />
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <Label className='pl-3 font-bold'>Meta Description</Label>
+                    <Label className=''>Meta Description</Label>
                     <Input type='text' placeholder='Meta Description' {...register("metaDescription")} />
                 </div>
 
                 <div className='flex justify-center'>
-                    <Button type='submit'>Submit</Button>
+                    <Button type='submit' className='text-white cursor-pointer w-full'>Submit</Button>
                 </div>
 
             </form>
+            </AdminItemContainer>
         </div>
     )
 }

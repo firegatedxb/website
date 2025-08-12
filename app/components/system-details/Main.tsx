@@ -1,20 +1,25 @@
 "use client";
+import { motion } from "framer-motion";
 import Sbttl from "../common/Sbttl";
 
 import {systems } from '@/public/types/Common';
+import { fadeInUpsec } from "@/public/frameranimation/animation";
 
 
 const Main = ({ data }: { data: systems }) => {
-console.log(data);
+;
   return (
     <section className="">
-      <div className="container py-15 lg:py-25    ">
+      <div className="container py-[50px] lg:py-[70px] 2xl:py-[100px]    ">
 
           <div>
             <div className="mb-4">
               <Sbttl title={data.introTitle} />
             </div>
-            <p>{data.introDescription}</p>
+            <motion.p className="text-gray" variants={fadeInUpsec}
+                                initial="hidden"
+                                whileInView="visible"
+                      viewport={{ once: true, amount: 0.2 }}>{data.introDescription}</motion.p>
           </div>
 
           </div>

@@ -5,9 +5,19 @@ const nextConfig: NextConfig = {
   reactStrictMode: false,
   images: {
     dangerouslyAllowSVG:true,
-    domains: ["dl.dropboxusercontent.com"], // Add Dropbox domain here
+    unoptimized:true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "dl.dropboxusercontent.com",
+      },
+    ],
+    
   },
-  
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+    
+  },
 };
 
 export default nextConfig;

@@ -15,7 +15,7 @@ const Index = async ({data}:{data:Project}) => {
     <>
       <PjtBanner data={data}/>
       <Scope data={data}/>
-      <RelatedProjects data={allProjects} sector={data?.data?.sector}/>
+      <RelatedProjects data={allProjects} sector={data?.data?.sector} pjtname={data?.data?.name}/>
     </>
   )
 }

@@ -47,12 +47,7 @@ const HeroSlider = ({ data }: { data: Home }) => {
                       className="text-65 font-bold uppercase max-w-[29ch] leading-[1.23]"
                       dangerouslySetInnerHTML={{ __html: slide.title }}
                     />
-                    {/* <motion.div className=" whatsapp  "
-                      {...fadeIn(0.8, 0.2)}  >
-                      <Link href="#"  >
-                        <Image src={assets.whatsapp} alt="slider" className="absolute bottom-5 lg:bottom-[180px] right-[10px] lg:right-[0px]  " />
-                        </Link>
-        </motion.div> */}
+
                   </AnimatePresence>
 
                   <Link href="/about">
@@ -84,15 +79,18 @@ const HeroSlider = ({ data }: { data: Home }) => {
           <div className="container">
             <motion.div className="flex gap-2 justify-end" {...fadeIn(0.8, 0.2)}>
               {data.banners.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-[50px] h-[3px] cursor-pointer rounded-full transition-all duration-300 ${
-                    activeIndex === index
-                      ? "bg-primary scale-125 max-w-[27px]"
-                      : "bg-white max-w-[9px]"
-                  }`}
-                  onClick={() => swiperRef.current?.slideToLoop(index)}
-                />
+                <div key={index}>
+                      {index > 1 ? (
+                  <button
+
+                    className={`w-[50px] h-[3px] cursor-pointer rounded-full transition-all duration-300 ${activeIndex === index
+                        ? "bg-primary scale-125 max-w-[27px]"
+                        : "bg-white max-w-[9px]"
+                      }`}
+                    onClick={() => swiperRef.current?.slideToLoop(index)}
+                  ></button>
+                ):(<div></div>)}
+                </div>
               ))}
             </motion.div>
           </div>

@@ -10,25 +10,26 @@ import Image from "next/image";
 import { Home } from '@/public/types/Common';
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/public/frameranimation/animation";
+ 
 const Certifications = ({ data }: { data: Home }) => {
-
+  console.log(data);
     const swiperRef = useRef<SwiperClass | null>(null);
   return (
-    <section className="pt-[30px] md:pt-[30px] lg:pt-[60px] pb-[50px] md:pb-[60px] lg:pb-[120px] relative  ">
+    <section className="pt-[30px] md:pt-[30px] lg:pt-[60px] pb-[50px] md:pb-[60px] 2xl:pb-[120px] relative  ">
       <div className="container">
         <div className=" ">
           <div className=" ">
              <motion.h2
-              className="text-30 md:text-50 text-secondary font-medium mb-3 md:mb-[50px] lg:mb-[84px] uppercase"
+              className="text-30 md:text-50 text-secondary font-medium mb-8 md:mb-[50px] lg:mb-[40px] 2xl:mb-[84px] uppercase"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-            > {data.certifications.title}  {data?.systems.title}
+            > {data.certifications.title}
             </motion.h2>
       <Swiper
   modules={[Autoplay, Grid]}
-  autoplay={{ delay: 4000 }}
+              autoplay={{ delay: 4000 }}
   loop
   slidesPerView={1}
   grid={{
@@ -69,21 +70,22 @@ const Certifications = ({ data }: { data: Home }) => {
 >
   {data.certifications.items.map((slide, index) => (
     <SwiperSlide key={index} className="border-x border-[#00000015]">
+      <a href={slide.link} target="_blank">
   <motion.div
-    className="bg-white flex items-center justify-center group px-3"
+    className="bg-white flex items-center justify-center group px-3 h-4200a"
     variants={fadeInUp}
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true, amount: 0.2 }}
-  >
+  > 
     <Image
       src={slide.image}
       alt={slide.imageAlt}
-      width={240}
-      height={70}
-    />
+      width={150}
+      height={150}
+    /> 
   </motion.div>
-</SwiperSlide>
+</a></SwiperSlide>
 
   ))}
 </Swiper>

@@ -1,7 +1,9 @@
 "use client"
+import { motion } from "framer-motion";
 import Sbttl from "../common/Sbttl";
 
 import { Services } from '@/public/types/Common';
+import { fadeInUpsec } from "@/public/frameranimation/animation";
 
 
 const Main = ({ data }: { data: Services }) => {
@@ -9,14 +11,19 @@ const Main = ({ data }: { data: Services }) => {
 
   return (
     <section className="">
-      <div className="container py-[50px] lg:py-25 border-b border-graylit">
+      <div className="container py-[50px] lg:py-15 2xl:py-25 border-b border-graylit">
       {serviceArray.map((service, index) => (
           <div key={index}>
             <div className="mb-4">
               <Sbttl title={service.title} />
             </div>
-
-          <p>{service.description} </p>
+          <motion.p
+            className="text-gray font-19"
+            variants={fadeInUpsec}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}>
+           {service.description} </motion.p>
     </div>
       ))}
       </div>

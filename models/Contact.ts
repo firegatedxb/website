@@ -28,6 +28,9 @@ const ContactSchema = new mongoose.Schema({
         },
         email:{
             type:String
+        },
+        buttonLink:{
+            type:String
         }
     }],
     socials:[{

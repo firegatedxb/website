@@ -34,13 +34,13 @@ export const MenuItem = ({
   return (
     <div
       onMouseEnter={() => (noMenu ? setActive(null) : setActive(item))}
-      className="relative mr-0 ml-3 lg:ml-[25px] xl:ml-[35px] first:lg:ml-[45px] first:xl:ml-[65px]">
+      className="relative mr-0 ml-3 lg:ml-[15px] xl:ml-[15px] 2xl:ml-[25px] first:lg:ml-[5px] first:xl:ml-[35px] first:2xl:ml-[65px]">
       <div className="flex gap-2 mb-0">
         <Link href={url}>
           <motion.p
             transition={{ duration: 0.3 }}
             className="cursor-pointer text-[#1F1F1F] font-medium hover:text-secondary dark:text-white text-xs uppercase transition-all duration-500 ease-in-out">
-            <span className="flex gap-3 mediatext text-[17px] hover:text-primary transition-all duration-300 ">{item}</span>
+            <span className="flex gap-3 text-[13px]   xl:text-[13px]  2xl:text-[15px] hover:text-primary transition-all duration-300 ">{item}</span>
           </motion.p>
         </Link>
         {!noMenu && <Image src={arrow} alt="arrow" className="arrowst" />}
@@ -92,23 +92,26 @@ export const Menu = ({
 
       <nav
         onMouseLeave={() => setActive(null)} // resets the state
-        className=" relative bg-[#F9F9F9] z-50 dark:bg-black dark:border-white/[0.2] shadow-input flex justify-center items-stretch  gap-2 xl:gap-[42px]  h-full">
+        className=" relative bg-[#F9F9F9] z-50 dark:bg-black dark:border-white/[0.2] shadow-input flex justify-center items-stretch  gap-2 xl:gap-[20px]  h-full">
         <div className="left-spacing pr-[20px] xxl:pr-[20px] xxxl:pr-[50px] w-full flex items-center justify-between gap-3 pt-[16.5px] pb-[21px]  ">
+          <div className="pl-5">
+          <Link href="/">
           <div className="flex items-center ">
-            <Link href="/">
               <Image
                 src="/assets/img/logo.svg"
                 alt="Crest Logo"
-                width={80}
-                height={50}
-                className="h-[41px] logocsi w-auto"
+                width={323}
+                height={41}
+                className="h-[41px]  w-auto"
               />
-            </Link>
+          </div>
+          <p className="mb-0 text-center text-[14px] xl:text-[20px] text-gray xl:mt-1 italic">Your gateway to safety </p>
+          </Link>
           </div>
           <div>
 
             <div>
-              <Link href="tel:9744327677" className="flex items-center justify-end gap-2 text-17 font-bold text-gray-800  leading-tight  group">
+              <Link href="tel:+971 (4) 432 7677" className="flex items-center justify-end gap-2 text-17 font-bold text-gray-800  leading-tight  group">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="group-hover:animate-bounce">
               <g clipPath="url(#clip0_160_2538)">
                 <path

@@ -9,6 +9,8 @@ import { Button } from '@/components/ui/button'
 import { ImageUploader } from '@/components/ui/image-uploader'
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Textarea } from '@/components/ui/textarea'
+import AdminItemContainer from '@/app/components/AdminItemContainer/AdminItemContainer';
+import { generateDimentions } from '@/lib/generateDimentions';
 
 interface SystemFormProps {
 
@@ -22,6 +24,7 @@ interface SystemFormProps {
         address: string;
         phone: string;
         email: string;
+        buttonLink: string;
     }[];
     socials: {
         title: string;
@@ -66,7 +69,7 @@ const ContactPage = () => {
             const response = await fetch(`/api/admin/contact`);
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
+
                 setValue("image", data.data.image);
                 setValue("imageAlt", data.data.imageAlt);
                 setValue("metaTitle", data.data.metaTitle);
@@ -91,13 +94,17 @@ const ContactPage = () => {
 
 
     return (
-        <div className='flex flex-col gap-5'>
+        <div className='flex flex-col gap-5 adminstyle'>
             <form className='flex flex-col gap-5' onSubmit={handleSubmit(handleAddContact)}>
 
-
-                <div className='flex flex-col gap-2'>
+            <div>
+                
+                <AdminItemContainer>
+                    
+                 <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-black' main>Banner Section</Label>
+                 <div className='p-5 grid grid-cols-2'>
                     <div>
-                        <Label className="pl-3 font-bold">Image</Label>
+                        <Label className="">Image</Label>
                         <Controller
                             name="image"
                             control={control}
@@ -109,90 +116,102 @@ const ContactPage = () => {
                                 />
                             )}
                         />
+                        <p className='text-xs text-gray-500'>{generateDimentions("contact", "cover")}</p>
                         {errors.image && (
                             <p className="text-red-500">{errors.image.message}</p>
                         )}
                     </div>
                     <div>
-                        <Label className='pl-3 font-bold'>Alt Tag</Label>
+                    <div>
+                        <Label className=''>Alt Tag</Label>
                         <Input type='text' placeholder='Alt Tag' {...register("imageAlt")} />
                     </div>
                     <div>
-                        <Label className='pl-3 font-bold'>Page Title</Label>
+                        <Label className=''>Page Title</Label>
                         <Input type='text' placeholder='Page Title' {...register("pageTitle")} />
                     </div>
-                </div>
+                    </div>
+                    </div>
+                </AdminItemContainer>
+            </div>
+                <AdminItemContainer>
+                <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-black' main>Contacts</Label>
+                <div className='  flex flex-col gap-2'>
 
-                <Label className='pl-3 font-bold border-b p-2 text-lg'>Contacts</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-2'>
-
-                            <div>
-                    <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-5'>
+                            <div className='p-5'>
+                    <Label className=''>Items</Label>
+                <div className=' flex flex-col gap-5 border border-[#ddd] p-2 rounded-md'>
 
 
                     {contactFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-1 gap-2 relative border-b border-[#ddd] pb-5 last:border-b-0'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => contactRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
-                            <div className='flex flex-col gap-2'>
+                            <div className='grid grid-cols-2 gap-2'>
                                 <div className='flex flex-col gap-2'>
-                                    <Label className='pl-3 font-bold'>Title</Label>
+                                    <Label className=''>Title</Label>
                                     <Input type='text' placeholder='Title' {...register(`contacts.${index}.title`)} />
                                     {errors.contacts?.[index]?.title && <p className='text-red-500'>{errors.contacts?.[index]?.title.message}</p>}
                                 </div>
                                 <div className='flex flex-col gap-2'>
-                                    <Label className='pl-3 font-bold'>Address</Label>
+                                    <Label className=''>Address</Label>
                                     <Textarea {...register(`contacts.${index}.address`)} />
                                 </div>
                                 <div className='flex flex-col gap-2'>
-                                    <Label className='pl-3 font-bold'>Phone</Label>
+                                    <Label className=''>Phone</Label>
                                     <Input type='text' placeholder='Phone' {...register(`contacts.${index}.phone`)} />
                                 </div>
                                 <div className='flex flex-col gap-2'>
-                                    <Label className='pl-3 font-bold'>Email</Label>
+                                    <Label className=''>Email</Label>
                                     <Input type='text' placeholder='Email' {...register(`contacts.${index}.email`)} />
                                 </div>
+                                <div className='flex flex-col gap-2'>
+                                    <Label className=''>Button Link</Label>
+                                        <Input type='text' placeholder='Button Link' {...register(`contacts.${index}.buttonLink`)} />
+                                    </div>
                             </div>
 
                         </div>
                     ))}
 
-                    <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => contactAppend({ title: "", address: "", phone: "", email: "" })}>Add Item</Button>
+                    
+
+                </div>
+                <div className='flex justify-end mt-2'>
+                        <Button type='button' className="text-white cursor-pointer" addItem onClick={() => contactAppend({ title: "", address: "", phone: "", email: "", buttonLink: "" })}>Add Item</Button>
                     </div>
-
-                </div>
-                </div>
-
-                
                 </div>
 
 
-                <Label className='pl-3 font-bold border-b p-2 text-lg'>Socials</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-2'>
+                </div>
+                </AdminItemContainer>
 
-                            <div>
-                    <Label className='pl-3 font-bold'>Items</Label>
-                <div className='border p-2 rounded-md flex flex-col gap-5'>
+
+                <AdminItemContainer>
+             <Label className='pl-3 font-bold border-b border-[#ddd] p-2 text-md text-black' main>Socials</Label>
+                <div className=' flex flex-col gap-2'>
+
+                            <div className='p-5'>
+                    <Label className=''>Items</Label>
+                <div className=' border border-[#ddd] p-2  rounded-md grid grid-cols-2 gap-5'>
 
 
                     {socialsFields.map((field, index) => (
-                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border p-2 rounded-md'>
+                        <div key={field.id} className='grid grid-cols-2 gap-2 relative border-r border-[#ddd] pr-5 even:border-r-0'>
                             <div className='absolute top-2 right-2'>
                                 <RiDeleteBinLine onClick={() => socialsRemove(index)} className='cursor-pointer text-red-600' />
                             </div>
                             <div className='flex flex-col gap-2'>
                                 <div className='flex flex-col gap-2'>
-                                    <Label className='pl-3 font-bold'>Title</Label>
+                                    <Label className=''>Title</Label>
                                     <Input type='text' placeholder='Title' {...register(`socials.${index}.title`, {
                                         required: "Title is required"
                                     })} />
                                     {errors.socials?.[index]?.title && <p className='text-red-500'>{errors.socials?.[index]?.title.message}</p>}
                                 </div>
                                 <div className='flex flex-col gap-2'>
-                                    <Label className='pl-3 font-bold'>Link</Label>
+                                    <Label className=''>Link</Label>
                                     <Input type='text' placeholder='Link' {...register(`socials.${index}.link`, {
                                         required: "Link is required"
                                     })} />
@@ -202,27 +221,29 @@ const ContactPage = () => {
                         </div>
                     ))}
 
-                    <div>
-                        <Button type='button' className="w-full cursor-pointer" onClick={() => socialsAppend({ title: "", link: "" })}>Add Item</Button>
+                    
+
+                </div>
+                <div className='flex justify-end mt-2'>
+                        <Button type='button' className="text-white cursor-pointer" addItem onClick={() => socialsAppend({ title: "", link: "" })}>Add Item</Button>
                     </div>
-
-                </div>
                 </div>
 
-                
+
                 </div>
+                </AdminItemContainer>
 
                 <div className='flex flex-col gap-2'>
-                    <Label className='pl-3 font-bold'>Meta Title</Label>
+                    <Label className=''>Meta Title</Label>
                     <Input type='text' placeholder='Meta Title' {...register("metaTitle")} />
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <Label className='pl-3 font-bold'>Meta Description</Label>
+                    <Label className=''>Meta Description</Label>
                     <Input type='text' placeholder='Meta Description' {...register("metaDescription")} />
                 </div>
 
                 <div className='flex justify-center'>
-                    <Button type='submit'>Submit</Button>
+                    <Button type='submit' className='text-white cursor-pointer w-full'>Submit</Button>
                 </div>
 
             </form>

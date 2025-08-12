@@ -21,6 +21,8 @@ import dynamic from 'next/dynamic'
 import { Textarea } from "@/components/ui/textarea";
 import { RiPagesFill } from "react-icons/ri";
 import Link from "next/link";
+import AdminItemContainer from "@/app/components/AdminItemContainer/AdminItemContainer";
+import { generateDimentions } from "@/lib/generateDimentions";
 
 interface System {
     banner: string;
@@ -74,7 +76,7 @@ export default function Team() {
             const response = await fetch("/api/admin/systems");
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
+
                 setValue("title", data.data.title);
                 setValue("description", data.data.description);
                 setValue("banner", data.data.banner);
@@ -135,7 +137,7 @@ export default function Team() {
         try {
             const response = await fetch(`/api/admin/systems?id=${id}`, {
                 method: "PATCH",
-                body: JSON.stringify({ image, imageAlt }),
+                body: JSON.stringify({ image, imageAlt, title, description, logo, logoAlt }),
             });
             if (response.ok) {
                 const data = await response.json();
@@ -210,14 +212,14 @@ export default function Team() {
     }
 
     return (
-        <div className="h-screen grid grid-cols-1 gap-5">
+        <div className="h-screen grid grid-cols-1 gap-5 adminstyle">
 
-            <div className="h-fit w-full p-2 border-2 border-gray-300 rounded-md mt-5">
-                                        <div className="flex justify-between border-b-2 pb-2">
-                                            <Label className="text-sm font-bold">Meta Section</Label>
-                                            <Button onClick={submitMetaSection}>Save</Button>
+            <AdminItemContainer>
+                                        <div className="flex justify-between border-b border-[#ddd] pb-2 p-5">
+                                            <Label className="text-md font-bold text-black">Meta Section</Label>
+                                            <Button onClick={submitMetaSection} className="text-white cursor-pointer">Save</Button>
                                         </div>
-                                        <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
+                                        <div className="mt-2 grid grid-cols-1 gap-2  h-fit p-5">
                                             <div>
                                                 <Label>Meta title</Label>
                                                 <Input type="text" value={metaTitle} onChange={(e) => setMetaTitle(e.target.value)} />
@@ -227,54 +229,59 @@ export default function Team() {
                                                 <Input type="text" value={metaDescription} onChange={(e) => setMetaDescription(e.target.value)} />
                                             </div>
                                         </div>
-                                    </div>
+                                    </AdminItemContainer>
 
-            <form className="h-full w-full p-2 border-2 border-gray-300 rounded-md" onSubmit={handleSubmit(onSubmit)}>
-                <div className="flex justify-between border-b-2 pb-2">
-                    <Label className="text-sm font-bold">Intro Section</Label>
-                    <Button type="submit">Save</Button>
+<AdminItemContainer>
+            <form className="h-full w-full border-[#ddd] rounded-md" onSubmit={handleSubmit(onSubmit)}>
+                <div className="flex justify-between border-b border-[#ddd] pb-2 p-5">
+                    <Label className="text-md font-bold text-black">Intro Section</Label>
+                    <Button type="submit" className="text-white h-9 text-sm cursor-pointer">Save</Button>
                 </div>
-                <div className="mt-2 flex flex-col gap-2 h-fit">
+                <div className="mt-2 flex flex-col gap-2 h-fit p-5">
                 <div>
-                        <Label className="text-sm font-bold">Banner Image</Label>
+                        <Label className="">Banner Image</Label>
                         <ImageUploader onChange={(url) => setValue("banner", url)} value={watch("banner")}/>
+                            <p className='text-xs text-gray-500'>{generateDimentions("systems", "banner")}</p>
                     </div>
                     <div>
-                        <Label className="text-sm font-bold">Banner Alt</Label>
+                        <Label className="">Banner Alt</Label>
                         <Input type="text" placeholder="Banner Alt" {...register("bannerAlt")} />
                     </div>
                     <div>
-                        <Label className="text-sm font-bold">Page Title</Label>
+                        <Label className="">Page Title</Label>
                         <Input type="text" placeholder="Page Title" {...register("pageTitle")} />
                     </div>
                     <div>
-                        <Label className="text-sm font-bold">Title</Label>
+                        <Label className="">Title</Label>
                         <Input type="text" placeholder="Title" {...register("title")} />
                     </div>
                     <div>
-                        <Label className="text-sm font-bold">Description</Label>
+                        <Label className="">Description</Label>
                         <Controller name="description" control={control} rules={{ required: "Description is required" }} render={({ field }) => {
                             return <ReactQuill theme="snow" value={field.value} onChange={field.onChange} />
                         }} />
                     </div>
                 </div>
             </form>
+            </AdminItemContainer>
 
 
 
 
-            <div className="h-full w-full p-2 border-2 border-gray-300 rounded-md">
-                <div className="flex justify-between border-b-2 pb-2">
-                    <Label className="text-sm font-bold">Systems</Label>
+           <div className="mb-5">
+           <AdminItemContainer>
+                <div className="flex justify-between border-b border-[#ddd] pb-3 mb-3 p-5">
+                    <Label className="text-md font-bold text-secondary">Systems</Label>
                     <Dialog>
-                        <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => { setLogo(""); setLogoAlt(""); setImage(""); setImageAlt(""); setTitle(""); setDescription(""); }}>Add System</DialogTrigger>
+                        <DialogTrigger className="bg-primary h-9 text-white px-2 py-1 rounded-md text-sm cursor-pointer" onClick={() => { setLogo(""); setLogoAlt(""); setImage(""); setImageAlt(""); setTitle(""); setDescription(""); }}>Add System</DialogTrigger>
                         <DialogContent className="h-[500px] overflow-y-auto">
                             <DialogHeader>
                                 <DialogTitle>Add System</DialogTitle>
                                 <div className="flex flex-col gap-4">
                                 <div>
                                         <Label>Logo</Label>
-                                        <ImageUploader onChange={(url) => setLogo(url)} value={logo} />
+                                        <ImageUploader onChange={(url) => setLogo(url)} value={logo} isLogo/>
+                                        <p className='text-xs text-gray-500'>{generateDimentions("systems", "itemLogo")}</p>
                                     </div>
                                     <div>
                                         <Label>Logo Alt Tag</Label>
@@ -291,25 +298,26 @@ export default function Team() {
                                     <div>
                                         <Label>Image</Label>
                                         <ImageUploader onChange={(url) => setImage(url)} value={image} />
+                                        <p className='text-xs text-gray-500'>{generateDimentions("systems", "itemImage")}</p>
                                     </div>
                                     <div>
                                         <Label>Alt Tag</Label>
                                         <Input type="text" placeholder="Alt Tag" value={imageAlt} onChange={(e) => setImageAlt(e.target.value)} />
                                     </div>
-                                    
+
                                 </div>
                             </DialogHeader>
-                            <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={handleAddSystem}>Save</DialogClose>
+                            <DialogClose className="bg-black text-white px-2 cursor-pointer py-1 h-9 text-sm rounded-md" onClick={handleAddSystem}>Save</DialogClose>
                         </DialogContent>
 
                     </Dialog>
                 </div>
-                <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
+                <div className="mt-2 grid grid-cols-1 gap-2  h-fit p-5">
                     {systemList?.map((system, index) => (
-                        <div key={index} className="relative flex  justify-between border p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300">
+                        <div key={index} className="relative flex  justify-between border border-[#ddd] p-2 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300">
                             <div className="flex gap-4 items-center">
                                 <div>
-                                    <p>{system.title}</p>
+                                    <p className="text-sm font-medium">{system.title}</p>
                                 </div>
                             </div>
                             <div className="absolute top-1 right-1 flex gap-4">
@@ -320,13 +328,14 @@ export default function Team() {
 
 
                                     </DialogTrigger>
-                                    <DialogContent className="h-[500px] overflow-y-auto">
+                                    <DialogContent className="h-[500px] overflow-y-auto adminstyle">
                                         <DialogHeader>
                                             <DialogTitle>Edit System</DialogTitle>
                                             <div className="flex flex-col gap-4">
                                                 <div>
                                                     <Label>Logo</Label>
-                                                    <ImageUploader onChange={(url) => setLogo(url)} value={logo} />
+                                                    <ImageUploader onChange={(url) => setLogo(url)} value={logo} isLogo/>
+                                                    <p className='text-xs text-gray-500'>{generateDimentions("systems", "itemLogo")}</p>
                                                 </div>
                                                 <div>
                                                     <Label>Logo Alt Tag</Label>
@@ -343,6 +352,7 @@ export default function Team() {
                                                 <div>
                                                     <Label>Image</Label>
                                                     <ImageUploader onChange={(url) => setImage(url)} value={image} />
+                                                    <p className='text-xs text-gray-500'>{generateDimentions("systems", "itemImage")}</p>
                                                 </div>
                                                 <div>
                                                     <Label>Alt Tag</Label>
@@ -350,20 +360,21 @@ export default function Team() {
                                                 </div>
                                             </div>
                                         </DialogHeader>
-                                        <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={()=>handleEditSystem(system._id)}>Save</DialogClose>
+                                        <DialogClose className="bg-black text-white px-2 cursor-pointer py-1 rounded-md" onClick={()=>handleEditSystem(system._id)}>Save</DialogClose>
                                     </DialogContent>
 
                                 </Dialog>
 
                                     <Link href={`/admin/systems/${system._id}`}><RiPagesFill className="mt-1 cursor-pointer text-black"/></Link>
-                                
+
                                     <MdDelete className="mt-1 cursor-pointer text-black" onClick={()=>handleDeleteSystem(system._id)}/>
-                                
+
                             </div>
                         </div>
                     ))}
                 </div>
-            </div>
+            </AdminItemContainer>
+           </div>
         </div>
     );
 }

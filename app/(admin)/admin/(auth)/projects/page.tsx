@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { useRouter } from "next/navigation";
+import AdminItemContainer from "@/app/components/AdminItemContainer/AdminItemContainer";
 
 
 export default function Projects() {
@@ -23,8 +24,11 @@ export default function Projects() {
   const [oldCountry, setOldCountry] = useState<string>("");
   const [sector, setSector] = useState<string>("");
   const [country, setCountry] = useState<string>("");
+  const [client, setClient] = useState<string>("");
+  const [oldClient, setOldClient] = useState<string>("");
   const [projectList, setProjectList] = useState<{ _id: string, name: string, client: string, industry: string, scope: string, location: string, description: string }[]>([]);
   const [countryList, setCountryList] = useState<{ _id: string, name: string }[]>([]);
+  const [clientList, setClientList] = useState<{ _id: string, name: string }[]>([]);
   const [sectorList, setSectorList] = useState<{ _id: string, name: string }[]>([]);
   const [metaTitle, setMetaTitle] = useState<string>("");
   const [metaDescription, setMetaDescription] = useState<string>("");
@@ -42,6 +46,79 @@ export default function Projects() {
       }
     } catch (error) {
       console.log("Error fetching industry", error);
+    }
+  }
+
+  const handleAddClient = async () => {
+    try {
+      const response = await fetch("/api/admin/project/client", {
+        method: "POST",
+        body: JSON.stringify({ name: client }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setClient("");
+        alert(data.message);
+        handleFetchClient();
+      } else {
+        const data = await response.json();
+        alert(data.message);
+      }
+    } catch (error) {
+      console.log("Error adding client", error);
+    }
+  }
+
+  const handleFetchClient = async () => {
+    try {
+      const response = await fetch("/api/admin/project/client");
+      if (response.ok) {
+        const data = await response.json();
+        setClientList(data.data);
+      } else {
+        const data = await response.json();
+        alert(data.message);
+      }
+    } catch (error) {
+      console.log("Error fetching client", error);
+    }
+  }
+
+  const handleEditClient = async (id: string) => {
+    try {
+      const response = await fetch(`/api/admin/project/client?id=${id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ name: client, oldName: oldClient }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.message);
+        handleFetchClient();
+        setOldClient("");
+      } else {
+        const data = await response.json();
+        alert(data.message);
+      }
+    } catch (error) {
+      console.log("Error editing client", error);
+    }
+  }
+
+  const handleDeleteClient = async (id: string) => {
+    try {
+      const response = await fetch(`/api/admin/project/client?id=${id}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.message);
+        handleFetchClient();
+      } else {
+        const data = await response.json();
+        alert(data.message);
+      }
+    } catch (error) {
+      console.log("Error deleting client", error);
     }
   }
 
@@ -233,7 +310,7 @@ export default function Projects() {
       const response = await fetch("/api/admin/project/meta");
       if(response.ok) {
         const data = await response.json();
-        console.log(data)
+
         setMetaTitle(data.data.metaTitle);
         setMetaDescription(data.data.metaDescription);
       }else{
@@ -249,18 +326,20 @@ export default function Projects() {
     handleFetchProjects();
     handleFetchSector();
     handleFetchCountry();
+    handleFetchClient();
     fetchMeta();
   }, [])
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 adminstyle">
 
-      <div className="h-fit w-full p-2 border-2 border-gray-300 rounded-md mt-5">
-        <div className="flex justify-between border-b-2 pb-2">
-          <Label className="text-sm font-bold">Meta Section</Label>
-          <Button onClick={handleSaveMeta}>Save</Button>
+      <AdminItemContainer>
+        <div className="h-fit w-full border-[#ddd] rounded-md mt-5">
+        <div className="flex justify-between border-b border-[#ddd] pb-2 px-5">
+          <Label className="text-md font-bold text-black">Meta Section</Label>
+          <Button onClick={handleSaveMeta} className="text-white cursor-pointer ">Save</Button>
         </div>
-        <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
+        <div className="mt-2 grid grid-cols-1 gap-2  h-fit p-5">
           <div>
             <Label>Meta title</Label>
             <Input type="text" value={metaTitle} onChange={(e) => setMetaTitle(e.target.value)} />
@@ -271,18 +350,19 @@ export default function Projects() {
           </div>
         </div>
       </div>
+      </AdminItemContainer>
 
       <div className="h-screen grid grid-cols-2 gap-5">
 
         <div className="flex flex-col gap-2 h-screen">
-          <div className="h-1/2 w-full p-2 border-2 border-gray-300 rounded-md overflow-y-hidden">
-            <div className="flex justify-between border-b-2 pb-2">
-              <Label className="text-sm font-bold">Sector</Label>
+          <AdminItemContainer>
+            <div className="flex justify-between justify-items-center align-items-center   border-b border-[#ddd] pb-3 mb-3 p-5">
+              <Label className="text-md font-bold text-black">Sector</Label>
               <Dialog>
-                <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => setSector("")}>Add Sector</DialogTrigger>
+                <DialogTrigger className="bg-primary text-white px-2  cursor-pointer rounded-md text-sm h-9" onClick={() => setSector("")}>Add Sector</DialogTrigger>
                 <DialogContent>
                   <DialogHeader>
-                    <DialogTitle>Add Sector</DialogTitle>
+                    <DialogTitle >Add Sector</DialogTitle>
                     <DialogDescription>
                       <Input type="text" placeholder="Sector Name" value={sector} onChange={(e) => setSector(e.target.value)} />
                     </DialogDescription>
@@ -292,23 +372,23 @@ export default function Projects() {
 
               </Dialog>
             </div>
-            <div className="mt-2 flex flex-col gap-2 overflow-y-scroll h-full">
+            <div className="flex flex-col gap-3 overflow-y-scroll h-[calc(50vh-230px)] px-5 py-2">
               {sectorList.map((item) => (
-                <div className="flex justify-between border p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
-                  <div>
+                <div className="flex justify-between border border-[#ddd] p-2 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
+                 <p className="mb-0 text-sm stps">
                     {item.name}
-                  </div>
+                  </p>
                   <div className="flex gap-5">
                     <Dialog>
                       <DialogTrigger onClick={() => { setSector(item.name); setOldSector(item.name) }}><MdEdit /></DialogTrigger>
-                      <DialogContent>
+                      <DialogContent className="adminstyle">
                         <DialogHeader>
-                          <DialogTitle>Edit Sector</DialogTitle>
+                          <DialogTitle><p className="text-sm">Edit Sector</p></DialogTitle>
                           <DialogDescription>
                             <Input type="text" placeholder="Sector Name" value={sector} onChange={(e) => setSector(e.target.value)} />
                           </DialogDescription>
                         </DialogHeader>
-                        <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={() => handleEditSector(item._id)}>Save</DialogClose>
+                        <DialogClose className="bg-black text-white cursor-pointer px-2 py-1 rounded-md" onClick={() => handleEditSector(item._id)}>Save</DialogClose>
                       </DialogContent>
 
                     </Dialog>
@@ -335,19 +415,19 @@ export default function Projects() {
               ))}
 
             </div>
-          </div>
+          </AdminItemContainer>
 
 
-          <div className="h-1/2 w-full p-2 border-2 border-gray-300 rounded-md overflow-y-hidden">
-            <div className="flex justify-between border-b-2 pb-2">
-              <Label className="text-sm font-bold">Country</Label>
+          <AdminItemContainer>
+            <div className="flex justify-between align-items-center border-b border-[#ddd] pb-3 mb-3 p-5">
+              <Label className="text-md font-bold text-black">Category</Label>
               <Dialog>
-                <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => setCountry("")}>Add Country</DialogTrigger>
+                <DialogTrigger className="bg-primary text-white cursor-pointer px-2 text-sm rounded-md h-9" onClick={() => setCountry("")}>Add Category</DialogTrigger>
                 <DialogContent>
                   <DialogHeader>
-                    <DialogTitle>Add Country</DialogTitle>
+                    <DialogTitle>Add Category</DialogTitle>
                     <DialogDescription>
-                      <Input type="text" placeholder="Location Name" value={country} onChange={(e) => setCountry(e.target.value)} />
+                      <Input type="text" placeholder="Category Name" value={country} onChange={(e) => setCountry(e.target.value)} />
                     </DialogDescription>
                   </DialogHeader>
                   <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={handleAddCountry}>Save</DialogClose>
@@ -357,23 +437,23 @@ export default function Projects() {
             </div>
             <div className="h-full">
 
-              <div className="mt-2 flex flex-col gap-2 overflow-y-scroll h-full">
+              <div className="flex flex-col gap-3 overflow-y-scroll h-[calc(50vh-270px)] px-5 py-2">
                 {countryList.map((item) => (
-                  <div className="flex justify-between border p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
-                    <div>
+                  <div className="flex justify-between border border-[#ddd] p-2 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
+                    <p className="mb-0 text-sm stps">
                       {item.name}
-                    </div>
+                    </p>
                     <div className="flex gap-5">
                       <Dialog>
                         <DialogTrigger onClick={() => { setCountry(item.name); setOldCountry(item.name) }}><MdEdit /></DialogTrigger>
-                        <DialogContent>
+                        <DialogContent className="adminstyle">
                           <DialogHeader>
-                            <DialogTitle>Edit Country</DialogTitle>
+                            <DialogTitle><p className="text-sm">Edit Country</p></DialogTitle>
                             <DialogDescription>
                               <Input type="text" placeholder="Country Name" value={country} onChange={(e) => setCountry(e.target.value)} />
                             </DialogDescription>
                           </DialogHeader>
-                          <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={() => handleEditCountry(item._id)}>Save</DialogClose>
+                          <DialogClose className="bg-black text-sm cursor-pointer text-white px-2 py-1 rounded-md" onClick={() => handleEditCountry(item._id)}>Save</DialogClose>
                         </DialogContent>
 
                       </Dialog>
@@ -402,21 +482,88 @@ export default function Projects() {
               </div>
 
             </div>
-          </div>
+          </AdminItemContainer>
+
+
+          <AdminItemContainer>
+            <div className="flex justify-between align-items-center border-b border-[#ddd]   pb-3 mb-3 p-5">
+              <Label className="text-md font-bold text-black">Clients</Label>
+              <Dialog>
+                <DialogTrigger className="bg-primary cursor-pointer text-white px-2 py-1 rounded-md text-sm h-9" onClick={() => setClient("")}>Add Client</DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Add Client</DialogTitle>
+                    <DialogDescription>
+                      <Input type="text" placeholder="Client Name" value={client} onChange={(e) => setClient(e.target.value)} />
+                    </DialogDescription>
+                  </DialogHeader>
+                  <DialogClose className="bg-black cursor-pointer text-white px-2 py-1 rounded-md" onClick={handleAddClient}>Save</DialogClose>
+                </DialogContent>
+
+              </Dialog>
+            </div>
+            <div className="h-full">
+
+              <div className="flex flex-col gap-3 overflow-y-scroll h-[calc(50vh-185px)] px-5 py-2">
+                {clientList.map((item) => (
+                  <div className="flex justify-between border border-[#ddd] p-2 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
+                   <p className="mb-0 text-sm stps">
+                      {item.name}
+                    </p>
+                    <div className="flex gap-5">
+                      <Dialog>
+                        <DialogTrigger onClick={() => { setClient(item.name); setOldClient(item.name) }}><MdEdit /></DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader className="adminstyle">
+                            <DialogTitle>Edit Client</DialogTitle>
+                            <DialogDescription>
+                              <Input type="text" placeholder="Client Name" value={client} onChange={(e) => setClient(e.target.value)} />
+                            </DialogDescription>
+                          </DialogHeader>
+                          <DialogClose className="bg-black cursor-pointer text-white px-2 py-1 rounded-md" onClick={() => handleEditClient(item._id)}>Save</DialogClose>
+                        </DialogContent>
+
+                      </Dialog>
+
+
+
+                      <Dialog>
+                        <DialogTrigger><MdDelete /></DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle>Are you sure?</DialogTitle>
+                          </DialogHeader>
+                          <div className="flex gap-2">
+                            <DialogClose className="bg-black text-white px-2 py-1 rounded-md">No</DialogClose>
+                            <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={() => handleDeleteClient(item._id)}>Yes</DialogClose>
+                          </div>
+
+                        </DialogContent>
+
+                      </Dialog>
+
+                    </div>
+                  </div>
+                ))}
+
+              </div>
+
+            </div>
+          </AdminItemContainer>
 
         </div>
 
-        <div className="h-screen w-full p-2 border-2 border-gray-300 rounded-md overflow-y-hidden">
-          <div className="flex justify-between border-b-2 pb-2">
-            <Label className="text-sm font-bold">Projects</Label>
-            <Button onClick={() => router.push("/admin/projects/add")}>Add Project</Button>
+        <AdminItemContainer>
+          <div className="flex justify-between align-items-center border-b border-[#ddd] pb-3 p-5 h-fit">
+            <Label className="text-md font-bold text-black">Projects</Label>
+            <Button onClick={() => router.push("/admin/projects/add")} className="text-white h-9 text-sm cursor-pointer">Add Project</Button>
           </div>
-          <div className="mt-2 flex flex-col gap-2 overflow-y-scroll h-full">
+          <div className="flex flex-col gap-3 overflow-y-scroll  px-5 py-2 h-[calc(100vh-100px)]">
             {projectList.map((item) => (
-              <div className="flex justify-between border p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
-                <div>
+              <div className="flex justify-between border border-[#ddd] p-2 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300" key={item._id}>
+               <p className="mb-0 text-sm stps">
                   {item.name}
-                </div>
+               </p>
                 <div className="flex gap-5">
                   <MdEdit onClick={() => router.push(`/admin/projects/edit/${item._id}`)} />
 
@@ -440,7 +587,7 @@ export default function Projects() {
 
 
           </div>
-        </div>
+        </AdminItemContainer>
       </div>
     </div>
   );

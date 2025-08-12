@@ -6,13 +6,13 @@ import { Swiper as SwiperClass } from "swiper";
 import { Autoplay, Grid } from 'swiper/modules';
 import "swiper/css";
 import Image from "next/image";
-import { assets } from "@/public/assets/assets";
 
-import { Home } from '@/public/types/Common';
+import { Home,Partners } from '@/public/types/Common';
 import { motion } from "framer-motion";
 import {  slideInLeft } from "@/public/frameranimation/animation";
+import { assets } from "@/public/assets/assets";
 
-const TechnologyPartners = ({ data }: { data: Home }) => {
+const TechnologyPartners = ({ data, pdata }: { data: Home, pdata: Partners}) => {
 
 const [showPagination, setShowPagination] = useState(false);
 
@@ -39,7 +39,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <section className="py-[50px]  md:py-[50px] lg:pt-[108px]  lg:pb-[78px] relative bg-EFEFEF">
+    <section className="py-[50px]  md:py-[50px] lg:pt-[70px]  lg:pb-[70px] 2xl:pt-[108px]  2xl:pb-[78px] relative bg-EFEFEF">
       <div className="container">
         <div className=" ">
           <div className=" ">
@@ -71,8 +71,9 @@ useEffect(() => {
   onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
   className="w-full h-full"
 >
-  {data.partners.items.map((slide, index) => (
+  {pdata.partners.map((slide, index) => (
     <SwiperSlide key={index}>
+          <a href={`partners#section${index}`}   >
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -81,12 +82,13 @@ useEffect(() => {
         className="relative bg-white flex items-center justify-center rounded-[20px] h-[200px] md:h-[226px] lg:h-[286px] group"
       >
         <div>
-          <Image src={slide.image} alt={slide.imageAlt} width={240} height={70} />
+          <Image src={slide.logo} alt={slide.logoAlt} width={240} height={70} />
         </div>
-        <div className="w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center absolute top-[10px] right-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
-          <Image src={assets.redarrow} alt="" />
-        </div>
+            <div className="w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center absolute top-[10px] right-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
+              <Image src={assets.redarrow} alt="" />
+            </div>
       </motion.div>
+      </a>
     </SwiperSlide>
   ))}
 </Swiper>
