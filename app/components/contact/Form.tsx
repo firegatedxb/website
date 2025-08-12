@@ -9,6 +9,7 @@ import { useForm, Controller } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { contactFormSchema } from "@/app/schemas/contactForm"
 import { z } from "zod";
+import ReCAPTCHA from "react-google-recaptcha";
 
 type ContactFormProps = z.infer<typeof contactFormSchema>
 
@@ -19,7 +20,7 @@ const Form = () => {
     handleSubmit,
     control,
     formState: { errors },
-    reset,
+    reset, setValue,
   } = useForm({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -28,6 +29,7 @@ const Form = () => {
       email: "",
       message: "",
       type: "",
+       captcha: "",
     },
   })
 
@@ -197,7 +199,21 @@ const Form = () => {
               ></textarea>
               {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
             </div>
-
+<div>
+              <Controller
+                name="captcha"
+                control={control}
+                render={({ field }) => (
+                  <ReCAPTCHA
+                    sitekey="YOUR_RECAPTCHA_SITE_KEY"
+                    onChange={(value) => setValue("captcha", value || "")}
+                  />
+                )}
+              />
+              {errors.captcha && (
+                <p className="text-red-500 text-sm">{errors.captcha.message}</p>
+              )}
+            </div>
             <div>
               <button
                 type="submit"

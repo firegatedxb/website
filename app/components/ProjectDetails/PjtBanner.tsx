@@ -106,7 +106,7 @@ const PjtBanner: React.FC<FrameworkSectionProps> = ({ data }) => {
                   </motion.div>
 
                   {/* Bottom Location Block */}
-                  <motion.div
+                  {/* <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.7, duration: 0.6, ease: "easeOut" }}
@@ -121,7 +121,7 @@ const PjtBanner: React.FC<FrameworkSectionProps> = ({ data }) => {
                         </p>
                       </div>
                     </div>
-                  </motion.div>
+                  </motion.div> */}
                 </div>
               </div>
               </motion.div>

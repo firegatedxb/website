@@ -61,7 +61,7 @@ const Footer = () => {
       {defaultTab && (
         <div className="container">
           <div className="flex flex-wrap gap-4 lg:gap-0">
-            <div className="lg:w-2/3">
+            <div className="lg:w-[60%]">
               <motion.div variants={fadeInUp}
                 initial="hidden"
                 whileInView="visible"
@@ -128,7 +128,7 @@ const Footer = () => {
 
 
             </div>
-            <div className="lg:w-1/3">
+            <div className="lg:w-[40%]">
               <motion.div
                 className="flex flex-col h-full"
                 ref={ref}
@@ -181,7 +181,7 @@ const Footer = () => {
                   transition={{ delay: 0.6 }}
                 >
                   <p className="text-15 text-[#979797] font-[300] mt-6 md:mt-[33px]">
-                    ©2025 Fire gate safety & Security systems. All Rights Reserved
+                    ©2025 Fire gate safety & Security systems. All Rights Reserved by Global Surf
                   </p>
                 </motion.div>
               </motion.div>
