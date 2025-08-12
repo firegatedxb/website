@@ -126,7 +126,7 @@ const handleLoadMore = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <div className="bg-secondary rounded-2xl p-8 lg:p-10 grid md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-[50px] mb-[50px] lg:mb-[70px] 2xl:mb-25">
+          <div className="bg-secondary rounded-2xl p-8 lg:p-10 grid md:grid-cols-2 lg:grid-cols-3 gap-4 xl:gap-[50px] mb-[50px] lg:mb-[70px] 2xl:mb-25">
             <SelectBox
               label="Type"
               selected={selected}
@@ -139,7 +139,7 @@ const handleLoadMore = () => {
               setSelected={setSelectedsector}
               options={sectorData?.data?.map((item) => ({ name: item.name, value: item.name })) || []}
             />
-            <SelectBox
+            {/* <SelectBox
               label="Status"
               selected={selectestatus}
               setSelected={setSelectestatus}
@@ -147,7 +147,7 @@ const handleLoadMore = () => {
                 { name: "Completed", value: "true" },
                 { name: "On Going", value: "false" },
               ]}
-            />
+            /> */}
             {/* <SelectBox
               label="Client"
               selected={selecteclient}
