@@ -21,7 +21,7 @@ export const menuItems: MenuItem[] = [
   },
   {
     title: "FLS Systems",
-    url: "/systems",
+    url: "/fire-life-safety-systems",
     // children: [
     //   {
     //     title: "Commercial Projects  ",

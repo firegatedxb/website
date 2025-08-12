@@ -23,7 +23,7 @@ const AdminNavbar = () => {
         { name: "Services", href: "/admin/services", icon: EnvelopeIcon },
         // { name: "Industries", href: "/admin/industries", icon: BriefcaseIcon },
         { name: "Projects", href: "/admin/projects", icon: CheckBadgeIcon },
-        { name: "Systems", href: "/admin/systems", icon: CheckBadgeIcon },
+        { name: "Systems", href: "/admin/fire-life-safety-systems", icon: CheckBadgeIcon },
         { name: "Partners", href: "/admin/partners", icon: UserGroupIcon },
         { name: "Commitment", href: "/admin/commitment", icon:NewspaperIcon },
         { name: "Contact", href: "/admin/contact", icon: EnvelopeIcon },
