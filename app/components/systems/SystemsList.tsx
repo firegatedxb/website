@@ -47,7 +47,7 @@ const SystemsList = ({ data }: { data: systems }) => {
 
               <div className="relative z-20 mt-auto  transition-transform duration-300 ease-in-out">
                 {sys.slug !== "#" ? (
-                  <Link href={`/systems/${sys.slug}`}>
+                  <Link href={`/fire-life-safety-systems/${sys.slug}`}>
                     <h3 className="text-white text-22 md:text-32 leading-1.3 font-bold md:font-medium group-hover:mb-2 group-hover:md:mb-5 transition-all duration-300">
                       {sys.title}
                     </h3>
@@ -65,7 +65,7 @@ const SystemsList = ({ data }: { data: systems }) => {
 
                   {sys.slug !== "#" && (
                     <Link
-                      href={`/systems/${sys.slug}`}
+                      href={`/fire-life-safety-systems/${sys.slug}`}
                       className="w-[50px] h-[50px] lg:w-[80px] lg:h-[80px] rounded-full border bg-white border-black flex items-center justify-center transition-opacity duration-500 ease-in-out"
                     >
                       <Image src={assets.redarrow} alt="" width={17} height={17} unoptimized/>
