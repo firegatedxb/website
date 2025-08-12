@@ -44,11 +44,11 @@ const OurServices = ({ data }: { data: Home }) => {
                       className="border-b border-white  spb"
                       onMouseEnter={() => setActiveIndex(index)}
                     >
-                      <p className=  {`text-30 font-medium text-white leading-[3.3] hvtitle  ${
+                      <h3 className=  {`text-30 font-medium text-white leading-[3.3] hvtitle  ${
                         activeIndex === index ? 'opacity-0 max-h-[0px]' : 'opacity-100 max-h-[1000px]'
                       }`}>
                         {service.title}
-                      </p>
+                      </h3>
 
                     <div
                       className={`border-b border-white overflow-hidden transition-opacity duration-500  ${
@@ -57,9 +57,9 @@ const OurServices = ({ data }: { data: Home }) => {
                     >
                       <div className="border-l-3 border-primary pl-4 md:pl-[40px] my-4 md:my-[38px]">
                         <div>
-                          <p className="text-30 font-medium text-white pb-4 md:pb-[20px] leading-[1]">
+                          <h3 className="text-30 font-medium text-white pb-4 md:pb-[20px] leading-[1]">
                             {service.title}
-                          </p>
+                          </h3>
                           <p className="mb-4 md:mb-[42px] text-white text-19">{service.description}</p>
                         </div>
                           <Link href={service.url}>
