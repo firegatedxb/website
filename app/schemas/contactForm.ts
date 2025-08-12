@@ -34,5 +34,5 @@ export const contactFormSchema = z.object({
       (val) => typeof val === "string" ? xss(val) : val,
       z.string().min(1, "Type is required")
     ),
-    captcha: z.string().min(1, "Please complete the CAPTCHA") 
+    // captcha: z.string().min(1, "Please complete the CAPTCHA") 
   })

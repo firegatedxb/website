@@ -29,7 +29,7 @@ const Form = () => {
       email: "",
       message: "",
       type: "",
-       captcha: "",
+      //  captcha: "",
     },
   })
 
