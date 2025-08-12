@@ -9,7 +9,8 @@ import { useForm, Controller } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { contactFormSchema } from "@/app/schemas/contactForm"
 import { z } from "zod";
-// import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
+import { useRef, useState } from "react";
 
 type ContactFormProps = z.infer<typeof contactFormSchema>
 
@@ -33,8 +34,17 @@ const Form = () => {
     },
   })
 
+  const recaptcha = useRef<ReCAPTCHA>(null)
+  const [error,setError] = useState("")
+
   const onSubmit = async (data:ContactFormProps) => {
     try {
+      const captchaValue = recaptcha?.current?.getValue()
+            if (!captchaValue) {
+              setError("Please verify yourself to continue")
+              return;
+            }
+            setError("")
       const response = await fetch(`/api/admin/enquiry`, {
         method: "POST",
         body: JSON.stringify(data),
@@ -199,23 +209,10 @@ const Form = () => {
               ></textarea>
               {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
             </div>
-{/* <div>
-              <Controller
-  name="captcha"
-  control={control}
-  render={({ field }) => (
-    <ReCAPTCHA
-      sitekey=""
-      onChange={(value) => field.onChange(value || "")}
-    />
-  )}
-/>
 
+            <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""} ref={recaptcha} className='mt-5'/>
+            {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
 
-              {errors.captcha && (
-                <p className="text-red-500 text-sm">{errors.captcha.message}</p>
-              )}
-            </div> */}
             <div>
               <button
                 type="submit"

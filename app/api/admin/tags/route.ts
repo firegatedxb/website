@@ -19,6 +19,10 @@ export async function POST(request: NextRequest) {
             tag.bodyScript = bodyScript;
             await tag.save();
             return NextResponse.json({ message: "Tag updated successfully" }, { status: 200 });
+        }else{
+            const tag = new Tag({ headerScript, bodyScript });
+            await tag.save();
+            return NextResponse.json({ message: "Tag created successfully" }, { status: 200 });
         }
     } catch (error) {
         console.log("Error saving tag", error);
