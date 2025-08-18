@@ -12,10 +12,12 @@ import {
 } from "@/public/frameranimation/animation";
 
 const Contents = ({ data }: { data: Partners }) => {
+
   return data.partners.map((item, index) => (
-    <div key={index} className={`odd:bg-[#F8F8F8] stylein${index}`}>
+    <div key={index} className={`odd:bg-[#F8F8F8] stylein${index} scroll-mt-[120px]`}
+    id={`section${index}`}>
       <div className="container pb-[50px] lg:pb-[100px]">
-        <div className={`flex flex-col gap-12 first:lg:pt-0 `} key={index}>
+        <div className={`flex flex-col gap-12 first:lg:pt-0 `} key={index} >
           <motion.div
             className="flex justify-between items-center border-b border-[#59595920] pb-10 ptst pt-[30px] 2xl:pt-[100px] lg:pb-[30px]"
             initial="hidden"
@@ -23,8 +25,8 @@ const Contents = ({ data }: { data: Partners }) => {
             viewport={{ once: true }}
             variants={getVariants(index)}
           >
-            {index % 2 !== 0 ? (
-              <>
+            {/* {index % 2 !== 0 ? (
+              <> */}
                 <div>
                   <Image
                     src={item.logo}
@@ -37,7 +39,7 @@ const Contents = ({ data }: { data: Partners }) => {
                 <div>
                   <h4 className="text-30 text-black">{item.name}</h4>
                 </div>
-              </>
+              {/* </>
             ) : (
               <>
                 <div>
@@ -53,11 +55,11 @@ const Contents = ({ data }: { data: Partners }) => {
                   />
                 </div>
               </>
-            )}
+            )} */}
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-[70px]">
-            {index % 2 == 0 ? (
+            {/* {index % 2 == 0 ? (
               <>
             <motion.div
               className="text-gray text-19 flex flex-col gap-10 justify-center "
@@ -98,13 +100,14 @@ const Contents = ({ data }: { data: Partners }) => {
               <Image
                 src={item.image}
                 alt={item.imageAlt}
-                className="rounded-[20px] object-cover"
+
+                className="rounded-[20px] object-cover aspect-[16/9]"
                 width={800}
                 height={434}
               />
                 </motion.div>
               </>) : (
-                <>
+                <> */}
                    <motion.div
               initial="hidden"
               whileInView="visible"
@@ -114,7 +117,7 @@ const Contents = ({ data }: { data: Partners }) => {
               <Image
                 src={item.image}
                 alt={item.imageAlt}
-                className="rounded-[20px] object-cover"
+                className="rounded-[20px] object-cover aspect-[16/9]"
                 width={800}
                 height={434}
               />
@@ -148,8 +151,8 @@ const Contents = ({ data }: { data: Partners }) => {
                 </Link>
               </div>
             </motion.div>
-                </>
-             )}
+                {/* </>
+             )} */}
           </div>
         </div>
       </div>

@@ -106,7 +106,7 @@ const FeaturedProjects = ({ data }: { data: Home }) => {
                   <p className="text-19">{data.projects.description}</p>
                 </div>
               <div>
-               <Link href="/projects">
+               <Link href="/portfolio">
   <button className="flex mt-4 cursor-pointer items-center bg-primary hover:bg-primary/90 text-white w-fit font-medium px-5 py-2 rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase group transition">
     <span>More Projects</span>
     <span className="bg-white rounded-full p-1 w-[28px] h-[28px] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
@@ -147,7 +147,7 @@ const FeaturedProjects = ({ data }: { data: Home }) => {
                   spaceBetween: 8,
                 },
                 1024: {
-                  slidesPerView: 1.5,
+                  slidesPerView: 2.5,
                   spaceBetween: 20,
                 },
               }}
@@ -168,7 +168,7 @@ const FeaturedProjects = ({ data }: { data: Home }) => {
                     transition={{ delay: projectList.indexOf(project) * 0.15 }}
                   >
                     <div className="relative mb-8">
-                      <Link href={`/projects-details/${project.slug}`}>
+                      <Link href={`/portfolio/${project.slug}`}>
                         <Image
                           src={project.coverPhoto}
                           alt={""}
@@ -177,7 +177,7 @@ const FeaturedProjects = ({ data }: { data: Home }) => {
                           className="w-full lg:h-[536px] object-cover rounded-3xl"
                         />
                       </Link>
-                      <Link href={`/projects-details/${project.slug}`}>
+                      <Link href={`/portfolio/${project.slug}`}>
                         <div className="z-10 pointer w-[30px] h-[30px] md:w-[50px] md:h-[50px] rounded-full border flex items-center justify-center absolute bottom-[0px] left-[0px] trst">
                           <Image src={assets.redarrow} alt="" />
                         </div>
@@ -196,7 +196,7 @@ const FeaturedProjects = ({ data }: { data: Home }) => {
 
             <button
               onClick={() => swiperRef.current?.slideNext()}
-              className="invisible lg:visible absolute top-2/5 right-40 transform -translate-y-1/2 bg-white text-black rounded-full py-3 px-8 lg:py-[13.5px] shadow-lg z-10 cursor-pointer"
+              className="invisible lg:visible absolute top-2/5 right-20 transform -translate-y-1/2 bg-white text-black rounded-full py-3 px-8 lg:py-[13.5px] shadow-lg z-10 cursor-pointer"
             >
               <Image
                 src={assets.bluearrowRight}

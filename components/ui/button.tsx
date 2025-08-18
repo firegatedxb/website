@@ -40,17 +40,19 @@ function Button({
   variant,
   size,
   asChild = false,
+  addItem = false,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean
+    addItem?: boolean
   }) {
   const Comp = asChild ? Slot : "button"
 
   return (
     <Comp
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size, className }),`${addItem ? "bg-green-500 text-white text-[16px]" : ""}`)}
       {...props}
     />
   )

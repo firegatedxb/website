@@ -50,17 +50,18 @@ const Footer = () => {
     useEffect(() => {
       handleFetchContact();
     }, [])
+    console.log(contactList);
   const defaultTab = contactList?.contacts[0]?.title || "Dubai - UAE";
   const [tabValue, setTabValue] = useState<string>(defaultTab);
 
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   return (
-    <section className="py-[50px] md:py-[50px] lg:pt-[99px]  lg:pb-[111px] relative bg-black text-white ">
+    <section className="py-[50px] md:py-[50px] lg:py-[65px] 2xl:py-[85px] relative bg-black text-white ">
       {defaultTab && (
         <div className="container">
           <div className="flex flex-wrap gap-4 lg:gap-0">
-            <div className="lg:w-2/3">
+            <div className="lg:w-[60%]">
               <motion.div variants={fadeInUp}
                 initial="hidden"
                 whileInView="visible"
@@ -71,11 +72,11 @@ const Footer = () => {
                       <div key={index}  >
                         <TabsTrigger
                           value={client.title}
-                          className="relative group cursor-pointer data-[state=active]:bg-transparent text-white  capitalize text-left w-fit lg:w-auto lg:text-center pl-0 pr-10 md:pr-20  lg:pr-[90px] py-0 text-19 font-medium"
+                          className="relative group cursor-pointer data-[state=active]:bg-transparent text-white  capitalize text-left w-fit lg:w-auto lg:text-center pl-0 pr-[10px] md:pr-[15px]  lg:pr-[90px] py-0 text-19 font-medium"
                         >
-                          <p className="mb-0 text-[#979797]  group-data-[state=active]:text-white hover:text-white transition-all duration-300"> {client.title}</p>
+                          <p className="mb-0 text-[#979797]  group-data-[state=active]:text-white hover:text-white transition-all duration-300 text-sm md:text-md xl:text-[19px]"> {client.title}</p>
 
-                          <div className="flex absolute w-full h-[2px] group-data-[state=active]:bg-primary bottom-[-19px] left-0 z-20"></div>
+                          <div className="flex absolute w-full h-[2px] group-data-[state=active]:bg-primary bottom-[-21px] md:bottom-[-19px] left-0 z-20"></div>
                         </TabsTrigger>
                       </div>
                     ))}
@@ -106,11 +107,13 @@ const Footer = () => {
                                   {client.address?.split('PO')[1]}
                                 </p>
                                 <p className="text-19">
-                                  <span className="text-primary">T</span>:  {client.phone}
+                                  <span className="text-primary">T</span>:
+                                  <a href={`tel:${client.phone}`}> {client.phone}</a>
 
                                 </p>
                                 <p className="text-19">
-                                  <span className="text-primary">E</span>:  {client.email}
+                                  <span className="text-primary">E</span>:
+                                  <a href={`mailto:${client.email}`}> {client.email}</a>
                                 </p>
                               </div>
                             </TabsContent>
@@ -125,7 +128,7 @@ const Footer = () => {
 
 
             </div>
-            <div className="lg:w-1/3">
+            <div className="lg:w-[40%]">
               <motion.div
                 className="flex flex-col h-full"
                 ref={ref}
@@ -136,9 +139,9 @@ const Footer = () => {
                 <div className="flex flex-wrap gap-7 md:gap-10 h-full justify-between">
                   <motion.ul className="ulsmn" variants={listVariants}>
                     {[
-                      { href: "/services#section0", label: "Maintenance" },
-                      { href: "/services#section1", label: "Design & Engineering" },
-                      { href: "/services#section2", label: "Installation" },
+                      { href: "/services#section0", label: "Design & Engineering" },
+                      { href: "/services#section1", label: "Installation" },
+                      { href: "/services#section2", label: "Maintenance" },
                     ].map((item, index) => (
                       <motion.li
                         key={index}
@@ -156,7 +159,7 @@ const Footer = () => {
                   <motion.ul className="ulsmn" variants={listVariants}>
                     {[
                       { href: "/about", label: "About Us" },
-                      { href: "#", label: "Health Safety Environment" }, // Replace `#` if needed
+                      { href: "/commitments", label: "Commitments" }, // Replace `#` if needed
                     ].map((item, index) => (
                       <motion.li
                         key={index}
@@ -178,7 +181,7 @@ const Footer = () => {
                   transition={{ delay: 0.6 }}
                 >
                   <p className="text-15 text-[#979797] font-[300] mt-6 md:mt-[33px]">
-                    ©2025 Fire gate safety & Security systems. All Rights Reserved
+                    ©2025 Fire gate safety & Security systems. All Rights Reserved by Global Surf
                   </p>
                 </motion.div>
               </motion.div>
@@ -187,8 +190,8 @@ const Footer = () => {
         </div>
       )}
         <div className=" whatsapp  "   >
-          <Link href="#"  >
-                        <Image src={assets.whatsapp} alt="slider" className="fixed group hover:text-primary transition-all duration-300 transform   ease-in-out hover:-translate-y-1 bottom-5 lg:bottom-[180px] right-[10px] lg:right-[50px] z-50 w-[30px] h-[30px] lg:h-[60px] lg:w-[60px] " />
+          <Link href="https://wa.me/+971508454714" target="_blank">
+                        <Image src={assets.whatsapp} alt="slider" className="fixed group hover:text-primary transition-all duration-300 transform   ease-in-out hover:-translate-y-1 bottom-5 lg:bottom-[40px] right-[10px] lg:right-[50px]  z-50 w-[20px] h-[20px] lg:h-[40px] lg:w-[40px] " />
                         </Link>
                       </div>
     </section>

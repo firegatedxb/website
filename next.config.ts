@@ -14,7 +14,19 @@ const nextConfig: NextConfig = {
     ],
     
   },
-  
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+    
+  },
+  async redirects() {
+    return [
+      {
+        source: "/systems",
+        destination: "/fire-life-safety-systems",
+        permanent: true, // 301 redirect
+      },
+    ];
+  },
 };
 
 export default nextConfig;

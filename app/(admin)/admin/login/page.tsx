@@ -24,6 +24,8 @@ export default function AdminLogin() {
 
       if (data.success) {
         window.location.href = "/admin/home";
+      }else{
+        setError(data.message);
       }
     } catch (err) {
       console.log(err);
@@ -66,7 +68,7 @@ export default function AdminLogin() {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+              className="group cursor-pointer relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
             >
               Sign in
             </button>

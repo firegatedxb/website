@@ -54,9 +54,9 @@ export default function ClientSideLink({
           }
         }}
         className={cn(
-          "flex items-center px-4 py-2 text-sm font-medium rounded-md transition-colors",
-          "hover:bg-gray-50 hover:text-primary",
-          isActive ? "bg-gray-50 text-primary" : "text-gray-700",
+          "flex items-center px-3 py-2 text-sm font-medium rounded-[3px] transition-colors",
+          "hover:bg-[#163042] hover:text-white",
+          isActive ? "bg-[#163042] text-white" : "text-black",
           className
         )}
       >

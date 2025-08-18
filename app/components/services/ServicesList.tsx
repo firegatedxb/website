@@ -4,10 +4,27 @@ import Image from "next/image";
 import { Services } from '@/public/types/Common';
 import { motion } from "framer-motion";
 import { fadeUpVariant } from "@/public/frameranimation/animation";
+import { useEffect } from 'react';
 
 
 const ServicesList = ({ data }: { data: Services }) => {
   const serviceArray = Array.isArray(data.services) ? data.services : [data.services];
+  useEffect(() => {
+    const hash = window.location.hash;
+
+    if (hash) {
+      const scrollToEl = () => {
+        const el = document.querySelector(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      };
+
+      // Retry scroll a few times in case the DOM is delayed by animation
+      setTimeout(scrollToEl, 300);
+      setTimeout(scrollToEl, 700); // if Framer Motion delay
+    }
+  }, []);
   return (
     <section className="">
       <div className="container">

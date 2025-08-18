@@ -20,8 +20,8 @@ export const menuItems: MenuItem[] = [
     url: "/services",
   },
   {
-    title: "Our Systems",
-    url: "/systems",
+    title: "FLS Systems",
+    url: "/fire-life-safety-systems",
     // children: [
     //   {
     //     title: "Commercial Projects  ",
@@ -39,15 +39,15 @@ export const menuItems: MenuItem[] = [
   },
 
 {
-    title: "Projects",
-    url: "/projects",
+    title: "Portfolio",
+    url: "/portfolio",
   },
 {
     title: "Clients",
     url: "/our-clients",
   },
 {
-    title: "Partners",
+    title: "Our Partners ",
     url: "/partners",
   },
 {

@@ -14,10 +14,11 @@ interface ImageUploaderProps {
   className?: string;
   deleteAfterUpload?: boolean;
   removeIcon?: boolean
+  isLogo?: boolean
   handleRemovePlaceHolder?:()=>void
 }
 
-export function ImageUploader({ value, onChange, className, deleteAfterUpload = false, removeIcon,handleRemovePlaceHolder }: ImageUploaderProps) {
+export function ImageUploader({ value, onChange,isLogo, className, deleteAfterUpload = false, removeIcon,handleRemovePlaceHolder }: ImageUploaderProps) {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [localImageUrl, setLocalImageUrl] = useState<string | null>(null);
@@ -89,11 +90,11 @@ export function ImageUploader({ value, onChange, className, deleteAfterUpload = 
   return (
     <div className={cn("space-y-4 w-full", className)}>
   {displayUrl && isUploadComplete ? (
-    <div className="relative max-w-[300px] aspect-[4/3] overflow-hidden rounded-lg border">
+    <div className={`relative w-full max-w-[300px] aspect-[4/3] overflow-hidden rounded-lg border ${isLogo ? "max-w-[100px] h-[100px] bg-black" : "max-w-[300px]"}`}>
       <Image
         src={value ? value : displayUrl}
         alt="Uploaded image"
-        className="object-cover"
+        className={isLogo ? "object-contain p-2" : "object-cover"}
         fill
       />
       <Button
@@ -125,7 +126,7 @@ export function ImageUploader({ value, onChange, className, deleteAfterUpload = 
       <div
         {...getRootProps()}
         className={cn(
-          "border-2 border-dashed rounded-lg p-8 transition-colors hover:border-gray-400 w-full",
+          "border-2 border-dashed rounded-lg border-[#ddd] p-8 transition-colors hover:border-gray-400 w-full",
           "flex flex-col items-center justify-center gap-2 cursor-pointer",
           isDragActive && "border-blue-500 bg-blue-50",
           isUploading && "pointer-events-none opacity-60"

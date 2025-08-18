@@ -9,7 +9,7 @@ const Header = () => {
         <Link href={"/"}><Image src={assets.logo} width={323} height={44} alt="" className="w-full h-auto" /></Link>
       </div>
       <div className="flex flex-col justify-end items-end ml-auto gap-5 min-w-[45%] pt-4">
-        <Link href="tel:9744327677" className="flex items-center gap-2 text-17 font-bold text-gray-800  leading-tight  group">
+        <Link href="tel:+971 (4) 432 7677" className="flex items-center gap-2 text-17 font-bold text-gray-800  leading-tight  group">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="group-hover:animate-bounce">
             <g clipPath="url(#clip0_160_2538)">
               <path
@@ -45,7 +45,7 @@ const Header = () => {
             </li>
             <li>
               <Link href="systems" className="leading-tight hover:text-primary">
-                OUR SYSTEMS
+              FLS Systems
               </Link>
             </li>
             <li>

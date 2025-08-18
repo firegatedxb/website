@@ -6,13 +6,14 @@ import { Autoplay, Grid } from 'swiper/modules';
 import "swiper/css";
 import Image from "next/image";
 
-import { Partners } from '@/public/types/Common';
+import { Home,Partners } from '@/public/types/Common';
 import { motion } from 'framer-motion';
 import { fadeInUpsec, slideInLeft } from '@/public/frameranimation/animation';
 
 
-const Accreditation = ({ data }: { data: Partners }) => {
+const Accreditation = ({ data ,homeData}: { data: Partners ,homeData:Home }) => {
 
+  console.log(homeData)
   const [showPagination, setShowPagination] = useState(false);
   const swiperRef = useRef<SwiperClass | null>(null);
    const [activeIndex, setActiveIndex] = useState(0);
@@ -92,17 +93,19 @@ const Accreditation = ({ data }: { data: Partners }) => {
   onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
   className="w-full h-full"
 >
-  {data.accredit.map((item, index) => (
+  {homeData.certifications.items.map((item, index) => (
     <SwiperSlide key={index} className="border-x  border-[#00000015] ">
+        <a href={item.link} target="_blank" rel="noopener noreferrer">
       <div className=" bg-white flex items-center justify-center   h-[230px] group px-3">
         <Image
-          src={item.accreditImage}
-          alt={item.accreditImageAlt}
+          src={item.image}
+          alt={item.imageAlt}
           width={150}
           height={150}
         />
 
       </div>
+      </a>
     </SwiperSlide>
   ))}
 </Swiper>
@@ -110,7 +113,7 @@ const Accreditation = ({ data }: { data: Partners }) => {
   <div className="w-full">
     <div className="container">
       <div className="flex gap-2 justify-center mt-4 md:mt-[42px]">
-        {data.accredit.map((_, index) => (
+        {homeData.certifications.items.map((_, index) => (
           <button
             key={index}
             className={`w-[50px] h-[3px] cursor-pointer rounded-full transition-all duration-300 ${

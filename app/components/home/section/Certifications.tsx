@@ -7,11 +7,12 @@ import { Autoplay, Grid } from 'swiper/modules';
 import "swiper/css";
 import Image from "next/image";
 
-import { Home,Partners } from '@/public/types/Common';
+import { Home } from '@/public/types/Common';
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/public/frameranimation/animation";
-const Certifications = ({ data,pdata }: { data: Home, pdata: Partners }) => {
-
+ 
+const Certifications = ({ data }: { data: Home }) => {
+  console.log(data);
     const swiperRef = useRef<SwiperClass | null>(null);
   return (
     <section className="pt-[30px] md:pt-[30px] lg:pt-[60px] pb-[50px] md:pb-[60px] 2xl:pb-[120px] relative  ">
@@ -67,23 +68,24 @@ const Certifications = ({ data,pdata }: { data: Home, pdata: Partners }) => {
 
   className="w-full h-full"
 >
-  {pdata.accredit.map((slide, index) => (
+  {data.certifications.items.map((slide, index) => (
     <SwiperSlide key={index} className="border-x border-[#00000015]">
+      <a href={slide.link} target="_blank">
   <motion.div
     className="bg-white flex items-center justify-center group px-3 h-4200a"
     variants={fadeInUp}
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true, amount: 0.2 }}
-  >
+  > 
     <Image
-      src={slide.accreditImage}
-      alt={slide.accreditImageAlt}
+      src={slide.image}
+      alt={slide.imageAlt}
       width={150}
       height={150}
-    />
+    /> 
   </motion.div>
-</SwiperSlide>
+</a></SwiperSlide>
 
   ))}
 </Swiper>

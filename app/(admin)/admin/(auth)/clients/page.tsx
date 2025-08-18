@@ -19,6 +19,8 @@ import { ImageUploader } from "@/components/ui/image-uploader";
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false })
 import 'react-quill-new/dist/quill.snow.css';
 import dynamic from 'next/dynamic'
+import AdminItemContainer from "@/app/components/AdminItemContainer/AdminItemContainer";
+import { generateDimentions } from "@/lib/generateDimentions";
 
 interface Client {
     _id: string;
@@ -28,6 +30,7 @@ interface Client {
     description: string;
     banner: string;
     bannerAlt: string;
+    link: string;
     pageTitle: string;
 }
 
@@ -35,6 +38,7 @@ export default function Team() {
 
     const [image, setImage] = useState<string>("");
     const [imageAlt, setImageAlt] = useState<string>("");
+    const [link, setLink] = useState<string>("");
     const [clientList, setClientList] = useState<Client[]>([]);
     const { register, handleSubmit, setValue, control, watch } = useForm<Client>();
     const [metaTitle, setMetaTitle] = useState<string>("");
@@ -108,7 +112,7 @@ export default function Team() {
         try {
             const response = await fetch("/api/admin/clients", {
                 method: "POST",
-                body: JSON.stringify({ image, imageAlt }),
+                body: JSON.stringify({ image, imageAlt, link }),
             });
             if (response.ok) {
                 const data = await response.json();
@@ -127,7 +131,7 @@ export default function Team() {
         try {
             const response = await fetch(`/api/admin/clients?id=${id}`, {
                 method: "PATCH",
-                body: JSON.stringify({ image, imageAlt }),
+                body: JSON.stringify({ image, imageAlt, link }),
             });
             if (response.ok) {
                 const data = await response.json();
@@ -202,14 +206,14 @@ export default function Team() {
     }
 
     return (
-        <div className="h-screen grid grid-cols-1 gap-5">
+        <div className="h-screen grid grid-cols-1 gap-5 adminstyle">
 
-            <div className="h-fit w-full p-2 border-2 border-gray-300 rounded-md mt-5">
-                                        <div className="flex justify-between border-b-2 pb-2">
-                                            <Label className="text-sm font-bold">Meta Section</Label>
-                                            <Button onClick={submitMetaSection}>Save</Button>
+            <AdminItemContainer>
+                                        <div className="flex justify-between border-b  border-[#ddd] pb-2 p-5">
+                                            <Label className="text-md font-bold text-black">Meta Section</Label>
+                                            <Button className="text-white" onClick={submitMetaSection}>Save</Button>
                                         </div>
-                                        <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
+                                        <div className="mt-2 grid grid-cols-1 gap-2  h-fit p-5">
                                             <div>
                                                 <Label>Meta title</Label>
                                                 <Input type="text" value={metaTitle} onChange={(e) => setMetaTitle(e.target.value)} />
@@ -219,69 +223,77 @@ export default function Team() {
                                                 <Input type="text" value={metaDescription} onChange={(e) => setMetaDescription(e.target.value)} />
                                             </div>
                                         </div>
-                                    </div>
+                                        </AdminItemContainer>
 
-            <form className="h-full w-full p-2 border-2 border-gray-300 rounded-md" onSubmit={handleSubmit(onSubmit)}>
-                <div className="flex justify-between border-b-2 pb-2">
-                    <Label className="text-sm font-bold">Intro Section</Label>
-                    <Button type="submit">Save</Button>
+            <form className="h-full w-full border-[#ddd] rounded-md" onSubmit={handleSubmit(onSubmit)}>
+            <AdminItemContainer>
+                <div className="flex justify-between border-b border-[#ddd] pb-2 p-5">
+                    <Label className="text-md font-bold text-black">Intro Section</Label>
+                    <Button className="text-white" type="submit">Save</Button>
                 </div>
-                <div className="mt-2 flex flex-col gap-2 h-fit">
+                <div className="mt-2 flex flex-col gap-2 h-fit p-5">
                 <div>
-                        <Label className="text-sm font-bold">Banner Image</Label>
+                        <Label className="">Banner Image</Label>
                         <ImageUploader onChange={(url) => setValue("banner", url)} value={watch("banner")} />
+                            <p className='text-xs text-gray-500'>{generateDimentions("clients", "banner")}</p>
                     </div>
                     <div>
-                        <Label className="text-sm font-bold">Banner Alt Tag</Label>
+                        <Label className="">Banner Alt Tag</Label>
                         <Input type="text" placeholder="Alt Tag" {...register("bannerAlt")} />
                     </div>
                 <div>
-                        <Label className="text-sm font-bold">Page Title</Label>
+                        <Label className="">Page Title</Label>
                         <Input type="text" placeholder="Title" {...register("pageTitle")} />
                     </div>
                     <div>
-                        <Label className="text-sm font-bold">Title</Label>
+                        <Label className="">Title</Label>
                         <Input type="text" placeholder="Title" {...register("title")} />
                     </div>
                     <div>
-                        <Label className="text-sm font-bold">Description</Label>
+                        <Label className="">Description</Label>
                         <Controller name="description" control={control} rules={{ required: "Description is required" }} render={({ field }) => {
                             return <ReactQuill theme="snow" value={field.value} onChange={field.onChange} />
                         }} />
                     </div>
                 </div>
+            </AdminItemContainer>
             </form>
 
 
 
 
-            <div className="h-full w-full p-2 border-2 border-gray-300 rounded-md">
-                <div className="flex justify-between border-b-2 pb-2">
-                    <Label className="text-sm font-bold">Clients</Label>
+            <AdminItemContainer>
+                <div className="flex justify-between items-center border-b border-[#ddd] pb-4 mb-4 p-5">
+                    <Label className="text-md font-bold text-black">Clients</Label>
                     <Dialog>
-                        <DialogTrigger className="bg-primary text-white px-2 py-1 rounded-md" onClick={() => { setImage(""); setImageAlt(""); }}>Add Client</DialogTrigger>
+                        <DialogTrigger className="bg-primary cursor-pointer text-white h-9 text-sm px-2 py-1 rounded-md" onClick={() => { setImage(""); setImageAlt(""); setLink("") }}>Add Client</DialogTrigger>
                         <DialogContent>
-                            <DialogHeader>
+                            <DialogHeader className="adminstyle">
                                 <DialogTitle>Add Client</DialogTitle>
                                 <div className="flex flex-col gap-4">
                                     <div>
                                         <Label>Image</Label>
                                         <ImageUploader onChange={(url) => setImage(url)} value={image} />
+                                            <p className='text-xs text-gray-500'>{generateDimentions("clients", "itemImage")}</p>
                                     </div>
                                     <div>
                                         <Label>Alt Tag</Label>
                                         <Input type="text" placeholder="Alt Tag" value={imageAlt} onChange={(e) => setImageAlt(e.target.value)} />
                                     </div>
+                                    <div>
+                                        <Label>Link</Label>
+                                        <Input type="text" placeholder="Link" value={link} onChange={(e) => setLink(e.target.value)} />
+                                    </div>
                                 </div>
                             </DialogHeader>
-                            <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={handleAddClient}>Save</DialogClose>
+                            <DialogClose className="bg-black text-white px-2 py-1 rounded-md text-sm" onClick={handleAddClient}>Save</DialogClose>
                         </DialogContent>
 
                     </Dialog>
                 </div>
-                <div className="mt-2 grid grid-cols-1 gap-2  h-fit">
+                <div className="mt-2 grid grid-cols-1 gap-2  h-fit p-5">
                     {clientList.map((client, index) => (
-                        <div key={index} className="relative flex  justify-between border p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300">
+                        <div key={index} className="relative flex  justify-between border border-[#ddd] p-1 items-center rounded-md shadow-md hover:shadow-lg transition-all duration-300">
                             <div className="flex gap-4 items-center">
                                 <div>
                                     <Image src={client.image} alt={client.imageAlt} width={100} height={100} />
@@ -289,26 +301,31 @@ export default function Team() {
                             </div>
                             <div className="absolute top-1 right-1 flex gap-2">
                                 <Dialog>
-                                    <DialogTrigger className=" text-white px-2 py-1 rounded-md" onClick={() => { setImage(client.image); setImageAlt(client.imageAlt) }}>
+                                    <DialogTrigger className=" text-white px-2 py-1 rounded-md" onClick={() => { setImage(client.image); setImageAlt(client.imageAlt); setLink(client.link) }}>
 
                                             <MdEdit className="text-black cursor-pointer"/>
 
                                     </DialogTrigger>
-                                    <DialogContent>
+                                    <DialogContent className="adminstyle">
                                         <DialogHeader>
                                             <DialogTitle>Edit Client</DialogTitle>
                                             <div className="flex flex-col gap-4">
                                                 <div>
                                                     <Label>Image</Label>
                                                     <ImageUploader onChange={(url) => setImage(url)} value={image} />
+                                                    <p className='text-xs text-gray-500'>{generateDimentions("clients", "itemImage")}</p>
                                                 </div>
                                                 <div>
                                                     <Label>Alt Tag</Label>
                                                     <Input type="text" placeholder="Alt Tag" value={imageAlt} onChange={(e) => setImageAlt(e.target.value)} />
                                                 </div>
+                                                <div>
+                                                    <Label>Link</Label>
+                                                    <Input type="text" placeholder="Link" value={link} onChange={(e) => setLink(e.target.value)} />
+                                                </div>
                                             </div>
                                         </DialogHeader>
-                                        <DialogClose className="bg-black text-white px-2 py-1 rounded-md" onClick={()=>handleEditClient(client._id)}>Save</DialogClose>
+                                        <DialogClose className="bg-black cursor-pointer text-white px-2 py-1 rounded-md" onClick={()=>handleEditClient(client._id)}>Save</DialogClose>
                                     </DialogContent>
 
                                 </Dialog>
@@ -319,7 +336,7 @@ export default function Team() {
                         </div>
                     ))}
                 </div>
-            </div>
+            </AdminItemContainer>
         </div>
     );
 }

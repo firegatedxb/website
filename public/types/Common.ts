@@ -59,6 +59,7 @@ export type Home =
         {
           image: string,
           imageAlt: string
+          link: string
         }
       ]
     },
@@ -149,6 +150,7 @@ export type Clients =
       {
         image: string,
         imageAlt: string
+        link: string,
       }
     ]
   }
@@ -304,7 +306,8 @@ export type Contact=
         title: string,
         address: string,
         phone: string,
-        email: string
+        email: string,
+        buttonLink: string
       }
     ],
     socials: [

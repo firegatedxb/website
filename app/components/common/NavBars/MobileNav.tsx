@@ -115,6 +115,7 @@ const MobileNav = () => {
       {/* Navbar */}
       <nav className="w-full bg-white text-white tanspheader py-4  top-0 z-10">
         <div className="container mx-auto flex items-center justify-between">
+          <div>
           <div className="flex items-center">
             <Link href="/">
               <Image
@@ -122,9 +123,12 @@ const MobileNav = () => {
                 alt="Assent"
                 width={80}
                 height={40}
-                className="h-[40px] w-auto"
+                className="h-[35px] w-[200px]"
               />
             </Link>
+          </div>
+          <p className="mb-0 text-center text-[10px] xl:text-[14px] text-gray xl:mt-1 italic">Your gateway to safety </p>
+
           </div>
           {/* Hamburger Button */}
           <div
@@ -164,7 +168,8 @@ const MobileNav = () => {
           </button>
 
           {/* Logo */}
-          <div className="text-left mb-[50px]">
+         <div className="mb-[50px]">
+         <div className="text-left ">
             <Link href="/">
               <Image
                 src="/assets/img/logo.svg"
@@ -175,7 +180,9 @@ const MobileNav = () => {
               />
             </Link>
           </div>
+          <p className="mb-0 text-center text-[10px] xl:text-[14px] text-gray xl:mt-1 italic">Your gateway to safety </p>
 
+         </div>
           {/* Navigation Items */}
           <ul className="flex flex-col gap-4">
             {menuItems.map((item, index) =>

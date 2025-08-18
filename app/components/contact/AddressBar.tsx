@@ -16,7 +16,7 @@ const AddressBar = ({ data }: { data: Contact }) => {
                           whileInView="visible"
                           viewport={{ once: true, amount: 0.4 }}
                           custom={2}  className="  md:grid md:grid-cols-7  rounded-tr-[20px] rounded-br-[20px]">
-        <div className="bg-siteaftr bg-secondary md:bg-none pl-[20px] md:col-span-4 py-[50px] lg:py-[100px] flex flex-col gap-10 lg:gap-20 relative text-white">
+        <div className="bg-siteaftr bg-secondary md:bg-none pl-[20px] md:col-span-4 py-[40px] lg:py-[60px] flex flex-col gap-10 lg:gap-20 relative text-white">
           <motion.div variants={slideInLeft}
                           initial="hidden"
                           whileInView="visible"
@@ -26,7 +26,7 @@ const AddressBar = ({ data }: { data: Contact }) => {
               <motion.p
                 key={index}
                 onClick={() => setActiveTab(index)}
-                className={`text-19 font-medium  leading-[2.18] cursor-pointer relative top-[1px] pb-1 pr-5 md:pr-10  lg:pr-[125px]
+                className={`text-19 md:text-sm 2xl:text-19 font-medium  leading-[2.18] cursor-pointer relative top-[1px] pb-1 pr-1 md:pr-10  2xl:pr-[125px]
               ${
                 activeTab === index
                   ? "border-b-2 border-primary font-[600]"
@@ -51,17 +51,18 @@ const AddressBar = ({ data }: { data: Contact }) => {
               >
                 <motion.div
                   key={index}
-                  className="flex gap-5 items-start"
+                  className="flex gap-5 items-start "
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.5 }}
                 >
-                  <div className="flex flex-col gap-12 lg:gap-20">
+                  <div className="flex flex-col gap-12 lg:gap-16">
                     <div className="w-full flex flex-col gap-5">
                       <h3 className="text-30">{item.title}</h3>
                       <p className="text-19">{item.address}</p>
                     </div>
                     <div className="w-full flex flex-col gap-5">
+                      <a href={`mailto:${item.email}`}>
                       <div className="flex gap-4 border-b pb-5">
                         <Image
                           src="/assets/img/contact/message.svg"
@@ -71,6 +72,8 @@ const AddressBar = ({ data }: { data: Contact }) => {
                         />
                         <p className="text-30">{item.email}</p>
                       </div>
+                      </a>
+                      <a href={`tel:${item.phone}`}>
                       <div className="flex gap-4 ">
 
                         <Image
@@ -79,13 +82,14 @@ const AddressBar = ({ data }: { data: Contact }) => {
                           width={41}
                           height={34}
                         />
-                        <p className="text-30">{item.phone}</p>
+                     <p className="text-30">{item.phone}</p>
                       </div>
+                      </a>
                     </div>
 
                     <div>
                       <Link
-                        href="https://maps.app.goo.gl/GnLcXnJD9r66u73QA"
+                        href={item.buttonLink}
                         target="_blank"
                       >
                         <button className="bg-primary cursor-pointer text-white px-6 py-2 flex items-center gap-3 rounded-lg group">
@@ -110,13 +114,15 @@ const AddressBar = ({ data }: { data: Contact }) => {
           )}
         </div>
         <div className=" md:col-span-3  w-full">
-          <Image
+         <div className="h-full">
+         <Image
             src={data.image}
             alt="contact-image"
-            className="w-full h-full object-cover md:rounded-tr-[20px] md:rounded-br-[20px]"
+            className="w-full h-[687px] object-cover md:rounded-tr-[20px] md:rounded-br-[20px]"
             width={400}
             height={400}
           />
+         </div>
         </div>
        </motion.div>
     </div>

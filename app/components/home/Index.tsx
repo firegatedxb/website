@@ -18,7 +18,7 @@ const Index = async ({ data, pdata }: { data: Home , pdata: Partners }) => {
       <TechnologyPartners data={data} pdata={pdata}/>
       <OurServices data={data} />
       <OurSystems data={data} />
-      <Certifications data={data} pdata={pdata} />
+      <Certifications data={data} />
       <FeaturedProjects data={data}   />
       <LetsCollaborate data={data}/>
    </>
