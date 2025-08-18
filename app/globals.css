@@ -187,12 +187,12 @@ body {
   position: relative;
 }
 
-.ulsmn li::before {
+/* .ulsmn li::before {
   content: url('/assets/img/icons/grayarrow.svg');
   position: absolute;
   left: -20px;
   top: 0;
-}
+} */
 
 .swiper-slide-active {
   position: relative
