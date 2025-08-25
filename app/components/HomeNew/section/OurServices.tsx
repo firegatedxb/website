@@ -55,9 +55,9 @@ const OurServices = ({ data }: { data: Home }) => {
                         activeIndex === index ? 'opacity-100 max-h-[1000px]' : 'opacity-0 max-h-[0px]'
                       }`}
                     >
-                      <div className="border-l-3 border-primary pl-4 md:pl-[40px] my-4 md:my-[38px]">
+                      <div className="border-l-3 border-primary pl-4 md:pl-5 my-4 md:my-[38px]">
                         <div>
-                          <h3 className="text-[22px] font-medium text-white pb-4 md:pb-[20px] leading-[1]">
+                          <h3 className="text-[22px] font-medium text-white pb-4  leading-[1]">
                             {service.title}
                           </h3>
                           <p className="mb-4 md:mb-5 text-white text-17">{service.description}</p>
