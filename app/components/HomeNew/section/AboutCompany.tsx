@@ -40,7 +40,7 @@ const AboutCompany = ({ data }: { data: Home }) => {
 
       <motion.div className="pb-4 lg:pb-8" variants={fadeUp} custom={1}>
         <div
-          className="text-graytext text-19"
+          className="text-graytext text-19 intpb"
           dangerouslySetInnerHTML={{ __html: data.aboutSection.description }}
         />
       </motion.div>
@@ -73,13 +73,13 @@ const AboutCompany = ({ data }: { data: Home }) => {
           <motion.div
             key={index}
             className={`${
-              index < 2 ? "border-b border-black/35 pb-4 md:pb-8 mb-4 md:mb-8" : ""
+              index < 2 ? "border-b border-black/35 pb-3 md:pb-4 mb-3 md:mb-4" : ""
             }`}
             variants={fadeUp}
             custom={4 + index}
           >
             {inView && item.number.includes("+") ? <p className="text-40 text-secondary font-medium leading-[1.2]"><CountUp end={Number(item.number.replace("+", ""))} />+</p> : <p className="text-50 text-secondary font-medium">{item.number}</p>}
-            <p className="font-medium text-19 text-graytext pr-2">{item.value}</p>
+            <p className="font-medium text-17 text-graytext pr-2">{item.value}</p>
           </motion.div>
         ))}
       </motion.div>
@@ -91,7 +91,7 @@ const AboutCompany = ({ data }: { data: Home }) => {
       </div>
 
        <motion.div
-  className="lg:absolute right-0 bottom-0 z-[-1] lg:w-1/2  "
+  className="lg:absolute right-0 bottom-0 2xl:bottom-[-262px] z-[-1] lg:w-1/2  "
   initial={{ opacity: 0, y: 100, scale: 0.8 }}
   whileInView={{ opacity: 1, y: 0, scale: 1 }}
   viewport={{ once: true, amount: 0.3 }} // only animate once when 30% is in view

@@ -44,7 +44,7 @@ useEffect(() => {
         <div className=" ">
           <div className=" ">
 <motion.h2
-  className="text-40 text-secondary font-medium mb-3 md:mb-8 uppercase"
+  className="text-40 text-secondary font-medium mb-3 md:mb-6 uppercase"
   variants={slideInLeft}
   initial="hidden"
   whileInView="visible"
@@ -79,7 +79,7 @@ useEffect(() => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: index * 0.2 }}
         viewport={{ once: true, amount: 0.3 }}
-        className="relative bg-white flex items-center justify-center rounded-[20px] h-[200px] md:h-[226px] lg:h-[286px] group"
+        className="relative bg-white flex items-center justify-center rounded-[20px] h-[200px]    group"
       >
         <div>
           <Image src={slide.logo} alt={slide.logoAlt} width={240} height={70} />

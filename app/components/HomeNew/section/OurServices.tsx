@@ -21,7 +21,7 @@ const OurServices = ({ data }: { data: Home }) => {
             <h2 className="">
             </h2>
             <motion.h2
-              className="text-40 text-white font-medium mb-0 lg:mb-5 uppercase"
+              className="text-40 text-white font-medium mb-0 lg:mb-4 uppercase"
               variants={slideInLeft}
               initial="hidden"
               whileInView="visible"
@@ -44,7 +44,7 @@ const OurServices = ({ data }: { data: Home }) => {
                       className="border-b border-white  spb"
                       onMouseEnter={() => setActiveIndex(index)}
                     >
-                      <h3 className=  {`text-[22px] font-medium text-white leading-[3.3] hvtitle  ${
+                      <h3 className=  {`text-[22px] font-medium text-white leading-[2.8] hvtitle  ${
                         activeIndex === index ? 'opacity-0 max-h-[0px]' : 'opacity-100 max-h-[1000px]'
                       }`}>
                         {service.title}
@@ -60,7 +60,7 @@ const OurServices = ({ data }: { data: Home }) => {
                           <h3 className="text-[22px] font-medium text-white pb-4 md:pb-[20px] leading-[1]">
                             {service.title}
                           </h3>
-                          <p className="mb-4 md:mb-[42px] text-white text-19">{service.description}</p>
+                          <p className="mb-4 md:mb-5 text-white text-17">{service.description}</p>
                         </div>
                           <Link href={service.url}>
                             <button className="flex group cursor-pointer items-center text-white w-fit font-medium rounded-[8px] space-x-5 text-xs leading-[1.87] uppercase">
@@ -97,7 +97,7 @@ const OurServices = ({ data }: { data: Home }) => {
               viewport={{ once: true, amount: 0.4 }}
               custom={2}
             >   <figure >
-            <Image src={assets.homemn} alt="" className='rounded-[20px]' />
+            <Image src={assets.homemn} alt="" className='rounded-[20px] xl:max-h-[500px] object-cover' />
               </figure>
             </motion.div>
             </div>

@@ -15,12 +15,12 @@ const Certifications = ({ data }: { data: Home }) => {
   console.log(data);
     const swiperRef = useRef<SwiperClass | null>(null);
   return (
-    <section className="pt-7 md:pt-7 lg:pt-10 pb-10 md:pb-12 2xl:pb-17 relative  ">
+    <section className="pt-7 md:pt-7 lg:pt-8 pb-10 md:pb-12 2xl:pb-17 relative  ">
       <div className="container">
         <div className=" ">
           <div className=" ">
              <motion.h2
-              className="text-30 md:text-40 text-secondary font-medium mb-8 md:mb-[50px] lg:mb-[40px] 2xl:mb-15 uppercase"
+              className="text-30 md:text-40 text-secondary font-medium mb-5 md:mb-6 uppercase"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}

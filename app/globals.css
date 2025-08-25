@@ -457,3 +457,4 @@ display:none; }
   font-weight:600;
   color:#092532;
 }
+.intpb p:not(:last-child){margin-bottom: 15px;}

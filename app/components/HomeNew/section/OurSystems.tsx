@@ -74,7 +74,7 @@ homeImage: string,
     <section className="pt-10   lg:pt-12 2xl:pt-17 ">
       <div className="container ">
         <motion.h2
-  className="text-50 text-secondary font-medium mb-3 md:mb-8 uppercase"
+  className="text-40 text-secondary font-medium mb-3 md:mb-5 uppercase"
   initial={{ opacity: 0, y: 30 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6 }}
@@ -84,7 +84,7 @@ homeImage: string,
 </motion.h2>
 
  <motion.div
-  className="relative border-b border-[#00000020] pb-10] md:pb-12 2xl:pb-17"
+  className="relative border-b border-[#00000020] pb-10 md:pb-10"
   variants={containerVariants}
   initial="hidden"
   whileInView="visible"
@@ -111,11 +111,11 @@ homeImage: string,
             />
           </motion.div>
 
-          <h3 className="text-19 font-medium leading-[1.3] text-black group-hover:text-white group-active:text-white duration-400 transition-colors px-5 pt-5 lg:px[28px] lg:pt-8">
+          <h3 className="text-19 font-medium leading-[1.3] text-black group-hover:text-white group-active:text-white duration-400 transition-colors px-5 pt-5 ">
             {item.title}
           </h3>
 
-          <div className="mt-auto px-5 py-5 lg:py-8 lg:px[28px]">
+          <div className="mt-auto px-5 py-5 ">
             {item.slug !== "#" ? (
               <Link href={`systems/${item.slug}`}>
                 <button className="cursor-pointer flex py-[7px] px-[20px] items-center justify-between text-15 text-black bg-white group-hover:bg-primary group-hover:text-white group-active:bg-primary group-active:text-white font-medium rounded-[20px] space-x-5 text-xs leading-[1.87] uppercase w-full">
