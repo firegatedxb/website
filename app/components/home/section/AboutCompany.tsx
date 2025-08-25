@@ -40,7 +40,7 @@ const AboutCompany = ({ data }: { data: Home }) => {
 
       <motion.div className="pb-2 lg:pb-8" variants={fadeUp} custom={1}>
         <div
-          className="text-graytext text-19 mb-5"
+          className="text-graytext text-19 mb-5 intpb"
           dangerouslySetInnerHTML={{ __html: data.aboutSection.description }}
         />
       </motion.div>

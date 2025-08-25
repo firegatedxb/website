@@ -103,7 +103,7 @@ const FeaturedProjects = ({ data }: { data: Home }) => {
                   <h2 className="text-40 font-medium mb-4 md:mb-7 max-w-[14ch] leading-[1.2] uppercase">
                     {data.projects.title}
                   </h2>
-                  <p className="text-19">{data.projects.description}</p>
+                  <p className="text-17">{data.projects.description}</p>
                 </div>
               <div>
                <Link href="/portfolio">
@@ -174,7 +174,7 @@ const FeaturedProjects = ({ data }: { data: Home }) => {
                           alt={""}
                           width={487}
                           height={536}
-                          className="w-full lg:h-[400px]  2xl:h-[500px] object-cover rounded-3xl"
+                          className="w-full lg:h-[400px]  object-cover rounded-3xl"
                         />
                       </Link>
                       <Link href={`/portfolio/${project.slug}`}>
@@ -183,10 +183,10 @@ const FeaturedProjects = ({ data }: { data: Home }) => {
                         </div>
                       </Link>
                     </div>
-                    <h3 className="text-white text-[22px] font-medium leading-[1.3] mb-3 truncate overflow-hidden whitespace-nowrap">
+                    <h3 className="text-white text-[22px] font-medium leading-[1.3] mb-1 truncate overflow-hidden whitespace-nowrap">
                       {project.name}
                     </h3>
-                    <p className="text-[#bebebe] text-19 font-normal leading-[1.526315789473684] truncate overflow-hidden whitespace-nowrap">
+                    <p className="text-[#bebebe] text-17 font-normal leading-[1.526315789473684] truncate overflow-hidden whitespace-nowrap">
                       {project.sector}
                     </p>
                   </motion.div>
