@@ -79,10 +79,10 @@ useEffect(() => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: index * 0.2 }}
         viewport={{ once: true, amount: 0.3 }}
-        className="relative bg-white flex items-center justify-center rounded-[20px] h-[200px]    group"
+        className="relative bg-white flex items-center justify-center rounded-[20px] h-[150px]    group"
       >
         <div>
-          <Image src={slide.logo} alt={slide.logoAlt} width={240} height={70} />
+          <Image src={slide.logo} alt={slide.logoAlt} width={150} height={70} />
         </div>
             <div className="w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center absolute top-[10px] right-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
               <Image src={assets.redarrow} alt="" />
