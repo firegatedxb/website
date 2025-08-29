@@ -57,7 +57,7 @@ const Footer = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   return (
-    <section className="py-[50px] md:py-[50px] lg:py-[65px] 2xl:py-[85px] relative bg-black text-white ">
+    <section className="py-10 pb-0 md:pb-0 lg:py-12 2xl:py-17 relative bg-black text-white ">
       {defaultTab && (
         <div className="container">
           <div className="flex flex-wrap gap-4 lg:gap-0">
@@ -67,7 +67,7 @@ const Footer = () => {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}>
                 <Tabs defaultValue={defaultTab} value={tabValue} onValueChange={setTabValue} className="">
-                  <TabsList className="relative flex gap-y-5 lg:flex-row rounded-none mb-10 lg:mb-20 bg-transparent justify-start p-0 h-auto">
+                  <TabsList className="relative flex gap-y-5 lg:flex-row rounded-none mb-10 bg-transparent justify-start p-0 h-auto">
                     {contactList?.contacts.map((client, index) => (
                       <div key={index}  >
                         <TabsTrigger
@@ -101,9 +101,9 @@ const Footer = () => {
                           >
                             <TabsContent value={client.title}>
                               <div>
-                                <p className="text-32 mb-6"> {client.title}</p>
+                                <p className="text-32 mb-4"> {client.title}</p>
                                 <p className="text-19">
-                                  {client.address?.split('PO')[0]}<br></br>
+                                  {client.address?.split('PO')[0]},
                                   {client.address?.split('PO')[1]}
                                 </p>
                                 <p className="text-19">
