@@ -84,7 +84,7 @@ homeImage: string,
 </motion.h2>
 
  <motion.div
-  className="relative border-b border-[#00000020] pb-10 md:pb-10"
+  className="relative border-b border-[#00000020] pb-10 md:pb-18"
   variants={containerVariants}
   initial="hidden"
   whileInView="visible"

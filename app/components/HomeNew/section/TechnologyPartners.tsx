@@ -79,7 +79,7 @@ useEffect(() => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: index * 0.2 }}
         viewport={{ once: true, amount: 0.3 }}
-        className="relative bg-white flex items-center justify-center rounded-[20px] h-[150px]    group"
+        className="relative bg-white flex items-center justify-center rounded-[20px] h-[210px]    group"
       >
         <div>
           <Image src={slide.logo} alt={slide.logoAlt} width={150} height={70} />

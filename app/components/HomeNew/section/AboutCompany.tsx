@@ -91,7 +91,7 @@ const AboutCompany = ({ data }: { data: Home }) => {
       </div>
 
        <motion.div
-  className="lg:absolute right-0 bottom-0 2xl:bottom-[-262px] z-[-1] lg:w-1/2  "
+  className="lg:absolute right-0 bottom-[-70px] 2xl:bottom-[-262px] z-[-1] lg:w-1/2  "
   initial={{ opacity: 0, y: 100, scale: 0.8 }}
   whileInView={{ opacity: 1, y: 0, scale: 1 }}
   viewport={{ once: true, amount: 0.3 }} // only animate once when 30% is in view
