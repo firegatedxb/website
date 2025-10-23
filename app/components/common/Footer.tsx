@@ -190,7 +190,7 @@ const Footer = () => {
         </div>
       )}
         <div className=" whatsapp  "   >
-          <Link href="https://wa.me/+971508454714" target="_blank">
+          <Link href="https://wa.me/+971559174751" target="_blank">
                         <Image src={assets.whatsapp} alt="slider" className="fixed group hover:text-primary transition-all duration-300 transform   ease-in-out hover:-translate-y-1 bottom-5 lg:bottom-[40px] right-[10px] lg:right-[50px]  z-50 w-[20px] h-[20px] lg:h-[40px] lg:w-[40px] " />
                         </Link>
                       </div>
