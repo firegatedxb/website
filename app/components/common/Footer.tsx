@@ -181,7 +181,7 @@ const Footer = () => {
                   transition={{ delay: 0.6 }}
                 >
                   <p className="text-15 text-[#979797] font-[300] mt-6 md:mt-[33px]">
-                    ©2025 Fire gate safety & Security systems. All Rights Reserved. | by <a className="text-[#979797]/70 text-15  hover:text-white/50 transition-all duration-300 transform   ease-in-out hover:translate-x-1" href="https://www.globalsurf.ae/" target="_blank">Global Surf </a>
+                    ©2025 Fire gate safety & Security systems. All Rights Reserved. | <span className="text-[#979797]/70 text-15">by</span> <a className="text-[#979797]/70 text-15  hover:text-white/50 transition-all duration-300 transform   ease-in-out hover:translate-x-1" href="https://www.globalsurf.ae/" target="_blank">Global Surf </a>
                   </p>
                 </motion.div>
               </motion.div>
